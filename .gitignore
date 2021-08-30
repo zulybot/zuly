@@ -1,0 +1,8 @@
+## NPM FOLDERS
+
+/node_modules
+
+## CONFIDENCIAL files
+
+src/system.js
+src/config.js
