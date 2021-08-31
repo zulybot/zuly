@@ -4,5 +4,8 @@
 
 ## CONFIDENCIAL files
 
+src/client/plugins/nodes.js
+src/config/player.js
 src/system.js
 src/config.js
+data/base.json

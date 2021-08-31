@@ -61,5 +61,10 @@ module.exports = {
   },
   mention: {
     response: 'Olá **%u**, veja meus comandos usando `star ajuda` ou `s!ajuda`'
+  },
+  together: {
+    channel: 'Você precisa estar em um canal de voz para executar este comando.',
+    done: 'Basta clicar no link e você será redirecionado para a atividade:',
+    done2: '**(só funciona no computador)**'
   }
 }

@@ -61,5 +61,10 @@ module.exports = {
   },
   mention: {
     response: 'Hello **%u**! See my commands by using `star help` or `s!help`'
+  },
+  together: {
+    channel: 'You must be on a voice channel to execute this command.',
+    done: 'Just click on the link and you will be redirected to the activity:',
+    done2: '**(only works on computer)**'
   }
 }

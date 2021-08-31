@@ -8,6 +8,8 @@ const {
   token
 } = require('./config')
 
+const DiscordTogether = require('./client/discord-together')
+
 const client = new Client(token, {
   allowedMentions: {
     everyone: false,
@@ -23,9 +25,10 @@ const client = new Client(token, {
   // guildSubscriptions: true
   intents: [
     'guilds',
+    'guildMembers',
     'guildMessages',
-    'guildMessageReactions',
-    'guildMembers'
+    'guildVoiceStates',
+    'guildMessageReactions'
   ],
   largeThreshold: 200,
   // lastShardID
@@ -53,6 +56,8 @@ const client = new Client(token, {
   // ws
 })
 
+client.discordTogether = new DiscordTogether(client)
+
 client.commands = new Collection()
 client.aliases = new Collection()
 // client.events = new Collection()
@@ -67,6 +72,4 @@ ZulyBot.iniciar().then((zuly) => {
 global.zuly = client
 global.zuly.manager = ZulyBot
 
-require('./client/handler/eventos')
-require('./client/handler/comandos')
-require('./mongo/mongo')
+require('./ZulyUtilLoader')
