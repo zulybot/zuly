@@ -4,7 +4,7 @@ module.exports = class DailyCommand {
       permissoes: {
         membro: [], // Permissoes que o usuario necessita
         bot: ['attachFiles'], // Permissoes que o bot necessita
-        dono: false // Se apenas nos devs podem usar o comando
+        dono: true // Se apenas nos devs podem usar o comando
       },
       pt: {
         nome: 'ship',
@@ -57,6 +57,7 @@ module.exports = class DailyCommand {
     registerFont('./assets/fonts/Lemon-Brownies.ttf', {
       family: 'Lemon-Brownies'
     })
+
     const base = await loadImage('./assets/images/ship.png')
 
     const edit = createCanvas(base.width, base.height)
@@ -77,7 +78,7 @@ module.exports = class DailyCommand {
     foto.fillStyle = '#ffffff'
     foto.fillText(`${porcentagem}%`, 1630, 1300)
     foto.font = '300px Lemon-Brownies'
-    foto.fillText(`${nome}`, 2000, 1100)
+    foto.fillText(`${nome}`, 2000, 1600)
 
     ctx.message.channel.createMessage(`💖 ${ctx.message.author.mention} 💖`, {
       file: edit.toBuffer(),

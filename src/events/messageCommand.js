@@ -12,6 +12,7 @@ module.exports = class MessageEventCommand {
     const system = require('../system')
 
     global.zuly.users.map(g => global.zuly.users.delete(g.id))
+
     if (message.channel.type === 1) return
 
     const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`)

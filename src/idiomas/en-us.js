@@ -66,5 +66,15 @@ module.exports = {
     channel: 'You must be on a voice channel to execute this command.',
     done: 'Just click on the link and you will be redirected to the activity:',
     done2: '**(only works on computer)**'
+  },
+  erela: {
+    np: 'Playing now',
+    end: 'The song is over, I\'m leaving',
+    not: 'I\'m not playing anything on the server.'
+  },
+  play: {
+    nothing: 'Arguments are missing, use `%pplay <music | url>`',
+    add: 'Added to queue',
+    can: 'You need to be on a voice channel to listen to music.'
   }
 }

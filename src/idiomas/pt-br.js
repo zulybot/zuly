@@ -66,5 +66,15 @@ module.exports = {
     channel: 'Você precisa estar em um canal de voz para executar este comando.',
     done: 'Basta clicar no link e você será redirecionado para a atividade:',
     done2: '**(só funciona no computador)**'
+  },
+  erela: {
+    np: 'Tocando agora',
+    end: 'A música acabou, estou saindo',
+    not: 'Não estou tocando nada no servidor.'
+  },
+  play: {
+    nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',
+    add: 'Adicionado a fila',
+    can: 'Você precisa estar em um canal de voz para ouvir música.'
   }
 }

@@ -55,15 +55,9 @@ global.zuly.music = new Manager({
     idioma = idioma[lang]
 
     const embed = new global.zuly.manager.Ebl()
-    embed.title(idioma.erela.np)
-    embed.description(`<:st_playing:861592704958201896> \`${track.title}: ${track.requester.username}#${track.requester.discriminator}\``)
+    embed.description(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.np} **${track.title}**`)
     embed.color('#ffcbdb')
-    embed.thumbnail(global.zuly.user.avatarURL)
-    ch.createMessage(embed.create).then(a => {
-      setTimeout(() => {
-        a.delete()
-      }, 3000)
-    })
+    ch.createMessage(embed.create)
   })
   .on('queueEnd', async (player) => {
     const ch = await global.zuly.getRESTChannel(player.textChannel)
@@ -73,10 +67,8 @@ global.zuly.music = new Manager({
     idioma = idioma[lang]
 
     const embed = new global.zuly.manager.Ebl()
-    embed.title(`🛑 ${idioma.erela.endt}`)
-    embed.description(`${idioma.erela.end}`)
+    embed.description(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.end}`)
     embed.color('#ffcbdb')
-    embed.thumbnail(global.zuly.user.avatarURL)
     ch.createMessage(embed.create)
     player.destroy()
   })

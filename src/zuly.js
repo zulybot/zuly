@@ -66,7 +66,7 @@ const Zuly = require('./client/zulybot.js')
 const ZulyBot = new Zuly(client)
 
 ZulyBot.iniciar().then((zuly) => {
-  console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.dim.brightMagenta)
+  console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.brightMagenta)
 })
 
 global.zuly = client
