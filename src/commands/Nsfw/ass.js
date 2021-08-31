@@ -27,7 +27,7 @@ module.exports = class HentaiCommand {
       await get('http://api.obutts.ru/butts/0/1/random').then(async response => {
         const res = response.data
         const embed = new ctx.embed()
-        embed.color('#dd3af0')
+        embed.color('#ffcbdb')
         embed.image('http://media.obutts.ru/' + res[0].preview)
         embed.footer(`Executed by: ${ctx.message.author.username}#${ctx.message.author.discriminator}`)
         return ctx.send(embed.create)

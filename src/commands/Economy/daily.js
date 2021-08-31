@@ -26,24 +26,24 @@ module.exports = class DailyCommand {
 
     const date = Date.now()
 
-    const moneyUser = await global.zuly.db.get(`money-${ctx.id}`)
+    const moneyUser = await global.db.get(`money-${ctx.id}`)
 
-    const dailyTime = await global.zuly.db.get(`dailytime-${ctx.id}`)
+    const dailyTime = await global.db.get(`dailytime-${ctx.id}`)
 
     const timeout = 86400000
 
     if (!moneyUser || !dailyTime) {
-      global.zuly.db.set(`money-${ctx.id}`, daily)
-      global.zuly.db.set(`dailytime-${ctx.id}`, date)
+      global.db.set(`money-${ctx.id}`, daily)
+      global.db.set(`dailytime-${ctx.id}`, date)
 
       ctx.message.channel.createMessage(`Você ganhou ${daily}`)
     } else {
       if (dailyTime !== null && timeout - (date - dailyTime) > 0) {
         ctx.message.channel.createMessage('Você já pegou seu daily')
       } else {
-        const totalMoney = await global.zuly.db.get(`money-${ctx.id}`)
-        global.zuly.db.set(`money-${ctx.id}`, totalMoney + daily)
-        global.zuly.db.set(`dailytime-${ctx.id}`, date)
+        const totalMoney = await global.db.get(`money-${ctx.id}`)
+        global.db.set(`money-${ctx.id}`, totalMoney + daily)
+        global.db.set(`dailytime-${ctx.id}`, date)
       }
     }
   }

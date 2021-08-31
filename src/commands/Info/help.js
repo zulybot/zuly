@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 module.exports = class Ajuda {
   constructor () {
     return {
@@ -22,7 +23,7 @@ module.exports = class Ajuda {
   }
 
   async run (ctx) {
-    let idioma = await global.zuly.db.get(`idioma-${ctx.message.guildID}`) || 'pt-br'
+    let idioma = await global.db.get(`idioma-${ctx.message.guildID}`) || 'pt-br'
     require('colors')
     const devs = []
 
@@ -30,7 +31,7 @@ module.exports = class Ajuda {
       idioma = 'pt-br'
     }
 
-    const desenvolvedores = await global.zuly.db.get('devs')
+    const desenvolvedores = await global.db.get('devs')
     for (const desenvolvedor of desenvolvedores) {
       const dev = await global.zuly.getRESTUser(desenvolvedor)
       devs.push(dev.username)
@@ -39,7 +40,7 @@ module.exports = class Ajuda {
     const categorias = {}
     const embed = new ctx.embed()
     embed.title('<:zu_info:880812942713573396> ' + ctx.idioma.help.title + global.zuly.user.username)
-    embed.color('#dd3af0')
+    embed.color('#ffcbdb')
 
     switch (idioma) {
       case 'pt-br':
@@ -53,7 +54,7 @@ module.exports = class Ajuda {
           help.field(':small_blue_diamond: Permissões do bot:', `\`${cmd.permissoes.bot.join('`, `') || 'Esse comando não necessita de permissões'}\``, false)
           help.field(':small_orange_diamond: Permissões do usuário:', `\`${cmd.permissoes.membro.join('`, `') || 'Esse comando não necessita de permissões especiais para ser executado'}\``, false)
           help.thumbnail(global.zuly.user.avatarURL)
-          help.color('#dd3af0')
+          help.color('#ffcbdb')
 
           if (cmd.aliases.join(', ') !== '') {
             help.field(':twisted_rightwards_arrows: Sinônimos:', `\`${cmd.aliases.join('`, `')}\``, false)
@@ -63,9 +64,8 @@ module.exports = class Ajuda {
         }
 
         global.zuly.commands.forEach(comando => {
-          if (!comando.permissoes.nsfw) {
-          } else {
-            if (!ctx.message.channel.nsfw) return 
+          if (comando.permissoes.nsfw) {
+            if (!ctx.message.channel.nsfw) return
           }
           if (!comando.permissoes.dono) {
             // console.log(`[HELP] Commando ${comando.pt.nome} foi exbido no ajuda`.brightCyan)
@@ -103,7 +103,7 @@ module.exports = class Ajuda {
           help.field(':small_blue_diamond: Bot permissions:', `\`${cmd.permissoes.bot.join('`, `') || 'This command does not need permissions.'}\``, false)
           help.field(':small_orange_diamond: User permissions:', `\`${cmd.permissoes.membro.join('`, `') || 'This command does not need special permissions to run'}\``, false)
           help.thumbnail(global.zuly.user.avatarURL)
-          help.color('#dd3af0')
+          help.color('#ffcbdb')
 
           if (cmd.aliases.join(', ') !== '') {
             help.field(':twisted_rightwards_arrows: Aliases:', `\`${cmd.aliases.join('`, `')}\``, false)
@@ -112,9 +112,8 @@ module.exports = class Ajuda {
           return ctx.send(help.create)
         }
         global.zuly.commands.forEach(cmd => {
-          if (!cmd.permissoes.nsfw) {
-          } else {
-            if (!ctx.message.channel.nsfw) return 
+          if (cmd.permissoes.nsfw) {
+            if (!ctx.message.channel.nsfw) return
           }
           if (!cmd.permissoes.dono) {
             // console.log('[HELP] Passou')
@@ -131,7 +130,7 @@ module.exports = class Ajuda {
         for (const categoria in categorias) {
           embed.field(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ')}`)
         }
-        
+
         if (!ctx.message.channel.nsfw) {
           embed.footer(ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '))
         } else {

@@ -27,7 +27,7 @@ module.exports = class EvalCommand {
     const foto = `https://image.thum.io/get/maxAge/12/width/700/crop/900/${ctx.args.join(' ')}`
     const embed = new ctx.embed()
     embed.image(foto)
-    embed.color('#dd3af0')
+    embed.color('#ffcbdb')
     ctx.send(embed.create)
   }
 }

@@ -18,7 +18,7 @@ module.exports = class GuildCreate {
     const owner = await global.zuly.getRESTUser(guild.ownerID)
 
     if (guild.region !== 'brazil') {
-      await global.zuly.db.set(`idioma-${guild.id}`, 'en-us')
+      await global.db.set(`idioma-${guild.id}`, 'en-us')
     }
 
     await global.zuly.executeWebhook(system.guild.id, system.guild.token, {

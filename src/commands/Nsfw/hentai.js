@@ -27,7 +27,7 @@ module.exports = class HentaiCommand {
       await get('https://nekos.life/api/v2/img/hentai').then(async response => {
         const res = response.data
         const embed = new ctx.embed()
-        embed.color('#dd3af0')
+        embed.color('#ffcbdb')
         embed.image(res.url)
         embed.footer(`Executed by: ${ctx.message.author.username}#${ctx.message.author.discriminator}`)
         return ctx.send(embed.create)

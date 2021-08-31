@@ -22,7 +22,7 @@ module.exports = class PingCommand {
   }
 
   async run (ctx) {
-    const ping = await global.zuly.db.ping()
+    const ping = await global.db.ping()
     
     return ctx.send(`🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \n> ⤷ **Write:** \`${ping.write}ms\`\n> ⤷ **Read:** \`${ping.read}ms\`\n> ⤷ **Average:** \`${ping.average}ms\``)
   }

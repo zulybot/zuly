@@ -24,7 +24,7 @@ module.exports = class PingCommand {
   async run (ctx) {
     const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author
     let valor
-    const mensagens = await global.zuly.db.get(`messages-${ctx.message.guildID}-${user.id}`)
+    const mensagens = await global.db.get(`messages-${ctx.message.guildID}-${user.id}`)
     if (mensagens) {
       valor = mensagens
     } else {
@@ -32,7 +32,7 @@ module.exports = class PingCommand {
     }
     const embed = new ctx.embed()
     embed.title(`💬 ${ctx.idioma.messages.title}`)
-    embed.color('#dd3af0')
+    embed.color('#ffcbdb')
     embed.description(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`)
     ctx.send(embed.create)
   }

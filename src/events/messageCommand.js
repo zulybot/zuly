@@ -11,12 +11,12 @@ module.exports = class MessageEventCommand {
         async run(message) {
             if (message.channel.type === 1) return;
 
-            const mensagens = await global.zuly.db.get(`messages-${message.guildID}-${message.author.id}`)
+            const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`)
 
-            await global.zuly.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1)
+            await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1)
 
             let idioma = require('../config/idiomas')
-            let lang = (await global.zuly.db.get(`idioma-${message.guildID}`)) || 'pt_br'
+            let lang = (await global.db.get(`idioma-${message.guildID}`)) || 'pt_br'
             lang = lang.replace(/-/g, '_')
             idioma = idioma[lang]
             //ata, criei
@@ -37,7 +37,7 @@ module.exports = class MessageEventCommand {
               mention.title(idioma.message.P)
               mention.description(idioma.mention.response.replace('%u', message.author.username).replace('s!', 'z!').replace('star', 'zuly'))
               mention.thumbnail(global.zuly.user.avatarURL)
-              mention.color('#dd3af0')
+              mention.color('#ffcbdb')
               message.channel.createMessage(mention.create)
             }
 
@@ -54,7 +54,7 @@ module.exports = class MessageEventCommand {
             }
 
             if (!command) {
-                if (await global.zuly.db.get(`mensagem-comando-${message.guildID}`)) {
+                if (await global.db.get(`mensagem-comando-${message.guildID}`)) {
                     message.channel.createMessage(`:x: ${message.author} **|** ${idioma.message.the} \`${cmd.replace(/@/g, '').replace(/#/g, '').replace(/`/g, '')}\` ${idioma.message.unk}`)
         } else {
           return
@@ -77,10 +77,10 @@ module.exports = class MessageEventCommand {
             }
             if (command.permissoes.dono) {
                 // Verificar se o autor da mensagem é um desenvolvedor.
-                const developers = await global.zuly.db.get('devs')
+                const developers = await global.db.get('devs')
 
                 if (!developers) {
-                    await global.zuly.db.set('devs', ['726449359167684734', '392087996821667841', '699416429338034268'])
+                    await global.db.set('devs', ['726449359167684734', '392087996821667841', '699416429338034268'])
                 }
 
                 if (!developers.includes(message.member.id)) {
