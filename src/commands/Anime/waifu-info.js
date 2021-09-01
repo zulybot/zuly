@@ -10,12 +10,12 @@ module.exports = class EvalCommand {
       pt: {
         nome: 'waifu-info',
         categoria: '💖 • Waifu-rolls',
-        desc: 'Waifu aleatória'
+        desc: 'Vê informação de waifu'
       },
       en: {
         nome: 'waifu-info',
         categoria: '💖 • Waifu-rolls',
-        desc: 'Random waifu.'
+        desc: 'See waifu info.'
       },
       aliases: ['wa', 'wainfo'],
       run: this.run

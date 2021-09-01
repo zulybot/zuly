@@ -57,8 +57,9 @@ module.exports = class EvalCommand {
         message.addReaction('💖')
         MarryCollector.on('collect', async (msg) => {
           const date = Date.now()
-          const marrytime = await global.db.get(`timeout-${ctx.message.channel.guild.id}-${ctx.message.author.id}`, Date.now())
-          if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.send('')
+          const marrytime = await global.db.get(`timeout-${ctx.message.channel.guild.id}-${ctx.message.author.id}`)
+
+          if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`)
 
           const ryos = await global.db.get(`ryos-${ctx.message.author.id}`)
           if (ryos) {
