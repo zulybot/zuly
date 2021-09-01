@@ -13,7 +13,8 @@ const DiscordTogether = require('./client/discord-together')
 const client = new Client(token, {
   allowedMentions: {
     everyone: false,
-    roles: false
+    roles: false,
+    users: true
   },
   autoreconnect: true,
   defaultImageFormat: 'png',

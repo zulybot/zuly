@@ -76,5 +76,12 @@ module.exports = {
     nothing: 'Arguments are missing, use `%pplay <music | url>`',
     add: 'Added to queue',
     can: 'You need to be on a voice channel to listen to music.'
+  },
+  waifu: {
+    casar: 'React with 💖 to get married',
+    casou: 'You married with %w',
+    dono: 'Owner',
+    utl: 'Utilize: %pwaifu-info [ID]',
+    casado: 'Have you recently got married, you can get married every 2 hours'
   }
 }

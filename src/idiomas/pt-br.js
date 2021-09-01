@@ -76,5 +76,12 @@ module.exports = {
     nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',
     add: 'Adicionado a fila',
     can: 'Você precisa estar em um canal de voz para ouvir música.'
+  },
+  waifu: {
+    casar: 'Reaja com 💖 para se casar',
+    casou: 'Você se casou com %w',
+    dono: 'Dono',
+    utl: 'Utilize: %pwaifu-info [ID]',
+    casado: 'Você já casou recentemente, você pode casar a cada 2 horas'
   }
 }

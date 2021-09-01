@@ -7,6 +7,6 @@ module.exports = class DisconnectEvent {
   }
 
   async run (debug) {
-    console.log(`[DEBUG] ${debug}`.yellow)
+    console.log(`[DEBUG-D] ${debug}`.yellow)
   }
 }
