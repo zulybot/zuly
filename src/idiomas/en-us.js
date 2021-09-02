@@ -1,4 +1,5 @@
 module.exports = {
+  lang: 'en',
   message: {
     P: 'Hello, human!',
     view: 'I don\'t have permission to read the message history!',
@@ -83,5 +84,13 @@ module.exports = {
     dono: 'Owner',
     utl: 'Utilize: %pwaifu-info [ID]',
     casado: 'Have you recently got married, you can get married every 2 hours'
+  },
+  tradutor: {
+    lang: 'You need to specify the language, example: %translator **en** Oi',
+    text: 'You need to specify the text, example: %translator en  **Oi** '
+  },
+  invite: {
+    add: 'Add me to your server!',
+    desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/2pFH6Yy), yay'
   }
 }

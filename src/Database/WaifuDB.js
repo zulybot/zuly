@@ -70,5 +70,85 @@ module.exports = {
     image: 'https://imgur.com/brNpBfn.png',
     anime: 'Wonder Egg Priority',
     id: 8
+  },
+  {
+    name: 'Nazuna Hiwatashi',
+    valor: 157,
+    rarity: 'Especial',
+    image: 'https://imgur.com/aDjtncS.png',
+    anime: 'BNA - Brand New Animal',
+    id: 9
+  },
+  {
+    name: 'Kirisaki Chitoge',
+    valor: 47,
+    rarity: 'Especial',
+    image: 'https://imgur.com/hllqF97.png',
+    anime: 'Nisekoi',
+    id: 10
+  },
+  {
+    name: 'Kohaku',
+    valor: 230,
+    rarity: 'Especial',
+    image: 'https://imgur.com/Crn8vFj.png',
+    anime: 'Doctor Stone',
+    id: 11
+  },
+  {
+    name: 'Azusa Aizawa',
+    valor: 582,
+    rarity: 'Especial',
+    image: 'https://imgur.com/QbEc7xz.png',
+    anime: 'Slime Taoshite 300-nen, Shiranai Uchi ni Level Max ni Nattemashita',
+    id: 12
+  },
+  {
+    name: 'Zero Two',
+    valor: 1068,
+    rarity: 'Especial',
+    image: 'https://imgur.com/7SVitpB.png',
+    anime: 'Darling in the franxx',
+    id: 13
+  },
+  {
+    name: 'Kae Serinuma',
+    valor: 350,
+    rarity: 'Normal',
+    image: 'https://imgur.com/x82C2Z5.png',
+    anime: 'Kiss him, not me',
+    id: 14
+  },
+  {
+    name: 'Yume Minami',
+    valor: 124,
+    rarity: 'Normal',
+    image: 'https://imgur.com/J2l6t8Y.png',
+    anime: 'SSSS.Dynazenon',
+    id: 15
+  },
+  {
+    name: 'Kosaki Onodera',
+    valor: 120,
+    rarity: 'Normal',
+    image: 'https://imgur.com/tfkWRQ8.png',
+    anime: 'Nisekoi',
+    id: 16
+  },
+  {
+    name: 'Yuuki Asuna',
+    valor: 147,
+    rarity: 'Especial',
+    image: 'https://imgur.com/qzO9zCt.png',
+    anime: 'Sword Art Online',
+    id: 17
+  },
+  {
+    name: 'Rika kawai',
+    valor: 126,
+    rarity: 'Especial',
+    image: 'https://imgur.com/8p2GQY3',
+    anime: 'Wonder Egg Priority',
+    id: 18
   }]
 }

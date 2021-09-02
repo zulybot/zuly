@@ -1,4 +1,5 @@
 module.exports = {
+  lang: 'pt',
   message: {
     P: 'Olá, humano!',
     view: 'Eu não tenho permissão de ler o histórico de mensagens!',
@@ -83,5 +84,13 @@ module.exports = {
     dono: 'Dono',
     utl: 'Utilize: %pwaifu-info [ID]',
     casado: 'Você já casou recentemente, você pode casar a cada 2 horas'
+  },
+  tradutor: {
+    lang: 'Você precisa especificar a linguagem, examplo: %translator **en** Oi',
+    text: 'Você precisa especificar o texto, examplo: %translator en  **Oi** '
+  },
+  invite: {
+    add: 'Me Adicione ao seu servidor!',
+    desc: 'Yay, gostou de meus comandos? Ou de minhas funcionalidades? Me [adicione](https://discord.com/oauth2/authorize?client_id=%id&scope=bot%20applications.commands&permissions=805432446)\n\nPrecisa de ajuda ou algo do tipo? Entre em meu [servidor de suporte](https://discord.gg/pyyyJpw5QW), yay'
   }
 }

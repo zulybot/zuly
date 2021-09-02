@@ -8,7 +8,7 @@ module.exports = class Ajuda {
         dono: false // Se apenas nos devs podem usar o comando
       },
       pt: {
-        nome: 'ajuda',
+        nome: 'help',
         categoria: '📖 • Informação',
         desc: 'Veja minha lista de comandos!'
       },
@@ -17,7 +17,7 @@ module.exports = class Ajuda {
         categoria: '📖 • Information',
         desc: 'View my command list!'
       },
-      aliases: ['cmds', 'commands', 'comandos'],
+      aliases: ['cmds', 'commands', 'comandos', 'ajuda'],
       run: this.run
     }
   }

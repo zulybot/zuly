@@ -25,7 +25,7 @@ module.exports = class PingCommand {
     // eslint-disable-next-line new-cap
     const embed = new ctx.embed()
     embed.title(`<:zu_host:880539802645180416> ${global.zuly.user.username}`)
-    embed.field('<:zu_database:880537804046762054> Databse:', ctx.idioma.host.db)
+    embed.field('<:zu_database:880537804046762054> Database:', ctx.idioma.host.db)
     embed.field('💻 VPS:', ctx.idioma.host.vps)
     embed.color('#ffcbdb')
     embed.thumbnail(global.zuly.user.avatarURL)

@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 module.exports = class PingCommand {
   constructor () {
     return {
