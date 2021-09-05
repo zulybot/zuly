@@ -104,6 +104,7 @@ module.exports = class MessageEventCommand {
           await global.zuly.manager.fetch(url)
         }
       }
+      global.zuly.statcord.postCommand(command, message.author.id)
       await commandFile.run(this.ctx)
 
       const owner = await global.zuly.getRESTUser(message.channel.guild.ownerID)

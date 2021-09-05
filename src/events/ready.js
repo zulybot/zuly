@@ -15,6 +15,7 @@ module.exports = class ReadyEvent {
       global.zuly.users.map(g => global.zuly.users.delete(g.id))
     }, 5000)
     // Iniciando Sistema de Música
+    global.zuly.statcord.autopost()
     global.zuly.music.init(global.zuly.user.id)
   }
 }

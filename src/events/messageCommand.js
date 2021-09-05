@@ -150,7 +150,7 @@ module.exports = class MessageEventCommand {
           ]
         }]
       })
-
+      global.zuly.statcord.postCommand(command, message.author.id)
       await commandFile.run(this.ctx)
     } catch (e) {
       console.log(e)

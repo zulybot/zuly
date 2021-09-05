@@ -5,8 +5,11 @@ const {
 } = require('eris')
 
 const {
-  token
+  token,
+  stats
 } = require('./config')
+
+const Statcord = require('statcord-eris')
 
 const DiscordTogether = require('./client/discord-together')
 
@@ -57,6 +60,15 @@ const client = new Client(token, {
   // ws
 })
 
+client.statcord = new Statcord.Client({
+  key: stats,
+  client,
+  postCpuStatistics: true, /* Whether to post CPU statistics or not, defaults to true */
+  postMemStatistics: true, /* Whether to post memory statistics or not, defaults to true */
+  postNetworkStatistics: true,
+  autopost: true /* Whether to post network statistics or not, defaults to true */
+})
+
 client.discordTogether = new DiscordTogether(client)
 
 client.commands = new Collection()
@@ -68,6 +80,15 @@ const ZulyBot = new Zuly(client)
 
 ZulyBot.iniciar().then((zuly) => {
   console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.brightMagenta)
+})
+
+client.statcord.on('post', status => {
+  if (!status) console.log('[STATCORD] Successful post')
+  else console.error(status)
+})
+
+client.statcord.on('autopost-start', () => {
+  console.log('[STATCORD] Started autopost')
 })
 
 global.zuly = client
