@@ -9,12 +9,12 @@ module.exports = class InviteCommand {
       },
       pt: {
         nome: 'invite',
-        categoria: '🕰️ • Utilidades',
+        categoria: '🕰️ » Utilidades',
         desc: 'Envia o link para me adicionar a outros servidores'
       },
       en: {
         nome: 'invite',
-        categoria: '🕰️ • Utility',
+        categoria: '🕰️ » Utility',
         desc: 'Send the link to add me to other servers'
       },
       aliases: ['convidar', 'convidarbot', 'invitebot', 'convite'],

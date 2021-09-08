@@ -92,5 +92,44 @@ module.exports = {
   invite: {
     add: 'Me Adicione ao seu servidor!',
     desc: 'Yay, gostou de meus comandos? Ou de minhas funcionalidades? Me [adicione](https://discord.com/oauth2/authorize?client_id=%id&scope=bot%20applications.commands&permissions=805432446)\n\nPrecisa de ajuda ou algo do tipo? Entre em meu [servidor de suporte](https://discord.gg/pyyyJpw5QW), yay'
+  },
+  ban: {
+    noarg: '**Mencione** algum usuário ou dê o **ID** do mesmo.',
+    vc: 'Você deseja mesmo punir',
+    r: '✅',
+    r2: '✅',
+    mot: 'Não Definido',
+    mot2: 'Punido por:',
+    mot3: 'Motivo:',
+    the: 'O Usuário',
+    foi: 'foi punido com sucesso.'
+  },
+  clear: {
+    msg: 'mensagens** limpas com sucesso',
+    no: 'Insira a quantidade de mensagens a serem limpas',
+    p: 'Procurando mensagens, isso pode levar 30 segundos...',
+    num: 'Eu só consigo limpar entre 2 a 2000 mensagens'
+  },
+  baninfo: {
+    user: 'Usuário:',
+    reason: 'Motivo',
+    desban: 'Para desbanir reaja com 🐹.'
+  },
+  multiLang: {
+    unknownLanguage: 'Idioma desconhecido.\n<:zu_info:880812942713573396> Idiomas disponíveis: %langs',
+    insertLang: 'Você não específicou um idioma. Para alterar o idioma do bot, utilize `%pidioma %langs`'
+  },
+  autorole: {
+    insertRole: 'Você não especificou um cargo, utilize: `%pautorole <@cargo | cargo id | desativar>.`',
+    success: 'Certo, agora membros que entrarem no servidor terão o cargo `%cargo` adicionado automaticamente.',
+    disabled: 'Autorole foi desativado com sucesso.',
+    noset: 'Não Setado',
+    bot: 'Mencione o cargo que será dado quando algum BOT entrar no servidor.',
+    botset: 'O Autorole de bots foi setado para os cargos:',
+    user: 'Mencione o cargo que será dado quando algum usuário entrar no servidor.',
+    userset: 'O Autorole de usuários foi setado para os cargos:',
+    mem: 'Membros',
+    del: 'Desativar',
+    del2: 'Reaja com ❌ para desativar/deletar'
   }
 }

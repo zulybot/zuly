@@ -9,12 +9,12 @@ module.exports = class Ajuda {
       },
       pt: {
         nome: 'help',
-        categoria: '📖 • Informação',
+        categoria: '📖 » Informação',
         desc: 'Veja minha lista de comandos!'
       },
       en: {
         nome: 'help',
-        categoria: '📖 • Information',
+        categoria: '📖 » Information',
         desc: 'View my command list!'
       },
       aliases: ['cmds', 'commands', 'comandos', 'ajuda'],
@@ -82,7 +82,7 @@ module.exports = class Ajuda {
         for (const categoria in categorias) {
           embed.field(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ')}`)
         }
-        embed.field('🔗 Links', `[Invite Me](https://discord.com/oauth2/authorize?client_id=${global.zuly.user.id}&scope=bot%20applications.commands&permissions=805432446) • [Support Sever](https://discord.gg/pyyyJpw5QW) • [Vote for us](https://top.gg/bot/880173509077266483/vote)`)
+        embed.field('🔗 » Links', `[Invite Me](https://discord.com/oauth2/authorize?client_id=${global.zuly.user.id}&scope=bot%20applications.commands&permissions=805432446) » [Support Sever](https://discord.gg/pyyyJpw5QW) » [Vote for us](https://top.gg/bot/880173509077266483/vote)`)
         if (!ctx.message.channel.nsfw) {
           embed.footer(ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '))
         } else {

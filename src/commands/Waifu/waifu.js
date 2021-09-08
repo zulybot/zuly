@@ -9,12 +9,12 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'waifu',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'Waifu aleatória'
       },
       en: {
         nome: 'waifu',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'Random waifu.'
       },
       aliases: ['wa', 'wai', 'w'],
@@ -57,18 +57,20 @@ module.exports = class EvalCommand {
         message.addReaction('💖')
         MarryCollector.on('collect', async (msg) => {
           const date = Date.now()
-          const marrytime = await global.db.get(`timeout-${ctx.message.channel.guild.id}-${ctx.message.author.id}`)
+          const marrytime = await global.db.get(`timeout-${ctx.message.author.id}`)
 
           if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`)
 
-          const ryos = await global.db.get(`ryos-${ctx.message.author.id}`)
+          const ryos = await global.db.get(`ryos-${ctx.message.channel.guild}-${ctx.message.author.id}`)
+
           if (ryos) {
             global.db.set(`ryos-${ctx.message.channel.guild.id}-${ctx.message.author.id}`, ryos + waifu.valor)
           } else {
             global.db.set(`ryos-${ctx.message.channel.guild.id}-${ctx.message.author.id}`, waifu.valor)
           }
+
           global.db.set(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id)
-          global.db.set(`timeout-${ctx.message.channel.guild.id}-${ctx.message.author.id}`, Date.now())
+          global.db.set(`timeout-${ctx.message.author.id}`, Date.now())
 
           const embed = new ctx.embed()
           embed.title(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `)

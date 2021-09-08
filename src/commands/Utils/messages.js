@@ -9,12 +9,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'messages',
-        categoria: '🕰️ • Utilidades',
+        categoria: '🕰️ » Utilidades',
         desc: 'Veja as mensagens de algum usuário'
       },
       en: {
         nome: 'messages',
-        categoria: '🕰️ • Utility',
+        categoria: '🕰️ » Utility',
         desc: 'See a user messages'
       },
       aliases: ['msg', 'msgs', 'mensagens'],

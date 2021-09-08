@@ -8,12 +8,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'ping',
-        categoria: '📖 • Informação',
+        categoria: '📖 » Informação',
         desc: 'Veja a latência do bot'
       },
       en: {
         nome: 'ping',
-        categoria: '📖 • Information',
+        categoria: '📖 » Information',
         desc: 'See bot latency'
       },
       aliases: ['latency', 'ws', 'pong'],

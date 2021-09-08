@@ -8,12 +8,12 @@ module.exports = class PlayCommand {
       },
       pt: {
         nome: 'play',
-        categoria: '🎵 • Música',
+        categoria: '🎵 » Música',
         desc: 'Ouça músicas, yay'
       },
       en: {
         nome: 'play',
-        categoria: '🎵 • Music',
+        categoria: '🎵 » Music',
         desc: 'Listen musics, yay'
       },
       aliases: ['p', 'tocar', 'som', 'somzao', 'somzão', 'dj'],

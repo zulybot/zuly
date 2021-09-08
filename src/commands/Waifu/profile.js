@@ -9,12 +9,12 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'profile',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'Vê informação de waifu'
       },
       en: {
         nome: 'profile',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'See waifu info.'
       },
       aliases: ['perfil', 'status'],
@@ -38,7 +38,7 @@ module.exports = class EvalCommand {
 
     const embed = new ctx.embed()
     embed.title(`♡︰𓂃 [${user.username}#${user.discriminator}] ₊˚ฅ `)
-    embed.description(`>>> ๑☕﹕ **Ryos:** ${ryos}\n ๑☕﹕ **Waifus:** ${waifus.length}`)
+    embed.description(`>>> ๑☕﹕ **Ryos:** ${ryos || 0}\n ๑☕﹕ **Waifus:** ${waifus.length}`)
     embed.color('#ffcbdb')
     ctx.send(embed.create)
   }

@@ -8,12 +8,12 @@ module.exports = class DailyCommand {
       },
       pt: {
         nome: 'daily',
-        categoria: '💰 • Economia',
+        categoria: '💰 » Economia',
         desc: 'Pegue seu dinheiro diário.'
       },
       en: {
         nome: 'daily',
-        categoria: '💰 • Economy',
+        categoria: '💰 » Economy',
         desc: 'take your daily money.'
       },
       aliases: ['diario'],

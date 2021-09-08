@@ -1,4 +1,4 @@
-module.exports = class PingCommand {
+module.exports = class PokerCommand {
   constructor () {
     return {
       permissoes: {
@@ -8,12 +8,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'poker',
-        categoria: '<:zu_discord:882305685650558996> • Discord-Together',
+        categoria: '<:zu_discord:882305685650558996> » Discord-Together',
         desc: 'Jogue poker no discord'
       },
       en: {
         nome: 'poker',
-        categoria: '<:zu_discord:882305685650558996> • Discord-Together',
+        categoria: '<:zu_discord:882305685650558996> » Discord-Together',
         desc: 'Play poker on discord'
       },
       aliases: ['pokertogether', 'poker-together'],

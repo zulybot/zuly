@@ -8,12 +8,12 @@ module.exports = class AnimuCommand {
       },
       pt: {
         nome: 'animu',
-        categoria: '🎵 • Música',
+        categoria: '🎵 » Música',
         desc: 'Toca a radio de anime, Animu'
       },
       en: {
         nome: 'animu',
-        categoria: '🎵 • Music',
+        categoria: '🎵 » Music',
         desc: 'Play anime radio, Animu'
       },
       aliases: ['radio'],

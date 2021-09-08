@@ -1,4 +1,4 @@
-module.exports = class DailyCommand {
+module.exports = class ShipCommand {
   constructor () {
     return {
       permissoes: {
@@ -8,12 +8,12 @@ module.exports = class DailyCommand {
       },
       pt: {
         nome: 'ship',
-        categoria: '⭐ • Diversão',
+        categoria: '⭐ » Diversão',
         desc: 'Pegue seu dinheiro diário.'
       },
       en: {
         nome: 'ship',
-        categoria: '⭐ • Fun',
+        categoria: '⭐ » Fun',
         desc: 'Take your daily money.'
       },
       aliases: ['shippar', 'casal'],

@@ -1,4 +1,5 @@
-module.exports = class EvalCommand {
+/* eslint-disable new-cap */
+module.exports = class PrintCommand {
   constructor () {
     return {
       permissoes: {
@@ -9,12 +10,12 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'print',
-        categoria: '⛔ • NSFW',
+        categoria: '⛔ » NSFW',
         desc: 'Tira print de um site'
       },
       en: {
         nome: 'print',
-        categoria: '⛔ • NSFW',
+        categoria: '⛔ » NSFW',
         desc: 'Take a print of a website'
       },
       aliases: ['foto', 'site', 'website'],

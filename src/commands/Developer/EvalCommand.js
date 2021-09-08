@@ -8,12 +8,12 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'eval',
-        categoria: '💻 • Dev',
+        categoria: '💻 » Dev',
         desc: 'dev'
       },
       en: {
         nome: 'eval',
-        categoria: '💻 • Dev',
+        categoria: '💻 » Dev',
         desc: 'dev'
       },
       aliases: ['eval', 'e'],

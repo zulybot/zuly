@@ -8,12 +8,12 @@ module.exports = class CalcCommand {
       },
       pt: {
         nome: 'calc',
-        categoria: '🕰️ • Utilidades',
+        categoria: '🕰️ » Utilidades',
         desc: ' Calcula uma expressão aritmética'
       },
       en: {
         nome: 'calc',
-        categoria: '🕰️ • Utility',
+        categoria: '🕰️ » Utility',
         desc: 'Calculates an arithmetic expression'
       },
       aliases: ['math', 'calcular', 'calculadora'],

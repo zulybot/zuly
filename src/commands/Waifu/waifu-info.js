@@ -9,15 +9,15 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'waifu-info',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'Vê informação de waifu'
       },
       en: {
         nome: 'waifu-info',
-        categoria: '💖 • Waifu',
+        categoria: '💖 » Waifu',
         desc: 'See waifu info.'
       },
-      aliases: ['wa', 'wainfo'],
+      aliases: ['wa', 'wainfo', 'waifuinfo'],
       run: this.run
     }
   }

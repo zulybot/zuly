@@ -1,4 +1,4 @@
-module.exports = class PingCommand {
+module.exports = class HostCommand {
   constructor () {
     return {
       permissoes: {
@@ -8,12 +8,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'host',
-        categoria: '📖 • Informação',
+        categoria: '📖 » Informação',
         desc: 'Veja as informações da host'
       },
       en: {
         nome: 'host',
-        categoria: '📖 • Information',
+        categoria: '📖 » Information',
         desc: 'see host info'
       },
       aliases: ['hostinfo', 'hi', 'about'],

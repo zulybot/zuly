@@ -92,5 +92,44 @@ module.exports = {
   invite: {
     add: 'Add me to your server!',
     desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/2pFH6Yy), yay'
+  },
+  ban: {
+    noarg: '**Mention** some user or give the **ID** of the same.',
+    vc: 'You really want to punish',
+    r: '✅',
+    r2: '✅',
+    mot: 'Not Defined',
+    mot2: 'Punished for:',
+    mot3: 'Reason:',
+    the: 'The User',
+    foi: 'has been successfully punished.'
+  },
+  clear: {
+    msg: 'messages** cleared successfully',
+    no: 'Enter the amount of messages to be cleaned',
+    p: 'Looking for messages, this could take 30 seconds...',
+    num: 'I can only clear between 2 to 2000 messages'
+  },
+  baninfo: {
+    user: 'User:',
+    reason: 'Reason:',
+    desban: 'To unban react with 🐹.'
+  },
+  multiLang: {
+    unknownLanguage: 'Unknown language.\n<:zu_info:880812942713573396> Available languages: %langs',
+    insertLang: 'You did not specify a language. To change the bot language, run `%planguage %langs`'
+  },
+  autorole: {
+    insertRole: 'You did not specify a role, use: `%pautorole <@role | role id | disable>.`',
+    success: 'Okay, now members who join the server will have the `%cargo` post automatically added.',
+    disabled: 'Autorole has been successfully disabled.',
+    noset: 'Not Set',
+    bot: 'Mention the roles that will be given when any BOT enters the server.',
+    botset: 'The bots Autorole has been set to the roles:',
+    user: 'Mention the roles that will be given when any user enters the server.',
+    userset: 'Users Autorole has been set for the roles:',
+    mem: 'Members',
+    del: 'Disable',
+    del2: 'React with ❌ to disable/delete'
   }
 }

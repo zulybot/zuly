@@ -144,11 +144,59 @@ module.exports = {
     id: 17
   },
   {
-    name: 'Rika kawai',
+    name: 'Rika Kawai',
     valor: 126,
     rarity: 'Especial',
     image: 'https://imgur.com/8p2GQY3',
     anime: 'Wonder Egg Priority',
     id: 18
+  },
+  {
+    name: 'Emma',
+    valor: 456,
+    rarity: 'Normal',
+    image: 'https://imgur.com/tCZbudL.png',
+    anime: 'The promised neverland',
+    id: 19
+  },
+  {
+    name: 'Raphtalia',
+    valor: 123,
+    rarity: 'Normal',
+    image: 'https://imgur.com/1ZJmFup.png',
+    anime: 'The Rising of The Shield Hero',
+    id: 20
+  },
+  {
+    name: 'Haruka Ozora',
+    valor: 45,
+    rarity: 'Normal',
+    image: 'https://imgur.com/QlqbfTr.png',
+    anime: 'Harukana receive',
+    id: 21
+  },
+  {
+    name: 'Claire Thomas',
+    valor: 47,
+    rarity: 'Normal',
+    image: 'https://imgur.com/yLdHuxI.png',
+    anime: 'Harukana receive',
+    id: 22
+  },
+  {
+    name: 'Yotsuba Nakano',
+    valor: 88,
+    rarity: 'Normal',
+    image: 'https://imgur.com/2k4tuBI.png',
+    anime: 'The Quintessential Quintuplets',
+    id: 23
+  },
+  {
+    name: 'Miku Nakano',
+    valor: 54,
+    rarity: 'Especial',
+    image: 'https://imgur.com/eDN4Juf.png',
+    anime: 'The Quintessential Quintuplets',
+    id: 24
   }]
 }

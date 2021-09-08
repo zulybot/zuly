@@ -1,4 +1,4 @@
-module.exports = class PingCommand {
+module.exports = class YoutubeCommand {
   constructor () {
     return {
       permissoes: {
@@ -8,12 +8,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'youtube',
-        categoria: '<:zu_discord:882305685650558996> • Discord-Together',
+        categoria: '<:zu_discord:882305685650558996> » Discord-Together',
         desc: 'Assista youtube no discord'
       },
       en: {
         nome: 'youtube',
-        categoria: '<:zu_discord:882305685650558996> • Discord-Together',
+        categoria: '<:zu_discord:882305685650558996> » Discord-Together',
         desc: 'Watch youtube on discord'
       },
       aliases: ['youtubetogether', 'youtube-together'],

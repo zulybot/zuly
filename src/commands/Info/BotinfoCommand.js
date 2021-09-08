@@ -1,4 +1,4 @@
-module.exports = class PingCommand {
+module.exports = class BotinfoCommand {
   constructor () {
     return {
       permissoes: {
@@ -8,12 +8,12 @@ module.exports = class PingCommand {
       },
       pt: {
         nome: 'botinfo',
-        categoria: '📖 • Informação',
+        categoria: '📖 » Informação',
         desc: 'Veja as informações do bot'
       },
       en: {
         nome: 'botinfo',
-        categoria: '📖 • Information',
+        categoria: '📖 » Information',
         desc: 'see bot info'
       },
       aliases: ['bi', 'info', 'about'],

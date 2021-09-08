@@ -8,12 +8,12 @@ module.exports = class StopCommand {
       },
       pt: {
         nome: 'stop',
-        categoria: '🎵 • Música',
+        categoria: '🎵 » Música',
         desc: 'Para a música'
       },
       en: {
         nome: 'stop',
-        categoria: '🎵 • Music',
+        categoria: '🎵 » Music',
         desc: 'Stop the music'
       },
       aliases: ['parar', 'leave'],

@@ -1,5 +1,5 @@
 /* eslint-disable new-cap */
-module.exports = class EvalCommand {
+module.exports = class RandomAnimeCommand {
   constructor () {
     return {
       permissoes: {
@@ -9,12 +9,12 @@ module.exports = class EvalCommand {
       },
       pt: {
         nome: 'random-anime',
-        categoria: '📺 • Anime',
+        categoria: '📺 » Anime',
         desc: 'Anime aleatório'
       },
       en: {
         nome: 'random-anime',
-        categoria: '📺 • Anime',
+        categoria: '📺 » Anime',
         desc: 'Random anime.'
       },
       aliases: ['ra', 'r', 'randomanime', 'random', 'aleatorio'],
