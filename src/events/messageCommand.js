@@ -45,11 +45,11 @@ module.exports = class MessageEventCommand {
 			message.channel.createMessage(mention.create);
 		}
 
-		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g); // peguei do meu git vsfd, só mudar ai
+		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g);
 		const commandName = args.shift().toLowerCase();
 		const commandFile = global.zuly.commands.get(commandName) || global.zuly.aliases.get(commandName);
 
-		if (!commandFile) return; // se n tiver o cmd ele retorna nada
+		if (!commandFile) return;
 
 		const command = commandFile;
 

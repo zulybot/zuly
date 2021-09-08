@@ -2,9 +2,9 @@ module.exports = class FishingCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: [], // Permissoes que o usuario necessita
-				bot: [], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: [],
+				bot: [],
+				dono: false
 			},
 			pt: {
 				nome: 'fishing',

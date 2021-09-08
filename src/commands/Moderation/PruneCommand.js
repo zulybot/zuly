@@ -2,9 +2,9 @@ module.exports = class PruneCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageMessages'], // Permissoes que o usuario necessita
-				bot: ['manageMessages'], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: ['manageMessages'],
+				bot: ['manageMessages'],
+				dono: false
 			},
 			pt: {
 				nome: 'prune',

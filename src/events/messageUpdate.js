@@ -28,12 +28,11 @@ module.exports = class MessageEventCommand {
 		// regex para os prefix
 		if (!message.content.match(regexPrefix)) return;
 		// adg ajuda poha, bota o ngc q vc mostrou la, aquele code ta grande to com preguiça
-		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g); // peguei do meu git vsfd, só mudar ai
+		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g);
 		const commandName = args.shift().toLowerCase();
 		const commandFile = global.zuly.commands.get(commandName) || global.zuly.aliases.get(commandName);
 
-		if (!commandFile) return; // se n tiver o cmd ele retorna nada
-
+		if (!commandFile) return;
 		const command = commandFile;
 
 		if (!message.channel.guild.members.get(global.zuly.user.id).permissions.has('readMessageHistory')) {

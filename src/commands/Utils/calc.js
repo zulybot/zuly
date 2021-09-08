@@ -2,9 +2,9 @@ module.exports = class CalcCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: [], // Permissoes que o usuario necessita
-				bot: ['embedLinks'], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: [],
+				bot: ['embedLinks'],
+				dono: false
 			},
 			pt: {
 				nome: 'calc',

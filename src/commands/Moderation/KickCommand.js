@@ -2,9 +2,9 @@ module.exports = class KickCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['kickMembers'], // Permissoes que o usuario necessita
-				bot: ['kickMembers'], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: ['kickMembers'],
+				bot: ['kickMembers'],
+				dono: false
 			},
 			pt: {
 				nome: 'kick',

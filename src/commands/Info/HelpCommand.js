@@ -3,9 +3,9 @@ module.exports = class Ajuda {
 	constructor () {
 		return {
 			permissoes: {
-				membro: [], // Permissoes que o usuario necessita
-				bot: ['embedLinks'], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: [],
+				bot: ['embedLinks'],
+				dono: false
 			},
 			pt: {
 				nome: 'help',
@@ -49,7 +49,7 @@ module.exports = class Ajuda {
 
 					if (!cmd) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
 					const help = new ctx.embed();
-					help.title('<:zu_info:880812942713573396> ' + `Informações do comando: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``); // .split(' ').map(str => str.slice(0, 1).toUpperCase() + str.slice(1)).join(' '))
+					help.title(`<:zu_info:880812942713573396> Informações do comando: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.field('📚 Descrição:', `\`${cmd.pt.desc}\``, false);
 					help.field(':small_blue_diamond: Permissões do bot:', `\`${cmd.permissoes.bot.join('`, `') || 'Esse comando não necessita de permissões'}\``, false);
 					help.field(':small_orange_diamond: Permissões do usuário:', `\`${cmd.permissoes.membro.join('`, `') || 'Esse comando não necessita de permissões especiais para ser executado'}\``, false);
@@ -71,7 +71,7 @@ module.exports = class Ajuda {
 						// console.log(`[HELP] Commando ${comando.pt.nome} foi exbido no ajuda`.brightCyan)
 					}
 					else {
-						return; // console.log(`[HELP] Comando ${comando.pt.nome} não foi exibido no ajuda por ser de desenvolvedor.`.brightRed)
+						return;
 					}
 					if (!categorias[comando.pt.categoria]) { categorias[comando.pt.categoria] = []; }
 					categorias[comando.pt.categoria].push(
@@ -100,7 +100,7 @@ module.exports = class Ajuda {
 
 					if (!cmd) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** This command does not exist`);
 					const help = new ctx.embed();
-					help.title('<:zu_info:880812942713573396> ' + `Command information: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``); // .split(' ').map(str => str.slice(0, 1).toUpperCase() + str.slice(1)).join(' '))
+					help.title(`<:zu_info:880812942713573396> Command information: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.field('📚 Description:', `\`${cmd.en.desc}\``, false);
 					help.field(':small_blue_diamond: Bot permissions:', `\`${cmd.permissoes.bot.join('`, `') || 'This command does not need permissions.'}\``, false);
 					help.field(':small_orange_diamond: User permissions:', `\`${cmd.permissoes.membro.join('`, `') || 'This command does not need special permissions to run'}\``, false);
@@ -121,7 +121,7 @@ module.exports = class Ajuda {
 						// console.log('[HELP] Passou')
 					}
 					else {
-						return; // console.log(`[HELP] Comando ${cmd.pt.nome} não foi exibido no ajuda por ser de desenvolvedor.`.brightRed)
+						return;
 					}
 					if (!categorias[cmd.en.categoria]) {
 						categorias[cmd.en.categoria] = [];

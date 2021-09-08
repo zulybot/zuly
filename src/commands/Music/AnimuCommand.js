@@ -50,7 +50,7 @@ module.exports = class AnimuCommand {
 			embed.description(`<:zu_animu:882344230515802152> **|** ${ctx.idioma.play.add} **Animu**`);
 			embed.thumbnail(global.zuly.user.avatarURL);
 			embed.color('#ffcbdb');
-			await ctx.send(embed.create); // ctx.send
+			await ctx.send(embed.create);
 		}
 	}
 };

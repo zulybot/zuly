@@ -2,9 +2,9 @@ module.exports = class BanCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['banMembers'], // Permissoes que o usuario necessita
-				bot: ['banMembers'], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: ['banMembers'],
+				bot: ['banMembers'],
+				dono: false
 			},
 			pt: {
 				nome: 'unban',

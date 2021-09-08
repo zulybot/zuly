@@ -2,9 +2,9 @@ module.exports = class ShipCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: [], // Permissoes que o usuario necessita
-				bot: ['attachFiles'], // Permissoes que o bot necessita
-				dono: true // Se apenas nos devs podem usar o comando
+				membro: [],
+				bot: ['attachFiles'],
+				dono: true
 			},
 			pt: {
 				nome: 'ship',
@@ -84,7 +84,7 @@ module.exports = class ShipCommand {
 		ctx.message.channel.createMessage(`💖 ${ctx.message.author.mention} 💖`, {
 			file: edit.toBuffer(),
 			name: 'ship.png'
-		}).then(async msg => {
+		}).then(async () => {
 			if (!ship1 && !ship2) {
 				await global.db.set(`ship-${user1.id}-${user2.id}`, porcentagem);
 				await global.db.set(`ship-${user2.id}-${user1.id}`, porcentagem);

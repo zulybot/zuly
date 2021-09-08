@@ -3,9 +3,9 @@ module.exports = class EvalCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: [], // Permissoes que o usuario necessita
-				bot: [], // Permissoes que o bot necessita
-				dono: false // Se apenas nos devs podem usar o comando
+				membro: [],
+				bot: [],
+				dono: false
 			},
 			pt: {
 				nome: 'profile',
@@ -23,7 +23,7 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(_ => ctx.ctx.message.author.mention) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.ctx.message.author.mention) : ctx.message.author;
 		const ryos = await global.db.get(`ryos-${ctx.message.channel.guild.id}-${user.id}`);
 
 		const waifus = [];
