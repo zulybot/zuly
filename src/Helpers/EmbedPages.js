@@ -3,11 +3,8 @@ const { continuousReactionStream } = require('eris-reactions')
 
 async function SwapPages (client, message, time, maxMatches, embeds) {
   let currentPage = 0
-  if (embeds.length === 1) { return message.channel.createMessage({ embed: embeds[0] }) }
-  const queueEmbed = await message.channel.createMessage({
-    embed: embeds[currentPage],
-    content: `**Página atual:** \`${currentPage + 1}/${embeds.length}\``
-  })
+  if (embeds.length === 1) { return message.channel.createMessage(embeds[0].create) }
+  const queueEmbed = await message.channel.createMessage(embeds[currentPage].create)
   const reactionemojis = ['⬅️', '⏺️', '➡️']
   try {
     for (const emoji of reactionemojis) await queueEmbed.addReaction(emoji)
@@ -34,20 +31,10 @@ async function SwapPages (client, message, time, maxMatches, embeds) {
       ) {
         if (currentPage < embeds.length - 1) {
           currentPage++
-          queueEmbed.edit({
-            content: `**Página actual:** \`${currentPage + 1}/${
-              embeds.length
-            }\``,
-            embed: embeds[currentPage]
-          })
+          queueEmbed.edit(embeds[currentPage].create)
         } else {
           currentPage = 0
-          queueEmbed.edit({
-            content: `**Página actual:** \`${currentPage + 1}/${
-              embeds.length
-            }\``,
-            embed: embeds[currentPage]
-          })
+          queueEmbed.edit(embeds[currentPage].create)
         }
       } else if (
         reaction.emoji.name === reactionemojis[0] ||
@@ -55,20 +42,10 @@ async function SwapPages (client, message, time, maxMatches, embeds) {
       ) {
         if (currentPage !== 0) {
           --currentPage
-          queueEmbed.edit({
-            content: `**Página actual:** \`${currentPage + 1}/${
-              embeds.length
-            }\``,
-            embed: embeds[currentPage]
-          })
+          queueEmbed.edit(embeds[currentPage].create)
         } else {
           currentPage = embeds.length - 1
-          queueEmbed.edit({
-            content: `**Página actual:** \`${currentPage + 1}/${
-              embeds.length
-            }\``,
-            embed: embeds[currentPage]
-          })
+          queueEmbed.edit(embeds[currentPage].create)
         }
       } else {
         queueEmbed.removeReactions().catch(() => {})
