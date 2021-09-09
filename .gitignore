@@ -9,3 +9,7 @@ src/config/player.js
 src/system.js
 src/config.js
 data/base.json
+
+## CONFIDENCIAL container files
+
+src/Containers/support/config.js

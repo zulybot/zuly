@@ -8,12 +8,12 @@ module.exports = class BanCommand {
       },
       pt: {
         nome: 'unban',
-        categoria: '🔨 • Moderação',
+        categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
         desc: 'Desbane algum usuário babaca de seu servidor.'
       },
       en: {
         nome: 'unban',
-        categoria: '🔨 • Moderation',
+        categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
         desc: 'Unban some idiot user from your server'
       },
       aliases: ['desbanir', 'hackunban', 'forceunban'],
