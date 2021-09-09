@@ -48,7 +48,6 @@ module.exports = class ReadyEvent {
       })
     }, 1000 * 180)
     // Iniciando Sistema de Música
-    global.zuly.statcord.autopost()
     global.zuly.music.init(global.zuly.user.id)
   }
 }
