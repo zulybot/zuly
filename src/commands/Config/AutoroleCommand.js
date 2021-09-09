@@ -7,12 +7,12 @@ module.exports = class AutoroleCommand {
       },
       pt: {
         nome: 'autorole',
-        categoria: '⚙️ • Configuração',
+        categoria: '⚙️ » Configuração',
         desc: 'Dê cargos automaticamente para novos em seu servidor (seja bots ou memberos) quando eles entrarem no servidor.'
       },
       en: {
         nome: 'autorole',
-        categoria: '⚙️ • Configuration',
+        categoria: '⚙️ » Configuration',
         desc: 'Automatically assign roles to new ones on your server (whether bots or members) when they join the server.'
       },
       aliases: ['autocargo', 'role', 'auto', 'joinrole', 'autojoin', 'auto-role', 'join-role', 'auto-cargo', 'role-auto'],

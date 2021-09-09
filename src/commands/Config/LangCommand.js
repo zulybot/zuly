@@ -6,7 +6,7 @@ module.exports = class LangCommand {
         bot: []
       },
       pt: {
-        nome: 'idioma',
+        nome: 'lang',
         categoria: '⚙️ » Configuração',
         desc: 'Altera o idioma do bot.'
       },
@@ -15,7 +15,7 @@ module.exports = class LangCommand {
         categoria: '⚙️ » Configuration',
         desc: 'Changes the bot language.'
       },
-      aliases: ['idoma', 'setlang', 'guildlang'],
+      aliases: ['idoma', 'setlang', 'guildlang', 'idioma'],
       run: this.run
     }
   }
