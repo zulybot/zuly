@@ -30,7 +30,6 @@ module.exports = class EvalCommand {
 			const res = response.data;
 			res.forEach(waifu => {
 				waifu.valor = Math.floor(Math.random() * 2000) + 18;
-				console.log(waifu);
 				const embed = new ctx.embed();
 				embed.title(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
 				embed.description(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
