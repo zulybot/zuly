@@ -1,57 +1,58 @@
 module.exports = class ZulybBot {
-  constructor (client) {
-    if (!client) throw new Error('Cade o client alek')
-    this.client = client
-    this.canvas = require('canvas')
-    this.Ebl = require('./lyaEmbedBuilder')
-  }
+	constructor (client) {
+		if (!client) throw new Error('Cade o client alek');
+		this.client = client;
+		this.canvas = require('canvas');
+		this.Ebl = require('./lyaEmbedBuilder');
+	}
 
-  async iniciar () {
-    await this.client.connect()
-    return 'zulybot'
-  }
+	async iniciar () {
+		await this.client.connect();
+		return 'zulybot';
+	}
 
-  async reload () {
-    for (const cache in require.cache) {
-      if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache]
-    }
+	async reload () {
+		for (const cache in require.cache) {
+			if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache];
+		}
 
-    require('./handler/comandos')
+		require('./handler/comandos');
 
-    process.removeAllListeners()
-    global.zuly.removeAllListeners()
-  }
+		process.removeAllListeners();
+		global.zuly.removeAllListeners();
+	}
 
-  get exit () {
-    return process.exit()
-  }
+	get exit () {
+		return process.exit();
+	}
 
-  async fetch (url) {
-    const {
-      get
-    } = require('axios')
-    const {
-      data
-    } = await get(url)
+	async fetch (url) {
+		const {
+			get
+		} = require('axios');
+		const {
+			data
+		} = await get(url);
 
-    return data
-  }
+		return data;
+	}
 
-  color (color) {
-    if (typeof color === 'string') {
-      if (color.toLowerCase() === 'random') return Math.floor(Math.random() * (0xffffff + 1))
-      if (color.toLowerCase() === 'default') return 0
-      color = parseInt(color.replace('#', ''), 16)
-    } else if (Array.isArray(color)) {
-      color = (color[0] << 16) + (color[1] << 8) + color[2]
-    }
+	color (color) {
+		if (typeof color === 'string') {
+			if (color.toLowerCase() === 'random') return Math.floor(Math.random() * (0xffffff + 1));
+			if (color.toLowerCase() === 'default') return 0;
+			color = parseInt(color.replace('#', ''), 16);
+		}
+		else if (Array.isArray(color)) {
+			color = (color[0] << 16) + (color[1] << 8) + color[2];
+		}
 
-    if (color < 0 || color > 0xffffff) throw new Error('A cor deve ser um código hex!')
-    else if (color && isNaN(color)) throw new Error('Não foi possível converter a cor para número :(')
+		if (color < 0 || color > 0xffffff) throw new Error('A cor deve ser um código hex!');
+		else if (color && isNaN(color)) throw new Error('Não foi possível converter a cor para número :(');
 
-    return color
-  }
-  /*
+		return color;
+	}
+	/*
   inlineReply() {
     const { Message, APIMessage } = require('discord.js-light');
     // Definindo o inlineReply.
@@ -77,6 +78,6 @@ module.exports = class ZulybBot {
     }
   }
   */
-}
+};
 
 // LRD
