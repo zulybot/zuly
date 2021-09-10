@@ -9,12 +9,12 @@ module.exports = class CalcCommand {
 			pt: {
 				nome: 'userinfo',
 				categoria: '🕰️ » Utilidades',
-				desc: ' Calcula uma expressão aritmética'
+				desc: 'Veja informações sobre um usuário'
 			},
 			en: {
 				nome: 'userinfo',
 				categoria: '🕰️ » Utility',
-				desc: 'Calculates an arithmetic expression'
+				desc: 'View information about a user'
 			},
 			aliases: ['whois', 'ui', 'member', 'memberinfo'],
 			run: this.run
