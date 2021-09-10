@@ -131,5 +131,11 @@ module.exports = {
 		mem: 'Membros',
 		del: 'Desativar',
 		del2: 'Reaja com ❌ para desativar/deletar'
-	}
+	},
+	userinfo: {
+		inf: 'Informações de:',
+		tag: 'Tag de:',
+		id: 'ID de:',
+		create: 'Conta criada dia:'
+	},
 };

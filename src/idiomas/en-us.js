@@ -131,5 +131,11 @@ module.exports = {
 		mem: 'Members',
 		del: 'Disable',
 		del2: 'React with ❌ to disable/delete'
-	}
+	},
+	userinfo: {
+		inf: 'Information:',
+		tag: 'Tag of: ',
+		id: 'ID of: ',
+		create: 'Account created day: '
+	},
 };

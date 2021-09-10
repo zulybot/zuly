@@ -38,6 +38,6 @@ module.exports = class EvalCommand {
 				embeds.push(embed);
 			});
 		});
-		await SwapPages(global.zuly, ctx.message, 15000, 10, embeds);
+		await SwapPages(global.zuly, ctx.message, 60 * 1000, 10, embeds);
 	}
 };
