@@ -1,3 +1,5 @@
+const { token } = require('../../config');
+
 module.exports = class CalcCommand {
 	constructor () {
 		return {
