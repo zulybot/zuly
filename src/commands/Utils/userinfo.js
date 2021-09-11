@@ -1,5 +1,3 @@
-const { token } = require('../../config');
-
 module.exports = class CalcCommand {
 	constructor () {
 		return {
@@ -25,6 +23,7 @@ module.exports = class CalcCommand {
 
 	async run (ctx) {
 		const { Constants: { UserFlags } } = require('eris');
+		const { token } = require('../../config');
 		const badgeEmojis = {
 			DISCORD_EMPLOYEE: '<:zu_staff:885919349062402098>',
 			DISCORD_PARTNER: '<:zu_partner:885196140042158170>',
