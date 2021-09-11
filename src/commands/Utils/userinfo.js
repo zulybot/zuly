@@ -49,9 +49,48 @@ module.exports = class CalcCommand {
 			return badges;
 		}
 
+async function banner (id) {
+
+	if(!id) new Error('Não foi fornecido o ID do usuário');
+	const request = await f(`https://discord.com/api/v9/users/${id}`, {
+		headers: {
+	  Authorization: `Bot ${token}`
+		}
+	});
+
+	const data = await request.json();
+	let user = data.id;
+
+	if(data.message == 'Unknown User') new Error('Usuário desconhecido.');
+	if(!data.banner) return null;
+
+	let banner = data.banner;
+	let format = {};
+
+
+	if(banner.startsWith('a_')) {
+		format = '.gif';
+	}
+	else {
+		format = '.png';
+	}
+
+	let size = 512;
+	let url = `https://cdn.discordapp.com/banners/${user}/${banner}${format}?size=${size}`;
+
+	return url;
+
+};
+
+
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
+
+if(banner) {
+embed.image(banner)
+}
+
 		if (user.avatar.startsWith('a_')) {
 			embed.title(`${user.username} <:zu_nitro:885919779205029898> ${badges.join(' ')}`);
 		}
