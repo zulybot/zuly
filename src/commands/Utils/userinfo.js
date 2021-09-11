@@ -24,6 +24,8 @@ module.exports = class CalcCommand {
 	async run (ctx) {
 		const { Constants: { UserFlags } } = require('eris');
 		const { token } = require('../../config');
+		const f = require('node-fetch');
+
 		const badgeEmojis = {
 			DISCORD_EMPLOYEE: '<:zu_staff:885919349062402098>',
 			DISCORD_PARTNER: '<:zu_partner:885196140042158170>',
@@ -87,10 +89,7 @@ module.exports = class CalcCommand {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
-
-		if(banner) {
-			embed.image(banner);
-		}
+		const userb = await banner(user.id);
 
 		if (user.avatar.startsWith('a_')) {
 			embed.title(`${user.username} <:zu_nitro:885919779205029898> ${badges.join(' ')}`);
@@ -103,6 +102,8 @@ module.exports = class CalcCommand {
 		embed.field(`📆 ${ctx.idioma.userinfo.create}`, `<t:${Math.floor(user.createdAt / 1000)}>`);
 		embed.color('#ffcbdb');
 		embed.thumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
+		embed.image(userb);
+
 		ctx.send(embed.create);
 	}
 };
