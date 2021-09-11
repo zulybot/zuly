@@ -17,7 +17,7 @@ module.exports = class ReadyEvent {
 		// AUTO STATUS
 		const { version } = require('../../package.json');
 
-		const adg = await global.zuly.getRESTUser('717766639260532826');
+		const adg = await global.zuly.getRESTUser('726449359167684734');
 
 		// Status Array
 
@@ -25,9 +25,9 @@ module.exports = class ReadyEvent {
 			`zulybot.xyz | ${global.zuly.user.username} [v${version}]`,
 			`I'm on ${global.zuly.guilds.size} servers | ${global.zuly.user.username} [v${version}]`,
 			`Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v${version}]`,
-			`s!help | ${global.zuly.user.username} [v${version}]`,
-			`s!upvote | ${global.zuly.user.username} [v${version}]`,
-			`s!invite | ${global.zuly.user.username} [v${version}]`,
+			`z!help | ${global.zuly.user.username} [v${version}]`,
+			`z!upvote | ${global.zuly.user.username} [v${version}]`,
+			`z!invite | ${global.zuly.user.username} [v${version}]`,
 			`Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v${version}]`,
 			`I was created by: ${adg.username}#${adg.discriminator}`
 		];

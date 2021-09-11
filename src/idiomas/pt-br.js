@@ -138,4 +138,9 @@ module.exports = {
 		id: 'ID de:',
 		create: 'Conta criada dia:'
 	},
+	slash: '> <:zu_slash:886288977668243566> **Utilizado por:** {user}!',
+	avatar: {
+		title: 'Avatar de:',
+		download: 'Link para download:'
+	}
 };

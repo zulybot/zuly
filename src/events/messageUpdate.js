@@ -22,12 +22,14 @@ module.exports = class MessageEventCommand {
 		// ata, criei
 		if (message.author.bot) return;
 
-		// Verificando se a mensagem começa com um dos prefixos
+		const regexInvite = /co(?:mo (?:recomendo para amigos|ad(?:icion(?:a(?:r(?: a zuly)?)?|o)|d)|c(?:hamo amigos|onvi(?:dar|ta)))|nvidar)|quero (?:adicion|test)ar|adicionar|adiciona|servidor|suporte|how add|invite/;
+		if (regexInvite.test(message.content) && message.channel.guild.id === '880174783294214184') {
+			message.channel.createMessage(`> <:zu_invite:886313502518685776> ${message.author.mention}, deseja me adicionar a seu servidor? <:zu_anime:882668160480849970>\n\n- 🔗 É só clicar neste link: https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446\n- 📩 Deseja o link do meu servidor de suporte? Se sim: https://discord.gg/pyyyJpw5QW`);
+		}
 		const regexPrefix = new RegExp(`^(${config.prefix.map(prefix => prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|')}|<@!?${global.zuly.user.id}>)( )*`, 'gi');
-		// q poha é essa?
-		// regex para os prefix
+
 		if (!message.content.match(regexPrefix)) return;
-		// adg ajuda poha, bota o ngc q vc mostrou la, aquele code ta grande to com preguiça
+
 		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g);
 		const commandName = args.shift().toLowerCase();
 		const commandFile = global.zuly.commands.get(commandName) || global.zuly.aliases.get(commandName);
