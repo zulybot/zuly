@@ -79,7 +79,7 @@ module.exports = class ShipCommand {
 		foto.fillStyle = '#ffffff';
 		foto.fillText(`${porcentagem}%`, 1630, 1300);
 		foto.font = '300px Lemon-Brownies';
-		foto.fillText(`${nome}`, 2000, 1600);
+		foto.fillText(`${nome}`, 2000, 2000);
 
 		ctx.message.channel.createMessage(`💖 ${ctx.message.author.mention} 💖`, {
 			file: edit.toBuffer(),
