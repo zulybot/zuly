@@ -1,7 +1,7 @@
 ## ZulyBot
-> Zuly é um bot brasileiro focado em animes em geral!
+> Hi, I'm zuly, a brazilian bot!
 ## 🎉 Divirta seu servidor
-- 
+- Waifus
 ## 🤝 Partners
 - Thanks [www.openode.io](https://www.openode.io) for the hosting!
 ## 🔗 Links
