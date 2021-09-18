@@ -1,6 +1,6 @@
 const config = require('./Config/config');
 const f = require('node-fetch');
-
+// Função para pegar o banner de algum usuário.
 async function banner (id) {
 
 	if(!id) new Error('Não foi fornecido o ID do usuário');
