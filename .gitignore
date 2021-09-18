@@ -10,6 +10,7 @@ src/Config/system.js
 src/Config/config.js
 data/base.json
 data/giveaways.json
+yarn-error.log
 
 ## CONFIDENCIAL container files
 
