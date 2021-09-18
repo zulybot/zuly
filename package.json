@@ -7,8 +7,8 @@
     "start": "node .",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["nodejs", "javascript", "bot", "fun", "mongodb", "mongoose", "discord", "moderation", "discordjs", "chatbot", "discord-bot", "eris", "discord-js", "stars", "waifus", "giveaways", "discord-js-bot", "quickmongo", "eris", "zuly"],
+  "author": "AndreLucaas",
   "license": "ISC",
   "dependencies": {
     "@vitalets/google-translate-api": "^7.0.0",

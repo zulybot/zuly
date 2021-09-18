@@ -19,4 +19,3 @@
 [![Stargazers](https://reporoster.com/stars/zulybot/zuly)](https://github.com/zulybot/zuly/stargazers)
 ## ✨ Forkers
 [![Forkers](https://reporoster.com/forks/zulybot/zuly)](https://github.com/zulybot/zuly/network/members)
-<iframe width="1200" height="660" src="https://zulybot.xyz/"></iframe>
