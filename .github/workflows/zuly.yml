@@ -1,12 +1,12 @@
-name: star
+name: zuly
 
 on:
   push:
     branches:
-      - starbot
+      - master
   pull_request:
     branches:
-      - starbot
+      - master
 
 jobs:
   star:
