@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { token } = require('../config');
+const { token } = require('../Config/config');
 const defaultApplications = {
 	youtube: '755600276941176913',
 	poker: '755827207812677713',

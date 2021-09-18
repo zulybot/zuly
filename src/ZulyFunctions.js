@@ -1,4 +1,4 @@
-const config = require('./config');
+const config = require('./Config/config');
 const f = require('node-fetch');
 
 async function banner (id) {

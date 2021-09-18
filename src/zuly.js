@@ -6,7 +6,7 @@ const {
 
 const {
 	token
-} = require('./config');
+} = require('./Config/config');
 
 const DiscordTogether = require('./Client/discord-together');
 
