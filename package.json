@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@vitalets/google-translate-api": "^7.0.0",
-    "axios": "^0.21.2",
+    "axios": "^0.21.4",
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
