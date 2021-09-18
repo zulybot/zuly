@@ -2,6 +2,11 @@
 
 /node_modules
 
+## OPENODE FILES
+
+.openode
+Dockerfile
+
 ## CONFIDENCIAL files
 
 src/Client/plugins/nodes.js
