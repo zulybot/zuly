@@ -11,7 +11,7 @@ module.exports = {
 		c: 'Wait %t seconds to use another command.',
 		e: 'Oops, an error happened!',
 		e2: 'Report this error!',
-		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/stardiscordbot/starbot/issues) in [github](https://github.com/stardiscordbot/starbot) or report it to my [support server](https://discord.gg/2pFH6Yy), let\'s make the discord a better place, together 🤝',
+		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/starbot/issues) in [github](https://github.com/zulybot/starbot) or report it to my [support server](https://discord.gg/2pFH6Yy), let\'s make the discord a better place, together 🤝',
 		nsfw: 'This command can only be used on nsfw channels'
 	},
 	host: {
