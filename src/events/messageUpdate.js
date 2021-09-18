@@ -8,14 +8,14 @@ module.exports = class MessageEventCommand {
 	}
 
 	async run (message, oldMessage) {
-		const config = require('../config.js');
-		const system = require('../system');
+		const config = require('../Config/config.js');
+		const system = require('../Config/system.js');
 
 		global.zuly.users.map(g => global.zuly.users.delete(g.id));
 
 		if (message.channel.type === 1) return;
 		if (message.content === oldMessage.content) return;
-		let idioma = require('../config/idiomas');
+		let idioma = require('../Config/idiomas');
 		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
@@ -92,7 +92,7 @@ module.exports = class MessageEventCommand {
 				prefix: message.content.replace(message.content.replace(regexPrefix, ''), ''),
 				args: args,
 				message: message,
-				embed: require('../client/lyaEmbedBuilder'),
+				embed: require('../Client/lyaEmbedBuilder'),
 				// Functions
 				send: function(texto) {
 					message.channel.createMessage(texto);

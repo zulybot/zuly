@@ -8,7 +8,7 @@ const {
 	token
 } = require('./config');
 
-const DiscordTogether = require('./client/discord-together');
+const DiscordTogether = require('./Client/discord-together');
 
 const client = new Client(token, {
 	allowedMentions: {
@@ -63,7 +63,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 // client.events = new Collection()
 
-const Zuly = require('./client/zulybot.js');
+const Zuly = require('./Client/zulybot.js');
 const ZulyBot = new Zuly(client);
 
 ZulyBot.iniciar().then((zuly) => {

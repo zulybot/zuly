@@ -4,10 +4,10 @@
 
 ## CONFIDENCIAL files
 
-src/client/plugins/nodes.js
-src/config/player.js
-src/system.js
-src/config.js
+src/Client/plugins/nodes.js
+src/Config/player.js
+src/Config/system.js
+src/Config/config.js
 data/base.json
 data/giveaways.json
 

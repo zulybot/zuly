@@ -7,7 +7,7 @@ module.exports = class GuildCreate {
 	}
 
 	async run (guild) {
-		const system = require('../system');
+		const system = require('../Config/system');
 		const ch = await global.zuly.getRESTChannel('880863493472022539');
 
 		ch.edit({

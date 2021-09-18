@@ -1,7 +1,7 @@
 require('colors');
 const {
 	spotify
-} = require('../../config/player');
+} = require('../../Config/player');
 const {
 	Manager
 } = require('erela.js');
@@ -49,7 +49,7 @@ global.zuly.music = new Manager({
 	})
 	.on('trackStart', async (player, track) => {
 		const ch = await global.zuly.getRESTChannel(player.textChannel);
-		let idioma = require('../../config/idiomas.js');
+		let idioma = require('../../Config/idiomas.js');
 		let lang = await global.db.get(`idioma-${ch.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
@@ -61,7 +61,7 @@ global.zuly.music = new Manager({
 	})
 	.on('queueEnd', async (player) => {
 		const ch = await global.zuly.getRESTChannel(player.textChannel);
-		let idioma = require('../../config/idiomas.js');
+		let idioma = require('../../Config/idiomas.js');
 		let lang = await global.db.get(`idioma-${ch.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];

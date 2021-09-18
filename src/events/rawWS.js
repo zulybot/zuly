@@ -51,7 +51,7 @@ module.exports = class rawWS {
 
 			const msg = new Message(interaction, global.zuly);
 
-			let idioma = require('../config/idiomas.js');
+			let idioma = require('../Config/idiomas.js');
 			let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 			lang = lang.replace(/-/g, '_');
 			idioma = idioma[lang];
@@ -77,7 +77,7 @@ module.exports = class rawWS {
 		  prefix: prefix,
 		  args: args,
 		  message: msg,
-		  embed: require('../client/lyaEmbedBuilder'),
+		  embed: require('../Client/lyaEmbedBuilder'),
 		  // Functions
 		  send: function(texto) {
 					msg.channel.createMessage(texto);
