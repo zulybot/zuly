@@ -29,13 +29,13 @@ module.exports = class EvalCommand {
 			registerFont
 		  } = require('canvas');
 		  const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
-		  const back = await global.db.get(`background-${user.id}`) || './assets/backgrounds/default.jpg';
+		  const back = await global.db.get(`background-${user.id}`) || './assets/images/backgrounds/default.jpg';
 
 		  registerFont('./assets/fonts/Dunkin.otf', {
 			family: 'Dunkin'
 		  });
 
-		  const background = await loadImage('./assets/profile/profile.png');
+		  const background = await loadImage('./assets/images/profile/profile.png');
 		  const developer = await global.db.get(`dev-${user.id}`);
 
 		  const back2 = await loadImage(back);
@@ -51,7 +51,7 @@ module.exports = class EvalCommand {
 		  foto.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 		  if (developer) {
-			const botdev = await loadImage('./assets/badges/botdev.png');
+			const botdev = await loadImage('./assets/images/badges/botdev.png');
 			foto.drawImage(botdev, 650, 60, 50, 45);
 		  }
 
