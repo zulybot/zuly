@@ -4,7 +4,7 @@ require('./Client/plugins/lavalinkManager');
 require('./Client/handler/comandos');
 require('./Client/handler/eventos');
 // Puxando a database
-require('./Database/ZulyDatabase');
+require('./Database/MongoDB');
 // Funções customizadas
 require('./ZulyFunctions');
 // Sistema de Giveaways

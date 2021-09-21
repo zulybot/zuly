@@ -153,7 +153,19 @@ module.exports = class MessageEventCommand {
 		}
 		catch (e) {
 			console.log(e);
-			message.channel.createMessage(`:x: ${message.author.mention} **|** \`${`${e}`.replace(/`/g, '')}\``);
+			global.zuly.executeWebhook(system.error.id, system.error.token, {
+				avatarURL: global.zuly.user.avatarURL,
+				username: global.zuly.user.username,
+				embeds: [{
+					title: '❌ Log de Erros',
+					color: 14498544,
+					fields: [{
+						name: '⛔ Erro:',
+						value: `\`\`\`${e}\`\`\``
+					}]
+				}]
+			});
+			message.channel.createMessage(`<:zu_ryos:882667667264274483> ${message.author.mention} **|** An error happened, sorry, try again`);
 		}
 	}
 };

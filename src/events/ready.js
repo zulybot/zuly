@@ -11,7 +11,8 @@ module.exports = class ReadyEvent {
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		// CacheClear + RAM Monitor
 		setInterval(() => {
-			console.log(`[RAM] ${process.memoryUsage().rss / 1024 / 1024}mb`.cyan);
+			const ram = process.memoryUsage().rss / 1024 / 1024;
+			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 			global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		}, 5000);
 		// AUTO STATUS

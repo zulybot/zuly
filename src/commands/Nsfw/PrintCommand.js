@@ -25,10 +25,11 @@ module.exports = class PrintCommand {
 
 	async run (ctx) {
 		if (!ctx.args[0]) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.print.web}`);
-		const foto = `https://image.thum.io/get/maxAge/12/width/700/crop/900/${ctx.args.join(' ')}`;
+		const foto = `https://image.thum.io/get/maxAge/12/width/1920/crop/1080/${encodeURI(ctx.args.join(' '))}`;
 		const embed = new ctx.embed();
 		embed.image(foto);
 		embed.color('#ffcbdb');
+		embed.footer(`Executed by: ${ctx.message.author.username}#${ctx.message.author.discriminator}`);
 		ctx.send(embed.create);
 	}
 };

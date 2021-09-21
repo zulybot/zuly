@@ -1,4 +1,4 @@
-module.exports = class DisconnectEvent {
+module.exports = class ErrorEvent {
 	constructor () {
 		return {
 			nome: 'error',

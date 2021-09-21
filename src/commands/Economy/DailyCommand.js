@@ -22,29 +22,19 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		const daily = Math.floor(Math.random() * 80) + 18;
-
-		const date = Date.now();
-
-		const moneyUser = await global.db.get(`money-${ctx.id}`);
-
-		const dailyTime = await global.db.get(`dailytime-${ctx.id}`);
-
 		const timeout = 86400000;
-
-		if (!moneyUser || !dailyTime) {
-			global.db.set(`money-${ctx.id}`, daily);
-			global.db.set(`dailytime-${ctx.id}`, date);
-
-			ctx.message.channel.createMessage(`Você ganhou ${daily}`);
-		}
-		else if (dailyTime !== null && timeout - (date - dailyTime) > 0) {
-			ctx.message.channel.createMessage('Você já pegou seu daily');
+		const moment = require('moment');
+		const amount = Math.floor(Math.random() * 1500) + 500;
+		const daily = await global.db.get(`daily-${ctx.message.author.id}`);
+		if (daily !== null && timeout - (Date.now() - daily) > 0) {
+			const tt = moment(timeout - (Date.now() - daily)).format('HH:mm:ss');
+			ctx.send(`:x: ${ctx.message.author.mention} **|** Você já coletou sua recompensa diária hoje! Tente novamente em **${tt}**`);
 		}
 		else {
-			const totalMoney = await global.db.get(`money-${ctx.id}`);
-			global.db.set(`money-${ctx.id}`, totalMoney + daily);
-			global.db.set(`dailytime-${ctx.id}`, date);
-		}
+			ctx.send(`💸 ${ctx.message.author.mention} **|** Você recebeu **☕ ${amount} ryos**!`);
+			const money = global.db.get(`ryos-${ctx.message.author.id}`);
+			global.db.set(`ryos-${ctx.message.author.id}`, money + amount);
+			global.db.set(`daily-${ctx.message.author.id}`, Date.now());
+		 }
 	}
 };

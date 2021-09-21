@@ -142,5 +142,12 @@ module.exports = {
 	avatar: {
 		title: 'Avatar from:',
 		download: 'Download link:'
-	}
+	},
+	perfil: {
+		ngm: 'NOBODY',
+		desc: 'Star is my friend, did you know that you can change this using "%paboutme"?',
+		comp: 'Click on `🛒` to buy',
+		succ: 'Background purchased successfully',
+		no: 'You don\'t have enough money to buy this background'
+	},
 };
