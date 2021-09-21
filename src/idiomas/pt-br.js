@@ -145,7 +145,7 @@ module.exports = {
 	},
 	perfil: {
 		ngm: 'NINGUÉM',
-		desc: 'A Star é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
+		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
 		comp: 'Clique no `🛒` para comprar',
 		succ: 'Background comprado com sucesso',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
