@@ -7,8 +7,9 @@ module.exports = class rawWS {
 	}
 
 	async run (packet) {
+		global.zuly.music.updateVoiceState(packet);
 	  // SISTEMA ORIGINAL BY: VERIC | ADAPTAÇÃO BY: LRD | ADAPTAÇÃO PT2 BY: ADG
-	  if (packet.t === 'INTERACTION_CREATE') {
+		if (packet.t === 'INTERACTION_CREATE') {
 			const interaction = packet.d;
 			const { Collection, User, Message } = require('eris');
 			const command = global.zuly.commands.get(interaction.data.name) || global.zuly.aliases.get(interaction.data.name);

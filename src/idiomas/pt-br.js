@@ -150,4 +150,8 @@ module.exports = {
 		succ: 'Background comprado com sucesso',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
+	filtros: {
+		ativado: 'O Filtro %f foi ativado com sucesso.',
+		desativado: 'O Filtro %f foi desativado com sucesso.'
+	}
 };

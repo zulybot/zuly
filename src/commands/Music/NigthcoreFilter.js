@@ -4,19 +4,19 @@ module.exports = class StopCommand {
 			permissoes: {
 				membro: [],
 				bot: ['embedLinks'],
-				dono: false
+				dono: true
 			},
 			pt: {
-				nome: 'stop',
+				nome: 'nightcore',
 				categoria: '🎵 » Música',
-				desc: 'Para a música'
+				desc: 'Ativa o filtro nightcore'
 			},
 			en: {
-				nome: 'stop',
+				nome: 'nightcore',
 				categoria: '🎵 » Music',
-				desc: 'Stop the music'
+				desc: 'Activates the nightcore filter'
 			},
-			aliases: ['parar', 'leave'],
+			aliases: ['nc', 'night'],
 			run: this.run
 		};
 	}
@@ -27,12 +27,13 @@ module.exports = class StopCommand {
 		if (!player) {
 			return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.erela.not}`);
 		}
+		if (player.nightcore) {
+			player.nigthcore = false;
+			return ctx.send(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filtros.desativado.replace('%f', 'nightcore')}`);
+		}
 		else {
-			player.destroy();
-			const embed = new global.zuly.manager.Ebl();
-			embed.description(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.erela.end}`);
-			embed.color('#ffcbdb');
-			ctx.message.channel.createMessage(embed.create);
+			player.nigthcore = true;
+			return ctx.send(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filtros.ativado.replace('%f', 'nightcore')}`);
 		}
 	}
 };

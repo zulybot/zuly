@@ -15,7 +15,7 @@ const Filter = require('./erela-plugins/Filters/index');
 const clientID = spotify.id;
 const clientSecret = spotify.secret;
 
-require('./zulyPlayer');
+// require('./zulyPlayer');
 global.zuly.music = new Manager({
 	nodes: nodes,
 	plugins: [

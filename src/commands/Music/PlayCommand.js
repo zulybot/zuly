@@ -33,7 +33,8 @@ module.exports = class PlayCommand {
 				guild: ctx.message.channel.guild.id,
 				voiceChannel: ctx.message.member.voiceState.channelID,
 				textChannel: ctx.message.channel.id,
-				selfDeafen: true
+				selfDeafen: true,
+				volume: 50
 			});
 
 			await player.connect();

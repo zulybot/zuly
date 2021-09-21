@@ -22,7 +22,7 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
-		const { token } = require('../../config');
+		const { token } = require('../../Config/config');
 		const regexToken = new RegExp(`${token}`, 'gi');
 
 		const msg = ctx.args.join(' ');
