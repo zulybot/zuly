@@ -12,7 +12,7 @@ const {
 // Puxando o arquivo do discord-together, já que ela que faz os comandos do discord-together funcionar
 const DiscordTogether = require('./Client/discord-together');
 // Criando o client, que no caso é nosso bot.
-const client = new Client(token, {
+const client = new Client('Bot ' + token, {
 	allowedMentions: {
 		everyone: false,
 		roles: false,
@@ -36,11 +36,11 @@ const client = new Client(token, {
 	largeThreshold: 200,
 	// lastShardID
 	// latencyThreshold
-	// maxReconnectAttempts: Infinity
-	maxResumeAttempts: 20,
+	maxReconnectAttempts: Infinity,
+	maxResumeAttempts: 50,
 	maxShards: 'auto',
-	messageLimit: 100,
-	opusOnly: false,
+	messageLimit: 50,
+	// pusOnly: false,
 	// ratelimiterOffset
 	// reconnectDelay
 	// requestTimeout: 15000

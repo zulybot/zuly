@@ -16,7 +16,7 @@ module.exports = class ZulybBot {
 			if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache];
 		}
 
-		require('./handler/comandos');
+		require('./Handler/comandos');
 
 		process.removeAllListeners();
 		global.zuly.removeAllListeners();
@@ -46,38 +46,10 @@ module.exports = class ZulybBot {
 		else if (Array.isArray(color)) {
 			color = (color[0] << 16) + (color[1] << 8) + color[2];
 		}
-
 		if (color < 0 || color > 0xffffff) throw new Error('A cor deve ser um código hex!');
 		else if (color && isNaN(color)) throw new Error('Não foi possível converter a cor para número :(');
-
 		return color;
 	}
-	/*
-  inlineReply() {
-    const { Message, APIMessage } = require('discord.js-light');
-    // Definindo o inlineReply.
-    Message.prototype.inlineReply = async function(texto, mencionar = false) {
-      const { data: parsed, files } = await APIMessage
-      .create(this, texto)
-      .resolveData()
-      .resolveFiles()
-
-      await global.zuly.api.channels[this.channel.id].messages.post({
-        data: {
-          ...parsed,
-          message_reference: {
-          message_id: this.id,
-          channel_id: this.channel.id
-        },
-        allowed_mentions: {
-        replied_user: mencionar
-        }
-      },
-      files
-      })
-    }
-  }
-  */
 };
 
 // LRD

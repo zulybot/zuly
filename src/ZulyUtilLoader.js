@@ -1,11 +1,9 @@
 // Sistema de música
-require('./Client/plugins/lavalinkManager');
+require('./Client/Plugins/lavalinkManager');
 // Handler de comandos/eventos
-require('./Client/handler/comandos');
-require('./Client/handler/eventos');
+require('./Client/Handler/comandos');
+require('./Client/Handler/eventos');
 // Puxando a database
-require('./Database/MongoDB');
+require('./Database/ZulyDatabase');
 // Funções customizadas
 require('./ZulyFunctions');
-// Sistema de Giveaways
-require('./giveaways');
