@@ -24,15 +24,16 @@ module.exports = class MessageEventCommand {
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 
-		if (message.author.bot) return;
+		const channel_id = '880880678017826917';
 
-		let channel_id = '880880678017826917';
-		let guild_id = '880174783294214184';
+		if(message.channel.id == channel_id) {
+			const footer = message.embeds[0].footer.text;
 
-		if(message.channel.id == channel_id && message.channel.guild.id == guild_id) {
-			let footer = message.embeds[0].footer.text;
-			let user_id = footer.split(' ');
-			const user = await global.zuly.getRESTUser(user_id);
+			if (!footer) return;
+
+			const footext = footer.split(' ');
+
+			const user = await global.zuly.getRESTUser(footext[0]);
 			const embed = new global.zuly.manager.Ebl();
 			embed.title(`<:zu_bestlist:885218274080596038> BestList | ${global.zuly.user.username}`);
 			embed.url('https://bestlist.online/bots/880173509077266483');
@@ -57,8 +58,12 @@ module.exports = class MessageEventCommand {
 			dm.createMessage(embed2.create).catch(() => {
 				console.log('DM Fechada');
 			});
-			return ch.createMessage(embed.create);
+			return ch.createMessage(embed.create).then(b => {
+				b.addReaction('⬆️');
+			});
 		}
+
+		if (message.author.bot) return;
 
 		const regexPrefix = new RegExp(`^(${config.prefix.map(prefix => prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|')}|<@!?${global.zuly.user.id}>)( )*`, 'gi');
 
