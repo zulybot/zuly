@@ -166,5 +166,10 @@ module.exports = {
 	sobre: {
 		nada: 'I need some argument, use: `%poverim <text>`',
 		alt: 'About changed to: `%t`'
+	},
+	nsfw: {
+		activated: 'System activated successfully!',
+		disabled: 'System successfully disabled!',
+		nonsfw: 'Do not send NSFW content outside of NSFW channels.'
 	}
 };

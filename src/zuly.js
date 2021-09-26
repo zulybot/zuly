@@ -21,7 +21,19 @@ const client = new Client('Bot ' + token, {
 	autoreconnect: true,
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
-	// disableEvents: []
+	disableEvents: {
+		CHANNEL_UPDATE: true,
+		GUILD_BAN_ADD: true,
+		GUILD_BAN_REMOVE: true,
+		GUILD_MEMBER_UPDATE: true,
+		GUILD_ROLE_CREATE: true,
+		GUILD_ROLE_DELETE: true,
+		GUILD_ROLE_UPDATE: true,
+		MESSAGE_DELETE: true,
+		MESSAGE_DELETE_BULK: true,
+		TYPING_START: true,
+		PRESENCE_UPDATE: true,
+	  },
 	// firstShardID: 0
 	getAllUsers: false,
 	// guildCreateTimeout: 2000
@@ -39,14 +51,14 @@ const client = new Client('Bot ' + token, {
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 50,
 	maxShards: 'auto',
-	messageLimit: 50,
+	messageLimit: 10,
 	// pusOnly: false,
 	// ratelimiterOffset
 	// reconnectDelay
-	// requestTimeout: 15000
+	requestTimeout: 30000,
 	rest: {
 		// agent
-		baseURL: '/api/v9',
+		baseURL: '/api/v8',
 		// decodeReasons
 		// disableLatencyCompensation
 		domain: 'canary.discord.com',

@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 'use strict';
 module.exports = class MessageEventCommand {
 	constructor () {

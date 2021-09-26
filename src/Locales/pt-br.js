@@ -166,5 +166,10 @@ module.exports = {
 	sobre: {
 		nada: 'Preciso de algum argumento, utilize: `%psobremim <texto>`',
 		alt: 'Sobre alterado para: `%t`'
+	},
+	nsfw: {
+		ativado: 'Sistema ativado com sucesso!',
+		desativado: 'Sistema desativado com sucesso!',
+		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
 	}
 };

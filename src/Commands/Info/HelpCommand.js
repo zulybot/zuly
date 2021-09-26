@@ -19,6 +19,26 @@ module.exports = class Ajuda {
 				categoria: '📖 » Information',
 				desc: 'View my command list!'
 			},
+			/*
+			SUB_COMMAND	1 = SubCommand
+			SUB_COMMAND_GROUP: 2 = SubCommandGroup
+			STRING: 3 = String
+			INTEGER: 4 = Any integer between -2^53 and 2^53
+			BOOLEAN: 5 = True or False
+			USER: 6 = User Mention
+			CHANNEL: 7 = Includes all channel types + categories
+			ROLE: 8 = Role Mention
+			MENTIONABLE: 9 = Includes users and roles
+			NUMBER: 10 = Any double between -2^53 and 2^53
+			*/
+			options: [
+				{
+					type: 3,
+					name: 'command',
+					description: 'The Command you want to see about',
+					required: false,
+				}
+			],
 			aliases: ['cmds', 'commands', 'comandos', 'ajuda'],
 			run: this.run
 		};
@@ -87,10 +107,10 @@ module.exports = class Ajuda {
 				}
 				embed.field('🔗 » Links', `[Invite Me](https://discord.com/oauth2/authorize?client_id=${global.zuly.user.id}&scope=bot%20applications.commands&permissions=805432446) » [Support Sever](https://discord.gg/pyyyJpw5QW) » [Vote for us](https://top.gg/bot/880173509077266483/vote)`);
 				if (!ctx.message.channel.nsfw) {
-					embed.footer(ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '));
+					embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '));
 				}
 				else {
-					embed.footer(ctx.idioma.help.creators + devs.join(', '));
+					embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '));
 				}
 				ctx.send(embed.create);
 

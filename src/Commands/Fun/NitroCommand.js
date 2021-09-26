@@ -16,6 +16,19 @@ module.exports = class Nitro {
 				categoria: '⭐ » Fun',
 				desc: 'Create a minecraft achievement'
 			},
+			/*
+			SUB_COMMAND	1 = SubCommand
+			SUB_COMMAND_GROUP: 2 = SubCommandGroup
+			STRING: 3 = String
+			INTEGER: 4 = Any integer between -2^53 and 2^53
+			BOOLEAN: 5 = True or False
+			USER: 6 = User Mention
+			CHANNEL: 7 = Includes all channel types + categories
+			ROLE: 8 = Role Mention
+			MENTIONABLE: 9 = Includes users and roles
+			NUMBER: 10 = Any double between -2^53 and 2^53
+			*/
+			options: [],
 			aliases: ['fakenitro', 'fake-nitro', 'nitrofake', 'gift', 'giftnitro', 'nitrogift'],
 			run: this.run
 		};

@@ -38,6 +38,7 @@
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
+    "deepai": "^1.0.17",
     "erela.js": "^2.3.3",
     "eris": "^0.15.1",
     "eris-giveaways": "^1.0.2",
@@ -45,7 +46,8 @@
     "moment": "^2.29.1",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "os-utils": "^0.0.14",
-    "quickmongo": "^3.0.2"
+    "quickmongo": "^3.0.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

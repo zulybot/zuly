@@ -16,6 +16,19 @@ module.exports = class HostCommand {
 				categoria: '📖 » Information',
 				desc: 'see host info'
 			},
+			/*
+			SUB_COMMAND	1 = SubCommand
+			SUB_COMMAND_GROUP: 2 = SubCommandGroup
+			STRING: 3 = String
+			INTEGER: 4 = Any integer between -2^53 and 2^53
+			BOOLEAN: 5 = True or False
+			USER: 6 = User Mention
+			CHANNEL: 7 = Includes all channel types + categories
+			ROLE: 8 = Role Mention
+			MENTIONABLE: 9 = Includes users and roles
+			NUMBER: 10 = Any double between -2^53 and 2^53
+			*/
+			options: [],
 			aliases: ['hostinfo', 'hi', 'about'],
 			run: this.run
 		};
@@ -29,6 +42,7 @@ module.exports = class HostCommand {
 		embed.field('💻 VPS:', ctx.idioma.host.vps);
 		embed.color('#ffcbdb');
 		embed.thumbnail(global.zuly.user.avatarURL);
+		embed.footer('⤷ https://zulybot.xyz');
 		ctx.send(embed.create);
 	}
 };

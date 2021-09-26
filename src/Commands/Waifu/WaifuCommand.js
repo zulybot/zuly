@@ -17,6 +17,19 @@ module.exports = class EvalCommand {
 				categoria: '💖 » Waifu',
 				desc: 'Random waifu.'
 			},
+			/*
+            SUB_COMMAND	1 = SubCommand
+            SUB_COMMAND_GROUP: 2 = SubCommandGroup
+            STRING: 3 = String
+            INTEGER: 4 = Any integer between -2^53 and 2^53
+            BOOLEAN: 5 = True or False
+            USER: 6 = User Mention
+            CHANNEL: 7 = Includes all channel types + categories
+            ROLE: 8 = Role Mention
+            MENTIONABLE: 9 = Includes users and roles
+            NUMBER: 10 = Any double between -2^53 and 2^53
+            */
+			options: [],
 			aliases: ['wa', 'wai', 'w'],
 			run: this.run
 		};
@@ -45,7 +58,10 @@ module.exports = class EvalCommand {
 			embed.color('#ffcbdb');
 			embed.image(waifu.image);
 			if (!dono) {
-				embed.footer(ctx.idioma.waifu.casar, global.zuly.user.avatarURL);
+				embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.waifu.casar, global.zuly.user.avatarURL);
+			}
+			else {
+				embed.footer('⤷ https://zulybot.xyz');
 			}
 			ctx.message.channel.createMessage(embed.create).then(async message => {
 				if (!dono) {
@@ -77,7 +93,7 @@ module.exports = class EvalCommand {
 						embed.description(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
 						embed.color('#ffcbdb');
 						embed.image(waifu.image);
-						embed.footer(ctx.idioma.waifu.casou.replace('%w', waifu.name), waifu.image);
+						embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.waifu.casou.replace('%w', waifu.name), waifu.image);
 						message.edit(embed.create);
 					});
 				}
