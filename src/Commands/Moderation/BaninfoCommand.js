@@ -28,7 +28,14 @@ module.exports = class BaninfoCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [],
+			options: [
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				}
+			],
 			aliases: ['checkban', 'infoban', 'informação-ban', 'ban-info'],
 			run: this.run
 		};
@@ -38,7 +45,7 @@ module.exports = class BaninfoCommand {
 		const ReactionCollector = require('../../Helpers/ReactionCollector');
 
 		let member;
-		if (!ctx.args[0]) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
+		if (!ctx.args[0]) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
 
 		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
@@ -55,13 +62,16 @@ module.exports = class BaninfoCommand {
 
 		const banInfo = await ctx.message.channel.guild.getBan(member.id);
 		const embed = new global.zuly.manager.Ebl();
-		embed.title(`<:zu_certifiedmod:885193463111483412> BanInfo • ${member.username}#${member.discriminator}`);
-		embed.color('#ffcbdb');
-		embed.field(`${ctx.idioma.baninfo.user}`, `\`\`\`${member.username}#${member.discriminator} (${member.id})\`\`\``);
-		embed.field(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
-		embed.footer(ctx.idioma.baninfo.desban);
-		embed.thumbnail(member.avatarURL);
-		ctx.message.channel.createMessage(embed.create).then(message => {
+		embed.setTitle(`<:zu_certifiedmod:885193463111483412> BanInfo • ${member.username}#${member.discriminator}`);
+		embed.setColor('#ffcbdb');
+		embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${member.username}#${member.discriminator} (${member.id})\`\`\``);
+		embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
+		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.avatarURL);
+		embed.setThumbnail(member.avatarURL);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		}).then(message => {
 			message.addReaction('🐹');
 			const collector = new ReactionCollector(message, {
 				user: ctx.message.author,
@@ -74,7 +84,7 @@ module.exports = class BaninfoCommand {
 			});
 			collector.on('collect', async () => {
 				await ctx.message.channel.guild.unbanMember(member.id, motivo);
-				ctx.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
+				ctx.message.channel.createMessage(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
 			});
 		});
 	}

@@ -28,7 +28,20 @@ module.exports = class CalcCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [],
+			options: [
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				},
+				{
+					type: 6,
+					name: 'usermention',
+					description: 'The User Mention',
+					required: false,
+				}
+			],
 			aliases: ['whois', 'ui', 'member', 'memberinfo'],
 			run: this.run
 		};
@@ -82,6 +95,6 @@ module.exports = class CalcCommand {
 		embed.thumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
 		embed.image(userb);
 
-		ctx.send(embed.create);
+		ctx.message.channel.createMessage(embed.create);
 	}
 };

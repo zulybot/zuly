@@ -42,15 +42,15 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.send(`:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME>\``);
+		if (!ctx.args[0]) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME>\``);
 
 		const code = await global.db.get(ctx.args[0].toUpperCase());
 		if (!code) {
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** Esse código não existe`);
+			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** Esse código não existe`);
 		}
 		else {
 			await global.db.delete(ctx.args[0].toUpperCase());
-			return ctx.send(`✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`);
+			return ctx.message.channel.createMessage(`✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`);
 		}
 	}
 };

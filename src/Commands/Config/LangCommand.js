@@ -54,7 +54,7 @@ module.exports = class LangCommand {
 		const langs = ['pt-br', 'en-us'];
 
 		if (!ctx.args[0]) {
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', ')));
+			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', ')));
 		}
 
 		let langSelecionada = null;
@@ -65,16 +65,16 @@ module.exports = class LangCommand {
 		});
 
 		if (langSelecionada == null) {
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.unknownLanguage}`.replace('%langs', '`' + langs.join(', ') + '`'));
+			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.unknownLanguage}`.replace('%langs', '`' + langs.join(', ') + '`'));
 		}
 		else {
 			switch (langSelecionada) {
 				case langs[0]:
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[0]);
-					return ctx.send(':white_check_mark: **|** Agora irei falar `português-brasileiro` neste servidor!');
+					return ctx.message.channel.createMessage(':white_check_mark: **|** Agora irei falar `português-brasileiro` neste servidor!');
 				case langs[1]:
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[1]);
-					return ctx.send(':white_check_mark: **|** Now I will speak `english-us` on this guild!');
+					return ctx.message.channel.createMessage(':white_check_mark: **|** Now I will speak `english-us` on this guild!');
 			}
 		}
 	}

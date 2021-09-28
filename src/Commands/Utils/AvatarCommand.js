@@ -28,7 +28,20 @@ module.exports = class CalcCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [],
+			options: [
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				},
+				{
+					type: 6,
+					name: 'usermention',
+					description: 'The User Mention',
+					required: false,
+				}
+			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],
 			run: this.run
 		};
@@ -38,11 +51,15 @@ module.exports = class CalcCommand {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 
 		const embed = new ctx.embed();
-		embed.title(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);
-		embed.description(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${user.avatarURL})`);
-		embed.color('#ffcbdb');
-		embed.image(user.avatarURL);
-		embed.thumbnail(global.zuly.avatarURL);
-		ctx.send(embed.create);
+		embed.setTitle(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);
+		embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${user.avatarURL})`);
+		embed.setColor('#ffcbdb');
+		embed.setImage(user.avatarURL);
+		embed.setThumbnail(global.zuly.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

@@ -39,11 +39,14 @@ module.exports = class DailyCommand {
 		const ryos = await global.db.get(`ryos-${ctx.message.author.id}`) || 0;
 
 		const embed = new ctx.embed();
-		embed.title(`💰 Balance | ${global.zuly.user.username}`);
-		embed.field(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);
-		embed.color('#ffcbdb');
-		embed.thumbnail(global.zuly.user.avatarURL);
-		embed.footer('⤷ https://zulybot.xyz');
-		ctx.send(embed.create);
+		embed.setTitle(`💰 Balance | ${global.zuly.user.username}`);
+		embed.addField(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);
+		embed.setColor('#ffcbdb');
+		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz');
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

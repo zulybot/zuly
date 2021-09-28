@@ -48,16 +48,32 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0] || !ctx.args[1]) return ctx.send(`:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME> <VALOR EM RYOS>\``);
-		if (isNaN(ctx.args[1])) return ctx.send(`:x: ${ctx.message.author.mention} **|** O Valor não é um número exato.`);
+		if (!ctx.args[0] || !ctx.args[1]) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME> <VALOR EM RYOS>\``,
+				flags: ctx.ephemeral
+			});
+		}
+		if (isNaN(ctx.args[1])) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** O Valor não é um número exato.`,
+				flags: ctx.ephemeral
+			});
+		}
 
 		const code = await global.db.get(ctx.args[0].toUpperCase());
 		if (code) {
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** Esse código já existe`);
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** Esse código já existe`,
+				flags: ctx.ephemeral
+			});
 		}
 		else {
 			await global.db.set(ctx.args[0].toUpperCase(), Number(ctx.args[1]));
-			return ctx.send(`✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`);
+			return ctx.message.channel.createMessage({
+				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
+				flags: ctx.ephemeral
+			});
 		}
 	}
 };

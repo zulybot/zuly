@@ -41,10 +41,14 @@ module.exports = class DailyCommand {
 		const daily = await global.db.get(`daily-${ctx.message.author.id}`);
 		if (daily !== null && timeout - (Date.now() - daily) > 0) {
 			const tt = moment(timeout - (Date.now() - daily)).format('HH:mm:ss');
-			ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.jacoletou} **${tt}**`);
+			ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.jacoletou} **${tt}**`
+			});
 		}
 		else {
-			ctx.send(`💸 ${ctx.message.author.mention} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`);
+			ctx.message.channel.createMessage({
+				content: `💸 ${ctx.message.author.mention} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`
+			});
 			const money = global.db.get(`ryos-${ctx.message.author.id}`);
 			if (money) {
 				await global.db.set(`ryos-${ctx.message.author.id}`, eval(Number(money) + Number(amount)));

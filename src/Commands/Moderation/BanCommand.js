@@ -28,7 +28,32 @@ module.exports = class BanCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [],
+			options: [
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				},
+				{
+					type: 6,
+					name: 'usermention',
+					description: 'The User Mention',
+					required: false,
+				},
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				},
+				{
+					type: 3,
+					name: 'reason',
+					description: 'The reason for the ban',
+					required: false,
+				}
+			],
 			aliases: ['banir', 'hackban', 'forceban'],
 			run: this.run
 		};
@@ -36,11 +61,17 @@ module.exports = class BanCommand {
 
 	async run (ctx) {
 		let member;
-		if (!ctx.args[0]) return ctx.reply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+			});
+		}
 
 		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info).catch(() => {
-				return ctx.send(`:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`);
+				return ctx.message.channel.createMessage({
+					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
+				});
 			});
 		}
 		else {
@@ -55,7 +86,9 @@ module.exports = class BanCommand {
 
 		ctx.message.channel.guild.banMember(member.id, 0, motivo);
 
-		ctx.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
+		ctx.message.channel.createMessage({
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+		});
 	}
 };
 // ADG, Davi e LRD

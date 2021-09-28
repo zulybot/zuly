@@ -3,7 +3,7 @@ module.exports = class ZulybBot {
 		if (!client) throw new Error('Cade o client alek');
 		this.client = client;
 		this.canvas = require('canvas');
-		this.Ebl = require('./lyaEmbedBuilder');
+		this.Ebl = require('./EmbedBuilder').Embed;
 	}
 
 	async iniciar () {

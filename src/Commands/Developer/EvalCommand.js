@@ -44,19 +44,23 @@ module.exports = class EvalCommand {
 	async run (ctx) {
 		const { token } = require('../../Config/config');
 		const regexToken = new RegExp(`${token}`, 'gi');
-
 		const msg = ctx.args.join(' ');
-		if (!msg) return ctx.send('algo');
+		if (!msg) return ctx.message.channel.createMessage('algo');
 		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('mongo')) return;
 		try {
-			// eslint-disable-next-line no-eval
 			let eva = await eval(msg);
 			if (eva instanceof Promise) eva = await eva;
 			if (typeof eva !== 'string') eva = await require('util').inspect(eva, { depth: 0 });
-			ctx.send(`\`\`\`js\n${eva.replace(regexToken, '\'amas\'').slice(0, 1990)}\`\`\``);
+			ctx.message.channel.createMessage({
+				content: `\`\`\`js\n${eva.replace(regexToken, '\'amas\'').slice(0, 1990)}\`\`\``,
+				flags: ctx.ephemeral
+			});
 		}
 		catch (e) {
-			ctx.send(`\`\`\`js\n${`${e}`.slice(0, 1990)}\`\`\``);
+			ctx.message.channel.createMessage({
+				content: `\`\`\`js\n${`${e}`.slice(0, 1990)}\`\`\``,
+				flags: ctx.ephemeral
+			});
 		}
 	}
 };

@@ -37,11 +37,11 @@ module.exports = class LangCommand {
 		const nsfw = await global.db.get(`nsfw-${ctx.message.guildID}`);
 		if (nsfw) {
 			await global.db.delete(`nsfw-${ctx.message.guildID}`);
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.desativado}`);
+			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.desativado}`);
 		}
 		else {
 			await global.db.set(`nsfw-${ctx.message.guildID}`, true);
-			return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.ativado}`);
+			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.ativado}`);
 		}
 	}
 };

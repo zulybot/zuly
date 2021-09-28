@@ -39,11 +39,15 @@ module.exports = class CalcCommand {
 		const banner = await global.zuly.getRESTBanner(user.id);
 
 		const embed = new ctx.embed();
-		embed.title(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
-		embed.description(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${banner || 'https://imgur.com/XVLqrn1.png'})`);
-		embed.color('#ffcbdb');
-		embed.image(banner || 'https://imgur.com/XVLqrn1.png');
-		embed.thumbnail(user.avatarURL || global.zuly.avatarURL);
-		ctx.send(embed.create);
+		embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
+		embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${banner || 'https://imgur.com/XVLqrn1.png'})`);
+		embed.setColor('#ffcbdb');
+		embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
+		embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

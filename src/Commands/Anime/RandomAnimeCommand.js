@@ -79,14 +79,17 @@ module.exports = class RandomAnimeCommand {
 					}
 
 					const embed = new ctx.embed();
-					embed.title('📺 Random-Anime | ' + anime.attributes.canonicalTitle);
-					embed.description('>>> ' + text);
-					embed.field(`⭐ ${rating}`, anime.attributes.averageRating);
-					embed.field(`⛔ ${age}`, ager);
-					embed.color('#ffcbdb');
-					embed.thumbnail(anime.attributes.posterImage.large);
-					embed.footer('⤷ https://zulybot.xyz');
-					ctx.send(embed.create);
+					embed.setTitle('📺 Random-Anime | ' + anime.attributes.canonicalTitle);
+					embed.setDescription('>>> ' + text);
+					embed.addField(`⭐ ${rating}`, anime.attributes.averageRating);
+					embed.addField(`⛔ ${age}`, ager);
+					embed.setColor('#ffcbdb');
+					embed.setThumbnail(anime.attributes.posterImage.large);
+					embed.setFooter('⤷ zulybot.xyz');
+					ctx.message.channel.createMessage({
+						content: ctx.message.author.mention,
+						embed: embed.get()
+					});
 				});
 			});
 		});

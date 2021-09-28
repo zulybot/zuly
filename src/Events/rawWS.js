@@ -56,37 +56,38 @@ module.exports = class rawWS {
 			const prefix = global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
 			msg.channel.createMessage = function(txt) {
-				if (typeof txt === 'string') {
-					global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
-						type: 4,
-						data: {
-							content: txt
-						}
-					});
-				}
-				else {
-					global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
-						type: 4,
-						data: {
-							...txt
-						}
-					});
-				}
+				global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
+					type: 4,
+					data: {
+						...txt
+					}
+				});
 			};
 
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
 					if (!command.permissoes.membro.every(p => msg.channel.guild.members.get(msg.author.id).permissions.has(p))) {
-						return msg.channel.createMessage(`:x: ${msg.author.mention} ** | ** ${idioma.message.user}\`${command.permissoes.membro}\`.`);
+						return msg.channel.createMessage({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.user} \`${command.permissoes.membro}\`.`,
+							flags: 64
+						});
 					}
 				}
 				if (command.permissoes.bot.length) {
 					if (!command.permissoes.bot.every(p => msg.channel.guild.members.get(global.zuly.user.id).permissions.has(p))) {
-						return msg.channel.createMessage(`:x: ${msg.author.mention} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`);
+						return msg.channel.createMessage({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`,
+							flags: 64
+						});
 					}
 				}
 				if (command.permissoes.nsfw) {
-					if (!msg.channel.nsfw) return msg.channel.createMessage(`:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`);
+					if (!msg.channel.nsfw) {
+						return msg.channel.createMessage({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`,
+							flags: 64
+						});
+					}
 				}
 				if (command.permissoes.dono) {
 					const developers = await global.db.get('devs');
@@ -95,7 +96,10 @@ module.exports = class rawWS {
 					}
 
 					if (!developers.includes(msg.member.id)) {
-						return msg.channel.createMessage(`:x: ${msg.author.mention} ** | ** ${idioma.message.developer}.`);
+						return msg.channel.createMessage({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}.`,
+							flags: 64
+						});
 					}
 				}
 			}
@@ -111,10 +115,11 @@ module.exports = class rawWS {
 				prefix: prefix,
 				args: args,
 				message: msg,
-				embed: require('../Client/lyaEmbedBuilder'),
+				ephemeral: 64,
+				embed: require('../Client/EmbedBuilder').Embed,
 				// Functions
 				send: function(texto) {
-				  msg.channel.createMessage(texto);
+				  msg.channel.createMessage(...texto);
 				},
 				reply: function(texto, mencionar) {
 				  msg.channel.createMessage(texto, mencionar);

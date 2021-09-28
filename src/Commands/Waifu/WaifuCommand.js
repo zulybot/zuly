@@ -47,21 +47,21 @@ module.exports = class EvalCommand {
 			const dono = await global.db.get(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
 			const timeout = 7200000;
 			const embed = new ctx.embed();
-			embed.title(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
+			embed.setTitle(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
 			if (!dono) {
-				embed.description(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
+				embed.setDescription(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
 			}
 			else {
 				const owner = await global.zuly.getRESTUser(dono);
-				embed.description(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}\n๑☕﹕ **${ctx.idioma.waifu.dono}:** ${owner.username}#${owner.discriminator}`);
+				embed.setDescription(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}\n๑☕﹕ **${ctx.idioma.waifu.dono}:** ${owner.username}#${owner.discriminator}`);
 			}
-			embed.color('#ffcbdb');
-			embed.image(waifu.image);
+			embed.setColor('#ffcbdb');
+			embed.setImage(waifu.image);
 			if (!dono) {
-				embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.waifu.casar, global.zuly.user.avatarURL);
+				embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.waifu.casar, global.zuly.user.avatarURL);
 			}
 			else {
-				embed.footer('⤷ https://zulybot.xyz');
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			}
 			ctx.message.channel.createMessage(embed.create).then(async message => {
 				if (!dono) {
@@ -78,7 +78,7 @@ module.exports = class EvalCommand {
 					MarryCollector.on('collect', async () => {
 						const date = Date.now();
 						const marrytime = await global.db.get(`timeout-${ctx.message.author.id}`);
-						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
+						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
 						const ryos = await global.db.get(`ryos-${ctx.message.author.id}`);
 						if (ryos) {
 							global.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);
@@ -89,12 +89,15 @@ module.exports = class EvalCommand {
 						global.db.set(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
 						global.db.set(`timeout-${ctx.message.author.id}`, Date.now());
 						const embed = new ctx.embed();
-						embed.title(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
-						embed.description(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
-						embed.color('#ffcbdb');
-						embed.image(waifu.image);
-						embed.footer('⤷ https://zulybot.xyz | ' + ctx.idioma.waifu.casou.replace('%w', waifu.name), waifu.image);
-						message.edit(embed.create);
+						embed.setTitle(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
+						embed.setDescription(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);
+						embed.setColor('#ffcbdb');
+						embed.setImage(waifu.image);
+						embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.waifu.casou.replace('%w', waifu.name), waifu.image);
+						message.edit({
+							content: ctx.message.author.mention,
+							embeds: [embed.get()]
+						});
 					});
 				}
 			});

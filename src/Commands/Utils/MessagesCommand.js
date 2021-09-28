@@ -29,7 +29,20 @@ module.exports = class PingCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [],
+			options: [
+				{
+					type: 3,
+					name: 'userid',
+					description: 'The User ID',
+					required: false,
+				},
+				{
+					type: 6,
+					name: 'usermention',
+					description: 'The User Mention',
+					required: false,
+				},
+			],
 			aliases: ['msg', 'msgs', 'mensagens'],
 			run: this.run
 		};
@@ -46,10 +59,13 @@ module.exports = class PingCommand {
 			valor = 0;
 		}
 		const embed = new ctx.embed();
-		embed.title(`💬 ${ctx.idioma.messages.title}`);
-		embed.color('#ffcbdb');
-		embed.description(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`);
-		ctx.send(embed.create);
+		embed.setTitle(`💬 ${ctx.idioma.messages.title}`);
+		embed.setColor('#ffcbdb');
+		embed.setDescription(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };
 

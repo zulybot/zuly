@@ -42,9 +42,17 @@ module.exports = class PruneCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.no}.`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.no}.`
+			});
+		}
 		// ctx.message.delete()
-		if (Number(ctx.args[0]) > 2000 || Number(ctx.args[0]) < 2) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.num}.`);
+		if (Number(ctx.args[0]) > 2000 || Number(ctx.args[0]) < 2) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.num}.`
+			});
+		}
 		const ids = [];
 		const messages = await ctx.message.channel.getMessages(Number(ctx.args[0]) + 1);
 
@@ -53,7 +61,9 @@ module.exports = class PruneCommand {
 		});
 
 		ctx.message.channel.deleteMessages(ids);
-		ctx.send(`:white_check_mark: ${ctx.message.author.mention} **|** **${ctx.args[0]} ${ctx.idioma.clear.msg}.`);
+		ctx.message.channel.createMessage({
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** **${ctx.args[0]} ${ctx.idioma.clear.msg}.`
+		});
 	}
 };
 

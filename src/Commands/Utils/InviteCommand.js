@@ -37,10 +37,14 @@ module.exports = class InviteCommand {
 
 	async run (ctx) {
 		const embed = new ctx.embed();
-		embed.title(`📩 ${ctx.idioma.invite.add}`);
-		embed.description(ctx.idioma.invite.desc.replace('%id', global.zuly.user.id));
-		embed.color('#ffcbdb');
-		embed.thumbnail(global.zuly.user.avatarURL);
-		ctx.send(embed.create);
+		embed.setTitle(`📩 ${ctx.idioma.invite.add}`);
+		embed.setDescription(ctx.idioma.invite.desc.replace('%id', global.zuly.user.id));
+		embed.setColor('#ffcbdb');
+		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

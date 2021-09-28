@@ -40,12 +40,16 @@ module.exports = class BotinfoCommand {
 		const { cpuUsage } = require('os-utils');
 		cpuUsage(function(v) {
 			const embed = new ctx.embed();
-			embed.title(`🤖 Botinfo | ${global.zuly.user.username}`);
-			embed.thumbnail(global.zuly.user.avatarURL);
-			embed.description(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0)));
-			embed.field('<:zu_ram:889942152736555108> Recursos:', `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v}%`);
-			embed.color('#ffcbdb');
-			ctx.send(embed.create);
+			embed.setTitle(`🤖 Botinfo | ${global.zuly.user.username}`);
+			embed.setThumbnail(global.zuly.user.avatarURL);
+			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0)));
+			embed.addField('<:zu_ram:889942152736555108> Recursos:', `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%`);
+			embed.setColor('#ffcbdb');
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			ctx.message.channel.createMessage({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			});
 		});
 	}
 };

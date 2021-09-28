@@ -36,14 +36,19 @@ module.exports = class AnimuCommand {
 
 	async run (ctx) {
 		const play = global.zuly.music.players.get(ctx.message.channel.guild.id);
-		if (!ctx.message.member.voiceState.channelID) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`);
+		if (!ctx.message.member.voiceState.channelID) {
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
+			});
+		}
 
 		if (!play) {
 			const player = global.zuly.music.create({
 				guild: ctx.message.channel.guild.id,
 				voiceChannel: ctx.message.member.voiceState.channelID,
 				textChannel: ctx.message.channel.id,
-				selfDeafen: true
+				selfDeafen: true,
+				volume: 50
 			});
 			await player.connect();
 		}
@@ -59,11 +64,13 @@ module.exports = class AnimuCommand {
 		player.queue.add(res.tracks[0]);
 		if (!player.playing && !player.paused && !player.queue.size) player.play();
 		if (player.queue.size >= 1) {
-			const embed = new global.zuly.manager.Ebl();
-			embed.description(`<:zu_animu:882344230515802152> **|** ${ctx.idioma.play.add} **Animu**`);
-			embed.thumbnail(global.zuly.user.avatarURL);
-			embed.color('#ffcbdb');
-			await ctx.send(embed.create);
+			const embed = new ctx.embed();
+			embed.setDescription(`<:zu_animu:882344230515802152> **|** ${ctx.idioma.play.add} **Animu**`);
+			embed.setColor('#ffcbdb');
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			ctx.message.channel.createMessage({
+				embeds: [embed.get()]
+			});
 		}
 	}
 };

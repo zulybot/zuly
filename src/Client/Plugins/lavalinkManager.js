@@ -52,9 +52,12 @@ global.zuly.music = new Manager({
 		idioma = idioma[lang];
 
 		const embed = new global.zuly.manager.Ebl();
-		embed.description(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.np} **${track.title}**`);
-		embed.color('#ffcbdb');
-		ch.createMessage(embed.create);
+		embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.np} **${track.title}**`);
+		embed.setColor('#ffcbdb');
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ch.createMessage({
+			embed: embed.get()
+		});
 	})
 	.on('queueEnd', async (player) => {
 		const ch = await global.zuly.getRESTChannel(player.textChannel);
@@ -64,8 +67,11 @@ global.zuly.music = new Manager({
 		idioma = idioma[lang];
 
 		const embed = new global.zuly.manager.Ebl();
-		embed.description(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.end}`);
-		embed.color('#ffcbdb');
-		ch.createMessage(embed.create);
+		embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.end}`);
+		embed.setColor('#ffcbdb');
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ch.createMessage({
+			embed: embed.get()
+		});
 		player.destroy();
 	});

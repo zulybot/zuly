@@ -37,12 +37,15 @@ module.exports = class HostCommand {
 	async run (ctx) {
 		// eslint-disable-next-line new-cap
 		const embed = new ctx.embed();
-		embed.title(`<:zu_host:880539802645180416> ${global.zuly.user.username}`);
-		embed.field('<:zu_database:880537804046762054> Database:', ctx.idioma.host.db);
-		embed.field('💻 VPS:', ctx.idioma.host.vps);
-		embed.color('#ffcbdb');
-		embed.thumbnail(global.zuly.user.avatarURL);
-		embed.footer('⤷ https://zulybot.xyz');
-		ctx.send(embed.create);
+		embed.setTitle(`<:zu_host:880539802645180416> ${global.zuly.user.username}`);
+		embed.addField('<:zu_database:880537804046762054> Database:', ctx.idioma.host.db);
+		embed.addField('💻 VPS:', ctx.idioma.host.vps);
+		embed.setColor('#ffcbdb');
+		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

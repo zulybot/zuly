@@ -42,8 +42,10 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`);
+		if (!ctx.args[0]) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`);
 		global.db.set(`about-${ctx.message.author.id}`, ctx.args.join(' '));
-		ctx.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`);
+		ctx.message.channel.createMessage({
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`
+		});
 	}
 };
