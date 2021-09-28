@@ -22,38 +22,6 @@ module.exports = class MessageEventCommand {
 		// ata, criei
 		if (message.author.bot) return;
 
-		const { setApiKey, callStandardApi } = require('deepai');
-		setApiKey('a87a6152-0b64-4881-9e98-5ef72361da0f');
-
-		if (nsfw) {
-			if (!message.channel.nsfw) {
-				if (!message.attachments || !message.content) return;
-
-				let imagem;
-
-				if (message.attachments.length) {
-					imagem = message.attachments[0].url;
-				}
-				else {
-					imagem = message.content;
-				}
-
-				const data = await callStandardApi('nsfw-detector', {
-					image: imagem,
-				});
-
-				const points = data.output.nsfw_score;
-
-				console.log(points);
-
-				if (points > 0.60) {
-					return message.channel.createMessage(`:x: ${message.author.mention} **|** ${idioma.nsfw.nonsfw}`).then(() => {
-						message.delete();
-					});
-				}
-			}
-		}
-
 		const regexInvite = /co(?:mo (?:recomendo para amigos|ad(?:icion(?:a(?:r(?: a zuly)?)?|o)|d)|c(?:hamo amigos|onvi(?:dar|ta)))|nvidar)|quero (?:adicion|test)ar|adicionar|adiciona|servidor|suporte|how add|invite/;
 		if (regexInvite.test(message.content) && message.channel.guild.id === '880174783294214184') {
 			message.channel.createMessage(`> <:zu_invite:886313502518685776> ${message.author.mention}, deseja me adicionar a seu servidor? <:zu_anime:882668160480849970>\n\n- 🔗 É só clicar neste link: https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446\n- 📩 Deseja o link do meu servidor de suporte? Se sim: https://discord.gg/pyyyJpw5QW`);

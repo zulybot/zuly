@@ -12,7 +12,7 @@ const {
 // Puxando o arquivo do discord-together, já que ela que faz os comandos do discord-together funcionar
 const DiscordTogether = require('./Client/discord-together');
 // Criando o client, que no caso é nosso bot.
-const client = new Client('Bot ' + token, {
+const client = new Client(token, {
 	allowedMentions: {
 		everyone: false,
 		roles: false,

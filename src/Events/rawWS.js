@@ -55,11 +55,7 @@ module.exports = class rawWS {
 
 			const prefix = global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
-			await global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
-				type: 5,
-			});
-
-			msg.channel.createMessage = function(txt) {
+			msg.channel.createMessage = function(txt, ...props) {
 				if (typeof txt === 'string') {
 					global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
 						type: 4,
@@ -93,15 +89,13 @@ module.exports = class rawWS {
 					if (!msg.channel.nsfw) return msg.channel.createMessage(`:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`);
 				}
 				if (command.permissoes.dono) {
-					// Verificar se o autor da mensagem é um desenvolvedor.
 					const developers = await global.db.get('devs');
-
 					if (!developers) {
 						await global.db.set('devs', ['726449359167684734', '392087996821667841', '699416429338034268']);
 					}
 
 					if (!developers.includes(msg.member.id)) {
-						return;
+						return msg.channel.createMessage(`:x: ${msg.author.mention} ** | ** ${idioma.message.developer}.`);
 					}
 				}
 			}

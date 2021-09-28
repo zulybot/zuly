@@ -21,13 +21,19 @@ fs.readdir('./src/Commands/', (err, cat) => {
 					const nome2 = comando.en.nome;
 	
 					if (config.deployslash === true) {
+						if (config.deploy === 'no') {
+							return
+						}
 						await global.zuly.requestHandler.request('POST', `/applications/${config.client.id}/commands`, true, {
 							type: 1,
 							name: comando.en.nome,
 							description: `[${comando.en.categoria}] ${comando.en.desc || 'No Description'}`,
 							options: opte,
 						});
-					} else {
+					} else if (config.deplyslash === false) {
+						if (config.deploy === 'no') {
+							return
+						}
 						commands.map(async c => {
 							if (c.name === comando.en.nome) {
 								await global.zuly.requestHandler.request('PATCH', `/applications/${config.client.id}/commands/${c.id}`, true, {
