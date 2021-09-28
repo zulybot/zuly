@@ -55,7 +55,7 @@ module.exports = class rawWS {
 
 			const prefix = global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
-			msg.channel.createMessage = function(txt, ...props) {
+			msg.channel.createMessage = function(txt) {
 				if (typeof txt === 'string') {
 					global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
 						type: 4,
@@ -68,7 +68,7 @@ module.exports = class rawWS {
 					global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
 						type: 4,
 						data: {
-							txt
+							...txt
 						}
 					});
 				}
