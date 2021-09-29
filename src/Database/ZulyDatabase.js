@@ -1,5 +1,9 @@
-const DatabaseManager = require('./DenkyDatabase');
+const Database = require('./ZulyMongo');
+const config = require('../Config/config');
+global.db = new Database(config.mongodb, 'zulybot');
 
-// Essa será a varíavel que você usará para manipular a Database.
-global.db = new DatabaseManager('./data/base.json');
-global.db.del = global.db.delete;
+global.db.on('ready', () => {
+	console.log('[MONGO] Estou pronta!'.yellow);
+});
+
+global.db.connect();

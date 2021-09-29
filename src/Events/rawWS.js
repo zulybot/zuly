@@ -53,7 +53,7 @@ module.exports = class rawWS {
 		  lang = lang.replace(/-/g, '_');
 		  idioma = idioma[lang];
 
-			const prefix = global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
+			const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
 			msg.channel.createMessage = function(txt) {
 				global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
