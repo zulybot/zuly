@@ -9,7 +9,7 @@ const {
 const nodes = require('./nodes');
 const Deezer = require('./erela-plugins/Deezer/index');
 const Spotify = require('./erela-plugins/Spotify/index');
-const Facebook = require('./erela-plugins/Facebook/index');
+// const Facebook = require('./erela-plugins/Facebook/index');
 
 const clientID = spotify.id;
 const clientSecret = spotify.secret;
@@ -21,7 +21,7 @@ global.zuly.music = new Manager({
 		// DEEZER PLUGIN
 		new Deezer(),
 		// FACEBOOK PLUGIN
-		new Facebook(),
+		// new Facebook(),
 		// SPOTIFY PLUGIN
 		new Spotify({
 			clientID,

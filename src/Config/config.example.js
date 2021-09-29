@@ -4,6 +4,8 @@ module.exports = {
 		id: 'BOT-ID',
 		secret: 'BOT-SECRET'
 	},
+	deployslash: true,
+	deploy: 'yes',
 	mongodb: 'MONGODB-URI',
 	prefix: ['prefix-1', 'prefix-2']
 };
