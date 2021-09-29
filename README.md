@@ -56,8 +56,8 @@ yarn start
 ## 🐦 Github Status:
 <p align="center">
 <a href="https://nodejs.org/en/download/"><img src="https://img.shields.io/badge/Node.JS-43853D.svg?style=for-the-badge&amp;logo=node.js&amp;logoColor=white" alt="Node Version"></a> <a href="https://github.com/zulybot/zuly/issues"><img src="https://img.shields.io/github/issues/zulybot/zuly?style=for-the-badge&amp;color=green" alt="Issues"></a> <a href="https://github.com/zulybot/zuly/pulls"><img src="https://img.shields.io/github/issues-pr/zulybot/zuly?style=for-the-badge&amp;color=green" alt=""></a>
+<h2 id="-stargazers-">✨ Stargazers:</h2>
+<p><a href="https://github.com/zulybot/zuly/stargazers"><img src="https://reporoster.com/stars/zulybot/zuly" alt="Stargazers"></a></p>
+<h2 id="-forkers-">✨ Forkers:</h2>
+<p><a href="https://github.com/zulybot/zuly/network/members"><img src="https://reporoster.com/forks/zulybot/zuly" alt="Forkers"></a></p>
 </p>
-## ✨ Stargazers:
-[![Stargazers](https://reporoster.com/stars/zulybot/zuly)](https://github.com/zulybot/zuly/stargazers)
-## ✨ Forkers:
-[![Forkers](https://reporoster.com/forks/zulybot/zuly)](https://github.com/zulybot/zuly/network/members)
