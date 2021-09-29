@@ -5,6 +5,6 @@ require('./Client/Handler/comandos');
 require('./Client/Handler/eventos');
 // Puxando a database
 require('./Database/ZulyDatabase');
-// require('./Database/ZulyMongo');
+require('./Database/ZulyMongo');
 // Funções customizadas
 require('./ZulyFunctions');

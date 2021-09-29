@@ -49,6 +49,8 @@ Ah! So you would like to contribute to my repository, right? Great! We love new 
 - Once they're done, make a pull request to the eris branch if you are contributing to the new version or the master branch if you are contributing to the stable and running version
 ## 🌎 Translating:
 Of course we do not support only English. We're looking to expand to a variety of new languages and for such thing we need your help! We are now working with Crowdin. Please check out our [Crowdin](https://crowdin.com/project/zuly) repo!
+## ⛔ Issues:
+If you have any problems, pleas open a [Issue](https://github.com/zulybot/zuly/issues) or [contact us](https://zulybot.xyz/discord)
 ## 🤝 Partners:
 - Thanks [www.openode.io](https://www.openode.io) for the hosting!
 ## 🔗 Links:
