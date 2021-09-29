@@ -1,0 +1,3 @@
+files:
+  - source: /src/Çocales/*.js
+    translation: /src/locales/%locale%
