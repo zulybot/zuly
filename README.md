@@ -1,8 +1,10 @@
 # Hey there! Welcome to my official GitHub repository!
+
 <p align="center">
 Howdy, I'm zuly, just a simple bot to discord!
 Well... As you can see, I'm a bot with many features like fun, moderation and utility.
 </p>
+
 ## 💻 Self-Hosting
 - Install nodejs 14 or higher. You can download and install here: https://nodejs.org
 - Rename **all** .example files to name.js
