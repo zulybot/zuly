@@ -1,13 +1,13 @@
 module.exports = {
 	lang: 'pt',
 	message: {
-		P: 'Hey, human!',
-		view: 'I don\'t have permission for read message history!',
-		the: 'The command',
-		unk: 'don\'t exist or cannot be run at the moment!',
-		user: 'You not have all necessary permission for this command\nNecessary Permission:',
-		bot: 'I not have all necessary permission for this command!\n Necessary Permission:',
-		dev: 'Only my developers can run this command!',
+		P: 'Olá, humano!',
+		view: 'Eu não tenho permissão de ler o histórico de mensagens!',
+		the: 'O Comando',
+		unk: 'não existe ou não pode ser executado no momento!',
+		user: 'Você não tem todas as permissões necessárias para usar este comando!\nPermissões necessárias:',
+		bot: 'Eu não tenho todas as permissões necessárias para executar este comando! \n Permissões necessárias:',
+		dev: 'Apenas meus desenvolvedores podem usar este comando!',
 		c: 'Aguarde %t segundos para usar outro comando.',
 		e: 'Ops, ocorreu um erro!',
 		e2: 'Reporte este erro!',
@@ -68,7 +68,7 @@ module.exports = {
 		not: 'Não estou tocando nada no servidor.'
 	},
 	play: {
-		nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',
+		nothing: 'Arguments are missing, use `%pplay <music | url>`',
 		add: 'Adicionado a fila',
 		can: 'Você precisa estar em um canal de voz para ouvir música.'
 	},
@@ -162,8 +162,8 @@ module.exports = {
 		alt: 'Sobre alterado para: `%t`'
 	},
 	nsfw: {
-		ativado: 'Sistema ativado com sucesso!',
-		desativado: 'Sistema desativado com sucesso!',
+		activated: 'System activated successfully!',
+		disabled: 'System successfully disabled!',
 		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
 	}
 };
