@@ -1,11 +1,11 @@
-# Hey there! Welcome to my official GitHub repository!
+### Hey there! Welcome to my official GitHub repository!
 
 <p align="center">
 Howdy, I'm zuly, just a simple bot to discord!
 Well... As you can see, I'm a bot with many features like fun, moderation and utility.
 </p>
 
-## 💻 Self-Hosting
+### 💻 Self-Hosting
 - Install nodejs 14 or higher. You can download and install here: https://nodejs.org
 - Rename **all** .example files to name.js
 > ⚙️ config.js
@@ -33,7 +33,7 @@ module.exports = [{
 	password: 'youshallnotpass' // lavalink password, by default youshallnotpass
 }]
 ```
-## ⬆️ Starting:
+### ⬆️ Starting:
 - Install the packages:
 ```bash
 yarn
@@ -43,17 +43,19 @@ yarn
 yarn start
 ```
 > And done, your own version of zuly online!
-## 🥳 Contributing:
+### 🥳 Contributing:
 Ah! So you would like to contribute to my repository, right? Great! We love new contributors who help us!
 - Fork this repository and make your desired changes
 - Once they're done, make a pull request to the eris branch if you are contributing to the new version or the master branch if you are contributing to the stable and running version
-## 🌎 Translating:
+### 🌎 Translating:
 Of course we do not support only English. We're looking to expand to a variety of new languages and for such thing we need your help! We are now working with Crowdin. Please check out our [Crowdin](https://crowdin.com/project/zuly) repo!
-## ⛔ Issues:
+### ⛔ Issues:
 If you have any problems, pleas open a [Issue](https://github.com/zulybot/zuly/issues) or [contact us](https://zulybot.xyz/discord)
-## 🤝 Partners:
+### 👋 Thanks for using my functions!
+![ZulyBot](/assets/readme/banner.jpeg)
+### 🤝 Partners:
 - Thanks [www.openode.io](https://www.openode.io) for the hosting!
-## 🔗 Links:
+### 🔗 Links:
 > Official Website:
 - [Zulybot.xyz](https://zulybot.xyz/)
 > Botlists:
@@ -61,7 +63,7 @@ If you have any problems, pleas open a [Issue](https://github.com/zulybot/zuly/i
 - [Top.gg](https://top.gg/bot/880173509077266483)
 - [Bestlist.Online](https://bestlist.online/bots/880173509077266483)
 - [Bluephoenixlist.xyz](https://bluephoenixlist.xyz/bot/880173509077266483)
-## 🐦 Github Status:
+### 🐦 Github Status:
 <p align="center">
 <a href="https://nodejs.org/en/download/"><img src="https://img.shields.io/badge/Node.JS-43853D.svg?style=for-the-badge&amp;logo=node.js&amp;logoColor=white" alt="Node Version"></a> <a href="https://github.com/zulybot/zuly/issues"><img src="https://img.shields.io/github/issues/zulybot/zuly?style=for-the-badge&amp;color=green" alt="Issues"></a> <a href="https://github.com/zulybot/zuly/pulls"><img src="https://img.shields.io/github/issues-pr/zulybot/zuly?style=for-the-badge&amp;color=green" alt=""></a>
 <h2 id="-stargazers-">✨ Stargazers:</h2>
