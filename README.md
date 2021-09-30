@@ -1,4 +1,4 @@
-### Hey there! Welcome to my official GitHub repository!
+# Hey there! Welcome to my official GitHub repository!
 
 <p align="center">
 Howdy, I'm zuly, just a simple bot to discord!
