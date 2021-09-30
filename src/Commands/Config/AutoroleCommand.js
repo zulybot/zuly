@@ -63,7 +63,7 @@ module.exports = class AutoroleCommand {
 			// SE NÃO TIVER
 			embed.field(`<:zu_membros:885214377182109696> ${ctx.idioma.autorole.mem}`, `${ctx.idioma.autorole.noset}`, true);
 		}
-		// FIELD PARA DELETAR
+		// FIELD PARA DELETAR AUTOROLE
 		embed.field(`❌ ${ctx.idioma.autorole.del}`, ctx.idioma.autorole.del2);
 		// COR DA EMBED
 		embed.color('#ffcbdb');
