@@ -52,13 +52,13 @@ const client = new Client(token, {
 	maxResumeAttempts: 50,
 	maxShards: 'auto',
 	messageLimit: 10,
-	// pusOnly: false,
+	// opusOnly: false,
 	// ratelimiterOffset
 	// reconnectDelay
 	requestTimeout: 30000,
 	rest: {
 		// agent
-		baseURL: '/api/v8',
+		baseURL: '/api/v9',
 		// decodeReasons
 		// disableLatencyCompensation
 		domain: 'canary.discord.com',
