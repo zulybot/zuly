@@ -11,8 +11,8 @@ module.exports = {
 		c: 'Espere %t segundos para usar otro comando.',
 		e: '¡Ups, algo salió mal!',
 		e2: 'Notificar este error!',
-		e3: 'Probablemente mi equipo ya conozca este error, pero ¿qué tal si ayuda? Puede abrir un [problema] (https://github.com/zulybot/zuly/issues) en [github] (https://github.com/zulybot/zuly) o informarlo a mi [servidor de soporte] (https://discord.gg/2pFH6Yy), hagamos de la discord un lugar mejor juntos 🤝',
-		nsfw: 'Esse comando só pode ser usado em canais nsfw'
+		e3: 'Probablemente mi equipo ya conozca este error, pero ¿qué tal si ayuda? Puede abrir un [issue] (https://github.com/zulybot/zuly/issues) en [github] (https://github.com/zulybot/zuly) o informarlo a mi [servidor de soporte] (https://discord.gg/2pFH6Yy), hagamos de la discord un lugar mejor juntos 🤝',
+		nsfw: 'Este comando solo puede ser utilizado en el canal {0}'
 	},
 	host: {
 		db: 'Eu utilizo [MongoDB](https://mongodb.com) para meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
