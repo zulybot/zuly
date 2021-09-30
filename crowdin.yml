@@ -1,3 +1,3 @@
 files:
-  - source: /src/Locales/en-US.js
+  - source: /src/Locales/pt-BR.js
     translation: /src/Translations/%locale%.js
