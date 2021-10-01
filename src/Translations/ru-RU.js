@@ -2,9 +2,9 @@ module.exports = {
 	lang: 'pt',
 	message: {
 		P: 'Olá, humano!',
-		view: 'Eu não tenho permissão de ler o histórico de mensagens!',
-		the: 'O Comando',
-		unk: 'não existe ou não pode ser executado no momento!',
+		view: 'У меня нет разрешения на чтение истории сообщений!',
+		the: 'Команда',
+		unk: 'не существует или не может быть запущен в данный момент!',
 		user: 'Você não tem todas as permissões necessárias para usar este comando!\nPermissões necessárias:',
 		bot: 'Eu não tenho todas as permissões necessárias para executar este comando! \n Permissões necessárias:',
 		dev: 'Apenas meus desenvolvedores podem usar este comando!',
