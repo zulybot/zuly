@@ -1,18 +1,18 @@
 module.exports = {
 	lang: 'pt',
 	message: {
-		P: 'Olá, humano!',
+		P: 'Привет, человек!',
 		view: 'У меня нет разрешения на чтение истории сообщений!',
 		the: 'Команда',
 		unk: 'не существует или не может быть запущен в данный момент!',
-		user: 'Você não tem todas as permissões necessárias para usar este comando!\nPermissões necessárias:',
+		user: 'У вас нет всех необходимых разрешений для использования этой команды!\nНеобходимые разрешения:',
 		bot: 'Eu não tenho todas as permissões necessárias para executar este comando! \n Permissões necessárias:',
-		dev: 'Apenas meus desenvolvedores podem usar este comando!',
-		c: 'Aguarde %t segundos para usar outro comando.',
-		e: 'Ops, ocorreu um erro!',
-		e2: 'Reporte este erro!',
-		e3: 'Provavelmente minha equipe ja sabe sobre este erro, mas que tal você ajudar? Você pode abrir um [issue](https://github.com/zulybot/zuly/issues) no [github](https://github.com/zulybot/zuly) ou então reportar em meu [servidor de suporte](https://discord.gg/2pFH6Yy), vamos fazer o discord um lugar melhor, juntos 🤝',
-		nsfw: 'Esse comando só pode ser usado em canais nsfw'
+		dev: 'Только мои разработчики могут использовать эту команду!',
+		c: 'Подождите %t секунд, чтобы использовать другую команду.',
+		e: 'К сожалению, произошла ошибка!',
+		e2: 'Сообщите об этой ошибке!',
+		e3: 'Моя команда, вероятно, уже знает об этой ошибке, но как насчет вашей помощи? Вы можете открыть [проблему] (https://github.com/zulybot/zuly/issues) на [github] (https://github.com/zulybot/zuly) или сообщить об этом на мой [сервер поддержки] (https://discord.gg/2pFH6Yy) давайте вместе сделаем Discord лучше 🤝',
+		nsfw: 'Эта команда может использоваться только на каналах nsfw.'
 	},
 	host: {
 		db: 'Eu utilizo [MongoDB](https://mongodb.com) para meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
