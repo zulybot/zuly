@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node --expose-gc .",
+    "forever": "forver start src/zuly.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "keywords": [

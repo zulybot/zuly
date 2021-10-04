@@ -15,7 +15,7 @@ module.exports = class ReadyEvent {
 			const ram = process.memoryUsage().rss / 1024 / 1024;
 			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 			global.zuly.users.map(g => global.zuly.users.delete(g.id));
-		}, 5000);
+		}, 3000);
 		// AUTO STATUS
 		const { version } = require('../../package.json');
 
