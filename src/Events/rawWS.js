@@ -16,7 +16,6 @@ module.exports = class rawWS {
 			interaction.mentions = [];
 			interaction.mention_everyone = false;
 			interaction.mention_roles = new Collection();
-
 			if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
 			  for (const membro in interaction.data.resolved.users) {
 					interaction.data.resolved.users[membro].member =
@@ -24,7 +23,6 @@ module.exports = class rawWS {
 					interaction.mentions.push(interaction.data.resolved.users[membro]);
 			  }
 			}
-
 			const args = interaction.data.options
 				? interaction.data.options.map((i) => {
 			  switch (i.type) {
@@ -63,7 +61,6 @@ module.exports = class rawWS {
 					}
 				});
 			};
-
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
 					if (!command.permissoes.membro.every(p => msg.channel.guild.members.get(msg.author.id).permissions.has(p))) {

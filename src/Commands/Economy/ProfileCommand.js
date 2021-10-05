@@ -71,7 +71,8 @@ module.exports = class EvalCommand {
 		  await fillTextWithTwemoji(foto, `${user.username.toUpperCase()}#${user.discriminator}`, canvas.width / 2.5, canvas.height / 6.5);
 		  foto.font = '17px Dunkin';
 		  await fillTextWithTwemoji(foto, about.match(/.{1,65}/g).join('\n'), canvas.width / 28, canvas.height / 1.17);
-		  ctx.message.channel.createMessage(ctx.message.author.mention, {
+		  ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
 			file: canvas.toBuffer(),
 			name: 'profile.png'
 		  });

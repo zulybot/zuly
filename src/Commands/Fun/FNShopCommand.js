@@ -7,14 +7,14 @@ module.exports = class Nitro {
 				dono: false
 			},
 			pt: {
-				nome: 'nitro',
+				nome: 'fnshop',
 				categoria: '⭐ » Diversão',
-				desc: 'Cria uma conquista do minecraft'
+				desc: 'Mostra a loja diária do fortnite'
 			},
 			en: {
-				nome: 'nitro',
+				nome: 'fnshop',
 				categoria: '⭐ » Fun',
-				desc: 'Create a minecraft achievement'
+				desc: 'Shows the Fortnite Daily Store'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand
@@ -29,21 +29,19 @@ module.exports = class Nitro {
 			NUMBER: 10 = Any double between -2^53 and 2^53
 			*/
 			options: [],
-			aliases: ['fakenitro', 'fake-nitro', 'nitrofake', 'gift', 'giftnitro', 'nitrogift'],
+			aliases: ['fnstore'],
 			run: this.run
 		};
 	}
 
 	async run (ctx) {
-		const { readFile } = require('fs');
-		const util = require('util');
-		const read = util.promisify(readFile);
+		const embed = new ctx.embed();
+		embed.setColor('#ffcbdb');
+		embed.setImage('https://fn.zulybot.xyz/shop-now.png');
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		ctx.message.channel.createMessage({
-			content: `<:zu_nitro:885919779205029898> ${ctx.message.author.mention} **|** discord\\.gift/${Math.random().toString(36).slice(-8)}`,
-			file: {
-				file: await read('./assets/images/memes/nitrofake.png'),
-				name: 'nitro.png'
-			},
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
 		});
 	}
 };
