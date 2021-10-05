@@ -1,7 +1,7 @@
 module.exports = {
-	lang: 'pt',
+	lang: 'de',
 	message: {
-		P: 'Olá, humano!',
+		P: 'Guten Tag!',
 		view: 'Eu não tenho permissão de ler o histórico de mensagens!',
 		the: 'O Comando',
 		unk: 'não existe ou não pode ser executado no momento!',
