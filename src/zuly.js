@@ -22,7 +22,7 @@ const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
 	allowedMentions: {
 		everyone: false,
-		roles: false,
+		roles: true,
 		users: true
 	},
 	autoreconnect: true,

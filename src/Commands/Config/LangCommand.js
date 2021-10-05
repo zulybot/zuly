@@ -54,7 +54,9 @@ module.exports = class LangCommand {
 		const langs = ['pt-br', 'en-us'];
 
 		if (!ctx.args[0]) {
-			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', ')));
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', '))
+			});
 		}
 
 		let langSelecionada = null;

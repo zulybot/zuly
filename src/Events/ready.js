@@ -51,5 +51,11 @@ module.exports = class ReadyEvent {
 		}, 1000 * 180);
 		// Iniciando Sistema de Música
 		global.zuly.music.init(global.zuly.user.id);
+		const ch = await global.zuly.getRESTChannel('895018321827733564');
+		const CronJob = require('cron').CronJob;
+		const job = new CronJob('00 15 21 * * *', function() {
+			ch.createMessage('<a:zu_fortnite:894977940926910485> Loja diária atualizada **|** https://fn.zulybot.xyz/shop-now.png');
+		}, null, true, 'America/Sao_Paulo');
+		job.start();
 	}
 };

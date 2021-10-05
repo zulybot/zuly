@@ -71,7 +71,7 @@ module.exports = class EvalCommand {
 		else {
 			await global.db.set(ctx.args[0].toUpperCase(), Number(ctx.args[1]));
 			const channel = await global.zuly.getRESTChannel('894981159119896576');
-			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: ${ctx.args[0].toUpperCase()}`);
+			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: **${ctx.args[0].toUpperCase()}** valendo **${Number(ctx.args[1])} ryos.**`);
 			return ctx.message.channel.createMessage({
 				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
 				flags: ctx.ephemeral

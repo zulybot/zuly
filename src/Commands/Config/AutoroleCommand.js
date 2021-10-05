@@ -44,31 +44,34 @@ module.exports = class AutoroleCommand {
 		const autorolebot = await global.db.get(`autorolebot-${ctx.message.guildID}`);
 		// CRIANDO A EMBED
 		const embed = new global.zuly.manager.Ebl();
-		embed.title(`📋 Autorole | ${global.zuly.user.username}`);
+		embed.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
 		// FIELD AUTOROLE-BOT
 		if (autorolebot) {
 			// SE TIVER CARGOS
-			embed.field('🤖 Bot', `${autorolebot.map((id) => `<@&${id}>`).join(', ')}`, true);
+			embed.addField('🤖 Bot', `${autorolebot.map((id) => `<@&${id}>`).join(', ')}`, true);
 		}
 		else {
 			// SE NÃO TIVER
-			embed.field('🤖 Bot', `${ctx.idioma.autorole.noset}`, true);
+			embed.addField('🤖 Bot', `${ctx.idioma.autorole.noset}`, true);
 		}
 		// FIELD AUTOROLE-USER
 		if (autoroleuser) {
 			// SE TIVER CARGOS
-			embed.field(`<:zu_membros:885214377182109696> ${ctx.idioma.autorole.mem}`, `${autoroleuser.map((id) => `<@&${id}>`).join(', ')}`, true);
+			embed.addField(`<:zu_membros:885214377182109696> ${ctx.idioma.autorole.mem}`, `${autoroleuser.map((id) => `<@&${id}>`).join(', ')}`, true);
 		}
 		else {
 			// SE NÃO TIVER
-			embed.field(`<:zu_membros:885214377182109696> ${ctx.idioma.autorole.mem}`, `${ctx.idioma.autorole.noset}`, true);
+			embed.addField(`<:zu_membros:885214377182109696> ${ctx.idioma.autorole.mem}`, `${ctx.idioma.autorole.noset}`, true);
 		}
 		// FIELD PARA DELETAR AUTOROLE
-		embed.field(`❌ ${ctx.idioma.autorole.del}`, ctx.idioma.autorole.del2);
+		embed.addField(`❌ ${ctx.idioma.autorole.del}`, ctx.idioma.autorole.del2);
 		// COR DA EMBED
-		embed.color('#ffcbdb');
+		embed.setColor('#ffcbdb');
 		// CRIANDO OS NEGOCIO
-		ctx.message.channel.createMessage(embed.create).then(msg => {
+		ctx.message.channel.createMessage({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		}).then(msg => {
 			// ADICIONANDO REAÇÕES
 			msg.addReaction('🤖');
 			msg.addReaction(':zu_membros:885214377182109696');
@@ -107,7 +110,9 @@ module.exports = class AutoroleCommand {
 			bot.on('collect', (message) => {
 				msg.delete();
 				// INICIANDO COLETOR
-				message.channel.createMessage(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`).then(m => {
+				message.channel.createMessage({
+					content: `white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`
+				}).then(m => {
 					const mcol = new MessageCollector(m.channel, {
 						user: ctx.message.author,
 						time: 60000,
@@ -122,11 +127,14 @@ module.exports = class AutoroleCommand {
 						});
 						// EMBED DE AUTOROLE-BOT
 						const embed2 = new global.zuly.manager.Ebl();
-						embed2.title(`📋 Autorole | ${global.zuly.user.username}`);
-						embed2.description(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
-						embed2.color('#ffcbdb');
+						embed2.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
+						embed2.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+						embed2.setColor('#ffcbdb');
 						// ENVIANDO A EMBED E CRIANDO AS COISAS
-						message.channel.createMessage(embed2.create);
+						message.channel.createMessage({
+							content: ctx.message.author.mention,
+							embeds: [embed2.get()]
+						});
 						if (!autorolebot) {
 							await global.db.set(`autorolebot-${ctx.message.guildID}`, []);
 							addrole.map(async auto => {
@@ -149,7 +157,9 @@ module.exports = class AutoroleCommand {
 			user.on('collect', (message) => {
 				msg.delete();
 				// INICIANDO COLETOR
-				message.channel.createMessage(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.user}`).then(m => {
+				message.channel.createMessage({
+					content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.user}`
+				}).then(m => {
 					const mcol = new MessageCollector(m.channel, {
 						user: ctx.message.author,
 						time: 60000,
@@ -164,11 +174,14 @@ module.exports = class AutoroleCommand {
 						});
 						// EMBED DE AUTOROLE-USER
 						const embed3 = new global.zuly.manager.Ebl();
-						embed3.title(`📋 Autorole | ${global.zuly.user.username}`);
-						embed3.description(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
-						embed3.color('#ffcbdb');
+						embed3.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
+						embed3.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+						embed3.setColor('#ffcbdb');
 						// ENVIANDO A EMBED E CRIANDO AS COISAS
-						message.channel.createMessage(embed3.create);
+						message.channel.createMessage({
+							content: ctx.message.author.mention,
+							embeds: [embed3.get()]
+						});
 						if (!autoroleuser) {
 							await global.db.set(`autoroleuser-${ctx.message.guildID}`, []);
 							addrole.map(async auto => {
@@ -193,10 +206,13 @@ module.exports = class AutoroleCommand {
 				await global.db.del(`autorolebot-${ctx.message.guildID}`);
 				// EMBED DE AUTOROLE-DELETED
 				const delb = new global.zuly.manager.Ebl();
-				delb.title(`📋 Autorole | ${global.zuly.user.username}`);
-				delb.description(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.disabled}`);
-				delb.color('#ffcbdb');
-				return message.channel.createMessage(delb.create).then(() => {
+				delb.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
+				delb.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.disabled}`);
+				delb.setColor('#ffcbdb');
+				return message.channel.createMessage({
+					content: ctx.message.author.mention,
+					embeds: [delb.get()]
+				}).then(() => {
 					msg.delete();
 				});
 			});
