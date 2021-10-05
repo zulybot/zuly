@@ -13,4 +13,5 @@ src/Client/Plugins/nodes.js
 src/Config/player.js
 src/Config/system.js
 src/Config/config.js
+src/API/keys.js
 yarn-error.log

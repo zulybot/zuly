@@ -5,10 +5,17 @@ const {
 	Client,
 	Collection
 } = require('eris');
+// Puxando somente o que iremos usar do TOPGG.
+const {
+	AutoPoster
+} = require('topgg-autoposter');
 // Puxando o token do arquivo de configuração
 const {
 	token
 } = require('./Config/config');
+const {
+	top
+} = require('./API/keys');
 // Puxando o arquivo do discord-together, já que ela que faz os comandos do discord-together funcionar
 const DiscordTogether = require('./Client/discord-together');
 // Criando o client, que no caso é nosso bot.
@@ -82,6 +89,11 @@ const ZulyBot = new Zuly(client);
 ZulyBot.iniciar().then((zuly) => {
 	console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.brightMagenta);
 });
+// TOPGG AutoPoster
+client.topgg = new AutoPoster(top.gg.token, client)
+	.on('posted', () => {
+		console.log('[DBL] Posted stats to Top.gg!'.green);
+	});
 // Definindo o bot como variavel global, para que seja mais fácil de acessar.
 global.zuly = client;
 global.zuly.manager = ZulyBot;

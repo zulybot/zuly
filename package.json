@@ -46,7 +46,7 @@
     "mongoose": "^6.0.8",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "os-utils": "^0.0.14",
-    "request": "^2.88.2"
+    "topgg-autoposter": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
