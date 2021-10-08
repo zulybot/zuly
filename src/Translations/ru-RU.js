@@ -150,8 +150,8 @@ module.exports = {
 		desativado: 'O Filtro %f foi desativado com sucesso.'
 	},
 	economy: {
-		jacoletou: 'Você já coletou sua recompensa diária hoje! Tente novamente em:',
-		recebeu: 'Você recebeu:',
+		jacoletou: 'Сегодня вы уже получили свою ежедневную награду! Попробуйте еще раз:',
+		recebeu: 'Ты получил:',
 		noarg: 'Estão faltando argumentos, utilize: `%presgatar <codigo>.`',
 		resgatado: 'Você já resgatou esse código.',
 		nocode: 'Esse código não existe.',
@@ -162,8 +162,8 @@ module.exports = {
 		alt: 'Sobre alterado para: `%t`'
 	},
 	nsfw: {
-		ativado: 'Sistema ativado com sucesso!',
-		desativado: 'Sistema desativado com sucesso!',
-		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
+		ativado: 'Система успешно активирована!',
+		desativado: 'Система успешно отключена!',
+		nonsfw: 'Не отправляйте контент NSFW за пределы каналов NSFW.'
 	}
 };
