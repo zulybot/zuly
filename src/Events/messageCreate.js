@@ -18,12 +18,11 @@ module.exports = class MessageEventCommand {
 		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
 
 		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
-		/*
 		let idioma = require('../Config/idiomas');
 		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
-		*/
+
 		const channel_id = '880880678017826917';
 
 		if(message.channel.id == channel_id) {
@@ -49,21 +48,40 @@ module.exports = class MessageEventCommand {
 				await global.db.set(`ryos-${user.id}`, 2400);
 			}
 			const embed2 = new global.zuly.manager.Ebl();
-			embed2.title(`<:zu_bestlist:885218274080596038> BestList | ${global.zuly.user.username}`);
-			embed2.url('https://bestlist.online/bots/880173509077266483');
-			embed2.description(`**${user.username}** Obrigado pelo seu voto, como recompensa você recebeu **2400 ryos**, continue votando e sendo uma pessoa incrivel <:zu_yay:890317605318058035>`);
-			embed2.color('#ffcbdb');
-			embed2.thumbnail(global.zuly.user.avatarURL);
+			embed2.setTitle(`<:zu_bestlist:885218274080596038> BestList | ${global.zuly.user.username}`);
+			embed2.setUrl('https://bestlist.online/bots/880173509077266483');
+			embed2.setDescription(`**${user.username}** Obrigado pelo seu voto, como recompensa você recebeu **2400 ryos**, continue votando e sendo uma pessoa incrivel <:zu_yay:890317605318058035>`);
+			embed2.setColor('#ffcbdb');
+			embed2.setThumbnail(global.zuly.user.avatarURL);
 			const dm = await global.zuly.getDMChannel(user.id);
-			dm.createMessage(embed2.create).catch(() => {
+			dm.createMessage({
+				content: user.mention,
+				embeds: [embed2.get()]
+			}).catch(() => {
 				console.log('DM Fechada');
 			});
-			return ch.createMessage(embed.create).then(b => {
+			return ch.createMessage({
+				content: user.mention,
+				embeds: [embed.get()]
+			}).then(b => {
 				b.addReaction('⬆️');
 			});
 		}
 
 		if (message.author.bot) return;
+
+		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
+			const embed = new global.zuly.manager.Ebl();
+			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
+			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
+			embed.setColor('#ffcbdb');
+			embed.setThumbnail(global.zuly.user.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			message.channel.createMessage({
+				content: message.author.mention,
+				embeds: [embed.get()]
+			});
+		}
 
 		const regexPrefix = new RegExp(`^(${config.prefix.map(prefix => prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|')}|<@!?${global.zuly.user.id}>)( )*`, 'gi');
 
@@ -80,12 +98,13 @@ module.exports = class MessageEventCommand {
 		if (!command || command) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
-			embed.setDescription(`${message.author.mention}, due to some compatibility issues, I was completely switched to **Slash Commands**, if the commands don't appear, add me again by clicking here: [add](https://zulybot.xyz/add), it is not necessary to remove the bot for this and if the commands have not yet updated on your server, it can take up to an hour for them to update on all servers, due to discord.`);
+			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			message.channel.createMessage({
-				embed: embed.get()
+				content: message.author.mention,
+				embeds: [embed.get()]
 			});
 		}
 	}

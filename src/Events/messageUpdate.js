@@ -14,14 +14,25 @@ module.exports = class MessageEventCommand {
 
 		if (message.channel.type === 1) return;
 		if (message.content === oldMessage.content) return;
-		/*
 		let idioma = require('../Config/idiomas');
 		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
-		*/
-		// ata, criei
+
 		if (message.author.bot) return;
+
+		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
+			const embed = new global.zuly.manager.Ebl();
+			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
+			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
+			embed.setColor('#ffcbdb');
+			embed.setThumbnail(global.zuly.user.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			message.channel.createMessage({
+				content: message.author.mention,
+				embeds: [embed.get()]
+			});
+		}
 
 		const regexPrefix = new RegExp(`^(${config.prefix.map(prefix => prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|')}|<@!?${global.zuly.user.id}>)( )*`, 'gi');
 
@@ -38,12 +49,13 @@ module.exports = class MessageEventCommand {
 		if (!command || command) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
-			embed.setDescription(`${message.author.mention}, due to some compatibility issues, I was completely switched to **Slash Commands**, if the commands don't appear, add me again by clicking here: [add](https://zulybot.xyz/add), it is not necessary to remove the bot for this and if the commands have not yet updated on your server, it can take up to an hour for them to update on all servers, due to discord.`);
+			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			message.channel.createMessage({
-				embed: embed.get()
+				content: message.author.mention,
+				embeds: [embed.get()]
 			});
 		}
 	}

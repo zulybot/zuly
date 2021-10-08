@@ -48,7 +48,7 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 
 		const embed = new ctx.embed();
 		embed.setTitle(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);

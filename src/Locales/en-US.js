@@ -1,5 +1,10 @@
 module.exports = {
 	lang: 'en',
+	labels: {
+		add: 'Add me!',
+		support: 'Support Server!',
+		vote: 'Vote for me!'
+	},
 	message: {
 		P: 'Hello, human!',
 		view: 'I don\'t have permission to read the message history!',
@@ -138,7 +143,7 @@ module.exports = {
 		id: 'ID of: ',
 		create: 'Account created day: '
 	},
-	slash: '> <:zu_slash:886288977668243566> **Utilizado por:** {user}!',
+	slash: 'due to some compatibility issues, I was completely switched to **Slash Commands**, if the commands don\'t appear, add me again by clicking here: [add](https://zulybot.xyz/add), it is not necessary to remove the bot for this and if the commands have not yet updated on your server, it can take up to an hour for them to update on all servers, due to discord.',
 	avatar: {
 		title: 'Avatar from:',
 		download: 'Download link:',

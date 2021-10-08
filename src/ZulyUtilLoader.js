@@ -7,4 +7,4 @@ require('./Client/Handler/eventos');
 require('./Database/ZulyDatabase');
 // require('./Database/ZulyMongo');
 // Funções customizadas
-require('./ZulyFunctions');
+require('./Utils/ZulyFunctions');

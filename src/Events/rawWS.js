@@ -39,13 +39,9 @@ module.exports = class rawWS {
 				: [];
 
 		  interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
-
 		  interaction.author = new User(interaction.member.user, global.zuly);
-
 		  interaction.mentions[0] = global.zuly.user;
-
 		  const msg = new Message(interaction, global.zuly);
-
 		  let idioma = require('../Config/idiomas.js');
 		  let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 		  lang = lang.replace(/-/g, '_');
@@ -54,7 +50,7 @@ module.exports = class rawWS {
 			const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
 			msg.channel.createMessage = function(txt) {
-				global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
+				return global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
 					type: 4,
 					data: {
 						...txt
