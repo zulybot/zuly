@@ -1,6 +1,5 @@
 const config = require('../Config/config');
 const f = require('node-fetch');
-// Função para pegar o banner de algum usuário.
 async function banner (id) {
 	if(!id) new Error('Não foi fornecido o ID do usuário');
 	const request = await f(`https://canary.discord.com/api/v9/users/${id}`, {
@@ -10,7 +9,7 @@ async function banner (id) {
 	});
 	const data = await request.json();
 	let user = data.id;
-	if(data.message == 'Unknown User') new Error('Usuário desconhecido.');
+	if(data.message === 'Unknown User') new Error('Usuário desconhecido.');
 	if(!data.banner) return null;
 	let banner = data.banner;
 	let format = {};
