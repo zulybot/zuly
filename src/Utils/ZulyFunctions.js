@@ -1,8 +1,8 @@
 const config = require('../Config/config');
-const f = require('node-fetch');
+const fetch = require('node-fetch');
 async function banner (id) {
 	if(!id) new Error('Não foi fornecido o ID do usuário');
-	const request = await f(`https://canary.discord.com/api/v9/users/${id}`, {
+	const request = await fetch(`https://canary.discord.com/api/v9/users/${id}`, {
 		headers: {
 			Authorization: `Bot ${config.token}`
 		}

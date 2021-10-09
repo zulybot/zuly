@@ -3,7 +3,13 @@
 <p align="center">
 Howdy, I'm zuly, just a simple bot to discord!
 Well... As you can see, I'm a bot with many features like fun, moderation and utility.<br>
-<a title="Crowdin" target="_blank" href="https://crowdin.com/project/zuly"><img src="https://badges.crowdin.net/zuly/localized.svg"></a>
+  <a href="https://jetbrains.com/?from=ZulyBot">
+    <img src="https://img.shields.io/badge/Powered_by_WebStorm-gray.svg?logo=webstorm&style=for-the-badge" />
+  </a>
+  <a href="https://crowdin.com/project/zuly">
+    <img src="https://img.shields.io/badge/Powered_by_Crowdin-gray.svg?logo=crowdin&style=for-the-badge" />
+    <img src="https://badges.crowdin.net/zuly/localized.svg">
+  </a>
 </p>
 
 ### 💻 Self-Hosting
