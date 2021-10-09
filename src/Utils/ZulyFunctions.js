@@ -22,6 +22,5 @@ async function banner (id) {
 	let size = 512;
 	let url = `https://cdn.discordapp.com/banners/${user}/${banner}${format}?size=${size}`;
 	return url || 'https://i.imgur.com/2dwGomm.png';
-};
-
+}
 global.zuly.getRESTBanner = banner;
