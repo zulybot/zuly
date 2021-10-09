@@ -1,18 +1,24 @@
 require('colors');
+
 const {
 	Client,
 	Collection
 } = require('eris');
+
 const {
 	AutoPoster
 } = require('topgg-autoposter');
+
 const {
 	token
 } = require('./Config/config');
+
 const {
 	top
 } = require('./API/keys');
+
 const DiscordTogether = require('./Client/discord-together');
+
 const client = new Client(token, {
 	allowedMentions: {
 		everyone: false,
@@ -71,6 +77,7 @@ const client = new Client(token, {
 	// seedVoiceConnections
 	// ws
 });
+
 client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();
 client.aliases = new Collection();
