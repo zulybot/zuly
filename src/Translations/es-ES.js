@@ -73,7 +73,7 @@ module.exports = {
 		not: 'Não estou tocando nada no servidor.'
 	},
 	play: {
-		nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',
+		nothing: 'Arguments are missing, use `%pplay <music | url>`',
 		add: 'Adicionado a fila',
 		can: 'Você precisa estar em um canal de voz para ouvir música.'
 	},
@@ -167,8 +167,8 @@ module.exports = {
 		alt: 'Sobre alterado para: `%t`'
 	},
 	nsfw: {
-		ativado: 'Sistema ativado com sucesso!',
-		desativado: 'Sistema desativado com sucesso!',
+		activated: 'System activated successfully!',
+		disabled: 'System successfully disabled!',
 		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
 	}
 };
