@@ -8,3 +8,5 @@ require('./Database/ZulyDatabase');
 // require('./Database/ZulyMongo');
 // Funções customizadas
 require('./Utils/ZulyFunctions');
+// WebhookServer
+require('./Integrations/app');
