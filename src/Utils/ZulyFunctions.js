@@ -23,4 +23,22 @@ async function banner (id) {
 	let url = `https://cdn.discordapp.com/banners/${user}/${banner}${format}?size=${size}`;
 	return url || 'https://i.imgur.com/2dwGomm.png';
 }
+function uptime (lang) {
+	let uptimeSecs = global.zuly.uptime / 1000;
+	let days = Math.floor(uptimeSecs / 86400);
+	let hours = Math.floor(uptimeSecs / 3600);
+	uptimeSecs %= 3600;
+	let minutes = Math.floor(uptimeSecs / 60);
+	let seconds = Math.floor(uptimeSecs % 60);
+	let totalUptime;
+	if (lang === 'pt') {
+		totalUptime = `\`${days}\` dias, \`${hours}\` horas, \`${minutes}\` minutos e \`${seconds}\` segundos`;
+	}
+	else {
+		totalUptime = `\`${days}\` days, \`${hours}\` hours, \`${minutes}\` minutes and \`${seconds}\` seconds`;
+	}
+	return totalUptime;
+}
+
+global.zuly.getBotUptime = uptime;
 global.zuly.getRESTBanner = banner;

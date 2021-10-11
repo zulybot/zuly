@@ -73,10 +73,14 @@ module.exports = class LangCommand {
 			switch (langSelecionada) {
 				case langs[0]:
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[0]);
-					return ctx.message.channel.createMessage(':white_check_mark: **|** Agora irei falar `português-brasileiro` neste servidor!');
+					return ctx.message.channel.createMessage({
+						content: ':white_check_mark: **|** Agora irei falar `português-brasileiro` neste servidor!'
+					});
 				case langs[1]:
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[1]);
-					return ctx.message.channel.createMessage(':white_check_mark: **|** Now I will speak `english-us` on this guild!');
+					return ctx.message.channel.createMessage({
+						content: ':white_check_mark: **|** Now I will speak `english-us` on this guild!'
+					});
 			}
 		}
 	}

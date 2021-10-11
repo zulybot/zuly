@@ -38,12 +38,13 @@ module.exports = class BotinfoCommand {
 		// eslint-disable-next-line new-cap
 		const os = require('os');
 		const { cpuUsage } = require('os-utils');
+		const uptime = global.zuly.getBotUptime(ctx.idioma.lang);
 		cpuUsage(function(v) {
 			const embed = new ctx.embed();
 			embed.setTitle(`🤖 Botinfo | ${global.zuly.user.username}`);
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0)));
-			embed.addField('<:zu_ram:889942152736555108> Recursos:', `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%`);
+			embed.addField(`<:zu_ram:889942152736555108> ${ctx.idioma.botinfo.recursos}`, `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%\n**Uptime:** ${uptime}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.createMessage({

@@ -63,7 +63,10 @@ module.exports = class EvalCommand {
 			else {
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			}
-			ctx.message.channel.createMessage(embed.create).then(async message => {
+			ctx.message.channel.createMessage({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			}).then(async message => {
 				if (!dono) {
 					const MarryCollector = new ReactionCollector(message, {
 						user: ctx.message.author,
