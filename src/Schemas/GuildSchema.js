@@ -8,7 +8,8 @@ const GuildSchema = new GSchema({
 	lang: String,
 	AutoroleBot: Array,
 	AutoroleUser: Array,
-	Antinsfw: Boolean
+	Antinsfw: Boolean,
+	Partner: Boolean
 });
 
 module.exports = model('guilds', GuildSchema);

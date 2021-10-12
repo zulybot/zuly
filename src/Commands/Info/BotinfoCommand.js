@@ -39,11 +39,20 @@ module.exports = class BotinfoCommand {
 		const os = require('os');
 		const { cpuUsage } = require('os-utils');
 		const uptime = global.zuly.getBotUptime(ctx.idioma.lang);
+
+		const devs = [];
+
+		const desenvolvedores = await global.db.get('devs');
+		for (const desenvolvedor of desenvolvedores) {
+			const dev = await global.zuly.getRESTUser(desenvolvedor);
+			devs.push(dev.username);
+		}
+
 		cpuUsage(function(v) {
 			const embed = new ctx.embed();
 			embed.setTitle(`🤖 Botinfo | ${global.zuly.user.username}`);
 			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0)));
+			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%devs', devs.join(', ')).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0).toLocaleString()));
 			embed.addField(`<:zu_ram:889942152736555108> ${ctx.idioma.botinfo.recursos}`, `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%\n**Uptime:** ${uptime}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);

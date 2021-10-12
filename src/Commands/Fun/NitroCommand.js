@@ -40,6 +40,7 @@ module.exports = class Nitro {
 		const read = util.promisify(readFile);
 		ctx.message.channel.createMessage({
 			content: `<:zu_nitro:885919779205029898> ${ctx.message.author.mention} **|** discord\\.gift/${Math.random().toString(36).slice(-8)}`,
+		}, {
 			file: {
 				file: await read('./assets/images/memes/nitrofake.png'),
 				name: 'nitro.png'
