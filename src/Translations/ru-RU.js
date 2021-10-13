@@ -54,7 +54,10 @@ module.exports = {
 		inv: 'Expressão invalida.',
 		res: 'Resultado'
 	},
-	botinfo: { texto: 'Olá, sou a %bot, um bot com funcionalidades únicas, que todo servidor precisa! Atualmente conheço **%u pessoas** diferentes que utilizam de minhas funcionalidades e estou em **%g servidores** diferentes.\n\nSou um projeto de [And.](https://github.com/andrelucaas) e [Dexy](https://github.com/eiandremoreira) desenvolvida em [Eris](https://abal.moe/Eris/) utilizando [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) & [NodeJS](https://nodejs.org/en/)' },
+	botinfo: {
+		texto: 'Hi, I\'m %bot, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
+		recursos: 'Recursos:'
+	},
 	messages: {
 		tem: 'tem',
 		msg: 'mensagens',
@@ -73,7 +76,7 @@ module.exports = {
 		not: 'Não estou tocando nada no servidor.'
 	},
 	play: {
-		nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',
+		nothing: 'Arguments are missing, use `%pplay <music | url>`',
 		add: 'Adicionado a fila',
 		can: 'Você precisa estar em um canal de voz para ouvir música.'
 	},
@@ -167,8 +170,8 @@ module.exports = {
 		alt: 'Sobre alterado para: `%t`'
 	},
 	nsfw: {
-		ativado: 'Система успешно активирована!',
-		desativado: 'Система успешно отключена!',
+		activated: 'System activated successfully!',
+		disabled: 'System successfully disabled!',
 		nonsfw: 'Не отправляйте контент NSFW за пределы каналов NSFW.'
 	}
 };
