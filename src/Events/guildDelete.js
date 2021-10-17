@@ -5,7 +5,6 @@ module.exports = class GuildCreate {
 			run: this.run
 		};
 	}
-
 	async run (guild) {
 		const system = require('../Config/system.js');
 		const ch = await global.zuly.getRESTChannel('880863493472022539');

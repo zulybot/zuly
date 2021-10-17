@@ -1,8 +1,8 @@
+/* eslint-disable */
 const {
 	Structure,
 	TrackUtils
 } = require('erela.js');
-
 module.exports = Structure.extend('Player', player => {
 	class StarPlayer extends player {
 		constructor (...args) {
@@ -11,105 +11,102 @@ module.exports = Structure.extend('Player', player => {
 			this.speed = 1;
 			this.rate = 1;
 			this.pitch = 1;
-			this.bassboost = false;
-			this.nightcore = false;
-			this.vaporwave = false;
-			this._8d = false;
+			this.bassboost = !1;
+			this.nightcore = !1;
+			this.vaporwave = !1;
+			this._8d = !1;
 		}
-
 		setSpeed (speed) {
 			if (isNaN(speed)) throw new RangeError('<Player>#setSpeed() must be a number.');
 			this.speed = Math.max(Math.min(speed, 5), 0.05);
 			this.setTimescale(speed, this.pitch, this.rate);
 			return this;
 		}
-
 		setPitch (pitch) {
 			if (isNaN(pitch)) throw new RangeError('<Player>#setPitch() must be a number.');
 			this.pitch = Math.max(Math.min(pitch, 5), 0.05);
 			this.setTimescale(this.speed, pitch, this.rate);
 			return this;
 		}
-
 		setNightcore (nc) {
 			if (typeof nc !== 'boolean') throw new RangeError('<Player>#setNighcore() must be a boolean.');
-
 			if (nc) {
-				this.bassboost = false;
-				this.distortion = false;
-				this.vaporwave = false;
-				this.setVaporwave(false);
-				this.setBassboost(false);
-				this.setDistortion(false);
+				this.bassboost = !1;
+				this.distortion = !1;
+				this.vaporwave = !1;
+				this.setVaporwave(!1);
+				this.setBassboost(!1);
+				this.setDistortion(!1);
 				this.setTimescale(1.2999999523162842, 1.2999999523162842, 1);
 				this.nightcore = nc;
 			}
-			else {this.setTimescale(1, 1, 1);}
+			else {
+				this.setTimescale(1, 1, 1);
+			}
 			this.nightcore = nc;
 			return this;
 		}
-
 		setVaporwave (vaporwave) {
 			if (typeof vaporwave !== 'boolean') throw new RangeError('<Player>#setVaporwave() must be a boolean.');
-
 			if (vaporwave) {
-				this.nightcore = false;
-				this.bassboost = false;
-				this.distortion = false;
-				this.setBassboost(false);
-				this.setNightcore(false);
-				this.setDistortion(false);
+				this.nightcore = !1;
+				this.bassboost = !1;
+				this.distortion = !1;
+				this.setBassboost(!1);
+				this.setNightcore(!1);
+				this.setDistortion(!1);
 				this.setTimescale(0.8500000238418579, 0.800000011920929, 1);
 				this.vaporwave = vaporwave;
 			}
-			else {this.setTimescale(1, 1, 1);}
+			else {
+				this.setTimescale(1, 1, 1);
+			}
 			this.vaporwave = vaporwave;
 			return this;
 		}
-
 		setDistortion (distortion) {
 			if (typeof distortion !== 'boolean') throw new RangeError('<Player>#setDistortion() must be a boolean.');
-
 			if (distortion) {
-				this.nightcore = false;
-				this.vaporwave = false;
-				this.bassboost = false;
-				this.setBassboost(false);
-				this.setNightcore(false);
-				this.setVaporwave(false);
+				this.nightcore = !1;
+				this.vaporwave = !1;
+				this.bassboost = !1;
+				this.setBassboost(!1);
+				this.setNightcore(!1);
+				this.setVaporwave(!1);
 				this.setDistort(0.5);
 				this.distortion = distortion;
 			}
-			else {this.clearEffects();}
+			else {
+				this.clearEffects();
+			}
 			this.distortion = distortion;
 			return this;
 		}
-
 		setBassboost (bassboost) {
 			if (bassboost) {
-				this.nightcore = false;
-				this.vaporwave = false;
-				this.setVaporwave(false);
-				this.setNightcore(false);
-				// eslint-disable-next-line
+				this.nightcore = !1;
+				this.vaporwave = !1;
+				this.setVaporwave(!1);
+				this.setNightcore(!1);
 				this.setEQ(...new Array(3).fill(null).map((_, i) => ({
 					band: 1,
 					gain: bassboost
 				})));
 				this.bassboost = bassboost;
 			}
-			else {this.clearEffects();}
+			else {
+				this.clearEffects();
+			}
 			this.bassboost = bassboost;
 			return this;
 		}
-
 		set8D (sd) {
 			if (typeof sd !== 'boolean') throw new RangeError('<Player>#set8D() must be a boolean.');
 			if (sd) {
-				this.nightcore = false;
-				this.vaporwave = false;
-				this.setVaporwave(false);
-				this.setNightcore(false);
+				this.nightcore = !1;
+				this.vaporwave = !1;
+				this.setVaporwave(!1);
+				this.setNightcore(!1);
 				this.node.send({
 					op: 'filters',
 					guildId: this.guild,
@@ -119,35 +116,35 @@ module.exports = Structure.extend('Player', player => {
 				});
 				this._8d = sd;
 			}
-			else {this.clearEffects();}
+			else {
+				this.clearEffects();
+			}
 			this._8d = sd;
 			return this;
 		}
-
 		async toggleLoop () {
 			if (!this.queueRepeat && !this.trackRepeat) {
-				await this.setTrackRepeat(true);
+				await this.setTrackRepeat(!0);
 				return {
 					player: this,
 					status: 'track'
 				};
 			}
 			else if (this.trackRepeat) {
-				await this.setQueueRepeat(true);
+				await this.setQueueRepeat(!0);
 				return {
 					player: this,
 					status: 'queue'
 				};
 			}
 			else if (this.queueRepeat) {
-				await this.setQueueRepeat(false);
+				await this.setQueueRepeat(!1);
 				return {
 					player: this,
 					status: 'none'
 				};
 			}
 		}
-
 		async skip () {
 			if (this.queue.length === 0) throw new Error('Queue is empty to skip');
 			const current = this.queue.current;
@@ -170,10 +167,11 @@ module.exports = Structure.extend('Player', player => {
 				this.queue.shift();
 				return this;
 			}
-			else {this.queue.shift();}
+			else {
+				this.queue.shift();
+			}
 			return this;
 		}
-
 		async skipto (target) {
 			if (typeof target !== 'number') throw new RangeError('<Player>#skipto() must be a number.');
 			if (this.queue.length === 0) throw new Error('Queue is empty to skip');
@@ -208,10 +206,8 @@ module.exports = Structure.extend('Player', player => {
 				return this;
 			}
 		}
-
 		async move (first, second) {
 			if (typeof first !== 'number') throw new RangeError('<Player>#move() first must be a number.');
-
 			if (first && !second) {
 				if (parseInt(`${first}`) - 1 > this.queue.size) throw new Error('There\'s only ' + this.queue.size + ' songs in queue.');
 				this.arraymove(this.queue, parseInt(`${first}`) - 1, 0);
@@ -225,10 +221,8 @@ module.exports = Structure.extend('Player', player => {
 				return this;
 			}
 		}
-
 		setDistort (value) {
 			this.value = value || this.value;
-
 			this.node.send({
 				op: 'filters',
 				guildId: this.guild,
@@ -238,12 +232,10 @@ module.exports = Structure.extend('Player', player => {
 			});
 			return this;
 		}
-
 		setTimescale (speed, pitch, rate) {
 			this.speed = speed || this.speed;
 			this.pitch = pitch || this.pitch;
 			this.rate = rate || this.rate;
-
 			this.node.send({
 				op: 'filters',
 				guildId: this.guild,
@@ -255,25 +247,22 @@ module.exports = Structure.extend('Player', player => {
 			});
 			return this;
 		}
-
 		clearEffects () {
 			this.speed = 1;
 			this.pitch = 1;
 			this.rate = 1;
-			this._8d = false;
-			this.bassboost = false;
-			this.nightcore = false;
-			this.vaporwave = false;
-			this.distortion = false;
+			this._8d = !1;
+			this.bassboost = !1;
+			this.nightcore = !1;
+			this.vaporwave = !1;
+			this.distortion = !1;
 			this.clearEQ();
-
 			this.node.send({
 				op: 'filters',
 				guildId: this.guild
 			});
 			return this;
 		}
-
 		arraymove (arr, oldi, newi) {
 			if (newi >= arr.length) {
 				let k = newi - arr.length + 1;

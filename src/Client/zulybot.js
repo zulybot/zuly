@@ -5,27 +5,21 @@ module.exports = class ZulybBot {
 		this.canvas = require('canvas');
 		this.Ebl = require('./EmbedBuilder').Embed;
 	}
-
 	async iniciar () {
 		await this.client.connect();
 		return 'zulybot';
 	}
-
 	async reload () {
 		for (const cache in require.cache) {
 			if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache];
 		}
-
 		require('./Handler/comandos');
-
 		process.removeAllListeners();
 		global.zuly.removeAllListeners();
 	}
-
 	get exit () {
 		return process.exit();
 	}
-
 	async fetch (url) {
 		const {
 			get
@@ -33,10 +27,8 @@ module.exports = class ZulybBot {
 		const {
 			data
 		} = await get(url);
-
 		return data;
 	}
-
 	color (color) {
 		if (typeof color === 'string') {
 			if (color.toLowerCase() === 'random') return Math.floor(Math.random() * (0xffffff + 1));
@@ -51,5 +43,3 @@ module.exports = class ZulybBot {
 		return color;
 	}
 };
-
-// LRD

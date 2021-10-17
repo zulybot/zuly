@@ -24,7 +24,7 @@ module.exports = (app) => {
 			});
 			console.log(req.body);
 		}
-		catch(e) {
+		catch (e) {
 			res.sendStatus(403);
 			console.log(e);
 		}

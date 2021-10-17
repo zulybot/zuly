@@ -1,26 +1,17 @@
-// Criado por lrd#0007
 const CollectorBase = require('./Collector.js');
-
 module.exports = class ReactionCollector extends CollectorBase {
-	/**
-     * Creates Reaction Collector;
-     * @param {Message} message
-     * @param {{}} options
-     */
 	constructor (message, options) {
 		super(message.channel.client);
-
 		this.options = {
 			time: options.time ? options.time : 90000,
 			emoji: options.emoji ? options.emoji : null,
 			user: options.user ? options.user : null,
 			message: options.message ? options.message : message,
 			max: options.max ? options.max : 5,
-			ignoreBots: options.ignoreBots ? options.ignoreBots : true,
+			ignoreBots: options.ignoreBots ? options.ignoreBots : !0,
 			acceptReactionRemove: !!options.acceptDeletedMessage,
 			stopOnCollect: !!options.stopOnCollect
 		};
-
 		this.createTimeout(this.options.time);
 		this.client.on('messageReactionAdd', (message, emoji, reactor) => {
 			return this.collect(message, emoji, reactor);
@@ -42,14 +33,6 @@ module.exports = class ReactionCollector extends CollectorBase {
 			}
 		});
 	}
-
-	/**
-     * Collect Reactions
-     * @param {Message} message
-     * @param {Emoji}emoji
-     * @param {Member} reactor
-     * @returns {null|*}
-     */
 	collect (message, emoji, reactor) {
 		if (this.ended) return;
 		if (reactor.user.bot) {
@@ -57,11 +40,7 @@ module.exports = class ReactionCollector extends CollectorBase {
 				return;
 			}
 		}
-
-		if (
-			message.id !== this.options.message.id ||
-            reactor.id !== this.options.user.id
-		) {
+		if (message.id !== this.options.message.id || reactor.id !== this.options.user.id) {
 			return null;
 		}
 		else if (emoji === this.options.emoji) {
