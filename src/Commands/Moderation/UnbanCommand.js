@@ -30,12 +30,6 @@ module.exports = class BanCommand {
             */
 			options: [
 				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false,
-				},
-				{
 					type: 6,
 					name: 'usermention',
 					description: 'The User Mention',

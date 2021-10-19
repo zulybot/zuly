@@ -43,12 +43,6 @@ module.exports = class KickCommand {
 				},
 				{
 					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false,
-				},
-				{
-					type: 3,
 					name: 'reason',
 					description: 'The reason for the kick',
 					required: false,
