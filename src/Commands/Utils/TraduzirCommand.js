@@ -50,13 +50,19 @@ module.exports = class PingCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`);
+		if (!ctx.args[0]) return ctx.message.channel.createMessage({
+			content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
+		});
 		if (!ctx.args[1]) {
-			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`);
+			return ctx.message.channel.createMessage({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
+			});
 		}
 		const translate = require('@vitalets/google-translate-api');
 		translate(ctx.args.slice(1).join(' '), { to: ctx.args[0] }).then(res => {
-			ctx.message.channel.createMessage(`🌎 ${ctx.message.author.mention} **|** ` + '`' + res.text.replace(/`/g, '').replace(/@/g, '') + '`');
+			ctx.message.channel.createMessage({
+				content: `🌎 ${ctx.message.author.mention} **|** ` + '`' + res.text.replace(/`/g, '').replace(/@/g, '') + '`'
+			});
 		});
 	}
 };

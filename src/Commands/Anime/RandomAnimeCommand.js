@@ -88,7 +88,7 @@ module.exports = class RandomAnimeCommand {
 					embed.setFooter('⤷ zulybot.xyz');
 					ctx.message.channel.createMessage({
 						content: ctx.message.author.mention,
-						embed: embed.get()
+						embeds: [embed.get()]
 					});
 				});
 			});
