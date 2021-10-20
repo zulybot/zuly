@@ -68,7 +68,7 @@ module.exports = class AutoroleCommand {
 		// COR DA EMBED
 		embed.setColor('#ffcbdb');
 		// CRIANDO OS NEGOCIO
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).then(msg => {

@@ -56,7 +56,7 @@ module.exports = class KickCommand {
 	async run (ctx) {
 		let member;
 		if (!ctx.args[0]) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}

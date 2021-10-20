@@ -43,13 +43,13 @@ module.exports = class PruneCommand {
 
 	async run (ctx) {
 		if (!ctx.args[0]) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.no}.`
 			});
 		}
 		// ctx.message.delete()
 		if (Number(ctx.args[0]) > 2000 || Number(ctx.args[0]) < 2) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.num}.`
 			});
 		}
@@ -61,7 +61,7 @@ module.exports = class PruneCommand {
 		});
 
 		ctx.message.channel.deleteMessages(ids);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** **${ctx.args[0]} ${ctx.idioma.clear.msg}.`
 		});
 	}

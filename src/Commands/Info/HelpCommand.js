@@ -69,7 +69,7 @@ module.exports = class Ajuda {
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
 
-					if (!cmd) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
 					const help = new ctx.embed();
 					help.setTitle('<:zu_info:880812942713573396> ' + `Informações do comando: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.addField('📚 Descrição:', `\`${cmd.pt.desc}\``, false);
@@ -80,7 +80,7 @@ module.exports = class Ajuda {
 
 					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
-					return ctx.message.channel.createMessage({
+					return ctx.message.channel.slashReply({
 						content: ctx.message.author.mention,
 						embeds: [help.get()],
 						flags: ctx.ephemeral
@@ -102,7 +102,7 @@ module.exports = class Ajuda {
 						`\`${comando.pt.nome}\``
 					);
 				});
-				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/2pFH6Yy) caso queira!`);
+				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/pyyyJpw5QW) caso queira!`);
 				embed.setThumbnail(global.zuly.user.avatarURL);
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -113,7 +113,7 @@ module.exports = class Ajuda {
 				else {
 					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.avatarURL);
 				}
-				ctx.message.channel.createMessage({
+				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
 					embeds: [embed.get()],
 					flags: ctx.ephemeral
@@ -125,7 +125,7 @@ module.exports = class Ajuda {
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
 
-					if (!cmd) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** This command does not exist`);
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** This command does not exist`);
 					const help = new ctx.embed();
 					help.setTitle('<:zu_info:880812942713573396> ' + `Command information: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.addField('📚 Description:', `\`${cmd.en.desc}\``, false);
@@ -136,7 +136,7 @@ module.exports = class Ajuda {
 
 					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
-					return ctx.message.channel.createMessage({
+					return ctx.message.channel.slashReply({
 						content: ctx.message.author.mention,
 						embeds: [help.get()],
 						flags: ctx.ephemeral
@@ -157,7 +157,7 @@ module.exports = class Ajuda {
 					}
 					categorias[cmd.en.categoria].push(`\`${cmd.en.nome}\``);
 				});
-				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/2pFH6Yy) if you want!`);
+				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/pyyyJpw5QW) if you want!`);
 				embed.setThumbnail(global.zuly.user.avatarURL);
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -169,7 +169,7 @@ module.exports = class Ajuda {
 				else {
 					embed.setFooter('⛔ ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
 				}
-				ctx.message.channel.createMessage({
+				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
 					embeds: [embed.get()],
 					flags: ctx.ephemeral

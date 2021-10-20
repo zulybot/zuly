@@ -43,12 +43,12 @@ module.exports = class PlayCommand {
 
 	async run (ctx) {
 		if (!ctx.args[0]) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.nada.replace('%p', ctx.prefix)}`
 			});
 		}
 		if (!ctx.message.member.voiceState.channelID) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
 			});
 		}
@@ -82,7 +82,7 @@ module.exports = class PlayCommand {
 		embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.play.add} **${track.title}**`);
 		embed.setColor('#ffcbdb');
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			embeds: [embed.get()]
 		});
 	}

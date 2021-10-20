@@ -45,7 +45,7 @@ module.exports = class BaninfoCommand {
 		const ReactionCollector = require('../../Helpers/ReactionCollector');
 
 		let member;
-		if (!ctx.args[0]) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
+		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
 
 		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
@@ -68,7 +68,7 @@ module.exports = class BaninfoCommand {
 		embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
 		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.avatarURL);
 		embed.setThumbnail(member.avatarURL);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).then(message => {
@@ -84,7 +84,7 @@ module.exports = class BaninfoCommand {
 			});
 			collector.on('collect', async () => {
 				await ctx.message.channel.guild.unbanMember(member.id, motivo);
-				ctx.message.channel.createMessage(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
+				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
 			});
 		});
 	}

@@ -57,7 +57,7 @@ module.exports = class CalcCommand {
 		embed.setImage(user.avatarURL);
 		embed.setThumbnail(global.zuly.avatarURL);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});

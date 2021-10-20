@@ -56,14 +56,14 @@ module.exports = class BanCommand {
 	async run (ctx) {
 		let member;
 		if (!ctx.args[0]) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
 		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info).catch(() => {
-				return ctx.message.channel.createMessage({
+				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
 				});
 			});
@@ -80,7 +80,7 @@ module.exports = class BanCommand {
 
 		ctx.message.channel.guild.banMember(member.id, 0, motivo);
 
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
 		});
 	}

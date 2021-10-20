@@ -45,19 +45,19 @@ module.exports = class EvalCommand {
 		const { token } = require('../../Config/config');
 		const regexToken = new RegExp(`${token}`, 'gi');
 		const msg = ctx.args.join(' ');
-		if (!msg) return ctx.message.channel.createMessage('algo');
+		if (!msg) return ctx.message.channel.slashReply('algo');
 		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('mongo')) return;
 		try {
 			let eva = await eval(msg);
 			if (eva instanceof Promise) eva = await eva;
 			if (typeof eva !== 'string') eva = await require('util').inspect(eva, { depth: 0 });
-			ctx.message.channel.createMessage({
+			ctx.message.channel.slashReply({
 				content: `\`\`\`js\n${eva.replace(regexToken, '\'amas\'').slice(0, 1990)}\`\`\``,
 				flags: ctx.ephemeral
 			});
 		}
 		catch (e) {
-			ctx.message.channel.createMessage({
+			ctx.message.channel.slashReply({
 				content: `\`\`\`js\n${`${e}`.slice(0, 1990)}\`\`\``,
 				flags: ctx.ephemeral
 			});

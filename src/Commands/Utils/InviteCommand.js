@@ -42,7 +42,7 @@ module.exports = class InviteCommand {
 		embed.setColor('#ffcbdb');
 		embed.setThumbnail(global.zuly.user.avatarURL);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});

@@ -49,7 +49,7 @@ module.exports = class rawWS {
 
 			const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
-			msg.channel.createMessage = function(txt) {
+			msg.channel.slashReply = function(txt) {
 				return global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
 					type: 4,
 					data: {
@@ -60,7 +60,7 @@ module.exports = class rawWS {
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
 					if (!command.permissoes.membro.every(p => msg.channel.guild.members.get(msg.author.id).permissions.has(p))) {
-						return msg.channel.createMessage({
+						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.user} \`${command.permissoes.membro}\`.`,
 							flags: 64
 						});
@@ -68,7 +68,7 @@ module.exports = class rawWS {
 				}
 				if (command.permissoes.bot.length) {
 					if (!command.permissoes.bot.every(p => msg.channel.guild.members.get(global.zuly.user.id).permissions.has(p))) {
-						return msg.channel.createMessage({
+						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`,
 							flags: 64
 						});
@@ -76,7 +76,7 @@ module.exports = class rawWS {
 				}
 				if (command.permissoes.nsfw) {
 					if (!msg.channel.nsfw) {
-						return msg.channel.createMessage({
+						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`,
 							flags: 64
 						});
@@ -89,7 +89,7 @@ module.exports = class rawWS {
 					}
 
 					if (!developers.includes(msg.member.id)) {
-						return msg.channel.createMessage({
+						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}.`,
 							flags: 64
 						});
@@ -112,10 +112,10 @@ module.exports = class rawWS {
 				embed: require('../Client/EmbedBuilder').Embed,
 				// Functions
 				send: function(texto) {
-				  msg.channel.createMessage(...texto);
+				  msg.channel.slashReply(...texto);
 				},
-				reply: function(texto, mencionar) {
-				  msg.channel.createMessage(texto, mencionar);
+				reply: function(texto) {
+				  msg.channel.slashReply(...texto);
 				},
 				addReaction: function(emoji) {
 				  msg.addReaction(emoji);
@@ -124,7 +124,25 @@ module.exports = class rawWS {
 				  await global.zuly.manager.fetch(url);
 				}
 			};
-			await command.run(this.ctx);
+			try {
+				await command.run(this.ctx);
+			}
+			catch (e) {
+				const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
+
+				const embed = new global.zuly.manager.Ebl();
+				embed.setTitle(`<:zu_error:900427660272996432> ${idioma.message.e}`);
+				embed.setColor('#ff0000');
+				embed.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
+				embed.addField(`<:zu_bughunter_1:885918998426951721> ${idioma.message.e2}`, idioma.message.e3);
+				embed.setThumbnail(global.zuly.user.avatarURL);
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+
+				msg.channel.createMessage({
+					content: msg.author.mention,
+					embeds: [embed.get()]
+				});
+			}
 		}
 	}
 };

@@ -36,9 +36,9 @@ module.exports = class StopCommand {
 
 	async run (ctx) {
 		const player = await global.zuly.music.players.get(ctx.message.channel.guild.id);
-		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`);
+		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`);
 		if (!player) {
-			return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.erela.not}`);
+			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.erela.not}`);
 		}
 		else {
 			player.destroy();
@@ -46,7 +46,7 @@ module.exports = class StopCommand {
 			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.erela.end}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			ctx.message.channel.createMessage({
+			ctx.message.channel.slashReply({
 				embeds: [embed.get()]
 			});
 		}

@@ -86,7 +86,7 @@ module.exports = class RandomAnimeCommand {
 					embed.setColor('#ffcbdb');
 					embed.setThumbnail(anime.attributes.posterImage.large);
 					embed.setFooter('⤷ zulybot.xyz');
-					ctx.message.channel.createMessage({
+					ctx.message.channel.slashReply({
 						content: ctx.message.author.mention,
 						embeds: [embed.get()]
 					});

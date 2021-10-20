@@ -16,7 +16,7 @@ module.exports = {
 		c: 'Aguarde %t segundos para usar outro comando.',
 		e: 'Ops, ocorreu um erro!',
 		e2: 'Reporte este erro!',
-		e3: 'Provavelmente minha equipe ja sabe sobre este erro, mas que tal você ajudar? Você pode abrir um [issue](https://github.com/zulybot/zuly/issues) no [github](https://github.com/zulybot/zuly) ou então reportar em meu [servidor de suporte](https://discord.gg/2pFH6Yy), vamos fazer o discord um lugar melhor, juntos 🤝',
+		e3: 'Provavelmente minha equipe ja sabe sobre este erro, mas que tal você ajudar? Você pode abrir um [issue](https://github.com/zulybot/zuly/issues) no [github](https://github.com/zulybot/zuly) ou então reportar em meu [servidor de suporte](https://discord.gg/pyyyJpw5QW), vamos fazer o discord um lugar melhor, juntos 🤝',
 		nsfw: 'Esse comando só pode ser usado em canais nsfw'
 	},
 	host: {

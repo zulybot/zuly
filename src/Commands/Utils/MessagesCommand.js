@@ -62,7 +62,7 @@ module.exports = class PingCommand {
 		embed.setTitle(`💬 ${ctx.idioma.messages.title}`);
 		embed.setColor('#ffcbdb');
 		embed.setDescription(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});

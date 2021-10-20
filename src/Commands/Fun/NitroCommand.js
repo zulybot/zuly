@@ -38,13 +38,12 @@ module.exports = class Nitro {
 		const { readFile } = require('fs');
 		const util = require('util');
 		const read = util.promisify(readFile);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: `<:zu_nitro:885919779205029898> ${ctx.message.author.mention} **|** discord\\.gift/${Math.random().toString(36).slice(-8)}`,
-		}, {
 			file: {
 				file: await read('./assets/images/memes/nitrofake.png'),
 				name: 'nitro.png'
-			},
+			}
 		});
 	}
 };

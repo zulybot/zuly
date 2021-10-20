@@ -94,7 +94,7 @@ module.exports = class ShipCommand {
 		foto.font = '300px Lemon-Brownies';
 		foto.fillText(`${nome}`, 2000, 2000);
 
-		ctx.message.channel.createMessage(`💖 ${ctx.message.author.mention} 💖`, {
+		ctx.message.channel.slashReply(`💖 ${ctx.message.author.mention} 💖`, {
 			file: edit.toBuffer(),
 			name: 'ship.png'
 		}).then(async () => {

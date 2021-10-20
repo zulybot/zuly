@@ -56,7 +56,7 @@ module.exports = class BotinfoCommand {
 			embed.addField(`<:zu_ram:889942152736555108> ${ctx.idioma.botinfo.recursos}`, `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%\n**Uptime:** ${uptime}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			ctx.message.channel.createMessage({
+			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});

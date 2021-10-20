@@ -37,7 +37,7 @@ module.exports = class AnimuCommand {
 	async run (ctx) {
 		const play = global.zuly.music.players.get(ctx.message.channel.guild.id);
 		if (!ctx.message.member.voiceState.channelID) {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
 			});
 		}
@@ -68,7 +68,7 @@ module.exports = class AnimuCommand {
 			embed.setDescription(`<:zu_animu:882344230515802152> **|** ${ctx.idioma.play.add} **Animu**`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			ctx.message.channel.createMessage({
+			ctx.message.channel.slashReply({
 				embeds: [embed.get()]
 			});
 		}

@@ -43,8 +43,8 @@ module.exports = class DailyCommand {
 		embed.addField(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);
 		embed.setColor('#ffcbdb');
 		embed.setThumbnail(global.zuly.user.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz');
-		ctx.message.channel.createMessage({
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});

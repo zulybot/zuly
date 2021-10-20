@@ -35,9 +35,9 @@ module.exports = class BetrayalCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.together.channel}`);
+		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.together.channel}`);
 		global.zuly.discordTogether.createTogetherCode(ctx.message.member.voiceState.channelID, 'betrayal').then(async invite => {
-			return ctx.message.channel.createMessage({
+			return ctx.message.channel.slashReply({
 				content: `🔫 ${ctx.message.author.mention} **|** ${ctx.idioma.together.done} ${invite.code} ${ctx.idioma.together.done2}`
 			});
 		});

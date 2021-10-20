@@ -39,7 +39,7 @@ module.exports = class Nitro {
 		embed.setColor('#ffcbdb');
 		embed.setImage('https://fn.zulybot.xyz/shop-now.png');
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.createMessage({
+		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});

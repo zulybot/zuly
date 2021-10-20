@@ -36,7 +36,7 @@ module.exports = class PingCommand {
 
 	async run (ctx) {
 		const ping = await global.db.ping;
-		return ctx.message.channel.createMessage({
+		return ctx.message.channel.slashReply({
 			content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${ping}ms\``
 		});
 	}

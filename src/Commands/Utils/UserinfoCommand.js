@@ -95,6 +95,6 @@ module.exports = class CalcCommand {
 		embed.thumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
 		embed.image(userb);
 
-		ctx.message.channel.createMessage(embed.create);
+		ctx.message.channel.slashReply(embed.create);
 	}
 };
