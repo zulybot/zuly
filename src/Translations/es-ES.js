@@ -16,7 +16,7 @@ module.exports = {
 		c: 'Espere %t segundos para usar otro comando.',
 		e: '¡Ups, algo salió mal!',
 		e2: 'Notificar este error!',
-		e3: 'Probablemente mi equipo ya conozca este error, pero ¿qué tal si ayuda? Puede abrir un [issue] (https://github.com/zulybot/zuly/issues) en [github] (https://github.com/zulybot/zuly) o informarlo a mi [servidor de soporte] (https://discord.gg/2pFH6Yy), hagamos de la discord un lugar mejor juntos 🤝',
+		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
 		nsfw: 'Este comando solo puede ser utilizado en el canal {0}'
 	},
 	host: {
@@ -93,7 +93,7 @@ module.exports = {
 	},
 	invite: {
 		add: 'Me Adicione ao seu servidor!',
-		desc: 'Yay, gostou de meus comandos? Ou de minhas funcionalidades? Me [adicione](https://discord.com/oauth2/authorize?client_id=%id&scope=bot%20applications.commands&permissions=805432446)\n\nPrecisa de ajuda ou algo do tipo? Entre em meu [servidor de suporte](https://discord.gg/pyyyJpw5QW), yay'
+		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/pyyyJpw5QW), yay'
 	},
 	ban: {
 		noarg: '**Mencione** algum usuário ou dê o **ID** do mesmo.',
