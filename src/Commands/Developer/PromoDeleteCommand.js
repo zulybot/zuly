@@ -46,11 +46,19 @@ module.exports = class EvalCommand {
 
 		const code = await global.db.get(ctx.args[0].toUpperCase());
 		if (!code) {
-			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Esse código não existe`);
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Esse código não existe`,
+				flags: ctx.ephemeral
+			});
 		}
 		else {
 			await global.db.delete(ctx.args[0].toUpperCase());
-			return ctx.message.channel.slashReply(`✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`);
+			const channel = await global.zuly.getRESTChannel('894981159119896576');
+			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Promocode: **${ctx.args[0].toUpperCase()}** ficou invalido.`);
+			return ctx.message.channel.slashReply({
+				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`,
+				flags: ctx.ephemeral
+			});
 		}
 	}
 };

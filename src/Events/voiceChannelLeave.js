@@ -13,7 +13,7 @@ module.exports = class voiceChannelLeave {
 		}
 		if (!member.bot && oldChannel.id === player.voiceChannel && !oldChannel.voiceMembers.filter(m => !m.bot).length && oldChannel.id !== process.env.VOICECHANNELID) {
 			player.destroy();
-			await global.zuly.createMessage(player.textChannel, ':warning: Parei a música porque fiquei sozinho no canal de voz.');
+			await global.zuly.createMessage(player.textChannel, ':warning: Parei a música porque fiquei sozinha no canal de voz.');
 		}
 	}
 };

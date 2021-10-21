@@ -57,6 +57,7 @@ module.exports = class rawWS {
 					}
 				});
 			};
+
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
 					if (!command.permissoes.membro.every(p => msg.channel.guild.members.get(msg.author.id).permissions.has(p))) {
@@ -129,9 +130,8 @@ module.exports = class rawWS {
 			}
 			catch (e) {
 				const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
-
 				const embed = new global.zuly.manager.Ebl();
-				embed.setTitle(`<:zu_error:900427660272996432> ${idioma.message.e}`);
+				embed.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
 				embed.setColor('#ff0000');
 				embed.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
 				embed.addField(`<:zu_bughunter_1:885918998426951721> ${idioma.message.e2}`, idioma.message.e3);
@@ -141,6 +141,20 @@ module.exports = class rawWS {
 				msg.channel.createMessage({
 					content: msg.author.mention,
 					embeds: [embed.get()]
+				});
+				const moment = require('moment');
+				const owner = await global.zuly.getRESTUser(msg.channel.guild.ownerID);
+				const canal = await global.zuly.getRESTChannel('889930854929932288');
+				const embed2 = new global.zuly.manager.Ebl();
+				embed2.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
+				embed2.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
+				embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Creado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Região:** \`${msg.channel.guild.region}\`\n<:zu_slash:886681118470987967> **Comando:** \`${packet.d.data.name}\``);
+				embed2.setColor('#ff0000');
+				embed2.setThumbnail(global.zuly.user.avatarURL);
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				canal.createMessage({
+					content: '<@&886680759237226556>',
+					embeds: [embed2.get()]
 				});
 			}
 		}

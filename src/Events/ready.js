@@ -22,7 +22,19 @@ module.exports = class ReadyEvent {
 		const adg = await global.zuly.getRESTUser('726449359167684734');
 		const status = [`zulybot.xyz | ${global.zuly.user.username} [v${version}]`, `I'm on ${global.zuly.guilds.size} servers | ${global.zuly.user.username} [v${version}]`, `Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v${version}]`, `z!help | ${global.zuly.user.username} [v${version}]`, `z!upvote | ${global.zuly.user.username} [v${version}]`, `z!invite | ${global.zuly.user.username} [v${version}]`, `Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v${version}]`, `I was created by: ${adg.username}#${adg.discriminator}`];
 		const presence = ['online', 'idle', 'dnd'];
-		setInterval(() => {
+		setInterval(async () => {
+			const backupchannel = await global.zuly.getRESTChannel('900812224610856971');
+			const {
+				readFile
+			} = require('fs');
+			const util = require('util');
+			const read = util.promisify(readFile);
+			const moment = require('moment');
+
+			backupchannel.createMessage(`<:zu_host:885220885101940796> Backup do banco de dados (principal)! | ${moment().format('DD/MM/YYYY | h:mm:ss')}`, {
+				file: await read('./data/base.json'),
+				name: 'base.json'
+			});
 			global.zuly.editStatus(presence[Math.floor(Math.random() * presence.length)], {
 				game: global.zuly.user.username,
 				name: status[Math.floor(Math.random() * status.length)],

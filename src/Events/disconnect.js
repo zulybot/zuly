@@ -6,7 +6,7 @@ module.exports = class DisconnectEvent {
 		};
 	}
 	async run () {
-		console.log('[ZULY STATUS ERROR] disconnected, in some seconds, zuly return'.red);
+		console.log('[DISCONNECT] disconnected, in some seconds, zuly return'.red);
 		global.zuly.connect();
 	}
 };
