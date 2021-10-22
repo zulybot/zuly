@@ -47,11 +47,11 @@ module.exports = class BaninfoCommand {
 		let member;
 		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
 
-		if (!ctx.message.mentions[0]) {
+		if (!ctx.message.mentions[1]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.message.mentions[1];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');

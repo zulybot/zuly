@@ -61,11 +61,11 @@ module.exports = class KickCommand {
 			});
 		}
 
-		if (!ctx.message.mentions[0]) {
+		if (!ctx.message.mentions[1]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]);
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.message.mentions[1];
 		}
 		let banReason;
 		if (ctx.args[1]) {

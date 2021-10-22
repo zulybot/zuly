@@ -36,7 +36,7 @@ const client = new Client(token, {
 		PRESENCE_UPDATE: !0,
 	},
 	getAllUsers: !1,
-	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions'],
+	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 50,

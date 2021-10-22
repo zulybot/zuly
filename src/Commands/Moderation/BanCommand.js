@@ -61,7 +61,7 @@ module.exports = class BanCommand {
 			});
 		}
 
-		if (!ctx.message.mentions[0]) {
+		if (!ctx.message.mentions[1]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
@@ -69,7 +69,7 @@ module.exports = class BanCommand {
 			});
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.message.mentions[1];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');

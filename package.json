@@ -5,7 +5,7 @@
   "main": "src/zuly.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "node --expose-gc .",
+    "start": "node --optimize_for_size --expose-gc --gc-interval=100 .",
     "forever": "forever start src/zuly.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },

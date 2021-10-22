@@ -108,10 +108,10 @@ module.exports = class Ajuda {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
 				}
 				if (!ctx.message.channel.nsfw) {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '));
+					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
 				}
 				else {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.avatarURL);
+					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
 				}
 				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
@@ -164,10 +164,10 @@ module.exports = class Ajuda {
 				}
 
 				if (!ctx.message.channel.nsfw) {
-					embed.setFooter('⛔ https://zulybot.xyz ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
+					embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.nsfw}  ${ctx.idioma.help.nsfw} ${ctx.idioma.help.creators} ${ctx.idioma.help.nsfw} ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.avatarURL);
 				}
 				else {
-					embed.setFooter('⛔ ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
+					embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.avatarURL);
 				}
 				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,

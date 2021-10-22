@@ -76,25 +76,28 @@ module.exports = class CalcCommand {
 		}
 
 
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
 		const userb = await global.zuly.getRESTBanner(user.id);
 
 		if (user.avatar.startsWith('a_')) {
-			embed.title(`${user.username} <:zu_nitro:885919779205029898> ${badges.join(' ')}`);
+			embed.setTitle(`${user.username} <:zu_nitro:885919779205029898> ${badges.join(' ')}`);
 		}
 		else {
-			embed.title(`${user.username} <:zu_basic:885925886837264384> ${badges.join(' ')}`);
+			embed.setTitle(`${user.username} <:zu_basic:885925886837264384> ${badges.join(' ')}`);
 		}
 
-		embed.field(`📘 ${ctx.idioma.userinfo.tag} __${user.username}__`, `\`${user.username}#${user.discriminator}\``);
-		embed.field(`📚 ${ctx.idioma.userinfo.id} __${user.username}__`, `\`${user.id}\``);
-		embed.field(`📆 ${ctx.idioma.userinfo.create}`, `<t:${Math.floor(user.createdAt / 1000)}>`);
-		embed.color('#ffcbdb');
-		embed.thumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
-		embed.image(userb);
+		embed.addField(`📘 ${ctx.idioma.userinfo.tag} __${user.username}__`, `\`${user.username}#${user.discriminator}\``);
+		embed.addField(`📚 ${ctx.idioma.userinfo.id} __${user.username}__`, `\`${user.id}\``);
+		embed.addField(`📆 ${ctx.idioma.userinfo.create}`, `<t:${Math.floor(user.createdAt / 1000)}>`);
+		embed.setColor('#ffcbdb');
+		embed.setThumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
+		embed.setImage(userb);
 
-		ctx.message.channel.slashReply(embed.create);
+		ctx.message.channel.slashReply({
+			content: ctx.message.author.mention,
+			embeds: [embed.get()]
+		});
 	}
 };

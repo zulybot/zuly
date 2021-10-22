@@ -7,6 +7,10 @@
 .openode
 Dockerfile
 
+## DATABASE FILES
+
+data/base.json
+
 ## CONFIDENCIAL files
 
 src/Client/Plugins/nodes.js

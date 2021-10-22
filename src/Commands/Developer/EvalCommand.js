@@ -45,7 +45,12 @@ module.exports = class EvalCommand {
 		const { token } = require('../../Config/config');
 		const regexToken = new RegExp(`${token}`, 'gi');
 		const msg = ctx.args.join(' ');
-		if (!msg) return ctx.message.channel.slashReply('algo');
+		if (!msg) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será evaluado!`,
+				flags: ctx.ephemeral
+			});
+		}
 		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('mongo')) return;
 		try {
 			let eva = await eval(msg);

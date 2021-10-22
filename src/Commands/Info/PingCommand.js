@@ -35,9 +35,13 @@ module.exports = class PingCommand {
 	}
 
 	async run (ctx) {
-		const ping = await global.db.ping;
+		const mongoose = require('mongoose');
+		const date = Date.now();
+		const pingDB = new Promise((r) =>
+			mongoose.connection.db.admin().ping(() => r(Date.now() - date))
+		);
 		return ctx.message.channel.slashReply({
-			content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${ping}ms\``
+			content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\``
 		});
 	}
 };
