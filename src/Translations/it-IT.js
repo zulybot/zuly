@@ -16,7 +16,7 @@ module.exports = {
 		c: 'Wait %t seconds to use another command.',
 		e: 'Oops, an error happened!',
 		e2: 'Report this error!',
-		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/starbot/issues) in [github](https://github.com/zulybot/starbot) or report it to my [support server](https://discord.gg/2pFH6Yy), let\'s make the discord a better place, together 🤝',
+		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
 		nsfw: 'This command can only be used on nsfw channels'
 	},
 	host: {
@@ -93,7 +93,7 @@ module.exports = {
 	},
 	invite: {
 		add: 'Add me to your server!',
-		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/2pFH6Yy), yay'
+		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/pyyyJpw5QW), yay'
 	},
 	ban: {
 		noarg: '**Mention** some user or give the **ID** of the same.',
