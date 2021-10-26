@@ -73,7 +73,8 @@ module.exports = {
 	erela: {
 		np: 'Tocando agora',
 		end: 'A música acabou, estou saindo',
-		not: 'Não estou tocando nada no servidor.'
+		not: 'Não estou tocando nada no servidor.',
+		voice: 'I was alone on the voice channel, I\'m leaving!'
 	},
 	play: {
 		nothing: 'Arguments are missing, use `%pplay <music | url>`',
