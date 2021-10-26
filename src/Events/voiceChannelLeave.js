@@ -13,7 +13,17 @@ module.exports = class voiceChannelLeave {
 		}
 		if (!member.bot && oldChannel.id === player.voiceChannel && !oldChannel.voiceMembers.filter(m => !m.bot).length && oldChannel.id !== process.env.VOICECHANNELID) {
 			player.destroy();
-			await global.zuly.createMessage(player.textChannel, ':warning: Parei a música porque fiquei sozinha no canal de voz.');
+			let idioma = require('../Config/idiomas');
+			let lang = await global.db.get(`idioma-${member.guild.id}`) || 'pt_br';
+			lang = lang.replace(/-/g, '_');
+			idioma = idioma[lang];
+			const embed = new global.zuly.manager.Ebl();
+			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.voice}`);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setColor('#ffcbdb');
+			await global.zuly.createMessage(player.textChannel, {
+				embed: embed.get()
+			});
 		}
 	}
 };

@@ -52,22 +52,18 @@ module.exports = class PlayCommand {
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
 			});
 		}
-
 		const res = await global.zuly.music.search(ctx.args.join(' '), ctx.message.author);
 		const play = global.zuly.music.players.get(ctx.message.channel.guild.id);
-
 		if (!play) {
 			const player = global.zuly.music.create({
 				guild: ctx.message.channel.guild.id,
 				voiceChannel: ctx.message.member.voiceState.channelID,
 				textChannel: ctx.message.channel.id,
 				selfDeafen: true,
-				volume: 50
+				volume: 100
 			});
-
 			await player.connect();
 		}
-
 		const player = global.zuly.music.players.get(ctx.message.channel.guild.id);
 		player.queue.add(res.tracks[0]);
 		const track = res.tracks[0];

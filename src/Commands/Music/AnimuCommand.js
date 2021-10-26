@@ -48,7 +48,7 @@ module.exports = class AnimuCommand {
 				voiceChannel: ctx.message.member.voiceState.channelID,
 				textChannel: ctx.message.channel.id,
 				selfDeafen: true,
-				volume: 50
+				volume: 100
 			});
 			await player.connect();
 		}
