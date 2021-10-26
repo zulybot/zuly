@@ -42,7 +42,11 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`
+			});
+		}
 		global.db.set(`about-${ctx.message.author.id}`, ctx.args.join(' '));
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`

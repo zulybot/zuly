@@ -35,7 +35,11 @@ module.exports = class FishingCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.together.channel}`);
+		if (!ctx.message.member.voiceState.channelID) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.together.channel}`
+			});
+		}
 		global.zuly.discordTogether.createTogetherCode(ctx.message.member.voiceState.channelID, 'fishing').then(async invite => {
 			return ctx.message.channel.slashReply({
 				content: `🐟 ${ctx.message.author.mention} **|** ${ctx.idioma.together.done} ${invite.code} ${ctx.idioma.together.done2}`

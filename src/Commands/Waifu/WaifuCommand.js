@@ -36,6 +36,10 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
+		ctx.message.channel.slashReply({
+			content: `✅ ${ctx.message.author.mention} **|** OwO, you're seeing this!`,
+			flags: ctx.ephemeral
+		});
 		const ReactionCollector = require('../../Helpers/ReactionCollector');
 		const { get } = require('axios');
 		await get('https://waifu-generator.vercel.app/api/v1').then(async response => {
@@ -63,7 +67,7 @@ module.exports = class EvalCommand {
 			else {
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			}
-			ctx.message.channel.slashReply({
+			ctx.message.channel.createMessage({
 				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			}).then(async message => {
@@ -81,7 +85,7 @@ module.exports = class EvalCommand {
 					MarryCollector.on('collect', async () => {
 						const date = Date.now();
 						const marrytime = await global.db.get(`timeout-${ctx.message.author.id}`);
-						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
+						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.createMessage(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
 						const ryos = await global.db.get(`ryos-${ctx.message.author.id}`);
 						if (ryos) {
 							global.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);

@@ -8,9 +8,13 @@ module.exports = class GuildCreate {
 	async run (guild) {
 		const system = require('../Config/system');
 		const ch = await global.zuly.getRESTChannel('880863493472022539');
+		const ch2 = await global.zuly.getRESTChannel('902632703160094752');
 
 		ch.edit({
 			name: `🧭 → Servers [${global.zuly.guilds.size}]`
+		});
+		ch2.edit({
+			name: `👤 → Users [${global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0).toLocaleString()}]`
 		});
 
 		const moment = require('moment');

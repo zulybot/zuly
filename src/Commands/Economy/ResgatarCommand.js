@@ -42,7 +42,11 @@ module.exports = class ResgatarCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.noarg.replace('%p', ctx.prefix)}`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.noarg.replace('%p', ctx.prefix)}`
+			});
+		}
 		const codigo = ctx.args[0].toUpperCase();
 		const valor = await global.db.get(codigo);
 		if (!valor) {

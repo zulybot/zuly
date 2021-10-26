@@ -45,7 +45,11 @@ module.exports = class BaninfoCommand {
 		const ReactionCollector = require('../../Helpers/ReactionCollector');
 
 		let member;
-		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+			});
+		}
 
 		if (!ctx.message.mentions[1]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
