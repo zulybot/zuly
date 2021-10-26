@@ -1,6 +1,6 @@
 {
   "name": "zuly",
-  "version": "1.7",
+  "version": "1.8",
   "description": "Hi, I'm zuly, a just brazilian bot focused on anime!",
   "main": "src/zuly.js",
   "scripts": {
