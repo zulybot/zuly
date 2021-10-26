@@ -632,6 +632,11 @@ erela.js@^2.3.3:
     petitio "^1.1.0"
     ws "^7.3.1"
 
+eris-antispam@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eris-antispam/-/eris-antispam-1.0.0.tgz#21295d21433d83d5b74746aaa3619f35735620f0"
+  integrity sha512-MicDPE/ByoG8Ejo9UoqDjhNtb7q9xGESog92u8gB/9a3iPif1oSjStkcH6bo76x+yj8jSZIvEsuRvRkPBNerMA==
+
 eris@abalabahaha/eris#dev:
   version "0.16.0-dev"
   resolved "https://codeload.github.com/abalabahaha/eris/tar.gz/93ce3655e27d629c6f4486b76af4ae99969e067c"
