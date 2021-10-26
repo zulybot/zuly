@@ -7,6 +7,7 @@ module.exports = class ReadyEvent {
 		};
 	}
 	async run () {
+
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		setInterval(() => {
 			if (global.gc) {
