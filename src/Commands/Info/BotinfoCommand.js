@@ -9,12 +9,12 @@ module.exports = class BotinfoCommand {
 			pt: {
 				nome: 'botinfo',
 				categoria: '📖 » Informação',
-				desc: 'Veja as informações do bot'
+				desc: 'Veja as informações do bot.'
 			},
 			en: {
 				nome: 'botinfo',
 				categoria: '📖 » Information',
-				desc: 'see bot info'
+				desc: 'See bot information.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

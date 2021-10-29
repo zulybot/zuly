@@ -10,12 +10,12 @@ module.exports = class EvalCommand {
 			pt: {
 				nome: 'profile',
 				categoria: '💰 » Economia',
-				desc: 'Vê informação de waifu'
+				desc: 'Vê o seu perfil na economia.'
 			},
 			en: {
 				nome: 'profile',
 				categoria: '💰 » Economy',
-				desc: 'See waifu info.'
+				desc: 'See your profile in the economy.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

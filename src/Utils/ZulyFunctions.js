@@ -1,4 +1,5 @@
 const config = require('../Config/config');
+const API = require('../API/keys');
 const fetch = require('node-fetch');
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
@@ -40,5 +41,8 @@ function uptime (lang) {
 	}
 	return totalUptime;
 }
+const deepai = require('deepai');
+deepai.setApiKey(API.deep);
+global.zuly.deepai = deepai;
 global.zuly.getBotUptime = uptime;
 global.zuly.getRESTBanner = banner;

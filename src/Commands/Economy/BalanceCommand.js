@@ -9,12 +9,12 @@ module.exports = class DailyCommand {
 			pt: {
 				nome: 'balance',
 				categoria: '💰 » Economia',
-				desc: 'Pegue seu dinheiro diário.'
+				desc: 'Mostra a quantia de dinheiro que você tem.'
 			},
 			en: {
 				nome: 'balance',
 				categoria: '💰 » Economy',
-				desc: 'take your daily money.'
+				desc: 'Shows the amount of money you have.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

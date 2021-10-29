@@ -10,12 +10,12 @@ module.exports = class InviteCommand {
 			pt: {
 				nome: 'invite',
 				categoria: '🕰️ » Utilidades',
-				desc: 'Envia o link para me adicionar a outros servidores'
+				desc: 'Envia o link para me adicionar a outros servidores!'
 			},
 			en: {
 				nome: 'invite',
 				categoria: '🕰️ » Utility',
-				desc: 'Send the link to add me to other servers'
+				desc: 'Send the link to add me to other servers!'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

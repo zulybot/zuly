@@ -9,12 +9,12 @@ module.exports = class HostCommand {
 			pt: {
 				nome: 'host',
 				categoria: '📖 » Informação',
-				desc: 'Veja as informações da host'
+				desc: 'Veja as informações da host.'
 			},
 			en: {
 				nome: 'host',
 				categoria: '📖 » Information',
-				desc: 'see host info'
+				desc: 'See host information.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

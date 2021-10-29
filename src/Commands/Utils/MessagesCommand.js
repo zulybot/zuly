@@ -10,12 +10,12 @@ module.exports = class PingCommand {
 			pt: {
 				nome: 'messages',
 				categoria: '🕰️ » Utilidades',
-				desc: 'Veja as mensagens de algum usuário'
+				desc: 'Veja a quantidade de mensagens de algum usuário.'
 			},
 			en: {
 				nome: 'messages',
 				categoria: '🕰️ » Utility',
-				desc: 'See a user messages'
+				desc: 'See the amount of messages from any user.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

@@ -9,12 +9,12 @@ module.exports = class StopCommand {
 			pt: {
 				nome: 'stop',
 				categoria: '🎵 » Música',
-				desc: 'Para a música'
+				desc: 'Para a música.'
 			},
 			en: {
 				nome: 'stop',
 				categoria: '🎵 » Music',
-				desc: 'Stop the music'
+				desc: 'Stop the music.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand
@@ -36,9 +36,15 @@ module.exports = class StopCommand {
 
 	async run (ctx) {
 		const player = await global.zuly.music.players.get(ctx.message.channel.guild.id);
-		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`);
+		if (!ctx.message.member.voiceState.channelID) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`
+			});
+		}
 		if (!player) {
-			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.erela.not}`);
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.erela.not}`
+			});
 		}
 		else {
 			player.destroy();
@@ -47,6 +53,7 @@ module.exports = class StopCommand {
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});
 		}

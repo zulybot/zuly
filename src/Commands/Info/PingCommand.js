@@ -9,12 +9,12 @@ module.exports = class PingCommand {
 			pt: {
 				nome: 'ping',
 				categoria: '📖 » Informação',
-				desc: 'Veja a latência do bot'
+				desc: 'Veja a latência do bot.'
 			},
 			en: {
 				nome: 'ping',
 				categoria: '📖 » Information',
-				desc: 'See bot latency'
+				desc: 'See bot latency.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

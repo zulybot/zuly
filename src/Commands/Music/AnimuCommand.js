@@ -9,12 +9,12 @@ module.exports = class AnimuCommand {
 			pt: {
 				nome: 'animu',
 				categoria: '🎵 » Música',
-				desc: 'Toca a radio de anime, Animu'
+				desc: 'Toca a radio de anime, Animu.'
 			},
 			en: {
 				nome: 'animu',
 				categoria: '🎵 » Music',
-				desc: 'Play anime radio, Animu'
+				desc: 'Play anime radio, Animu.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand
@@ -69,6 +69,7 @@ module.exports = class AnimuCommand {
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});
 		}

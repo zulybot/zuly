@@ -9,12 +9,12 @@ module.exports = class Nitro {
 			pt: {
 				nome: 'nitro',
 				categoria: '⭐ » Diversão',
-				desc: 'Cria uma conquista do minecraft'
+				desc: '"Compra" um nitro para você'
 			},
 			en: {
 				nome: 'nitro',
 				categoria: '⭐ » Fun',
-				desc: 'Create a minecraft achievement'
+				desc: '"Buy" a nitro for you.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

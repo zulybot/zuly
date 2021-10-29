@@ -9,12 +9,12 @@ module.exports = class PruneCommand {
 			pt: {
 				nome: 'prune',
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
-				desc: 'Limpe as mensagens de algum canal'
+				desc: 'Limpe as mensagens de algum canal.'
 			},
 			en: {
 				nome: 'prune',
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
-				desc: 'See bot latency'
+				desc: 'Clear messages from any channel.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

@@ -9,12 +9,12 @@ module.exports = class PlayCommand {
 			pt: {
 				nome: 'play',
 				categoria: '🎵 » Música',
-				desc: 'Ouça músicas, yay'
+				desc: 'Ouça músicas, yay.'
 			},
 			en: {
 				nome: 'play',
 				categoria: '🎵 » Music',
-				desc: 'Listen musics, yay'
+				desc: 'Listen musics, yay.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

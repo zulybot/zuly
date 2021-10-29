@@ -9,12 +9,12 @@ module.exports = class DailyCommand {
 			pt: {
 				nome: 'aboutme',
 				categoria: '💰 » Economia',
-				desc: 'Veja seu perfil'
+				desc: 'Altera o seu "Sobre Mim" para alguma frase legal.'
 			},
 			en: {
 				nome: 'aboutme',
 				categoria: '💰 » Economy',
-				desc: 'See you profile'
+				desc: 'Change your "About Me" to some cool phrase.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

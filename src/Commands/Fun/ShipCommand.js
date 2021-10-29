@@ -9,12 +9,12 @@ module.exports = class ShipCommand {
 			pt: {
 				nome: 'ship',
 				categoria: '⭐ » Diversão',
-				desc: 'Pegue seu dinheiro diário.'
+				desc: 'Shippa você com outra pessoa.'
 			},
 			en: {
 				nome: 'ship',
 				categoria: '⭐ » Fun',
-				desc: 'Take your daily money.'
+				desc: 'Ship you with someone else.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

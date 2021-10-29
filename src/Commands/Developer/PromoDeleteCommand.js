@@ -9,12 +9,12 @@ module.exports = class EvalCommand {
 			pt: {
 				nome: 'promodelete',
 				categoria: '💻 » Dev',
-				desc: 'dev'
+				desc: 'Deleta um promocode da economia'
 			},
 			en: {
 				nome: 'promodelete',
 				categoria: '💻 » Dev',
-				desc: 'dev'
+				desc: 'Delete an economy promocode'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

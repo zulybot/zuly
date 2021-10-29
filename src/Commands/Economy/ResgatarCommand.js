@@ -9,12 +9,12 @@ module.exports = class ResgatarCommand {
 			pt: {
 				nome: 'resgatar',
 				categoria: '💰 » Economia',
-				desc: 'Pegue seu dinheiro diário.'
+				desc: 'Resgatar algum código válido na economia.'
 			},
 			en: {
 				nome: 'resgatar',
 				categoria: '💰 » Economy',
-				desc: 'Take your daily money.'
+				desc: 'Redeem some valid code in the economy.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

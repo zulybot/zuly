@@ -9,12 +9,12 @@ module.exports = class KickCommand {
 			pt: {
 				nome: 'kick',
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
-				desc: 'Bane algum usuário babaca de seu servidor.'
+				desc: 'Expulsa algum usuário babaca de seu servidor.'
 			},
 			en: {
 				nome: 'kick',
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
-				desc: 'Bane algum usuário babaca de seu servidor'
+				desc: 'Kick some idiot user from your server.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

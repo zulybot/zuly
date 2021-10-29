@@ -9,12 +9,12 @@ module.exports = class Nitro {
 			pt: {
 				nome: 'fnshop',
 				categoria: '⭐ » Diversão',
-				desc: 'Mostra a loja diária do fortnite'
+				desc: 'Mostra a loja diária do fortnite.'
 			},
 			en: {
 				nome: 'fnshop',
 				categoria: '⭐ » Fun',
-				desc: 'Shows the Fortnite Daily Store'
+				desc: 'Shows the Fortnite Daily Store.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand

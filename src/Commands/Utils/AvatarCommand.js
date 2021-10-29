@@ -9,12 +9,12 @@ module.exports = class CalcCommand {
 			pt: {
 				nome: 'avatar',
 				categoria: '🕰️ » Utilidades',
-				desc: 'Veja informações sobre um usuário'
+				desc: 'Veja o avatar de algum usuário.'
 			},
 			en: {
 				nome: 'avatar',
 				categoria: '🕰️ » Utility',
-				desc: 'View information about a user'
+				desc: 'See a user\'s avatar.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

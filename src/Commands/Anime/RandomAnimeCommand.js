@@ -10,7 +10,7 @@ module.exports = class RandomAnimeCommand {
 			pt: {
 				nome: 'random-anime',
 				categoria: '📺 » Anime',
-				desc: 'Anime aleatório'
+				desc: 'Anime aleatório.'
 			},
 			en: {
 				nome: 'random-anime',

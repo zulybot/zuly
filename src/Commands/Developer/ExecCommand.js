@@ -7,12 +7,12 @@ module.exports = class EvalCommand {
 				dono: true
 			},
 			pt: {
-				nome: 'eval',
+				nome: 'exec',
 				categoria: '💻 » Dev',
 				desc: 'Evalue codes.'
 			},
 			en: {
-				nome: 'eval',
+				nome: 'exec',
 				categoria: '💻 » Dev',
 				desc: 'Value codes.'
 			},

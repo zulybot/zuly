@@ -14,7 +14,7 @@ module.exports = class DailyCommand {
 			en: {
 				nome: 'daily',
 				categoria: '💰 » Economy',
-				desc: 'take your daily money.'
+				desc: 'Take your daily money.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand
