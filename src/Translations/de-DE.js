@@ -1,5 +1,10 @@
 module.exports = {
 	lang: 'de',
+	fnshop: {
+		args: 'Include the channel ID that will be sent to the fortnite store.',
+		channel: 'I don\'t have permission to send messages on the mentioned channel.',
+		sucess: 'Channel set successfully!'
+	},
 	labels: {
 		add: 'Me Adicione!',
 		support: 'Servidor de Suporte!',
@@ -74,7 +79,8 @@ module.exports = {
 		np: 'Tocando agora',
 		end: 'A música acabou, estou saindo',
 		not: 'Não estou tocando nada no servidor.',
-		voice: 'I was alone on the voice channel, I\'m leaving!'
+		voice: 'I was alone on the voice channel, I\'m leaving!',
+		duration: 'Duration:'
 	},
 	play: {
 		nothing: 'Arguments are missing, use `%pplay <music | url>`',
