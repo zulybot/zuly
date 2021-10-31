@@ -1,5 +1,8 @@
 module.exports = {
 	lang: 'pt',
+	docs: {
+		args: 'Diga o que será pesquisado na documentação.'
+	},
 	fnshop: {
 		args: 'Inclua o ID do canal que será enviado a loja do fortnite.',
 		channel: 'Não tenho permissão para enviar mensagens no canal citado.',
