@@ -602,7 +602,8 @@ erela.js@^2.3.3:
 
 eris@abalabahaha/eris#dev:
   version "0.16.0-dev"
-  resolved "https://codeload.github.com/abalabahaha/eris/tar.gz/59a35bbd31d8c2a9dc68ae7b2390e75717cb4b78"
+  uid aa8bedf41a30fae55561ef0d269d313ef5a59912
+  resolved "https://codeload.github.com/abalabahaha/eris/tar.gz/aa8bedf41a30fae55561ef0d269d313ef5a59912"
   dependencies:
     ws "^7.4.6"
   optionalDependencies:
