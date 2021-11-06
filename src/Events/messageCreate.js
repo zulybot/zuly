@@ -10,6 +10,20 @@ module.exports = class MessageEventCommand {
 		const config = require('../Config/config.js');
 		global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		if (message.channel.type === 1) return;
+		const { get } = require('axios');
+
+		await get('https://bad-domains.walshy.dev/domains.json').then(async (response) => {
+			const domains = response.data;
+			domains.map(domain => {
+				if (message.content.includes(domain)) {
+					message.delete();
+					return message.channel.createMessage({
+						content: `:x: ${message.author.mention} **|** Este dominio foi bloqueado por ser "links de scam" aonde você pode perder sua conta nele.`
+					});
+				}
+			});
+		});
+
 		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
 		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
 		let idioma = require('../Config/idiomas');
