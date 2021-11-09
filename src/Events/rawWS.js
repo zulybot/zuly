@@ -53,7 +53,7 @@ module.exports = class rawWS {
 					data: {
 						...txt
 					}
-				});
+				}).then((msg) => new Message(msg, global.zuly));
 			};
 
 			if (command.permissoes) {
@@ -124,7 +124,20 @@ module.exports = class rawWS {
 				}
 			};
 			try {
-				await command.run(this.ctx);
+				await command.run(this.ctx).then(async () => {
+					const moment = require('moment');
+					const owner = await global.zuly.getRESTUser(msg.channel.guild.ownerID);
+					const embed = new global.zuly.manager.Ebl();
+					embed.setTitle('<:zu_slash:886681118470987967> Slash Commands');
+					embed.setColor('#ffcbdb');
+					embed.setDescription(`🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${packet.d.data.name}\`\n💻 **Argumentos:** \`${args || 'Não Tem'}\``);
+					embed.setThumbnail(global.zuly.user.avatarURL);
+					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+					const canal = await global.zuly.getRESTChannel('886680915407962215');
+					canal.createMessage({
+						embeds: [embed.get()]
+					});
+				});
 			}
 			catch (e) {
 				const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
