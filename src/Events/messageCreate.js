@@ -10,22 +10,19 @@ module.exports = class MessageEventCommand {
 		const config = require('../Config/config.js');
 		global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		if (message.channel.type === 1) return;
-		const automod = await global.db.get(`automod-${message.channel.guild.id}`);
-		if (automod) {
-			const { get } = require('axios');
-			await get('https://bad-domains.walshy.dev/domains.json').then(async (response) => {
-				const domains = response.data;
-				domains.map(domain => {
-					if (message.content.includes(domain)) {
-						message.delete();
-						return message.channel.createMessage({
-							content: `:x: ${message.author.mention} **|** Este dominio foi bloqueado por ser "links de scam" aonde você pode perder sua conta nele.`
-						});
-					}
-				});
-			});
-		}
-
+		const {
+			get
+		} = require('axios');
+		await get('https://bad-domains.walshy.dev/domains.json').then(async (response) => {
+			const domains = response.data;
+			for (const domain of domains) {
+				if (message.content.includes(domain)) {
+					message.delete();
+					message.channel.createMessage(`:x: ${message.author.mention} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`);
+					break;
+				}
+			}
+		});
 		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
 		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
 		let idioma = require('../Config/idiomas');

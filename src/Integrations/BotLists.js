@@ -11,7 +11,7 @@ module.exports = (app) => {
 			const ch = await global.zuly.getRESTChannel('890316877031698464');
 			const user = await global.zuly.getRESTUser(data.user);
 			const embed = new global.zuly.manager.Ebl();
-			embed.setTitle(`<:zu_dbl:894926317819138049> Top.gg | ${global.zuly.user.username}`);
+			embed.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);
 			embed.setUrl('https://top.gg/bot/880173509077266483');
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(user.avatarURL || global.zuly.user.avatarURL);
@@ -21,6 +21,26 @@ module.exports = (app) => {
 				embed: embed.get()
 			}).then(msg => {
 				msg.addReaction('⬆️');
+			});
+			const money = await global.db.get(`ryos-${user.id}`);
+			if (money) {
+				await global.db.set(`ryos-${user.id}`, Number(money) + 2400);
+			}
+			else {
+				await global.db.set(`ryos-${user.id}`, 2400);
+			}
+			const embed2 = new global.zuly.manager.Ebl();
+			embed2.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);
+			embed2.setUrl('https://top.gg/bot/880173509077266483');
+			embed2.setDescription(`**${user.username}** Obrigado pelo seu voto, como recompensa você recebeu **2400 ryos**, continue votando e sendo uma pessoa incrivel <:zu_yay:890317605318058035>`);
+			embed2.setColor('#ffcbdb');
+			embed2.setThumbnail(global.zuly.user.avatarURL);
+			const dm = await global.zuly.getDMChannel(user.id);
+			dm.createMessage({
+				content: user.mention,
+				embeds: [embed2.get()]
+			}).catch(() => {
+				console.log('DM Fechada');
 			});
 			console.log(req.body);
 		}

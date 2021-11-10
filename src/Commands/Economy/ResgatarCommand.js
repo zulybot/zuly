@@ -50,7 +50,9 @@ module.exports = class ResgatarCommand {
 		const codigo = ctx.args[0].toUpperCase();
 		const valor = await global.db.get(codigo);
 		if (!valor) {
-			return ctx.message.channel.slashReply();
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.nocode}`
+			});
 		}
 		else {
 			const resgatado = await global.db.get(`${codigo}-${ctx.message.author.id}`);

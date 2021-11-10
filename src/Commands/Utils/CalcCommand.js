@@ -42,7 +42,11 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.calc.ex.replace('%p', ctx.prefix)}`);
+		if (!ctx.args[0]) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.calc.ex.replace('%p', ctx.prefix)}`
+			});
+		}
 		const math = require('math-expression-evaluator');
 		let val;
 		try {
