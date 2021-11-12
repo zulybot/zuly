@@ -2,7 +2,6 @@ module.exports = class ZulybBot {
 	constructor (client) {
 		if (!client) throw new Error('Cade o client alek');
 		this.client = client;
-		this.canvas = require('canvas');
 		this.Ebl = require('./EmbedBuilder').Embed;
 	}
 	async iniciar () {
@@ -19,15 +18,6 @@ module.exports = class ZulybBot {
 	}
 	get exit () {
 		return process.exit();
-	}
-	async fetch (url) {
-		const {
-			get
-		} = require('axios');
-		const {
-			data
-		} = await get(url);
-		return data;
 	}
 	color (color) {
 		if (typeof color === 'string') {

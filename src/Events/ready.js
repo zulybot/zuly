@@ -13,9 +13,12 @@ module.exports = class ReadyEvent {
 				global.gc();
 			}
 			const ram = process.memoryUsage().rss / 1024 / 1024;
+			if (ram > 100) {
+				return process.exit();
+			}
 			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 			global.zuly.users.map(g => global.zuly.users.delete(g.id));
-		}, 3000);
+		}, 5000);
 		const {
 			version
 		} = require('../../package.json');

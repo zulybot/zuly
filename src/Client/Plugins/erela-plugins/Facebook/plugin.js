@@ -1,101 +1,84 @@
 /* eslint-disable */
 'use strict';
-const __awaiter = this && this.__awaiter || function(thisArg, _arguments, P, generator) {
-	function adopt (value) {
-		return value instanceof P ? value : new P(function(resolve) {
-			resolve(value);
-		});
-	}
-	return new (P || (P = Promise))(function(resolve, reject) {
-		function fulfilled (value) {
+const __awaiter = this && this.__awaiter || function(e, t, r, a) {
+	return new (r || (r = Promise))(function(l, n) {
+		function i (e) {
 			try {
-				step(generator.next(value));
+				c(a.next(e));
 			}
 			catch (e) {
-				reject(e);
+				n(e);
 			}
 		}
 
-		function rejected (value) {
+		function o (e) {
 			try {
-				step(generator.throw(value));
+				c(a.throw(e));
 			}
 			catch (e) {
-				reject(e);
+				n(e);
 			}
 		}
 
-		function step (result) {
-			result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+		function c (e) {
+			let t;
+			e.done ? l(e.value) : (t = e.value, t instanceof r ? t : new r(function(e) {
+				e(t);
+			})).then(i, o);
 		}
-		step((generator = generator.apply(thisArg, _arguments || [])).next());
+		c((a = a.apply(e, t || [])).next());
 	});
 };
 Object.defineProperty(exports, '__esModule', {
 	value: !0
-});
-exports.Facebook = void 0;
-const erela_js_1 = require('erela.js');
-const REGEX = /(?:https?:\/\/)?(?:www.|web.|m.)?(facebook|fb).(com|watch)\/(?:video.php\?v=\d+|(\S+)|photo.php\?v=\d+|\?v=\d+)|\S+\/videos\/((\S+)\/(\d+)|(\d+))\/?/g;
-const {
-	get
-} = require('axios');
-const cheerio = require('cheerio');
-const buildSearch = (loadType, tracks, error) => ({
-	loadType: loadType,
-	tracks: tracks !== null && tracks !== void 0 ? tracks : [],
-	playlist: null,
-	exception: error ? {
-		message: error,
-		severity: 'COMMON'
-	} : null
-});
+}), exports.Facebook = void 0;
+const erela_js_1 = require('erela.js'),
+	REGEX = /(?:https?:\/\/)?(?:www.|web.|m.)?(facebook|fb).(com|watch)\/(?:video.php\?v=\d+|(\S+)|photo.php\?v=\d+|\?v=\d+)|\S+\/videos\/((\S+)\/(\d+)|(\d+))\/?/g,
+	{
+		get: get
+	} = require('axios'),
+	cheerio = require('cheerio'),
+	buildSearch = (e, t, r) => ({
+		loadType: e,
+		tracks: t != null ? t : [],
+		playlist: null,
+		exception: r ? {
+			message: r,
+			severity: 'COMMON'
+		} : null
+	});
 class Facebook extends erela_js_1.Plugin {
 	constructor () {
 		super();
 	}
-	load (manager) {
-		this.manager = manager;
-		this._search = manager.search.bind(manager);
-		manager.search = this.search.bind(this);
+	load (e) {
+		this.manager = e, this._search = e.search.bind(e), e.search = this.search.bind(this);
 	}
-	search (query, requester) {
-		let _a, _b, _c;
+	search (e, t) {
+		let r, a, l;
 		return __awaiter(this, void 0, void 0, function*() {
-			const finalQuery = query.query || query;
-			const [, type, id] = (_a = finalQuery.match(REGEX)) !== null && _a !== void 0 ? _a : [];
-			if (finalQuery.match(REGEX)) {
+			const n = e.query || e,
+				[, i, o] = (r = n.match(REGEX)) !== null && void 0 !== r ? r : [];
+			if (n.match(REGEX)) {
 				try {
-					const html = yield get(query.replace('/m.', '/'));
-					const $ = cheerio.load(html.data);
-					const r = $('script[type=\'application/ld+json\']');
-					const json = JSON.parse(r[0].children[0].data);
-					const obj = {
-						title: json.name || 'null',
-						thumbnail: json.thumbnailUrl || 'null',
-						streamURL: json.url || 'null',
-						url: query || 'null',
-						author: json.author.name || 'null'
+					const r = yield get(e.replace('/m.', '/')), n = cheerio.load(r.data)('script[type=\'application/ld+json\']'), i = JSON.parse(n[0].children[0].data), o = {
+						title: i.name || 'null',
+						thumbnail: i.thumbnailUrl || 'null',
+						streamURL: i.url || 'null',
+						url: e || 'null',
+						author: i.author.name || 'null'
 					};
-					if (obj.streamURL) {
-						const data = yield this.manager.search(obj.streamURL, requester);
-						data.tracks[0].title = obj.title;
-						data.tracks[0].thumbnail = obj.thumbnail;
-						data.tracks[0].uri = obj.url;
-						const loadType = 'TRACK_LOADED';
-						return buildSearch(loadType, data.tracks, null);
+					if (o.streamURL) {
+						const e = yield this.manager.search(o.streamURL, t);
+						return e.tracks[0].title = o.title, e.tracks[0].thumbnail = o.thumbnail, e.tracks[0].uri = o.url, buildSearch('TRACK_LOADED', e.tracks, null);
 					}
-					else {
-						const msg = 'Incorrect type for Facebook URL.';
-						return buildSearch('LOAD_FAILED', null, msg);
-					}
+					return buildSearch('LOAD_FAILED', null, 'Incorrect type for Facebook URL.');
 				}
 				catch (e) {
-					console.log(e.message);
-					return buildSearch((_b = e.loadType) !== null && _b !== void 0 ? _b : 'LOAD_FAILED', null, (_c = e.message) !== null && _c !== void 0 ? _c : null, null);
+					return console.log(e.message), buildSearch((a = e.loadType) !== null && void 0 !== a ? a : 'LOAD_FAILED', null, (l = e.message) !== null && void 0 !== l ? l : null, null);
 				}
 			}
-			return this._search(query, requester);
+			return this._search(e, t);
 		});
 	}
 }

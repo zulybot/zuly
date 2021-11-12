@@ -1,81 +1,42 @@
-module.exports.Embed = class Embed {
+module.exports.Embed = class {
 	constructor () {
 		this._embed = {};
 	}
-	setTitle (title) {
-		this._embed.title = title;
+	setTitle (e) {
+		this._embed.title = e;
 	}
-	setDescription (description) {
-		this._embed.description = description;
+	setDescription (e) {
+		this._embed.description = e;
 	}
-	setUrl (url) {
-		this._embed.url = url;
+	setUrl (e) {
+		this._embed.url = e;
 	}
-	setColor (color) {
-		this._embed.color = parseInt(color.substring(1), 16);
+	setColor (e) {
+		this._embed.color = parseInt(e.substring(1), 16);
 	}
-	setFooter (text, icon_url = undefined) {
-		this._embed.footer = {};
-		this._embed.footer.text = text;
-		if (icon_url) {
-			this._embed.footer.icon_url = icon_url;
-		}
+	setFooter (e, t) {
+		this._embed.footer = {}, this._embed.footer.text = e, t && (this._embed.footer.icon_url = t);
 	}
-	setImage (url, width = undefined, height = undefined) {
-		this._embed.image = {};
-		this._embed.image.url = url;
-		if (width) {
-			this._embed.image.width = width;
-		}
-		if (height) {
-			this._embed.image.height = height;
-		}
+	setImage (e, t, i) {
+		this._embed.image = {}, this._embed.image.url = e, t && (this._embed.image.width = t), i && (this._embed.image.height = i);
 	}
-	setThumbnail (url, width = undefined, height = undefined) {
-		this._embed.thumbnail = {};
-		this._embed.thumbnail.url = url;
-		if (width) {
-			this._embed.thumbnail.width = width;
-		}
-		if (height) {
-			this._embed.thumbnail.height = height;
-		}
+	setThumbnail (e, t, i) {
+		this._embed.thumbnail = {}, this._embed.thumbnail.url = e, t && (this._embed.thumbnail.width = t), i && (this._embed.thumbnail.height = i);
 	}
-	setVideo (url, width = undefined, height = undefined) {
-		this._embed.video = {};
-		this._embed.video.url = url;
-		if (width) {
-			this._embed.video.width = width;
-		}
-		if (height) {
-			this._embed.video.height = height;
-		}
+	setVideo (e, t, i) {
+		this._embed.video = {}, this._embed.video.url = e, t && (this._embed.video.width = t), i && (this._embed.video.height = i);
 	}
-	setProvider (name, url = undefined) {
-		this._embed.provider = {};
-		this._embed.provider.name = name;
-		if (url) {
-			this._embed.provider.url = url;
-		}
+	setProvider (e, t) {
+		this._embed.provider = {}, this._embed.provider.name = e, t && (this._embed.provider.url = t);
 	}
-	setAuthor (name, url = undefined, icon_url = undefined) {
-		this._embed.author = {};
-		this._embed.author.name = name;
-		if (url) {
-			this._embed.author.url = url;
-		}
-		if (icon_url) {
-			this._embed.author.icon_url = icon_url;
-		}
+	setAuthor (e, t, i) {
+		this._embed.author = {}, this._embed.author.name = e, t && (this._embed.author.url = t), i && (this._embed.author.icon_url = i);
 	}
-	addField (name, value, inline) {
-		if (!this._embed.fields) {
-			this._embed.fields = [];
-		}
-		this._embed.fields.push({
-			name: name,
-			value: value,
-			inline: inline
+	addField (e, t, i) {
+		this._embed.fields || (this._embed.fields = []), this._embed.fields.push({
+			name: e,
+			value: t,
+			inline: i
 		});
 	}
 	get () {

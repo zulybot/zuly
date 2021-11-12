@@ -11,7 +11,7 @@ module.exports = class voiceChannelLeave {
 			global.zuly.createMessage(player.textChannel, ':warning: Fui desconectado do canal de voz, por isso limpei a queue.');
 			player.destroy();
 		}
-		if (!member.bot && oldChannel.id === player.voiceChannel && !oldChannel.voiceMembers.filter(m => !m.bot).length && oldChannel.id !== process.env.VOICECHANNELID) {
+		if (!member.bot && oldChannel.id === player.voiceChannel && !oldChannel.voiceMembers.filter(m => !m.bot).length) {
 			player.destroy();
 			let idioma = require('../Config/idiomas');
 			let lang = await global.db.get(`idioma-${member.guild.id}`) || 'pt_br';

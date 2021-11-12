@@ -40,7 +40,7 @@ module.exports = class ExecCommand {
 	}
 
 	async run (ctx) {
-		const safeEval = require('safe-eval');
+		const safeEval = require('../../CustomPackages/safeEval');
 		function clean (text) {
 			if (typeof text === 'string') {
 				return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));

@@ -5,7 +5,7 @@ const {
 } = require('eris');
 const {
 	AutoPoster
-} = require('topgg-autoposter');
+} = require('./CustomPackages/DBLAutoPoster');
 const {
 	token
 } = require('./Config/config');
@@ -39,9 +39,9 @@ const client = new Client(token, {
 	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
-	maxResumeAttempts: 50,
+	maxResumeAttempts: 100,
 	maxShards: 'auto',
-	messageLimit: 10,
+	messageLimit: 50,
 	requestTimeout: 30000,
 	rest: {
 		baseURL: '/api/v9',
@@ -53,6 +53,7 @@ const client = new Client(token, {
 client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();
 client.aliases = new Collection();
+client.on('debug', console.log);
 const Zuly = require('./Client/zulybot.js');
 const ZulyBot = new Zuly(client);
 ZulyBot.iniciar().then((zuly) => {

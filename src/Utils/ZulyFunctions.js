@@ -1,6 +1,9 @@
 const config = require('../Config/config');
 const API = require('../API/keys');
 const fetch = require('node-fetch');
+const byteSize = require('byte-size');
+const deepai = require('deepai');
+deepai.setApiKey(API.deep);
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
 	const request = await fetch(`https://canary.discord.com/api/v9/users/${id}`, {
@@ -41,8 +44,38 @@ function uptime (lang) {
 	}
 	return totalUptime;
 }
-const deepai = require('deepai');
-deepai.setApiKey(API.deep);
+async function isNsfw (url) {
+	const response = await deepai.callStandardApi('nsfw-detector', {
+	  image: url,
+	});
+	console.log(response);
+}
+function bytes (size) {
+	return byteSize(size);
+}
+async function time2 (s) {
+	function pad (n, z) {
+		z = z || 2;
+		return ('00' + n).slice(-z);
+	}
+	let ms = s % 1000;
+	s = (s - ms) / 1000;
+	let secs = s % 60;
+	s = (s - secs) / 60;
+	let mins = s % 60;
+	let hrs = (s - mins) / 60;
+
+	let days = parseInt(Math.floor(hrs / 24));
+	hrs = parseInt(hrs % 24);
+
+	let meses = parseInt(Math.floor(days / 30));
+	days = parseInt(days % 30);
+
+	return (meses > 0 ? pad(meses) + 'm, ' : '') + (days > 0 ? pad(days) + 'd, ' : '') + (hrs > 0 ? pad(hrs) + 'h, ' : '') + (mins > 0 ? pad(mins) + 'm ' : '') + (pad(secs) + 's');
+};
+global.zuly.time2 = time2;
+global.zuly.bytes = bytes;
+global.zuly.isNsfw = isNsfw;
 global.zuly.deepai = deepai;
 global.zuly.getBotUptime = uptime;
 global.zuly.getRESTBanner = banner;

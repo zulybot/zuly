@@ -7,6 +7,7 @@ module.exports = class MessageEventCommand {
 		};
 	}
 	async run (message) {
+		message.client = global.zuly;
 		const config = require('../Config/config.js');
 		global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		if (message.channel.type === 1) return;
@@ -69,7 +70,9 @@ module.exports = class MessageEventCommand {
 				b.addReaction('⬆️');
 			});
 		}
+
 		if (message.author.bot) return;
+
 		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);

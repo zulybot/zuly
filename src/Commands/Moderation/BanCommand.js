@@ -78,7 +78,7 @@ module.exports = class BanCommand {
 		}
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		ctx.message.channel.guild.banMember(member.id, 0, motivo);
+		ctx.message.channel.guild.banMember(member.id, 7, motivo);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

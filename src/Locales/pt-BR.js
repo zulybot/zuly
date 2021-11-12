@@ -87,7 +87,11 @@ module.exports = {
 		end: 'A música acabou, estou saindo',
 		not: 'Não estou tocando nada no servidor.',
 		voice: 'Fiquei sozinha no canal de voz, estou saindo!',
-		duration: 'Duração:'
+		duration: 'Duração:',
+		loop: {
+			ativado: 'O Loop da música atual foi ativado.',
+			desativado: 'O Loop da música atual foi desativado.'
+		}
 	},
 	play: {
 		nada: 'Estão faltando argumentos, utilize `%pplay <música | url>`',

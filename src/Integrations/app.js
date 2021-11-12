@@ -1,3 +1,4 @@
+require('colors');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = new express();

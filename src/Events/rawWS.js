@@ -53,7 +53,7 @@ module.exports = class rawWS {
 					data: {
 						...txt
 					}
-				}).then((msg) => new Message(msg, global.zuly));
+				});
 			};
 
 			if (command.permissoes) {
