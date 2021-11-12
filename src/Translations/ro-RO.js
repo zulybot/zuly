@@ -62,7 +62,7 @@ module.exports = {
 	},
 	botinfo: {
 		texto: 'Bună, sunt %bot, un bot cu caracteristici unice de care are nevoie fiecare server! În prezent știu **%u persoane diferite** care folosesc caracteristicile mele și sunt pe **%g servere diferite**.\n\nSunt dezvoltat de către `%devs` folosind [Eris](https://abal.moe/Eris/) folosind [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Recurse:'
+		recursos: 'Resources:'
 	},
 	messages: {
 		tem: 'are',
@@ -81,7 +81,11 @@ module.exports = {
 		end: 'Cântecul s-a terminat, inchid redarea',
 		not: 'Nu cânt nimic pe server.',
 		voice: 'Eram singur pe canalul vocal, asadar am iesit!',
-		duration: 'Durată:'
+		duration: 'Durată:',
+		loop: {
+			ativado: 'Current Song Loop has been enabled.',
+			desativado: 'Current Song Loop has been turned off.'
+		}
 	},
 	play: {
 		nada: 'Arguments are missing, use `%pplay <music | url>`',
