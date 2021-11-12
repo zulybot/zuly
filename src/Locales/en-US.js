@@ -64,7 +64,7 @@ module.exports = {
 	},
 	botinfo: {
 		texto: 'Hi, I\'m %bot, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Recursos:'
+		recursos: 'Resources:'
 	},
 	messages: {
 		tem: 'has',
@@ -87,7 +87,11 @@ module.exports = {
 		end: 'The song is over, I\'m leaving',
 		not: 'I\'m not playing anything on the server.',
 		voice: 'I was alone on the voice channel, I\'m leaving!',
-		duration: 'Duration:'
+		duration: 'Duration:',
+		loop: {
+			ativado: 'Current Song Loop has been enabled.',
+			desativado: 'Current Song Loop has been turned off.'
+		}
 	},
 	play: {
 		nada: 'Arguments are missing, use `%pplay <music | url>`',
