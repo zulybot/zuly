@@ -84,7 +84,7 @@ module.exports = {
 		duration: 'Duration:'
 	},
 	play: {
-		nothing: 'Arguments are missing, use `%pplay <music | url>`',
+		nada: 'Arguments are missing, use `%pplay <music | url>`',
 		add: 'Added to queue',
 		can: 'You need to be on a voice channel to listen to music.'
 	},
