@@ -1,9 +1,8 @@
 {
   "extends": [
     "config:base",
-    ":dependencyDashboard",
-    ":dependencyDashboardApproval"
   ],
+  "dependencyDashboard": true,
   "packageRules": [
     {
       "matchPackagePatterns": ["^@somescope"],
