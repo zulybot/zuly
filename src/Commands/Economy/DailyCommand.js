@@ -37,8 +37,13 @@ module.exports = class DailyCommand {
 	async run (ctx) {
 		const timeout = 86400000;
 		const moment = require('moment');
-		const amount = Math.floor(Math.random() * 1500) + 500;
+		const quantia = Math.floor(Math.random() * 1500) + 500;
+		let amount = quantia;
 		const daily = await global.db.get(`daily-${ctx.message.author.id}`);
+		const userPremium = await global.zuly.getPremium('doador', ctx.message.author.id);
+		if (userPremium === true) {
+			amount = Number(quantia) * 2;
+		}
 		if (daily !== null && timeout - (Date.now() - daily) > 0) {
 			const tt = moment(timeout - (Date.now() - daily)).format('HH:mm:ss');
 			ctx.message.channel.slashReply({
@@ -51,12 +56,12 @@ module.exports = class DailyCommand {
 			});
 			const money = global.db.get(`ryos-${ctx.message.author.id}`);
 			if (money) {
-				await global.db.set(`ryos-${ctx.message.author.id}`, eval(Number(money) + Number(amount)));
+				await global.db.add(`ryos-${ctx.message.author.id}`, Number(money) + Number(amount));
 			}
 			else {
-				await global.db.set(`ryos-${ctx.message.author.id}`, eval(Number(amount)));
+				await global.db.set(`ryos-${ctx.message.author.id}`, Number(amount));
 			}
-			global.db.set(`daily-${ctx.message.author.id}`, Date.now());
+			await global.db.set(`daily-${ctx.message.author.id}`, Date.now());
 		 }
 	}
 };

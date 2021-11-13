@@ -17,7 +17,6 @@ module.exports = class ReadyEvent {
 				return process.exit();
 			}
 			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
-			global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		}, 5000);
 		const {
 			version
@@ -34,6 +33,7 @@ module.exports = class ReadyEvent {
 		}, 1000 * 180);
 		global.zuly.music.init(global.zuly.user.id);
 		const CronJob = require('cron').CronJob;
+		// fortnite-shop
 		const job = new CronJob('00 15 21 * * *', function() {
 			global.zuly.guilds.map(async guild => {
 				const fnshop = await global.db.get(`fnshop-${guild.id}`);
@@ -43,6 +43,23 @@ module.exports = class ReadyEvent {
 				}
 			});
 		}, null, !0, 'America/Sao_Paulo');
+		// donator-ryos
+		const ryos = new CronJob('0 */1 * * * *', function() {
+			global.zuly.users.map(async user => {
+				const userPremium = await global.zuly.getPremium('doador', user.id);
+				if (userPremium === true) {
+					const ryos = await global.db.get(`ryos-${user.id}`) || 0;
+					if (ryos) {
+						await global.db.set(`ryos-${user.id}`, ryos + 5);
+					}
+					else {
+						await global.db.set(`ryos-${user.id}`, 5);
+					}
+				}
+			});
+		}, null, !0, 'America/Sao_Paulo');
+		// start cron-jobs
+		ryos.start();
 		job.start();
 	}
 };

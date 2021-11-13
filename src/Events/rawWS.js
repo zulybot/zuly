@@ -5,7 +5,6 @@ module.exports = class rawWS {
 			run: this.run
 	  };
 	}
-
 	async run (packet) {
 		const interaction = packet.d;
 		global.zuly.music.updateVoiceState(packet);
@@ -42,6 +41,7 @@ module.exports = class rawWS {
 		  interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
 		  interaction.author = new User(interaction.member.user, global.zuly);
 		  const msg = new Message(interaction, global.zuly);
+
 		  let idioma = require('../Config/idiomas.js');
 		  let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 		  lang = lang.replace(/-/g, '_');

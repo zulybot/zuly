@@ -4,6 +4,29 @@ const fetch = require('node-fetch');
 const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
+async function getPremium (typename, user) {
+	const tipo = typename.toLowerCase();
+	if (tipo === 'doador') {
+		const guild = await global.zuly.getRESTGuild('880174783294214184');
+		const membro = await guild.getRESTMember(user);
+		if (!membro) {
+			return false;
+		}
+		else if (membro.roles.includes('903708588806119465') || membro.roles.includes('880399661184200725')) {
+			return true;
+		}
+	}
+	if (tipo === 'essencial') {
+		const guild = await global.zuly.getRESTGuild('880174783294214184');
+		const membro = await guild.getRESTMember(user);
+		if (!membro) {
+			return false;
+		}
+		else if (membro.roles.includes('903710903420223548')) {
+			return true;
+		}
+	}
+}
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
 	const request = await fetch(`https://canary.discord.com/api/v9/users/${id}`, {
@@ -73,6 +96,7 @@ async function time2 (s) {
 
 	return (meses > 0 ? pad(meses) + 'm, ' : '') + (days > 0 ? pad(days) + 'd, ' : '') + (hrs > 0 ? pad(hrs) + 'h, ' : '') + (mins > 0 ? pad(mins) + 'm ' : '') + (pad(secs) + 's');
 };
+global.zuly.getPremium = getPremium;
 global.zuly.time2 = time2;
 global.zuly.bytes = bytes;
 global.zuly.isNsfw = isNsfw;

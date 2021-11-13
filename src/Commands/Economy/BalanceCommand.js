@@ -37,7 +37,6 @@ module.exports = class DailyCommand {
 	async run (ctx) {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
 		const ryos = await global.db.get(`ryos-${ctx.message.author.id}`) || 0;
-
 		const embed = new ctx.embed();
 		embed.setTitle(`💰 Balance | ${global.zuly.user.username}`);
 		embed.addField(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);

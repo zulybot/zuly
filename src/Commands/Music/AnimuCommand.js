@@ -41,7 +41,6 @@ module.exports = class AnimuCommand {
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
 			});
 		}
-
 		if (!play) {
 			const player = global.zuly.music.create({
 				guild: ctx.message.channel.guild.id,
@@ -52,14 +51,12 @@ module.exports = class AnimuCommand {
 			});
 			await player.connect();
 		}
-
 		const player = global.zuly.music.players.get(ctx.message.channel.guild.id);
 		const res = await player.search('https://cast.animu.com.br:9006/stream', ctx.message.author);
 		if (res.loadType === 'LOAD_FAILED') {
 			if (!player.queue.current) player.destroy();
 			throw new Error(res.exception.message);
 		}
-
 		player.set('interaction', undefined);
 		player.queue.add(res.tracks[0]);
 		if (!player.playing && !player.paused && !player.queue.size) player.play();

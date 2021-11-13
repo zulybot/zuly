@@ -19,3 +19,7 @@ src/Config/system.js
 src/Config/config.js
 src/API/keys.js
 yarn-error.log
+
+## CONTAINER FILES
+
+src/Containers/Premium/Config/config.js

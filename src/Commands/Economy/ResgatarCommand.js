@@ -65,7 +65,7 @@ module.exports = class ResgatarCommand {
 					await global.db.set(`ryos-${ctx.message.author.id}`, Number(valor));
 				}
 				else {
-					await global.db.set(`ryos-${ctx.message.author.id}`, eval(Number(ryos) + Number(valor)));
+					await global.db.add(`ryos-${ctx.message.author.id}`, Number(ryos) + Number(valor));
 				}
 				await global.db.set(`${codigo}-${ctx.message.author.id}`, true);
 				const embed = new ctx.embed();

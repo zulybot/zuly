@@ -9,7 +9,6 @@ module.exports = class MessageEventCommand {
 	async run (message) {
 		message.client = global.zuly;
 		const config = require('../Config/config.js');
-		global.zuly.users.map(g => global.zuly.users.delete(g.id));
 		if (message.channel.type === 1) return;
 		const {
 			get

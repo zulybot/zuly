@@ -1,35 +1,27 @@
-module.exports = class ZulybBot {
-	constructor (client) {
-		if (!client) throw new Error('Cade o client alek');
-		this.client = client;
-		this.Ebl = require('./EmbedBuilder').Embed;
+module.exports = class {
+	constructor (e) {
+		if (!e) throw new Error('Cade o client alek');
+		this.client = e, this.Ebl = require('./EmbedBuilder').Embed;
 	}
 	async iniciar () {
-		await this.client.connect();
-		return 'zulybot';
+		return await this.client.connect(), 'zulybot';
 	}
 	async reload () {
-		for (const cache in require.cache) {
-			if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache];
-		}
-		require('./Handler/comandos');
-		process.removeAllListeners();
-		global.zuly.removeAllListeners();
+		for (const e in require.cache)(e.includes('commands') || e.includes('utils') || e.includes('events')) && delete require.cache[e];
+		require('./Handler/comandos'), process.removeAllListeners(), global.zuly.removeAllListeners();
 	}
 	get exit () {
 		return process.exit();
 	}
-	color (color) {
-		if (typeof color === 'string') {
-			if (color.toLowerCase() === 'random') return Math.floor(Math.random() * (0xffffff + 1));
-			if (color.toLowerCase() === 'default') return 0;
-			color = parseInt(color.replace('#', ''), 16);
+	color (e) {
+		if (typeof e == 'string') {
+			if (e.toLowerCase() === 'random') return Math.floor(16777216 * Math.random());
+			if (e.toLowerCase() === 'default') return 0;
+			e = parseInt(e.replace('#', ''), 16);
 		}
-		else if (Array.isArray(color)) {
-			color = (color[0] << 16) + (color[1] << 8) + color[2];
-		}
-		if (color < 0 || color > 0xffffff) throw new Error('A cor deve ser um código hex!');
-		else if (color && isNaN(color)) throw new Error('Não foi possível converter a cor para número :(');
-		return color;
+		else {Array.isArray(e) && (e = (e[0] << 16) + (e[1] << 8) + e[2]);}
+		if (e < 0 || e > 16777215) throw new Error('A cor deve ser um código hex!');
+		if (e && isNaN(e)) throw new Error('Não foi possível converter a cor para número :(');
+		return e;
 	}
 };

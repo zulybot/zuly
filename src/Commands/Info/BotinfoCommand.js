@@ -57,7 +57,7 @@ module.exports = class BotinfoCommand {
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%devs', devs.join(', ')).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0).toLocaleString()));
 			embed.addField(`<:zu_ram:889942152736555108> ${ctx.idioma.botinfo.recursos}`, `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%\n**Uptime:** ${uptime}`);
-			embed.addField('🎵 Lavalink:', `> **Space:**\n- **Ram:** ${global.zuly.bytes(space.stats.memory.used).value || 0}${global.zuly.bytes(space.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${global.zuly.time2(space.stats.uptime) || 'Offline'}\n> **Galaxy:**\n- **Ram:** ${global.zuly.bytes(galaxy.stats.memory.used).value || 0}${global.zuly.bytes(galaxy.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${global.zuly.time2(galaxy.stats.uptime || 'Offline')}`);
+			embed.addField('🎵 Lavalink:', `> **Space:**\n- **Ram:** ${global.zuly.bytes(space.stats.memory.used).value || 0}${global.zuly.bytes(space.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${space.stats.uptime === 0 ? 'Offline' : global.zuly.time2(space.stats.uptime)}\n> **Galaxy:**\n- **Ram:** ${global.zuly.bytes(galaxy.stats.memory.used).value || 0}${global.zuly.bytes(galaxy.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${galaxy.stats.uptime === 0 ? 'Offline' : global.zuly.time2(galaxy.stats.uptime)}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({

@@ -50,7 +50,7 @@ module.exports = class NowplayingCommand {
 		if (player.trackRepeat) {
 			player.setTrackRepeat(false);
 			const embed = new ctx.embed();
-			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.erela.loop.desativado}**`);
+			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.erela.loop.desativado}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
@@ -61,7 +61,7 @@ module.exports = class NowplayingCommand {
 		else {
 			player.setTrackRepeat(true);
 			const embed = new ctx.embed();
-			embed.setDescription(`<:zu_mp3:882310253226635284> **|** $${ctx.idioma.erela.loop.ativado}**`);
+			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.erela.loop.ativado}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
