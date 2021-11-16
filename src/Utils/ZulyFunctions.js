@@ -76,7 +76,7 @@ async function isNsfw (url) {
 function bytes (size) {
 	return byteSize(size);
 }
-async function time2 (s) {
+function time2 (s) {
 	function pad (n, z) {
 		z = z || 2;
 		return ('00' + n).slice(-z);

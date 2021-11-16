@@ -19,6 +19,3 @@ if (cluster.isMaster) {
 else {
 	console.log(`[CLUSTER] ${process.pid} started!`);
 }
-if (cluster.isWorker) {
-	require('./Integrations/app');
-}

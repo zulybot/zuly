@@ -61,5 +61,6 @@ module.exports = class ReadyEvent {
 		// start cron-jobs
 		ryos.start();
 		job.start();
+		require('../Integrations/app');
 	}
 };
