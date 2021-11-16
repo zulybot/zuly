@@ -45,7 +45,7 @@ module.exports = class LangCommand {
 					]
 				}
 			],
-			aliases: ['idoma', 'setlang', 'guildlang'],
+			aliases: ['setlang', 'guildlang'],
 			run: this.run
 		};
 	}

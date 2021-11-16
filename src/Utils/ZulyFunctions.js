@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 const config = require('../Config/config');
 const API = require('../API/keys');
 const fetch = require('node-fetch');
@@ -94,7 +95,7 @@ function time2 (s) {
 	let meses = parseInt(Math.floor(days / 30));
 	days = parseInt(days % 30);
 
-	return (meses > 0 ? pad(meses) + 'm, ' : '') + (days > 0 ? pad(days) + 'd, ' : '') + (hrs > 0 ? pad(hrs) + 'h, ' : '') + (mins > 0 ? pad(mins) + 'm ' : '') + (pad(secs) + 's');
+	return (meses > 0 ? `\`${pad(meses)}\`` + 'meses, ' : '') + (days > 0 ? `\`${pad(days)}\`` + 'dias, ' : '') + (hrs > 0 ? `\`${pad(hrs)}\`` + 'horas, ' : '') + (mins > 0 ? `\`${pad(mins)}\`` + 'minutos, ' : '') + (`\`${pad(secs)}\`` + 'segundos');
 };
 global.zuly.getPremium = getPremium;
 global.zuly.time2 = time2;

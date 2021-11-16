@@ -1,5 +1,13 @@
 module.exports = {
 	lang: 'pt',
+	eventLog: {
+		fields: {
+			deletedMessage: 'Mensagem Deletada:',
+			oldMessage: 'Mensagem Antiga:',
+			newMessage: 'Mensagem Nova:',
+		},
+		channel: 'Canal:'
+	},
 	docs: {
 		args: 'Diga o que será pesquisado na documentação.'
 	},

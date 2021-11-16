@@ -3,28 +3,27 @@
 module.exports = class MessageEventCommand {
 	constructor () {
 		return {
-			nome: 'messageUpdate',
+			nome: 'messageDelete',
 			run: this.run
 		};
 	}
-	async run (message, oldMessage) {
-		if (message.content === oldMessage.content) return;
+	async run (message) {
 		if (message.author.bot) return;
 		let idioma = require('../Config/idiomas');
 		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
+
 		const canal = message.channel;
+
 		const webhooks = await global.zuly.getChannelWebhooks(canal.id);
 
 		const embed = new global.zuly.manager.Ebl();
 		embed.setTitle(`${message.author.username}#${message.author.discriminator} | Message Log`);
 		embed.setThumbnail(message.author.avatarURL);
-		embed.addField(`📝 ${idioma.eventLog.fields.oldMessage}`, oldMessage.content, true);
-		embed.addField(`📝 ${idioma.eventLog.fields.newMessage}`, message.content, true);
+		embed.addField(`📝 ${idioma.eventLog.fields.deletedMessage}`, message.content);
 		embed.addField(`<:zu_logs_channel:910218450415255593> ${idioma.eventLog.channel}`, `<#${message.channel.id}> \`(${message.channel.name}) [${message.channel.id}]\``);
-		embed.addField('🔗 Link:', message.jumpLink);
-		embed.setColor('#fff000');
+		embed.setColor('#ff0000');
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
 		if (!webhooks.length) {
