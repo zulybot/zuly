@@ -1,5 +1,13 @@
 module.exports = {
 	lang: 'pt',
+	eventLog: {
+		fields: {
+			deletedMessage: 'Deleted Message:',
+			oldMessage: 'Old Message:',
+			newMessage: 'New Message:'
+		},
+		channel: 'Channel:'
+	},
 	docs: { args: 'Say what will be searched for in the documentation.' },
 	fnshop: {
 		args: 'Include the channel ID that will be sent to the fortnite store.',
