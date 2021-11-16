@@ -1,5 +1,13 @@
 module.exports = {
 	lang: 'ro',
+	eventLog: {
+		fields: {
+			deletedMessage: 'Deleted Message:',
+			oldMessage: 'Old Message:',
+			newMessage: 'New Message:'
+		},
+		channel: 'Channel:'
+	},
 	docs: { args: 'Spuneți ce se va căuta în documentație.' },
 	fnshop: {
 		args: 'Include ID-ul canalului care va fi trimis la magazinul fortnite.',
