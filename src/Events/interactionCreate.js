@@ -1,60 +1,52 @@
-module.exports = class rawWS {
+module.exports = class InteractionEvent {
 	constructor () {
-	  return {
-			nome: 'rawWS',
+		return {
+			nome: 'interactionCreate',
 			run: this.run
-	  };
+		};
 	}
-	async run (packet) {
-		const interaction = packet.d;
-		global.zuly.music.updateVoiceState(packet);
-		if (packet.t == 'INTERACTION_CREATE') {
-			const { Collection, User, Message } = require('eris');
-			const command = global.zuly.commands.get(packet.d.data.name);
-			if (!command) return;
+	async run (interaction) {
+		try {
+			const Eris = require('eris');
+			const command = global.zuly.commands.get(interaction.data.name);
 			interaction.mentions = [];
 			interaction.mentions[0] = global.zuly.user;
 			interaction.mention_everyone = false;
-			interaction.mention_roles = new Collection();
+			interaction.mention_roles = new Eris.Collection();
 			if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
-			  for (const membro in interaction.data.resolved.users) {
+				for (const membro in interaction.data.resolved.users) {
 					interaction.data.resolved.users[membro].member =
-							interaction.data.resolved.members[membro];
+                                interaction.data.resolved.members[membro];
 					interaction.mentions.push(interaction.data.resolved.users[membro]);
-			  }
+				}
 			}
 			const args = interaction.data.options
 				? interaction.data.options.map((i) => {
-			  switch (i.type) {
+					switch (i.type) {
 						case 8:
-				  return `<@&${i.value}>`;
+							return `<@&${i.value}>`;
 						case 6:
-				  return `<@!${i.value}>`;
+							return `<@!${i.value}>`;
 						case 7:
-				  return `<#${i.value}>`;
+							return `<#${i.value}>`;
 						default:
-				  return i.value;
-			  }
+							return i.value;
+					}
 				})
 				: [];
+			interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
+			interaction.author = interaction.member.user;
 
-		  interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
-		  interaction.author = new User(interaction.member.user, global.zuly);
-		  const msg = new Message(interaction, global.zuly);
+			const msg = interaction;
 
-		  let idioma = require('../Config/idiomas.js');
-		  let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
-		  lang = lang.replace(/-/g, '_');
-		  idioma = idioma[lang];
+			let idioma = require('../Config/idiomas.js');
+			let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
+			lang = lang.replace(/-/g, '_');
+			idioma = idioma[lang];
+
 			const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
-			msg.channel.slashReply = function(txt) {
-				return global.zuly.requestHandler.request('POST', `/interactions/${packet.d.id}/${packet.d.token}/callback`, false, {
-					type: 4,
-					data: {
-						...txt
-					}
-				});
-			};
+
+			msg.channel.slashReply = interaction.createMessage;
 
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
@@ -95,6 +87,7 @@ module.exports = class rawWS {
 					}
 				}
 			}
+			console.log(interaction);
 			this.ctx = {
 				id: msg.id,
 				user: msg.author,
@@ -111,16 +104,16 @@ module.exports = class rawWS {
 				embed: require('../Client/EmbedBuilder').Embed,
 				// Functions
 				send: function(texto) {
-				  msg.channel.slashReply(...texto);
+					msg.channel.slashReply(...texto);
 				},
 				reply: function(texto) {
-				  msg.channel.slashReply(...texto);
+					msg.channel.slashReply(...texto);
 				},
 				addReaction: function(emoji) {
-				  msg.addReaction(emoji);
+					msg.addReaction(emoji);
 				},
 				fetch: async function(url) {
-				  await global.zuly.manager.fetch(url);
+					await global.zuly.manager.fetch(url);
 				}
 			};
 			try {
@@ -130,7 +123,7 @@ module.exports = class rawWS {
 					const embed = new global.zuly.manager.Ebl();
 					embed.setTitle('<:zu_slash:886681118470987967> Slash Commands');
 					embed.setColor('#ffcbdb');
-					embed.setDescription(`>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${packet.d.data.name}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
+					embed.setDescription(`>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 					embed.addField('<:zu_membros:885214377182109696> **Usuário:**', `>>> 📘 **Informações:** \`${msg.author.username}#${msg.author.discriminator} [${msg.author.id}]\`\n📆 **Criação da conta:** <t:${Math.floor(msg.author.createdAt / 1000)}>`);
 					embed.setThumbnail(global.zuly.user.avatarURL);
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
@@ -160,7 +153,7 @@ module.exports = class rawWS {
 				const embed2 = new global.zuly.manager.Ebl();
 				embed2.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
 				embed2.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
-				embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${packet.d.data.name}\``);
+				embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\``);
 				embed2.setColor('#ff0000');
 				embed2.setThumbnail(global.zuly.user.avatarURL);
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
@@ -169,6 +162,9 @@ module.exports = class rawWS {
 					embeds: [embed2.get()]
 				});
 			}
+		}
+		catch (e) {
+			console.log(e);
 		}
 	}
 };

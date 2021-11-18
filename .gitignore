@@ -13,6 +13,7 @@ data/base.json
 
 ## CONFIDENCIAL files
 
+src/Archive
 src/Client/Plugins/nodes.js
 src/Config/player.js
 src/Config/system.js
