@@ -46,7 +46,7 @@ module.exports = class InteractionEvent {
 
 			const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
-			msg.channel.slashReply = interaction.createMessage;
+			msg.channel.slashReply = interaction.createMessage.bind(interaction);
 
 			if (command.permissoes) {
 				if (command.permissoes.membro.length) {
