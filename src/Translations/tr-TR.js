@@ -1,5 +1,20 @@
 module.exports = {
 	lang: 'en',
+	print: { website: 'Print from website:' },
+	mention: {
+		hello: 'Hello %user!',
+		about: 'I am a multifunctional bot for discord!',
+		help: 'To know my commands, type **/help**.',
+		labels: {
+			support: 'Support Server',
+			invite: 'Invite',
+			website: 'Website'
+		}
+	},
+	reactionRole: {
+		invalidMessage: 'Could not find message with id `%id%`',
+		sucess: 'ReactionRole created successfully!'
+	},
 	eventLog: {
 		fields: {
 			deletedMessage: 'Deleted Message:',
@@ -77,8 +92,6 @@ module.exports = {
 		msg: 'messages',
 		title: 'Messages'
 	},
-	print: { web: 'Missing the website' },
-	mention: { response: 'Hello **%u**! See my commands by using `star help` or `s!help`' },
 	together: {
 		channel: 'You must be on a voice channel to execute this command.',
 		done: 'Just click on the link and you will be redirected to the activity:',
