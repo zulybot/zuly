@@ -1,5 +1,20 @@
 module.exports = {
 	lang: 'ro',
+	print: { website: 'Print from website:' },
+	mention: {
+		hello: 'Hello %user!',
+		about: 'I am a multifunctional bot for discord!',
+		help: 'To know my commands, type **/help**.',
+		labels: {
+			support: 'Support Server',
+			invite: 'Invite',
+			website: 'Website'
+		}
+	},
+	reactionRole: {
+		invalidMessage: 'Could not find message with id `%id%`',
+		sucess: 'ReactionRole created successfully!'
+	},
 	eventLog: {
 		fields: {
 			deletedMessage: 'Deleted Message:',
@@ -77,8 +92,6 @@ module.exports = {
 		msg: 'mesaje',
 		title: 'Messages'
 	},
-	print: { web: 'Lipsește site-ul' },
-	mention: { response: 'Salut **%u**! Vezi comenzile mele folosind `stele help` sau `s!help`' },
 	together: {
 		channel: 'Trebuie să fii pe un canal de voce pentru a executa această comandă.',
 		done: 'Doar apăsați pe link și veți fi redirecționat către activitate:',
