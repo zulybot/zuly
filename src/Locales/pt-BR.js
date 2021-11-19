@@ -1,5 +1,22 @@
 module.exports = {
 	lang: 'pt',
+	print: {
+		site: 'Print do website:'
+	},
+	mention: {
+		hello: 'Olá %user!',
+		about: 'Sou uma bot multifuncional para o discord!',
+		help: 'Para saber meus comandos, digite **/help**.',
+		labels: {
+			support: 'Servidor de Suporte',
+			invite: 'Convite',
+			website: 'Website'
+		}
+	},
+	reactionRole: {
+		invalidMessage: 'Não consegui encontrar mensagem com o id `%id%`',
+		sucess: 'ReactionRole criado com sucesso!'
+	},
 	eventLog: {
 		fields: {
 			deletedMessage: 'Mensagem Deletada:',
@@ -78,12 +95,6 @@ module.exports = {
 		tem: 'tem',
 		msg: 'mensagens',
 		title: 'Mensagens'
-	},
-	print: {
-		web: 'Faltou o website'
-	},
-	mention: {
-		response: 'Olá **%u**, veja meus comandos usando `star ajuda` ou `s!ajuda`'
 	},
 	together: {
 		channel: 'Você precisa estar em um canal de voz para executar este comando.',

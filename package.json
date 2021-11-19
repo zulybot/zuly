@@ -1,6 +1,6 @@
 {
   "name": "zuly",
-  "version": "1.9",
+  "version": "2.0",
   "description": "Hi, I'm zuly, a just brazilian bot focused on anime!",
   "main": "src/zulyClusters.js",
   "scripts": {

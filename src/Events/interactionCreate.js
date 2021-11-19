@@ -7,12 +7,15 @@ module.exports = class InteractionEvent {
 	}
 	async run (interaction) {
 		try {
-			const Eris = require('eris');
+			// const Eris = require('eris');
 			const command = global.zuly.commands.get(interaction.data.name);
+
 			interaction.mentions = [];
 			interaction.mentions[0] = global.zuly.user;
 			interaction.mention_everyone = false;
-			interaction.mention_roles = new Eris.Collection();
+			if (interaction.data && interaction.data.resolved && interaction.data.resolved.roles) {
+				interaction.mention_roles = interaction.data.resolved.roles;
+			}
 			if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
 				for (const membro in interaction.data.resolved.users) {
 					interaction.data.resolved.users[membro].member =
@@ -87,7 +90,6 @@ module.exports = class InteractionEvent {
 					}
 				}
 			}
-			console.log(interaction);
 			this.ctx = {
 				id: msg.id,
 				user: msg.author,
@@ -143,7 +145,7 @@ module.exports = class InteractionEvent {
 				embed.setThumbnail(global.zuly.user.avatarURL);
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
-				msg.channel.createMessage({
+				msg.channel.slashReply({
 					content: msg.author.mention,
 					embeds: [embed.get()]
 				});

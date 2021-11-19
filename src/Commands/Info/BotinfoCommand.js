@@ -62,7 +62,7 @@ module.exports = class BotinfoCommand {
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
-				embeds: [embed.get()]
+				embeds: [embed.get()],
 			});
 		});
 	}

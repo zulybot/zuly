@@ -37,15 +37,39 @@ module.exports = class MessageEventCommand {
 
 		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
 			const embed = new global.zuly.manager.Ebl();
-			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
-			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
+			embed.setAuthor(global.zuly.user.username, '', global.zuly.user.avatarURL);
+			embed.setDescription(`👋 ${idioma.mention.hello.replace('%user', message.author.mention)}\n> <:zu_info:911303533859590144> ${idioma.mention.about}\n> <:zu_slash:886681118470987967> ${idioma.mention.help}`);
 			embed.setColor('#ffcbdb');
-			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			message.channel.createMessage({
 				content: message.author.mention,
-				embeds: [embed.get()]
-			});
+				embeds: [embed.get()],
+				components: [
+					{
+						type: 1,
+						components: [
+							{
+								type: 2,
+								label: `${idioma.mention.labels.support}`,
+								style: 5,
+								url: 'https://discord.gg/pyyyJpw5QW'
+							},
+							{
+								type: 2,
+								label: `${idioma.mention.labels.invite}`,
+								style: 5,
+								url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
+							},
+							{
+								type: 2,
+								label: `${idioma.mention.labels.website}`,
+								style: 5,
+								url: 'https://zulybot.xyz/'
+							}
+						]
+					}
+				]
+			}).catch((e) => console.log(e));
 		}
 
 		const regexPrefix = new RegExp(`^(${config.prefix.map(prefix => prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|')}|<@!?${global.zuly.user.id}>)( )*`, 'gi');

@@ -44,7 +44,9 @@ module.exports = class ShipCommand {
 			user2 = ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[1]);
 		}
 
-		if (!user2) return;
+		if (!user2) {
+			user2 = global.zuly.users.random();
+		}
 
 		const ship1 = await global.db.get(`ship-${user1.id}-${user2.id}`);
 		const ship2 = await global.db.get(`ship-${user1.id}-${user2.id}`);

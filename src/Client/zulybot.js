@@ -1,7 +1,7 @@
 module.exports = class {
 	constructor (e) {
 		if (!e) throw new Error('Cade o client alek');
-		this.client = e, this.Ebl = require('./EmbedBuilder').Embed;
+		this.client = e, this.Ebl = require('./EmbedBuilder').Embed, this.Button = require('./ButtonBuilder');
 	}
 	async iniciar () {
 		return await this.client.connect(), 'zulybot';

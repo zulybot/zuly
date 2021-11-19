@@ -95,7 +95,7 @@ function time2 (s) {
 	let meses = parseInt(Math.floor(days / 30));
 	days = parseInt(days % 30);
 
-	return (meses > 0 ? `\`${pad(meses)}\`` + 'meses, ' : '') + (days > 0 ? `\`${pad(days)}\`` + 'dias, ' : '') + (hrs > 0 ? `\`${pad(hrs)}\`` + 'horas, ' : '') + (mins > 0 ? `\`${pad(mins)}\`` + 'minutos, ' : '') + (`\`${pad(secs)}\`` + 'segundos');
+	return (meses > 0 ? `\`${pad(meses)}\`` + ' meses, ' : '') + (days > 0 ? `\`${pad(days)}\`` + ' dias, ' : '') + (hrs > 0 ? `\`${pad(hrs)}\`` + ' horas, ' : '') + (mins > 0 ? `\`${pad(mins)}\`` + ' minutos, ' : '') + (`\`${pad(secs)}\`` + ' segundos');
 };
 global.zuly.getPremium = getPremium;
 global.zuly.time2 = time2;
