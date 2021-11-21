@@ -54,7 +54,7 @@
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1"
   },
   "devDependencies": {
-    "eslint": "8.2.0",
+    "eslint": "8.3.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-node": "11.1.0",
