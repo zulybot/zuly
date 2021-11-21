@@ -63,6 +63,31 @@ module.exports = class BotinfoCommand {
 			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
 				embeds: [embed.get()],
+				components: [
+					{
+						type: 1,
+						components: [
+							{
+								type: 2,
+								label: `${ctx.idioma.mention.labels.support}`,
+								style: 5,
+								url: 'https://discord.gg/pyyyJpw5QW'
+							},
+							{
+								type: 2,
+								label: `${ctx.idioma.mention.labels.invite}`,
+								style: 5,
+								url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
+							},
+							{
+								type: 2,
+								label: `${ctx.idioma.mention.labels.website}`,
+								style: 5,
+								url: 'https://zulybot.xyz/'
+							}
+						]
+					}
+				]
 			});
 		});
 	}

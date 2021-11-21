@@ -75,7 +75,6 @@ module.exports = class CalcCommand {
 			return badges;
 		}
 
-
 		const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();

@@ -4,7 +4,7 @@ module.exports = class AutoroleCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['manageGuild', 'manageRoles'],
 				bot: ['manageRoles', 'useExternalEmojis', 'addReactions', 'manageMessages']
 			},
 			pt: {

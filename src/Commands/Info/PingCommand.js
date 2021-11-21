@@ -40,8 +40,26 @@ module.exports = class PingCommand {
 		const pingDB = new Promise((r) =>
 			mongoose.connection.db.admin().ping(() => r(Date.now() - date))
 		);
+		const { Constants } = require('eris');
 		return ctx.message.channel.slashReply({
-			content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\``
+			content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\``,
+			components: [
+				{
+					type: Constants.ComponentTypes.ACTION_ROW,
+					components: [
+						{
+							type: Constants.ComponentTypes.BUTTON,
+							style: Constants.ButtonStyles.PRIMARY,
+							custom_id: 'ping',
+							label: ctx.idioma.labels.recalc,
+							emoji: {
+								name: '🔁'
+							},
+							disabled: false
+						}
+					]
+				}
+			]
 		});
 	}
 };

@@ -28,6 +28,16 @@ async function getPremium (typename, user) {
 		}
 	}
 }
+async function getBugHunter (user) {
+	const guild = await global.zuly.getRESTGuild('880174783294214184');
+	const membro = await guild.getRESTMember(user);
+	if (!membro) {
+		return false;
+	}
+	else if (membro.roles.includes('912014349277737051')) {
+		return true;
+	}
+}
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
 	const request = await fetch(`https://canary.discord.com/api/v9/users/${id}`, {
@@ -97,6 +107,7 @@ function time2 (s) {
 
 	return (meses > 0 ? `\`${pad(meses)}\`` + ' meses, ' : '') + (days > 0 ? `\`${pad(days)}\`` + ' dias, ' : '') + (hrs > 0 ? `\`${pad(hrs)}\`` + ' horas, ' : '') + (mins > 0 ? `\`${pad(mins)}\`` + ' minutos, ' : '') + (`\`${pad(secs)}\`` + ' segundos');
 };
+global.zuly.getBugHunter = getBugHunter;
 global.zuly.getPremium = getPremium;
 global.zuly.time2 = time2;
 global.zuly.bytes = bytes;

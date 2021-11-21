@@ -67,7 +67,6 @@ module.exports = class EvalCommand {
 				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			}).then(async message => {
-				console.log(message);
 				if (!dono) {
 					const MarryCollector = new ReactionCollector(message, {
 						user: ctx.message.author,

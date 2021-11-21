@@ -1,5 +1,21 @@
 module.exports = {
 	lang: 'pt',
+	labels: {
+		recalc: 'Recalcular'
+	},
+	guess: {
+		start: 'O Jogo irá começar em **5 segundos** com um número entre `%min` e `%max`.',
+		started: 'Valendo!',
+		number: 'O Número escolhido foi `%num`, os usuários devem adivinhar ele para poder ganhar o evento.',
+		win: 'Você Acertou! O Número escolhido foi `%num`!',
+	},
+	lockdown: {
+		pass: 'Para iniciar o lockdown envie `lock` no chat.\n> ⚠️ Caso queira cancelar envie qualquer outra coisa no chat.',
+		cancel: 'O Lockdown foi cancelado com sucesso.',
+		sucess: 'O Lockdown foi executado com sucesso.',
+		locking: 'O Lockdown está em andamento.',
+		noCanal: 'Nenhum canal foi fechado.'
+	},
 	print: {
 		site: 'Print do website:'
 	},
@@ -32,11 +48,6 @@ module.exports = {
 		args: 'Inclua o ID do canal que será enviado a loja do fortnite.',
 		channel: 'Não tenho permissão para enviar mensagens no canal citado.',
 		sucess: 'Canal setado com sucesso!'
-	},
-	labels: {
-		add: 'Me Adicione!',
-		support: 'Servidor de Suporte!',
-		vote: 'Vote em mim!'
 	},
 	message: {
 		P: 'Olá, humano!',

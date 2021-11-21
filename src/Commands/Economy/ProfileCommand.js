@@ -58,11 +58,23 @@ module.exports = class EvalCommand {
 		  foto.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 		  const userPremium = await global.zuly.getPremium('doador', user.id);
+		  const bugHunter = await global.zuly.getBugHunter(user.id);
 
-		  if (userPremium) {
+		  if (bugHunter && userPremium) {
+			const bug = await loadImage('./assets/images/badges/bughunter.png');
 			const early = await loadImage('./assets/images/badges/earlysupport.png');
-			foto.drawImage(early, 650, 60, 50, 45);
+			foto.drawImage(early, 650, 60, 60, 45);
+			foto.drawImage(bug, 700, 60, 60, 45);
 		  }
+		else if (bugHunter) {
+			const early = await loadImage('./assets/images/badges/bughunter.png');
+			foto.drawImage(early, 650, 60, 60, 45);
+		  }
+		else if (userPremium) {
+			const early = await loadImage('./assets/images/badges/earlysupport.png');
+			foto.drawImage(early, 650, 60, 60, 45);
+		  }
+
 		  if (user.username.length > 9) {
 			foto.font = '17px Dunkin';
 		  }

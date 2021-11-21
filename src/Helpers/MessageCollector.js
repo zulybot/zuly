@@ -75,7 +75,7 @@ module.exports = class MessageCollector extends CollectorBase {
 		if (this.options.ignoreBots) {
 			if (message.author.bot) return;
 		}
-		if (message.author.id !== this.options.user.id || message.channel.id !== this.options.channel.id) {
+		if (message.author.id !== this.options.user.idz || message.channel.id !== this.options.channel.id) {
 			return null;
 		}
 		else if (this.options.rules) {
