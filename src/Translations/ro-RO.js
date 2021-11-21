@@ -1,5 +1,19 @@
 module.exports = {
 	lang: 'ro',
+	labels: { recalc: 'Recalculate' },
+	guess: {
+		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
+		started: 'It\'s started!',
+		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
+		win: 'You got it right! The chosen Number was `%num`!'
+	},
+	lockdown: {
+		pass: 'To start lockdown, send `lock` in chat.\n> ⚠️ If you want to cancel, send something else in chat.',
+		cancel: 'Lockdown has been successfully cancelled.',
+		success: 'Lockdown was successfully executed.',
+		locking: 'Lockdown is in progress.',
+		noCanal: 'No channels have been locked.'
+	},
 	print: { website: 'Print from website:' },
 	mention: {
 		hello: 'Hello %user!',
@@ -28,11 +42,6 @@ module.exports = {
 		args: 'Include ID-ul canalului care va fi trimis la magazinul fortnite.',
 		channel: 'Nu am permisiunea de a trimite mesaje pe canalul menționat.',
 		sucess: 'Canalul setat cu succes!'
-	},
-	labels: {
-		add: 'Adaugă-mă!',
-		support: 'Server de suport!',
-		vote: 'Votați pentru mine!'
 	},
 	message: {
 		P: 'Bună, omule!',
