@@ -5,8 +5,8 @@
   "main": "src/zulyClusters.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "node --no-warnings --optimize_for_size --expose-gc --gc-interval=100 .",
-    "forever": "forever start src/zuly.js",
+    "start": "node --max_old_space_size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings .",
+    "forever": "forever -c \"node --max_old_space_size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings\" src/zulyClusters.js",
     "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "keywords": [
@@ -37,6 +37,7 @@
     "@jpbberry/typed-emitter": "^1.2.1",
     "@top-gg/sdk": "^3.1.2",
     "@vitalets/google-translate-api": "^7.0.0",
+    "aki-api": "^6.0.8",
     "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "byte-size": "^8.1.0",

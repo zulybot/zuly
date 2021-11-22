@@ -16,6 +16,9 @@ module.exports = class ReadyEvent {
 			if (ram > 100) {
 				return process.exit();
 			}
+			global.zuly.unavailableGuilds.forEach(guild => {
+				console.log(guild);
+			});
 			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 		}, 5000);
 		const {
@@ -35,7 +38,7 @@ module.exports = class ReadyEvent {
 		const CronJob = require('cron').CronJob;
 		// fortnite-shop
 		const job = new CronJob('00 15 21 * * *', function() {
-			global.zuly.guilds.map(async guild => {
+			global.zuly.guilds.forEach(async guild => {
 				const fnshop = await global.db.get(`fnshop-${guild.id}`);
 				if (fnshop) {
 					const canal = await global.zuly.getRESTChannel(fnshop);
@@ -45,7 +48,7 @@ module.exports = class ReadyEvent {
 		}, null, !0, 'America/Sao_Paulo');
 		// donator-ryos
 		const ryos = new CronJob('0 */1 * * * *', function() {
-			global.zuly.users.map(async user => {
+			global.zuly.users.forEach(async user => {
 				const userPremium = await global.zuly.getPremium('doador', user.id);
 				if (userPremium === true) {
 					const ryos = await global.db.get(`ryos-${user.id}`) || 0;

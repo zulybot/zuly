@@ -1,8 +1,8 @@
-module.exports = class Nitro {
+module.exports = class GuessCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageEvents'],
+				membro: ['manageGuild'],
 				bot: [],
 				dono: false
 			},
@@ -67,7 +67,9 @@ module.exports = class Nitro {
 							flags: ctx.ephemeral
 						});
 					});
-					const { MessageCollector } = require('eris-collector');
+					const {
+						MessageCollector
+					} = require('eris-collector');
 					const collector = new MessageCollector(global.zuly, msg.channel, (m) => m.content === `${number}`, {
 						time: 300000
 					});
@@ -105,7 +107,9 @@ module.exports = class Nitro {
 							flags: ctx.ephemeral
 						});
 					});
-					const { MessageCollector } = require('eris-collector');
+					const {
+						MessageCollector
+					} = require('eris-collector');
 					const collector = new MessageCollector(global.zuly, msg.channel, (m) => m.content === `${number}`, {
 						time: 300000
 					});
