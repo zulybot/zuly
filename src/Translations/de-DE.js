@@ -1,5 +1,34 @@
 module.exports = {
 	lang: 'de',
+	labels: { recalc: 'Recalculate' },
+	guess: {
+		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
+		started: 'It\'s started!',
+		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
+		win: 'You got it right! The chosen Number was `%num`!'
+	},
+	lockdown: {
+		pass: 'To start lockdown, send `lock` in chat.\n> ⚠️ If you want to cancel, send something else in chat.',
+		cancel: 'Lockdown has been successfully cancelled.',
+		success: 'Lockdown was successfully executed.',
+		locking: 'Lockdown is in progress.',
+		noCanal: 'No channels have been locked.'
+	},
+	print: { website: 'Print from website:' },
+	mention: {
+		hello: 'Hello %user!',
+		about: 'I am a multifunctional bot for discord!',
+		help: 'To know my commands, type **/help**.',
+		labels: {
+			support: 'Support Server',
+			invite: 'Invite',
+			website: 'Website'
+		}
+	},
+	reactionRole: {
+		invalidMessage: 'Could not find message with id `%id%`',
+		sucess: 'ReactionRole created successfully!'
+	},
 	eventLog: {
 		fields: {
 			deletedMessage: 'Deleted Message:',
@@ -13,11 +42,6 @@ module.exports = {
 		args: 'Include the channel ID that will be sent to the fortnite store.',
 		channel: 'I don\'t have permission to send messages on the mentioned channel.',
 		sucess: 'Channel set successfully!'
-	},
-	labels: {
-		add: 'Me Adicione!',
-		support: 'Servidor de Suporte!',
-		vote: 'Vote em mim!'
 	},
 	message: {
 		P: 'Guten Tag!',
@@ -77,8 +101,6 @@ module.exports = {
 		msg: 'mensagens',
 		title: 'Mensagens'
 	},
-	print: { web: 'Faltou o website' },
-	mention: { response: 'Olá **%u**, veja meus comandos usando `star ajuda` ou `s!ajuda`' },
 	together: {
 		channel: 'Você precisa estar em um canal de voz para executar este comando.',
 		done: 'Basta clicar no link e você será redirecionado para a atividade:',
