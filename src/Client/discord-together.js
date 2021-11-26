@@ -1,15 +1,15 @@
-const fetch = require('node-fetch'),
-	{
-		token: token
-	} = require('../Config/config'),
-	defaultApplications = {
-		youtube: '755600276941176913',
-		poker: '755827207812677713',
-		betrayal: '773336526917861400',
-		fishing: '814288819477020702',
-		chessdev: '832012586023256104',
-		chess: '832012774040141894'
-	};
+const fetch = require('node-fetch');
+const {
+	token
+} = require('../Config/config');
+const defaultApplications = {
+	youtube: '755600276941176913',
+	poker: '755827207812677713',
+	betrayal: '773336526917861400',
+	fishing: '814288819477020702',
+	chessdev: '832012586023256104',
+	chess: '832012774040141894'
+};
 class DiscordTogether {
 	constructor (t, e = defaultApplications) {
 		if (!t) throw new SyntaxError('Invalid Discord.Client !');
@@ -18,6 +18,7 @@ class DiscordTogether {
 			...e
 		};
 	}
+
 	async createTogetherCode (t, e) {
 		const o = {
 			code: 'none'

@@ -24,3 +24,7 @@ yarn-error.log
 ## CONTAINER FILES
 
 src/Containers/Premium/Config/config.js
+
+## ASSETS
+
+assets/images/utils/fnshop.png

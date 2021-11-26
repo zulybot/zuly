@@ -5,6 +5,7 @@ module.exports = class ErrorEvent {
 			run: this.run
 		};
 	}
+
 	async run (error) {
 		console.log(`[ERROR] ${error}`.red);
 	}

@@ -14,13 +14,6 @@ const {
 } = require('./API/keys');
 const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
-	/*
-	allowedMentions: {
-		everyone: !1,
-		roles: !0,
-		users: !0
-	},
-	*/
 	autoReconnect: !0,
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,

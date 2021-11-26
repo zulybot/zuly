@@ -33,7 +33,7 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'image',
 					description: 'The Image Link',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],
@@ -68,7 +68,7 @@ module.exports = class CalcCommand {
 			}
 			else {
 				ctx.message.channel.slashReply({
-					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`,
+					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`
 				});
 			}
 		});

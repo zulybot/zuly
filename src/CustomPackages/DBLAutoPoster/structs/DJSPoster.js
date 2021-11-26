@@ -14,14 +14,17 @@ class DJSPoster extends BasePoster_1.BasePoster {
 			getStats: () => this.getStats()
 		});
 	}
+
 	clientReady () {
 		return this.client.ws.status === 0;
 	}
+
 	waitForReady (e) {
 		this.client.once('ready', () => {
 			e();
 		});
 	}
+
 	async getStats () {
 		let e;
 		return {

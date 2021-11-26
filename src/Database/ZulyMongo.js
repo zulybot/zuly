@@ -7,7 +7,7 @@ const Mongo = require('mongoose');
 const defaultOptions = {
 	noDelay: true,
 	autoIndex: true,
-	autoCreate: true,
+	autoCreate: true
 };
 module.exports.defaultOptions = defaultOptions;
 /**
@@ -72,7 +72,7 @@ class Database extends EventEmitter {
          */
 		this.schema = new Mongo.Schema({
 			name: {},
-			value: {},
+			value: {}
 		});
 
 		/**
@@ -123,7 +123,7 @@ class Database extends EventEmitter {
 		}, {
 			name: key,
 			value
-		},);
+		});
 		return obj.save();
 	}
 
@@ -220,7 +220,7 @@ class Database extends EventEmitter {
 
 			this.update(
 				key,
-				obj.filter((/** @type {any} */ val) => val !== value),
+				obj.filter((/** @type {any} */ val) => val !== value)
 			);
 			return this.get(key);
 		}
@@ -279,7 +279,7 @@ class Database extends EventEmitter {
      */
 	async getAll () {
 		const obj = await this.model?.find({}).exec();
-		return obj ? obj : [];
+		return obj || [];
 	}
 
 	/**
@@ -312,11 +312,11 @@ const ignoreProps = ['disconnect', 'connect', 'options', 'model'];
 
 		Object.defineProperty(db.prototype, key, {
 			value: val,
-			writable: false,
+			writable: false
 		});
 	}
 })(
-	module.exports instanceof Database ?
-		module.exports :
-		module.exports = Database,
+	module.exports instanceof Database
+		? module.exports
+		: module.exports = Database
 );

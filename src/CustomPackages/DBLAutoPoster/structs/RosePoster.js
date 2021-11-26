@@ -14,15 +14,18 @@ class RosePoster extends BasePoster_1.BasePoster {
 			getStats: () => this.getStats()
 		});
 	}
+
 	async clientReady () {
 		if (!this.client.spawned) return !1;
 		return (await this.client.getStats()).every(e => e.shards.every(e => e.state === 2));
 	}
+
 	waitForReady (e) {
 		this.client.once('READY', () => {
 			e();
 		});
 	}
+
 	async getStats () {
 		return {
 			serverCount: (await this.client.getStats()).reduce((e, t) => e + t.shards.reduce((e, t) => e + t.guilds, 0), 0),

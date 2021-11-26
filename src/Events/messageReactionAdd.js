@@ -5,6 +5,7 @@ module.exports = class DisconnectEvent {
 			run: this.run
 		};
 	}
+
 	async run (message, emoji, member) {
 		const system = require('../Config/system.js');
 		if (member.bot) return;

@@ -33,7 +33,7 @@ module.exports = class PrintCommand {
 					type: 3,
 					name: 'website',
 					description: 'The Website Link',
-					required: true,
+					required: true
 				}
 			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],

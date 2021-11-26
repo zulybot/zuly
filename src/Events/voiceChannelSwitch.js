@@ -5,6 +5,7 @@ module.exports = class voiceChannelSwitch {
 			run: this.run
 		};
 	}
+
 	async run (member, newChannel, oldChannel) {
 		const player = global.zuly.music.players.get(member.guild.id);
 		if (!player || member.bot) return;

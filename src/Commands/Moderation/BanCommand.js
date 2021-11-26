@@ -33,19 +33,19 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'usermention',
 					description: 'The User Mention',
-					required: false,
+					required: false
 				},
 				{
 					type: 3,
 					name: 'userid',
 					description: 'The User ID',
-					required: false,
+					required: false
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the ban',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['banir', 'hackban', 'forceban'],
@@ -61,7 +61,7 @@ module.exports = class BanCommand {
 			});
 		}
 
-		if (!ctx.message.mentions[1]) {
+		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
@@ -69,7 +69,7 @@ module.exports = class BanCommand {
 			});
 		}
 		else {
-			member = await ctx.message.mentions[1];
+			member = await ctx.message.mentions[0];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');

@@ -33,7 +33,7 @@ module.exports = class PlayCommand {
 					type: 3,
 					name: 'music',
 					description: 'The Music that will be played',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['p', 'tocar', 'som', 'somzao', 'somzão', 'dj'],

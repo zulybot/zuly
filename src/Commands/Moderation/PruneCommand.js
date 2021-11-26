@@ -33,7 +33,7 @@ module.exports = class PruneCommand {
 					type: 3,
 					name: 'messages',
 					description: 'The Number of messages to be cleared',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['clear', 'c', 'purge', 'clean', 'limpar', 'bulkdelete'],

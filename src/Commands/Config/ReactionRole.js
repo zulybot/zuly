@@ -32,19 +32,19 @@ module.exports = class ReactionRoleCommand {
 					type: 3,
 					name: 'message',
 					description: 'Message ID To create the Reaction Role (the message must be on this channel)',
-					required: true,
+					required: true
 				},
 				{
 					type: 8,
 					name: 'role',
 					description: 'Cargo to add or remove in whom to react',
-					required: true,
+					required: true
 				},
 				{
 					type: 3,
 					name: 'emoji',
 					description: 'Emoji that members should use (for custom emojis, I have to be on the Emoji server)',
-					required: true,
+					required: true
 				}
 			],
 			aliases: ['rr', 'reaction-role'],
@@ -60,7 +60,7 @@ module.exports = class ReactionRoleCommand {
 		const mensagem = await global.zuly.getMessage(ctx.message.channel.id, message_id);
 		if (!mensagem) {
 			return ctx.message.channel.slashReply({
-				content	: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.invalidMessage.replace('%id%', message_id)}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.invalidMessage.replace('%id%', message_id)}`
 			});
 		}
 		else {

@@ -33,13 +33,13 @@ module.exports = class GuessCommand {
 					type: 3,
 					name: 'min',
 					description: 'The minimum number.',
-					required: false,
+					required: false
 				},
 				{
 					type: 3,
 					name: 'max',
 					description: 'The maximum number.',
-					required: false,
+					required: false
 				}
 			],
 			aliases: [],

@@ -42,7 +42,7 @@ module.exports = class EvalCommand {
 			registerFont
 		  } = require('canvas');
 		  const { fillTextWithTwemoji } = require('node-canvas-with-twemoji-and-discord-emoji');
-		  const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		  const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		  const back = await global.db.get(`background-${user.id}`) || './assets/images/backgrounds/default.jpg';
 		  registerFont('./assets/fonts/Dunkin.otf', {
 			family: 'Dunkin'

@@ -33,8 +33,8 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'name',
 					description: 'Nome do PROMOCODE',
-					required: false,
-				},
+					required: false
+				}
 			],
 			aliases: ['pdelete', 'promocode-delete', 'deletar-promocode', 'deletar-promo', 'pdeletar'],
 			run: this.run

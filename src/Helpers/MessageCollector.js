@@ -67,6 +67,7 @@ module.exports = class MessageCollector extends CollectorBase {
 			});
 		}
 	}
+
 	collect (message) {
 		if (this.ended) return;
 		if (this.collectedSize >= this.options.max) {

@@ -18,6 +18,7 @@ module.exports = class extends CollectorBase {
 			}), this.options.stopOnCollect) return this.stopAll();
 		});
 	}
+
 	collect (e, t, o) {
 		if (!(this.ended || o.user.bot && this.options.ignoreBots)) {
 			if (e.id !== this.options.message.id || o.id !== this.options.user.id) return null;
@@ -25,7 +26,7 @@ module.exports = class extends CollectorBase {
 			if (t.name !== this.options.emoji) {
 				if (t.id !== this.options.emoji) return null;
 			}
-			else {this.emit('collect', e, t, o);};
+			else { this.emit('collect', e, t, o); };
 		}
 	}
 };

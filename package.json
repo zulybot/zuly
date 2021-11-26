@@ -5,9 +5,9 @@
   "main": "src/zulyClusters.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "node --max_old_space_size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings .",
-    "forever": "forever -c \"node --max_old_space_size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings\" src/zulyClusters.js",
-    "lint": "eslint --ext .js --ignore-path .gitignore ."
+    "start": "node --max-old-space-size=1024 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings .",
+    "forever": "forever -c \"node --max-old-space-size=1024 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings\" src/zulyClusters.js",
+    "lint": "eslint --fix --ext .js --ignore-path .gitignore ."
   },
   "keywords": [
     "nodejs",
@@ -60,6 +60,7 @@
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "5.1.1"
+    "eslint-plugin-promise": "5.1.1",
+    "optionator": "^0.9.1"
   }
 }

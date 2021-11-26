@@ -36,7 +36,7 @@ module.exports = class Ajuda {
 					type: 3,
 					name: 'command',
 					description: 'The Command you want to see about',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['cmds', 'commands', 'comandos', 'ajuda'],

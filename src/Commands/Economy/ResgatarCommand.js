@@ -33,7 +33,7 @@ module.exports = class ResgatarCommand {
 					type: 3,
 					name: 'promo',
 					description: 'The Promocode that will be redeemed',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['reedem', 'promocode', 'resgatar-promocode', 'reedem-promocode', 'promocode-resgatar', 'pclaim', 'presgatar'],

@@ -33,13 +33,13 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'userid',
 					description: 'The User ID',
-					required: false,
+					required: false
 				},
 				{
 					type: 6,
 					name: 'usermention',
 					description: 'The User Mention',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['userbanner', 'user-banner', 'ub', 'memberbanner', 'background', 'profilebanner', 'profilebackground'],
@@ -48,7 +48,7 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const banner = await global.zuly.getRESTBanner(user.id);
 
 		const embed = new ctx.embed();

@@ -33,8 +33,8 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'expression',
 					description: 'The Expression that will be evaluated',
-					required: false,
-				},
+					required: false
+				}
 			],
 			aliases: ['math', 'calcular', 'calculadora'],
 			run: this.run

@@ -14,14 +14,17 @@ class ErisPoster extends BasePoster_1.BasePoster {
 			getStats: () => this.getStats()
 		});
 	}
+
 	clientReady () {
 		return this.client.ready;
 	}
+
 	waitForReady (e) {
 		this.client.once('ready', () => {
 			e();
 		});
 	}
+
 	async getStats () {
 		return {
 			serverCount: this.client.guilds.size,

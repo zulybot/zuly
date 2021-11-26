@@ -14,9 +14,11 @@ class DJSSharderPoster extends BasePoster_1.BasePoster {
 			getStats: () => this.getStats()
 		});
 	}
+
 	clientReady () {
 		return this.client.shards.size > 0 && this.client.shards.every(e => e.ready);
 	}
+
 	waitForReady (e) {
 		const t = r => {
 			r.id === this.client.totalShards - 1 && (this.client.off('shardCreate', t), r.once('ready', () => {
@@ -25,6 +27,7 @@ class DJSSharderPoster extends BasePoster_1.BasePoster {
 		};
 		this.client.on('shardCreate', t);
 	}
+
 	async getStats () {
 		const e = await this.client.fetchClientValues('guilds.cache.size');
 		return {

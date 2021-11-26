@@ -16,7 +16,7 @@ app.get('/api/status', async (req, res) => {
 	return res.json({
 		servers: guilds,
 		users: users,
-		ping: ping,
+		ping: ping
 	});
 });
 app.get('/', (req, res) => {

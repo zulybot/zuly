@@ -6,6 +6,7 @@ module.exports = class ReadyEvent {
 			run: this.run
 		};
 	}
+
 	async run () {
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		setInterval(() => {
@@ -13,14 +14,18 @@ module.exports = class ReadyEvent {
 				global.gc();
 			}
 			const ram = process.memoryUsage().rss / 1024 / 1024;
-			if (ram > 100) {
-				return process.exit();
-			}
 			global.zuly.unavailableGuilds.forEach(guild => {
 				console.log(guild);
 			});
 			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 		}, 5000);
+		try {
+			require('../../assets/images/utils/fnshop.png');
+		}
+		catch (e) {
+			await global.zuly.download('https://fn.zulybot.xyz/shop-now.png', './assets/images/utils/fnshop.png').then(()=> console.log('downloaded file no issues...'))
+				.catch(e => console.error('error while downloading', e));;
+		}
 		const {
 			version
 		} = require('../../package.json');
@@ -37,32 +42,22 @@ module.exports = class ReadyEvent {
 		global.zuly.music.init(global.zuly.user.id);
 		const CronJob = require('cron').CronJob;
 		// fortnite-shop
-		const job = new CronJob('00 15 21 * * *', function() {
+		const job = new CronJob('00 15 21 * * *', async function() {
+			const fs = require('fs');
+			fs.unlink('./assets/images/utils/fnshop.png', err => {
+				if (err) {console.log(err);}
+				else {console.log('\nDeleted file: fnshop.png');}
+			});
+			await global.zuly.download('https://fn.zulybot.xyz/shop-now.png', './assets/images/utils/fnshop.png').then(()=> console.log('downloaded file no issues...'));
 			global.zuly.guilds.forEach(async guild => {
 				const fnshop = await global.db.get(`fnshop-${guild.id}`);
 				if (fnshop) {
 					const canal = await global.zuly.getRESTChannel(fnshop);
-					canal.createMessage('<a:zu_fortnite:894977940926910485> **|** https://fn.zulybot.xyz/shop-now.png');
-				}
-			});
-		}, null, !0, 'America/Sao_Paulo');
-		// donator-ryos
-		const ryos = new CronJob('0 */1 * * * *', function() {
-			global.zuly.users.forEach(async user => {
-				const userPremium = await global.zuly.getPremium('doador', user.id);
-				if (userPremium === true) {
-					const ryos = await global.db.get(`ryos-${user.id}`) || 0;
-					if (ryos) {
-						await global.db.set(`ryos-${user.id}`, ryos + 5);
-					}
-					else {
-						await global.db.set(`ryos-${user.id}`, 5);
-					}
+					canal.createMessage('<a:zu_fortnite:894977940926910485> **|** Fortnite Shop: https://fn.zulybot.xyz');
 				}
 			});
 		}, null, !0, 'America/Sao_Paulo');
 		// start cron-jobs
-		ryos.start();
 		job.start();
 		require('../Integrations/app');
 	}

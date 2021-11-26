@@ -41,7 +41,7 @@ module.exports = class ShipCommand {
 
 		if (ctx.args[1]) {
 			user1 = ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]);
-			user2 = ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[1]);
+			user2 = ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[1]);
 		}
 
 		if (!user2) {

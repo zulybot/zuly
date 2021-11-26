@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 module.exports = class InteractionEvent {
 	constructor () {
 		return {
@@ -5,22 +6,9 @@ module.exports = class InteractionEvent {
 			run: this.run
 		};
 	}
+
 	async run (interaction) {
 		const Eris = require('eris');
-		if(interaction instanceof Eris.ComponentInteraction) {
-			interaction.author = interaction.member.user;
-			if (interaction.data.custom_id === 'ping') {
-				interaction.deferUpdate();
-				const mongoose = require('mongoose');
-				const date = Date.now();
-				const pingDB = new Promise((r) =>
-					mongoose.connection.db.admin().ping(() => r(Date.now() - date))
-				);
-				interaction.message.edit({
-					content: `🏓 **|** ${interaction.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\``,
-				});
-			}
-		}
 		if (interaction instanceof Eris.CommandInteraction) {
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
@@ -31,10 +19,9 @@ module.exports = class InteractionEvent {
 					interaction.mention_roles = interaction.data.resolved.roles;
 				}
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
-					for (const membro in interaction.data.resolved.users) {
-						console.log(interaction.data.resolved.users);
-						interaction.data.resolved.users[membro.user.id].member = interaction.data.resolved.members[membro.user.id];
-						interaction.mentions.push(interaction.data.resolved.users[membro.user.id]);
+					for (const {} in interaction.data.resolved.users) {
+						// let user = interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]];
+						interaction.mentions.push(interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]]);
 					}
 				}
 				const args = interaction.data.options
@@ -51,8 +38,10 @@ module.exports = class InteractionEvent {
 						}
 					})
 					: [];
+
 				interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
 				interaction.author = interaction.member.user;
+
 				const msg = interaction;
 				let idioma = require('../Config/idiomas.js');
 				let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
@@ -132,22 +121,29 @@ module.exports = class InteractionEvent {
 				};
 				try {
 					await command.run(this.ctx).then(async () => {
+						const system = require('../Config/system');
+
 						const moment = require('moment');
 						const owner = await global.zuly.getRESTUser(msg.channel.guild.ownerID);
 						const embed = new global.zuly.manager.Ebl();
+
 						embed.setTitle('<:zu_slash:886681118470987967> Slash Commands');
 						embed.setColor('#ffcbdb');
 						embed.setDescription(`>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 						embed.addField('<:zu_membros:885214377182109696> **Usuário:**', `>>> 📘 **Informações:** \`${msg.author.username}#${msg.author.discriminator} [${msg.author.id}]\`\n📆 **Criação da conta:** <t:${Math.floor(msg.author.createdAt / 1000)}>`);
 						embed.setThumbnail(global.zuly.user.avatarURL);
 						embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-						const canal = await global.zuly.getRESTChannel('886680915407962215');
-						canal.createMessage({
+
+						await global.zuly.executeWebhook(system.command.id, system.command.token, {
+							avatarURL: global.zuly.user.avatarURL,
+							username: global.zuly.user.username,
 							embeds: [embed.get()]
 						});
 					});
 				}
 				catch (e) {
+					const system = require('../Config/system');
+
 					const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
 					const embed = new global.zuly.manager.Ebl();
 					embed.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
@@ -161,17 +157,21 @@ module.exports = class InteractionEvent {
 						content: msg.author.mention,
 						embeds: [embed.get()]
 					});
+
 					const moment = require('moment');
 					const owner = await global.zuly.getRESTUser(msg.channel.guild.ownerID);
-					const canal = await global.zuly.getRESTChannel('889930854929932288');
+
 					const embed2 = new global.zuly.manager.Ebl();
 					embed2.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
 					embed2.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
-					embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\``);
+					embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 					embed2.setColor('#ff0000');
 					embed2.setThumbnail(global.zuly.user.avatarURL);
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-					canal.createMessage({
+
+					await global.zuly.executeWebhook(system.error.id, system.error.token, {
+						avatarURL: global.zuly.user.avatarURL,
+						username: global.zuly.user.username,
 						content: '<@&886680759237226556>',
 						embeds: [embed2.get()]
 					});

@@ -33,13 +33,13 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'name',
 					description: 'Nome do PROMOCODE',
-					required: false,
+					required: false
 				},
 				{
 					type: 3,
 					name: 'valor',
 					description: 'Valor do PROMOCODE',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['pcreate', 'promocode-create', 'criar-promocode', 'criar-promo', 'pcriar'],

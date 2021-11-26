@@ -2,10 +2,10 @@
 Object.defineProperty(exports, '__esModule', {
 	value: !0
 }), exports.RosePoster = exports.DJSSharderPoster = exports.ErisPoster = exports.DJSPoster = exports.AutoPoster = void 0;
-const DJSPoster_1 = require('./structs/DJSPoster'),
-	ErisPoster_1 = require('./structs/ErisPoster'),
-	DJSSharderPoster_1 = require('./structs/DJSSharderPoster'),
-	RosePoster_1 = require('./structs/RosePoster');
+const DJSPoster_1 = require('./structs/DJSPoster');
+const ErisPoster_1 = require('./structs/ErisPoster');
+const DJSSharderPoster_1 = require('./structs/DJSSharderPoster');
+const RosePoster_1 = require('./structs/RosePoster');
 
 function AutoPoster (e, r, t) {
 	if (!e) throw new Error('Top.gg Tokeni eksik');
@@ -30,28 +30,28 @@ function AutoPoster (e, r, t) {
 	throw new Error('Desteklenmeyen client');
 }
 exports.AutoPoster = AutoPoster;
-let DJSPoster_2 = require('./structs/DJSPoster');
+const DJSPoster_2 = require('./structs/DJSPoster');
 Object.defineProperty(exports, 'DJSPoster', {
 	enumerable: !0,
 	get: function() {
 		return DJSPoster_2.DJSPoster;
 	}
 });
-let ErisPoster_2 = require('./structs/ErisPoster');
+const ErisPoster_2 = require('./structs/ErisPoster');
 Object.defineProperty(exports, 'ErisPoster', {
 	enumerable: !0,
 	get: function() {
 		return ErisPoster_2.ErisPoster;
 	}
 });
-let DJSSharderPoster_2 = require('./structs/DJSSharderPoster');
+const DJSSharderPoster_2 = require('./structs/DJSSharderPoster');
 Object.defineProperty(exports, 'DJSSharderPoster', {
 	enumerable: !0,
 	get: function() {
 		return DJSSharderPoster_2.DJSSharderPoster;
 	}
 });
-let RosePoster_2 = require('./structs/RosePoster');
+const RosePoster_2 = require('./structs/RosePoster');
 Object.defineProperty(exports, 'RosePoster', {
 	enumerable: !0,
 	get: function() {

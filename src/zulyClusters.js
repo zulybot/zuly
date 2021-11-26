@@ -11,7 +11,7 @@ if (cluster.isMaster) {
 	}
 	cluster.on('exit', (worker) => {
 		console.warn(`[${worker.process.pid}]`, {
-			message: 'Process terminated. Restarting.',
+			message: 'Process terminated. Restarting.'
 		});
 		cluster.fork();
 	});

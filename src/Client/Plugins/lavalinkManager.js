@@ -59,7 +59,7 @@ global.zuly.music = new Manager({
 }).on('playerMove', async (player, currentChannel, newChannel) => {
 	player.voiceChannel = await global.zuly.getRESTChannel(newChannel);
 }).on('socketClosed', (player, payload) => {
-	if(payload.byRemote == true) {
+	if (payload.byRemote == true) {
 		player.destroy();
 	}
 });

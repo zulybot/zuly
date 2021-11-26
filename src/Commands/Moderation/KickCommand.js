@@ -33,19 +33,19 @@ module.exports = class KickCommand {
 					type: 3,
 					name: 'userid',
 					description: 'The User ID',
-					required: false,
+					required: false
 				},
 				{
 					type: 6,
 					name: 'usermention',
 					description: 'The User Mention',
-					required: false,
+					required: false
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the kick',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['expulsar', 'hackkick', 'forcekick', 'kickar'],
@@ -61,11 +61,11 @@ module.exports = class KickCommand {
 			});
 		}
 
-		if (!ctx.message.mentions[1]) {
+		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]);
 		}
 		else {
-			member = await ctx.message.mentions[1];
+			member = await ctx.message.mentions[0];
 		}
 		let banReason;
 		if (ctx.args[1]) {

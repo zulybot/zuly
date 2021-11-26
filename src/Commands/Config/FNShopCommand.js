@@ -31,7 +31,7 @@ module.exports = class LangCommand {
 				type: 3,
 				name: 'channelid',
 				description: 'Channel ID to be used',
-				required: false,
+				required: false
 			}],
 			aliases: ['anti-nsfw', 'nonsfw', 'anti-sfw'],
 			run: this.run

@@ -53,7 +53,7 @@ module.exports = class NowplayingCommand {
 		embed.setTitle(`:musical_note: ${ctx.idioma.erela.np}`);
 		embed.setDescription(`> [${player.queue.current.title}](${player.queue.current.uri})`);
 		embed.addField(`⏲️ ${ctx.idioma.erela.duration}`, `${humanizeDuration(player.queue.current.duration, {
-			language: ctx.idioma.lang,
+			language: ctx.idioma.lang
 		})}`, true);
 		embed.addField(`📊 ${ctx.idioma.erela.duration}`, `\`${'▬'.repeat(part) + '⚪' + '▬'.repeat(11 - part)}\``, true);
 		embed.setColor('#ffcbdb');

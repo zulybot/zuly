@@ -33,7 +33,7 @@ module.exports = class BaninfoCommand {
 					type: 3,
 					name: 'userid',
 					description: 'The User ID',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['checkban', 'infoban', 'informação-ban', 'ban-info'],
@@ -51,11 +51,11 @@ module.exports = class BaninfoCommand {
 			});
 		}
 
-		if (!ctx.message.mentions[1]) {
+		if (!ctx.message.mentions[0]) {
 			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
 		}
 		else {
-			member = await ctx.message.mentions[1];
+			member = await ctx.message.mentions[0];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');

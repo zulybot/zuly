@@ -5,6 +5,7 @@ module.exports = class DisconnectEvent {
 			run: this.run
 		};
 	}
+
 	async run (message, emoji, user) {
 		const system = require('../Config/system.js');
 		const member = await message.channel.guild.getRESTMember(user);

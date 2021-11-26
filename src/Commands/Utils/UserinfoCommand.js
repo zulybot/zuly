@@ -33,13 +33,13 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'userid',
 					description: 'The User ID',
-					required: false,
+					required: false
 				},
 				{
 					type: 6,
 					name: 'usermention',
 					description: 'The User Mention',
-					required: false,
+					required: false
 				}
 			],
 			aliases: ['whois', 'ui', 'member', 'memberinfo'],
@@ -62,7 +62,7 @@ module.exports = class CalcCommand {
 			BUG_HUNTER_LEVEL_2: '<:zu_bughunter_2:885919018349920306>',
 			VERIFIED_BOT_DEVELOPER: '<:zu_developer:885918499380293692>',
 			VERIFIED_BOT: '<:zu_verifiedbot_1:885923881108504616><:zu_verifiedbot_2:885923960473153546>',
-			BOT: '<:zu_bot:885923705316859955>',
+			BOT: '<:zu_bot:885923705316859955>'
 		};
 
 		function getUserBadges (user) {
@@ -75,7 +75,7 @@ module.exports = class CalcCommand {
 			return badges;
 		}
 
-		const user = ctx.args[0] ? ctx.message.mentions[1] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
 		const userb = await global.zuly.getRESTBanner(user.id);

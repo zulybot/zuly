@@ -69,7 +69,6 @@ module.exports = class NowplayingCommand {
 				embeds: [embed.get()]
 			});
 		}
-
 	}
 };
 
