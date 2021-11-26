@@ -1,5 +1,16 @@
 module.exports = {
 	lang: 'en',
+	aki: {
+		reg: 'pt',
+		q: 'Question:',
+		r: 'Answers:',
+		i: 'Starting Akinator',
+		is: 'Is this your character?',
+		win: 'Great! I got it right once more.',
+		nowin: 'Uh, you won',
+		yay: 'I loved playing with you!',
+		res: '[yes (**y**) / no (**n**)]'
+	},
 	labels: {
 		recalc: 'Recalculate'
 	},
@@ -7,7 +18,7 @@ module.exports = {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
 		started: 'It\'s started!',
 		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
-		win: 'You got it right! The chosen Number was `%num`!',
+		win: 'You got it right! The chosen Number was `%num`!'
 	},
 	lockdown: {
 		pass: 'To start lockdown, send `lock` in chat.\n> ⚠️ If you want to cancel, send something else in chat.',
@@ -37,7 +48,7 @@ module.exports = {
 		fields: {
 			deletedMessage: 'Deleted Message:',
 			oldMessage: 'Old Message:',
-			newMessage: 'New Message:',
+			newMessage: 'New Message:'
 		},
 		channel: 'Channel:'
 	},
