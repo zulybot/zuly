@@ -1,5 +1,16 @@
 module.exports = {
 	lang: 'de',
+	aki: {
+		reg: 'pt',
+		q: 'Question:',
+		r: 'Answers:',
+		i: 'Starting Akinator',
+		is: 'Is this your character?',
+		win: 'Great! I got it right once more.',
+		nowin: 'Uh, you won',
+		yay: 'I loved playing with you!',
+		res: '[yes (**y**) / no (**n**)]'
+	},
 	labels: { recalc: 'Recalculate' },
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
