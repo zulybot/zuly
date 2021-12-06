@@ -68,10 +68,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@top-gg/sdk@^3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@top-gg/sdk/-/sdk-3.1.2.tgz#dc5cf2d3ea31cfd6919aa7bd3051d3bea14c7bb6"
-  integrity sha512-k44J9lCzyER4F7CClhhP9apgTqGLQeKCy4Hop2g2357QYOAFk8YlbdJOaEFts1v0V9rIQPrWK7w2t1KI/mgzCQ==
+"@top-gg/sdk@^3.1.3":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@top-gg/sdk/-/sdk-3.1.3.tgz#197e2726c76cb80ec19b83d7e2a68e212ee913e7"
+  integrity sha512-jvj3jH8BY35AXKFXkap2cJRuFMOz1yBvBvCvNq90gfvplKWDYqGPQKt+nOhT/hdYc+XcKskY/c5OOWDX0xbg2Q==
   dependencies:
     node-fetch "^2.6.1"
     raw-body "^2.4.1"
