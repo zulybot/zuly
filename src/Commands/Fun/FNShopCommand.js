@@ -35,13 +35,13 @@ module.exports = class Nitro {
 	}
 
 	async run (ctx) {
-		const embed = new ctx.embed();
-		embed.setColor('#ffcbdb');
-		embed.setImage('https://fn.zulybot.xyz/shop-now.png');
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		const { readFile } = require('fs/promises');
+		const file = await readFile('./assets/images/utils/fnshop.png');
+
 		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
-			embeds: [embed.get()]
+			file: file,
+			name: 'fnshop.png'
 		});
 	}
 };
