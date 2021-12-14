@@ -8,12 +8,12 @@ module.exports = class TicketCommand {
 			pt: {
 				nome: 'ticket',
 				categoria: '⚙️ » Configuração',
-				desc: 'Embed generator, envie embeds personalizadas.'
+				desc: 'Configure o sistema de tickets.'
 			},
 			en: {
 				nome: 'ticket',
 				categoria: '⚙️ » Configuration',
-				desc: 'Embed generator, send custom embeds.'
+				desc: 'Configure the ticket system.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand
