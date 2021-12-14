@@ -9,6 +9,98 @@ module.exports = class InteractionEvent {
 
 	async run (interaction) {
 		const Eris = require('eris');
+		try {
+			if (interaction instanceof Eris.ComponentInteraction) {
+
+				let idioma = require('../Config/idiomas.js');
+				let lang = await global.db.get(`idioma-${interaction.channel.guild.id}`) || 'pt_br';
+				lang = lang.replace(/-/g, '_');
+				idioma = idioma[lang];
+
+				const axios = require('axios');
+				if (interaction.data.custom_id == 'open-ticket') {
+
+					let allChannels = interaction.channel.guild.channels.filter(m => [0].includes(m.type) && m.name.includes('ticket-')).map(m => m.name.split('ticket-')[1]);
+					let already = allChannels.some(v => interaction.member.user.id == v);
+
+					console.log(allChannels);
+
+					if (already === true) {
+						return interaction.createMessage({
+							content: `:x: <@${interaction.member.user.id}> **|** ${idioma.ticket.already}`,
+							flags: 64
+						});
+					}
+
+					const GuildID = interaction.channel.guild.id;
+					global.zuly.createChannel(GuildID, `ticket-${interaction.member.user.id}`, 0, {
+						permissionOverwrites: [{
+							id: interaction.member.user.id,
+							type: 1,
+							allow: 3072
+						},
+						{
+							id: GuildID,
+							type: 0,
+							deny: 1024
+						}
+						],
+						type: 'text',
+					}).then(async (channel) => {
+
+						await interaction.createMessage({
+							content: `✅ <@${interaction.member.user.id}> **|** ${idioma.ticket.created} <#${channel.id}>`,
+							flags: 64
+						});
+
+						return global.zuly.createMessage(channel.id, {
+							embed: {
+								title: `<:zu_ticket:890950181120507935> Ticket | ${global.zuly.user.username}`,
+								description: `> ${idioma.ticket.await}`,
+								color: 0x7289DA,
+							},
+							content: `<@${interaction.member.user.id}>`,
+							components: [{
+								type: 1,
+								components: [{
+									type: 2,
+									emoji: {
+										name: '🔒'
+									},
+									label: idioma.ticket.labels.delete,
+									style: 2,
+									custom_id: 'close-ticket'
+								}]
+							}]
+						});
+					});
+				}
+				else if (interaction.data.custom_id == 'close-ticket') {
+					axios.post(`https://discord.com/api/v8/interactions/${interaction.id}/${interaction.token}/callback`, {
+						type: 7,
+						data: {
+							components: []
+						}
+					});
+
+					setTimeout(() => {
+						global.zuly.deleteChannel(interaction.channel.id, 'Closed-ticket');
+					}, 10000);
+
+					global.zuly.createMessage(interaction.channel.id, {
+						embed: {
+							title: `<:zu_ticket:890950181120507935> Ticket | ${global.zuly.user.username}`,
+							description: `> ${idioma.ticket.delete}`,
+							color: 0x7289DA,
+						},
+						content: `<@${interaction.member.user.id}>`
+					});
+				}
+			}
+		}
+		catch (e) {
+			console.log(e);
+		}
 		if (interaction instanceof Eris.CommandInteraction) {
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
@@ -24,8 +116,8 @@ module.exports = class InteractionEvent {
 						interaction.mentions.push(interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]]);
 					}
 				}
-				const args = interaction.data.options
-					? interaction.data.options.map((i) => {
+				const args = interaction.data.options ?
+					interaction.data.options.map((i) => {
 						switch (i.type) {
 							case 8:
 								return `<@&${i.value}>`;
@@ -36,8 +128,8 @@ module.exports = class InteractionEvent {
 							default:
 								return i.value;
 						}
-					})
-					: [];
+					}) :
+					[];
 
 				interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
 				interaction.author = interaction.member.user;

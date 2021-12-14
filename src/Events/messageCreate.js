@@ -18,6 +18,10 @@ module.exports = class MessageEventCommand {
 		} = require('axios');
 		await get('https://bad-domains.walshy.dev/domains.json').then(async (response) => {
 			const domains = response.data;
+
+			domains.push('https://dicsordgifts.ru.com/');
+			domains.push('https://discorclgift.com/');
+
 			for (const domain of domains) {
 				if (message.content.includes(domain)) {
 					message.delete();
@@ -26,32 +30,6 @@ module.exports = class MessageEventCommand {
 				}
 			}
 		});
-
-		if (message.content === 'meme') {
-			try {
-				console.log('ok!');
-				const { createCanvas, loadImage } = require('canvas');
-				const incriveis = await loadImage('./assets/images/memes/incriveis.png');
-				const canvas = createCanvas(incriveis.width, incriveis.height);
-				const foto = canvas.getContext('2d');
-
-				foto.drawImage(incriveis, 0, 0, canvas.width, canvas.height);
-
-				foto.font = '30px sans-serif';
-				foto.fillStyle = '#ffffff';
-
-				foto.fillText('Cento e Quatro'.match(/.{1,23}/g).join('\n'), canvas.width / 50.9, canvas.height / 15.9, 655);
-				foto.fillText('Sento em Quatro'.match(/.{1,23}/g).join('\n'), canvas.width / 1.9, canvas.height / 15.9, 655);
-
-				message.channel.createMessage(message.author.mention, {
-					file: canvas.toBuffer(),
-					name: 'laranjo.png'
-				});
-			}
-			catch (e) {
-				console.log(e);
-			}
-		}
 
 		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
 		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);

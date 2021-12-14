@@ -1,5 +1,17 @@
 module.exports = {
 	lang: 'pt',
+	ticket: {
+		sus: 'Sucesso!',
+		already: 'Desculpa, você já tem um ticket.',
+		await: 'Aguarde até que um dos atendentes te responda.',
+		created: 'Seu ticket foi criado.',
+		delete: 'Seu ticket foi encerrado e será apagado em 10 segundos.',
+		create: 'Para criar um ticket clique no botão abaixo.',
+		labels: {
+			delete: 'Fechar',
+			create: 'Abrir Ticket'
+		}
+	},
 	aki: {
 		reg: 'pt',
 		q: 'Pergunta:',
