@@ -127,7 +127,7 @@ module.exports = class Ajuda {
 						`\`${comando.pt.nome}\``
 					);
 				});
-				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/pyyyJpw5QW) caso queira!`);
+				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/pyyyJpw5QW) caso queira!\n↳ [Ei, que tal dar uma passadinha na Twitch do meu amigo Lucaas?](https://www.twitch.tv/lucaas0007)`);
 				embed.setThumbnail(global.zuly.user.avatarURL);
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -207,7 +207,7 @@ module.exports = class Ajuda {
 					}
 					categorias[cmd.en.categoria].push(`\`${cmd.en.nome}\``);
 				});
-				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/pyyyJpw5QW) if you want!`);
+				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/pyyyJpw5QW) if you want!\n↳ [Ei, que tal dar uma passadinha na Twitch do meu amigo Lucaas?](https://www.twitch.tv/lucaas0007)`);
 				embed.setThumbnail(global.zuly.user.avatarURL);
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
