@@ -25,10 +25,10 @@ export default class Handler {
         });
 
         const fileURL = pathToFileURL(fullPath) as unknown as string;
-        const { default: exports }: { default: Export } = await import(fileURL);
+        const { default: exports }: { default: (client: Zuly) => Export } = await import(fileURL);
 
         try {
-          const e = exports;
+          const e = exports(this.client);
 
           if (e.type === "event") {
             this.client[e.event.type](e.event.eventName, e.event.resolve);
