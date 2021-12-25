@@ -4,11 +4,12 @@ import Export from "../interfaces/Export.js";
 import Zuly from "../zuly.js";
 
 class CommandCreateEvent extends Event {
-  constructor(client: Zuly) {
+  constructor (client: Zuly) {
     super("commandCreate", client);
   }
 
-  handler(command: CommandInteraction) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  handler (command: CommandInteraction) {
     // a
   }
 }
