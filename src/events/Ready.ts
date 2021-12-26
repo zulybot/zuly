@@ -9,7 +9,7 @@ class ReadyEvent extends Event {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handler (bot: Zuly) {
-    console.log(`[Zuly] I'm ready! ${bot.user.username}#${bot.user.discriminator} in ${bot.guilds.size} guilds.`);
+    console.log(`[Zuly] I'm ready! ${this.client.user.username}#${this.client.user.discriminator} in ${this.client.guilds.size} guilds.`);
   }
 }
 

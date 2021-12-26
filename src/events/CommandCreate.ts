@@ -10,7 +10,12 @@ class CommandCreateEvent extends Event {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handler (command: CommandInteraction) {
-    console.log(command);
+    const cmd = Array.from(this.client.commands.values()).find(cmd => cmd.name === command.data.name);
+    if (!cmd) {
+      return command.createMessage({
+        content: `:x: ${command.member?.user.mention} **|** Comando não encontrado.`
+      })
+    }
   }
 }
 
