@@ -10,6 +10,6 @@ const client = new Zuly({
 });
 
 client.connect().then(async () => {
-  await new Handler("./src/commands", client).walk();
-  await new Handler("./src/events", client).walk();
+  await new Handler("./dist/src/commands", client).walk();
+  await new Handler("./dist/src/events", client).walk();
 });
