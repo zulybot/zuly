@@ -12,8 +12,8 @@
 
 <hr>
 
-### I'm zuly, just a simple bot to discord!
-### Hi! I'm zuly, a 100% Brazilian bot focused on anime for otakus!
+#### I'm zuly, just a simple bot to discord!
+#### Hi! I'm zuly, a 100% Brazilian bot focused on anime for otakus!
 
 ### 💻 Self-Hosting
 
