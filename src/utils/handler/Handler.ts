@@ -35,7 +35,7 @@ export default class Handler {
           const e = exports(this.client);
 
           if (e.type === "event") {
-            this.client[e.event.type](e.event.eventName, e.event.resolve);
+            this.client[e.event.type](e.event.eventName, e.event.resolve.bind(e.event));
           }
           else if (e.type === "command") {
             this.client.commands.add(e.command);
@@ -48,6 +48,7 @@ export default class Handler {
       }
 
       resolve(this.loaded);
+
     })
   }
 }
