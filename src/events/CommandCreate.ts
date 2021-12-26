@@ -10,7 +10,7 @@ class CommandCreateEvent extends Event {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handler (command: CommandInteraction) {
-    // a
+    console.log(command);
   }
 }
 

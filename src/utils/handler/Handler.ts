@@ -25,6 +25,7 @@ export default class Handler {
         });
 
         const fileURL = pathToFileURL(fullPath) as unknown as string;
+        console.log(fileURL);
         const { default: exports }: { default: (client: Zuly) => Export } = await import(fileURL);
 
         try {

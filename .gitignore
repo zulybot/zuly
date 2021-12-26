@@ -2,14 +2,9 @@
 
 /node_modules
 
-## OPENODE FILES
+## TypeScript Files
 
-.openode
-Dockerfile
-
-## DATABASE FILES
-
-data/base.json
+/dist
 
 ## CONFIDENCIAL files
 
@@ -25,7 +20,3 @@ yarn-error.log
 ## CONTAINER FILES
 
 src/Containers/Premium/Config/config.js
-
-## ASSETS
-
-assets/images/utils/fnshop.png
