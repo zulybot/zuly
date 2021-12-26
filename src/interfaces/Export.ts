@@ -10,9 +10,10 @@ export default class Export {
     this.base = type === "command" ? Command : Event;
   }
 
-  public make (c: typeof DefaultClass): DefaultClass & Command | DefaultClass & Event {
+  public make (c: typeof DefaultClass): this {
     const t = new c(this.client);
-    return this.base instanceof Command ? this.command = t as DefaultClass & Command : this.event = t as DefaultClass & Event;
+    this.base instanceof Command ? this.command = t as DefaultClass & Command : this.event = t as DefaultClass & Event;
+    return this;
   }
 }
 
