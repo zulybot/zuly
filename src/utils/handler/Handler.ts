@@ -15,17 +15,20 @@ export default class Handler {
   public walk (): Promise<Array<{ name: string, path: string }>> {
     return new Promise(async (resolve, reject) => {
       const files = ReaddirP(this.path, {
-        lstat: true
+        fileFilter: ["*.js"],
+        alwaysStat: true,
+        directoryFilter: ["!node_modules"]
       })
 
-      for await (const { basename, fullPath } of files) {
+      for await (const entry of files) {
+        const { basename, fullPath } = entry;
+        console.log(basename, fullPath)
         this.loaded.push({
           name: basename,
           path: fullPath
         });
 
         const fileURL = pathToFileURL(fullPath) as unknown as string;
-        console.log(fileURL);
         const { default: exports }: { default: (client: Zuly) => Export } = await import(fileURL);
 
         try {
@@ -42,9 +45,9 @@ export default class Handler {
           this.loaded.pop();
           reject(err);
         }
-
-        resolve(this.loaded);
       }
+
+      resolve(this.loaded);
     })
   }
 }
