@@ -8,8 +8,8 @@
     "dev": "nodemon",
     "compile": "tsc",
     "pretty": "prettier-eslint --write --eslint-path \\\"src/**/*.ts\"",
-    "start": "node --max-old-space-size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings .",
-    "forever": "forever -c \"node --max-old-space-size=100 --optimize_for_size --expose-gc --gc-interval=100 --no-warnings\" src/zulyClusters.js",
+    "start": "node .",
+    "forever": "forever -c \"node\" dist/index.js",
     "lint": "eslint --fix --ext .ts --ignore-path .gitignore ."
   },
   "keywords": [
