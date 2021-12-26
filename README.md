@@ -16,7 +16,9 @@
 
 - Install nodejs 14 or higher. You can download and install here: https://nodejs.org
 - Rename **all** .example files to name.js
-  > ⚙️ config.js
+- Run `npm install`
+
+> ⚙️ config.js
 
 ```js
 // config.js
