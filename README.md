@@ -1,9 +1,8 @@
 # Hey there! Welcome to my official GitHub repository!
 
-<p align="center">
+<center>
 <h3>I'm zuly, just a simple bot to discord!</h3>
 <h3>Hi! I'm zuly, a 100% Brazilian bot focused on anime for otakus!</h3>
-
   <a href="https://jetbrains.com/?from=ZulyBot">
     <img src="https://img.shields.io/badge/Powered_by_WebStorm-gray.svg?logo=webstorm&style=for-the-badge" />
   </a>
@@ -11,7 +10,7 @@
     <img src="https://img.shields.io/badge/Powered_by_Crowdin-gray.svg?logo=crowdin&style=for-the-badge" />
     <img src="https://badges.crowdin.net/zuly/localized.svg">
   </a>
-</p>
+</center>
 
 ### 💻 Self-Hosting
 
