@@ -36,7 +36,7 @@ module.exports = {
 module.exports = [{
 	name: 'node-name', // can be anyone
 	host: 'localhost', // your lavalink ip, or if it is with your bot, localhost
-	port: 2333, // your lavalink password, by default 2333
+	port: 2333, // your lavalink port, by default 2333
 	password: 'youshallnotpass' // lavalink password, by default youshallnotpass
 }]
 ```
