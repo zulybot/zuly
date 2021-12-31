@@ -36,6 +36,10 @@ module.exports = class AutoroleCommand {
 	}
 
 	async run (ctx) {
+		ctx.message.channel.slashReply({
+			content: 'OwO',
+			flags: ctx.ephemeral
+		});
 		// COLETORES
 		const ReactionCollector = require('../../Helpers/ReactionCollector');
 		const MessageCollector = require('../../Helpers/MessageCollector');
@@ -68,7 +72,7 @@ module.exports = class AutoroleCommand {
 		// COR DA EMBED
 		embed.setColor('#ffcbdb');
 		// CRIANDO OS NEGOCIO
-		ctx.message.channel.slashReply({
+		ctx.message.channel.createMessage({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).then(msg => {
@@ -111,7 +115,7 @@ module.exports = class AutoroleCommand {
 				msg.delete();
 				// INICIANDO COLETOR
 				message.channel.createMessage({
-					content: `white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`
+					content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`
 				}).then(m => {
 					const mcol = new MessageCollector(m.channel, {
 						user: ctx.message.author,

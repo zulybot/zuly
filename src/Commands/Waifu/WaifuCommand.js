@@ -63,7 +63,7 @@ module.exports = class EvalCommand {
 			else {
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			}
-			ctx.message.createMessage({
+			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			}).then(async message => {

@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-pattern */
 module.exports = class InteractionEvent {
 	constructor () {
 		return {
@@ -105,17 +104,21 @@ module.exports = class InteractionEvent {
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
 				interaction.mentions = [];
-				interaction.mentions[0] = global.zuly.user;
 				interaction.mention_everyone = false;
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.roles) {
 					interaction.mention_roles = interaction.data.resolved.roles;
 				}
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
+					// eslint-disable-next-line no-empty-pattern
 					for (const {} in interaction.data.resolved.users) {
+						interaction.data.resolved.users.map(async user => {
+							const u = await global.zuly.getRESTUser(user.id);
+							return interaction.mentions[0] = u;
+						});
 						// let user = interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]];
-						interaction.mentions.push(interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]]);
 					}
 				}
+				console.log(interaction.mentions);
 				const args = interaction.data.options ?
 					interaction.data.options.map((i) => {
 						switch (i.type) {
@@ -128,8 +131,7 @@ module.exports = class InteractionEvent {
 							default:
 								return i.value;
 						}
-					}) :
-					[];
+					}) : [];
 
 				interaction.content = (interaction.data.name + ' ' + args.join(' ')).trim();
 				interaction.author = interaction.member.user;
