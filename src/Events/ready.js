@@ -2,11 +2,9 @@ module.exports = class ReadyEvent {
 	constructor () {
 		return {
 			nome: 'ready',
-			type: 'once',
 			run: this.run
 		};
 	}
-
 	async run () {
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		setInterval(() => {
@@ -53,12 +51,13 @@ module.exports = class ReadyEvent {
 				const fnshop = await global.db.get(`fnshop-${guild.id}`);
 				if (fnshop) {
 					const canal = await global.zuly.getRESTChannel(fnshop);
-					canal.createMessage('<a:zu_fortnite:894977940926910485> **|** Fortnite Shop: https://fn.zulybot.xyz');
+					canal.createMessage('<a:zu_fortnite:894977940926910485> **|** Fortnite Shop: https://fn.zulybot.xyz/shop-now.png');
 				}
 			});
 		}, null, !0, 'America/Sao_Paulo');
 		// start cron-jobs
 		job.start();
+		global.zuly.statcord.autopost();
 		require('../Integrations/app');
 	}
 };

@@ -7,18 +7,23 @@ const {
 	AutoPoster
 } = require('./CustomPackages/DBLAutoPoster');
 const {
-	token
+	token,
+	statcord
 } = require('./Config/config');
 const {
 	top
 } = require('./API/keys');
+const Statcord = require('statcord-eris');
 const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
 	autoReconnect: !0,
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
 	getAllUsers: !1,
-	intents: ['allNonPrivileged', 'allPrivileged'],
+	intents: [
+		'allNonPrivileged',
+		'allPrivileged',
+	],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
@@ -31,6 +36,16 @@ const client = new Client(token, {
 		latencyThreshold: 40000
 	},
 	restMode: !0
+});
+client.statcord = new Statcord.Client({
+	key: statcord,
+	client,
+	postCpuStatistics: true,
+	postMemStatistics: true,
+	postNetworkStatistics: true
+});
+client.statcord.on('autopost-start', () => {
+	console.log('[STATCORD] Started autopost'.green);
 });
 client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();

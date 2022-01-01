@@ -2,7 +2,10 @@ const config = require('./Config/config');
 const { Client } = require('eris');
 const client = new Client(config.token, {
 	restMode: true,
-	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages']
+	intents: [
+		'allPrivileged',
+		'allNonPrivileged'
+	]
 });
 global.premium = client;
 

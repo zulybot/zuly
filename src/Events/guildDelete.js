@@ -5,7 +5,6 @@ module.exports = class GuildCreate {
 			run: this.run
 		};
 	}
-
 	async run (guild) {
 		if (!guild.name) return;
 		const system = require('../Config/system.js');

@@ -5,7 +5,6 @@ module.exports = class guildMemberAdd {
 			run: this.run
 		};
 	}
-
 	async run (guild, member) {
 		const autorolebot = await global.db.get(`autorolebot-${guild.id}`);
 		const autoroleuser = await global.db.get(`autoroleuser-${guild.id}`);

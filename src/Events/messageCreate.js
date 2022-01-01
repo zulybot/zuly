@@ -6,7 +6,6 @@ module.exports = class MessageEventCommand {
 			run: this.run
 		};
 	}
-
 	async run (message) {
 		message.client = global.zuly;
 		const config = require('../Config/config.js');

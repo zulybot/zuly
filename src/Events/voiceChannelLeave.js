@@ -5,7 +5,6 @@ module.exports = class voiceChannelLeave {
 			run: this.run
 		};
 	}
-
 	async run (member, oldChannel) {
 		const player = global.zuly.music.players.get(member.guild.id);
 		if (member.id === global.zuly.user.id) {

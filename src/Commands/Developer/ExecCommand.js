@@ -4,7 +4,7 @@ module.exports = class ExecCommand {
 			permissoes: {
 				membro: [],
 				bot: [],
-				dono: false
+				dono: true
 			},
 			pt: {
 				nome: 'exec',
@@ -28,68 +28,47 @@ module.exports = class ExecCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [{
-				type: 3,
-				name: 'code',
-				description: 'the code',
-				required: false
-			}],
+			options: [
+				{
+					type: 3,
+					name: 'code',
+					description: 'the code',
+					required: false
+				}
+			],
 			aliases: ['exec', 'ec', 'publiceval'],
 			run: this.run
 		};
 	}
 
 	async run (ctx) {
-		const safeEval = require('../../CustomPackages/safeEval');
-		function clean (text) {
-			if (typeof text === 'string') {
-				return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
-			}
-			else {
-				return text;
-			}
-		}
-		function errorEmbed (err) {
-			function clean (err) {
-				if (typeof err === 'string') {
-					return err
-						.replace(/`/g, '`' + String.fromCharCode(8203))
-						.replace(/@/g, '@' + String.fromCharCode(8203));
-				}
-				else {
-					return err;
-				}
-			}
-			const embed = new ctx.embed();
-			embed.setTitle(`💻 Exec | ${global.zuly.user.username}`);
-			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.addField('📥 Input', '```' + ctx.args.join(' ') + '```');
-			embed.addField('📤 Result', '```xl\n' + clean(err) + '\n```');
-			embed.setColor('#ff0000');
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			return embed;
-		}
-		try {
-			let evaled = safeEval(ctx.args.join(' '));
-			if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
-			const embed = new ctx.embed();
-			embed.setTitle(`💻 Exec | ${global.zuly.user.username}`);
-			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.addField('📥 Input', '```' + ctx.args.join(' ') + '```');
-			embed.addField('📤 Result', '```' + clean(evaled) + '```');
-			embed.setColor('#00FF00');
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
-				embeds: [embed.get()]
+		const { exec } = require('child_process');
+		const code = ctx.args[0];
+		if (!code) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será executado!`,
+				flags: ctx.ephemeral
 			});
 		}
-		catch (err) {
-			const embed = errorEmbed(err);
+		else {
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
-				embeds: [embed.get()]
+				content: `:white_check_mark: ${ctx.message.author.mention} **|** Executando...`,
+				flags: ctx.ephemeral
 			});
+			try {
+				exec(code, (_erro, val) => {
+					ctx.message.createFollowup({
+						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${val}`,
+						flags: ctx.ephemeral
+					});
+				});
+			  }
+			catch (err) {
+				ctx.message.createFollowup({
+					content: `:x: ${ctx.message.author.mention} **|** ${err}`,
+					flags: ctx.ephemeral
+				});
+			  }
 		}
 	}
 };

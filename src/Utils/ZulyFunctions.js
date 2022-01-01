@@ -5,6 +5,19 @@ const fetch = require('node-fetch');
 const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
+async function muteMember (guild, member, reason, time) {
+	await global.zuly.requestHandler.request('PATCH', `/guilds/${guild.id}/members/${member.id}`, true, {
+		communication_disabled_until: time,
+		reason: reason,
+	});
+}
+async function unmuteMember (guild, member, reason) {
+	const time = null;
+	await global.zuly.requestHandler.request('PATCH', `/guilds/${guild.id}/members/${member.id}`, true, {
+		communication_disabled_until: time,
+		reason: reason
+	});
+}
 async function getPremium (typename, user) {
 	const tipo = typename.toLowerCase();
 	if (tipo === 'doador') {
@@ -147,6 +160,8 @@ async function download (url, dest) {
 		});
 	});
 };
+global.zuly.muteMember = muteMember;
+global.zuly.unmuteMember = unmuteMember;
 global.zuly.download = download;
 global.zuly.getBugHunter = getBugHunter;
 global.zuly.getPremium = getPremium;

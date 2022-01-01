@@ -4,6 +4,7 @@ module.exports = {
 		id: 'BOT-ID',
 		secret: 'BOT-SECRET'
 	},
+	statcord: 'statcord.com-KEY',
 	deployslash: true,
 	deploy: 'yes',
 	mongodb: 'MONGODB-URI',

@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 module.exports = class InteractionEvent {
 	constructor () {
 		return {
@@ -5,7 +6,6 @@ module.exports = class InteractionEvent {
 			run: this.run
 		};
 	}
-
 	async run (interaction) {
 		const Eris = require('eris');
 		try {
@@ -109,16 +109,12 @@ module.exports = class InteractionEvent {
 					interaction.mention_roles = interaction.data.resolved.roles;
 				}
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
-					// eslint-disable-next-line no-empty-pattern
 					for (const {} in interaction.data.resolved.users) {
-						interaction.data.resolved.users.map(async user => {
-							const u = await global.zuly.getRESTUser(user.id);
-							return interaction.mentions[0] = u;
+						interaction.data.resolved.users.map(async (user) => {
+							interaction.mentions.push(user);
 						});
-						// let user = interaction.data.resolved.users[Object.keys(interaction.data.resolved.users)[0]];
 					}
-				}
-				console.log(interaction.mentions);
+				  }
 				const args = interaction.data.options ?
 					interaction.data.options.map((i) => {
 						switch (i.type) {
@@ -143,8 +139,8 @@ module.exports = class InteractionEvent {
 				idioma = idioma[lang];
 
 				const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
-
 				msg.channel.slashReply = interaction.createMessage.bind(interaction);
+				global.zuly.statcord.postCommand(interaction.data.name, msg.author.id);
 
 				if (command.permissoes) {
 					if (command.permissoes.membro.length) {

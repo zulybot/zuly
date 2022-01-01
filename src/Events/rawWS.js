@@ -5,7 +5,6 @@ module.exports = class rawWS {
 			run: this.run
 	  };
 	}
-
 	async run (packet) {
 		global.zuly.music.updateVoiceState(packet);
 	}
