@@ -23,10 +23,7 @@ const client = new Client(token, {
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
 	getAllUsers: !1,
-	intents: [
-		'allNonPrivileged',
-		'allPrivileged',
-	],
+	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
