@@ -132,6 +132,7 @@ module.exports = {
 	erela: {
 		np: 'Canta acum',
 		end: 'Cântecul s-a terminat, inchid redarea',
+		skip: 'The song was successfully skipped.',
 		not: 'Nu cânt nimic pe server.',
 		voice: 'Eram singur pe canalul vocal, asadar am iesit!',
 		duration: 'Durată:',
@@ -218,9 +219,9 @@ module.exports = {
 		succ: 'Fundal cumparat cu succes',
 		no: 'Nu ai suficienți bani pentru a cumpăra acest fundal'
 	},
-	filtros: {
-		ativado: 'Filtrul %f a fost activat cu succes.',
-		desativado: 'Filtrul %f a fost dezactivat cu succes.'
+	filters: {
+		ativado: 'The filter %f has been successfully enabled.',
+		desativado: 'Filter %f was successfully disabled.'
 	},
 	economy: {
 		jacoletou: 'Ai colectat deja recompensa zilnică astăzi! Încearcă din nou pe:',
