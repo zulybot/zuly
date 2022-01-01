@@ -13,6 +13,9 @@ const {
 const {
 	top
 } = require('./API/keys');
+const {
+	GiveawaysManager
+} = require('eris-giveaways');
 const Statcord = require('statcord-eris');
 const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
@@ -36,6 +39,16 @@ const client = new Client(token, {
 		latencyThreshold: 40000
 	},
 	restMode: !0
+});
+client.giveawaysManager = new GiveawaysManager(client, {
+	storage: './src/db/giveaways.json',
+	updateCountdownEvery: 10000,
+	default: {
+		botsCanWin: false,
+		embedColor: 0xFFCBDB,
+		embedColorEnd: 0xFFCBDB,
+		reaction: '🎁'
+	}
 });
 client.statcord = new Statcord.Client({
 	key: statcord,

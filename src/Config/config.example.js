@@ -8,5 +8,9 @@ module.exports = {
 	deployslash: true,
 	deploy: 'yes',
 	mongodb: 'MONGODB-URI',
-	prefix: ['prefix-1', 'prefix-2']
+	prefix: ['prefix-1', 'prefix-2'],
+	secrets: {
+		topgg: 'secret',
+		searcher: 'secret'
+	}
 };

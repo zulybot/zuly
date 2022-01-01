@@ -8,6 +8,7 @@ const {
 const nodes = require('./nodes');
 const Deezer = require('./erela-plugins/Deezer/index');
 const Spotify = require('./erela-plugins/Spotify/index');
+const Filter = require('./erela-plugins/Filters/index');
 const clientID = spotify.id;
 const clientSecret = spotify.secret;
 require('./zulyPlayer');
@@ -16,7 +17,7 @@ global.zuly.music = new Manager({
 	plugins: [new Deezer(), new Spotify({
 		clientID,
 		clientSecret
-	})],
+	}), new Filter()],
 	autoPlay: !0,
 	send (id, payload) {
 		const guild = global.zuly.guilds.get(id);
