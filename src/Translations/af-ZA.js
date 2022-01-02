@@ -132,6 +132,7 @@ module.exports = {
 	erela: {
 		np: 'Playing now',
 		end: 'The song is over, I\'m leaving',
+		skip: 'The song was successfully skipped.',
 		not: 'I\'m not playing anything on the server.',
 		voice: 'I was alone on the voice channel, I\'m leaving!',
 		duration: 'Duration:',
@@ -218,7 +219,7 @@ module.exports = {
 		succ: 'Background purchased successfully',
 		no: 'You don\'t have enough money to buy this background'
 	},
-	filtros: {
+	filters: {
 		ativado: 'The filter %f has been successfully enabled.',
 		desativado: 'Filter %f was successfully disabled.'
 	},
