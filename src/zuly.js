@@ -39,7 +39,7 @@ const client = new Client(token, {
 });
 client.giveawaysManager = new GiveawaysManager(client, {
 	storage: './src/db/giveaways.json',
-	updateCountdownEvery: 10000,
+	updateCountdownEvery: 5000,
 	default: {
 		botsCanWin: false,
 		embedColor: 0xFFCBDB,

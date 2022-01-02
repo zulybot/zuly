@@ -103,6 +103,19 @@ module.exports = class InteractionEvent {
 		if (interaction instanceof Eris.CommandInteraction) {
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
+				if (!command) {
+					const comando = await global.db.get(`custom-command-${interaction.data.name}-${interaction.channel.guild.id}`);
+					if (comando) {
+						return interaction.createMessage({
+							content: comando.replace(/%author/g, `<@${interaction.member.user.id}>`),
+							allowedMentions: {
+								everyone: false,
+								users: true,
+								roles: false,
+							}
+						});
+					}
+				}
 				interaction.mentions = [];
 				interaction.mention_everyone = false;
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.roles) {
