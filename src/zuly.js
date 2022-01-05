@@ -13,6 +13,9 @@ const {
 const {
 	top
 } = require('./API/keys');
+const {
+	GiveawaysManager
+} = require('eris-giveaways');
 const Statcord = require('statcord-eris');
 const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
@@ -20,10 +23,7 @@ const client = new Client(token, {
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
 	getAllUsers: !1,
-	intents: [
-		'allNonPrivileged',
-		'allPrivileged',
-	],
+	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
@@ -36,6 +36,16 @@ const client = new Client(token, {
 		latencyThreshold: 40000
 	},
 	restMode: !0
+});
+client.giveawaysManager = new GiveawaysManager(client, {
+	storage: './src/db/giveaways.json',
+	updateCountdownEvery: 5000,
+	default: {
+		botsCanWin: false,
+		embedColor: 0xFFCBDB,
+		embedColorEnd: 0xFFCBDB,
+		reaction: '🎁'
+	}
 });
 client.statcord = new Statcord.Client({
 	key: statcord,

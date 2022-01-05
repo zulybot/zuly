@@ -5,6 +5,20 @@ const fetch = require('node-fetch');
 const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
+async function getWebhook (channel) {
+	const webhooks = await global.zuly.getChannelWebhooks(channel.id);
+	if (webhooks.length === 0) {
+		const webhook = channel.createWebhook({
+			avatar: global.zuly.user.avatarURL,
+			name: global.zuly.user.username,
+			reason: 'Zuly | EventLog'
+		});
+		return webhook;
+	}
+	else {
+		return webhooks[0];
+	}
+}
 async function muteMember (guild, member, reason, time) {
 	await global.zuly.requestHandler.request('PATCH', `/guilds/${guild.id}/members/${member.id}`, true, {
 		communication_disabled_until: time,
@@ -160,6 +174,7 @@ async function download (url, dest) {
 		});
 	});
 };
+global.zuly.getWebhook = getWebhook;
 global.zuly.muteMember = muteMember;
 global.zuly.unmuteMember = unmuteMember;
 global.zuly.download = download;

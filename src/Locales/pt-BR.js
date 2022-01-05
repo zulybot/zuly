@@ -1,5 +1,7 @@
 module.exports = {
 	lang: 'pt',
+	customCommand: 'Comando criado com sucesso, use `/%n` para executar.',
+	alreadyExists: 'O comando já existe.',
 	ticket: {
 		sus: 'Sucesso!',
 		already: 'Desculpa, você já tem um ticket.',
@@ -11,6 +13,18 @@ module.exports = {
 			delete: 'Fechar',
 			create: 'Abrir Ticket'
 		}
+	},
+	logs: {
+		oldMessage: 'Mensagem Antiga:',
+		newMessage: 'Mensagem Nova:',
+		deleted: 'Mensagem Deletada:',
+		channel: 'Canal:',
+		url: 'Link:',
+		message: {
+			title: 'Logs de Mensagem'
+		},
+		jump: 'Ir para mensagem',
+		set: 'Canal setado para `%c`'
 	},
 	aki: {
 		reg: 'pt',
@@ -138,6 +152,7 @@ module.exports = {
 	erela: {
 		np: 'Tocando agora',
 		end: 'A música acabou, estou saindo',
+		skip: 'A música foi pulada com sucesso.',
 		not: 'Não estou tocando nada no servidor.',
 		voice: 'Fiquei sozinha no canal de voz, estou saindo!',
 		duration: 'Duração:',
@@ -224,7 +239,7 @@ module.exports = {
 		succ: 'Background comprado com sucesso',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
-	filtros: {
+	filters: {
 		ativado: 'O Filtro %f foi ativado com sucesso.',
 		desativado: 'O Filtro %f foi desativado com sucesso.'
 	},

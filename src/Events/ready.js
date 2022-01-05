@@ -7,15 +7,15 @@ module.exports = class ReadyEvent {
 	}
 	async run () {
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
+		global.zuly.editStatus('idle', {
+			game: global.zuly.user.username,
+			name: 'Starting...',
+			type: 5
+		});
 		setInterval(() => {
 			if (global.gc) {
 				global.gc();
 			}
-			const ram = process.memoryUsage().rss / 1024 / 1024;
-			global.zuly.unavailableGuilds.forEach(guild => {
-				console.log(guild);
-			});
-			console.log(`[RAM] ${ram.toFixed(2)}mb`.cyan);
 		}, 5000);
 		try {
 			require('../../assets/images/utils/fnshop.png');
