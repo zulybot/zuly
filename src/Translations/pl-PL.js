@@ -7,32 +7,32 @@ module.exports = {
 		already: 'Zgłoszenie zostało już utworzone.',
 		await: 'Zaczekaj, aż jedna z osób odpowie na Twoje zgłoszenie.',
 		created: 'Twoje zgłoszenie zostało utworzone.',
-		delete: 'Your ticket has been closed and will be deleted in 10 seconds.',
-		create: 'To create a ticket click on the button below,',
+		delete: 'Twoje zgłoszenie zostało zamknięte i zostanie usunięte za 10 sekund.',
+		create: 'Aby utworzyć zgłoszenie, naciśnij na poniższy przycisk,',
 		labels: {
-			delete: 'Close',
-			create: 'Open Ticket'
+			delete: 'Zamknij',
+			create: 'Utwórz zgłoszenie'
 		}
 	},
 	logs: {
-		oldMessage: 'Old Message:',
-		newMessage: 'New Message:',
-		deleted: 'Message Deleted:',
-		channel: 'Channel:',
-		url: 'Link:',
-		message: { title: 'Message Logs' },
-		jump: 'Go to message',
-		set: 'Channel set to `%c`'
+		oldMessage: 'Starsza wiadomość:',
+		newMessage: 'Nowa wiadomość:',
+		deleted: 'Wiadomość usunięta:',
+		channel: 'Kanał:',
+		url: 'Odnośnik:',
+		message: { title: 'Rejestr wiadomości' },
+		jump: 'Przejdź do wiadomości',
+		set: 'Kanał ustawiony na `%c`'
 	},
 	aki: {
 		reg: 'pt',
-		q: 'Question:',
-		r: 'Answers:',
-		i: 'Starting Akinator',
-		is: 'Is this your character?',
-		win: 'Great! I got it right once more.',
-		nowin: 'Uh, you won',
-		yay: 'I loved playing with you!',
+		q: 'Pytanie:',
+		r: 'Odpowiedzi:',
+		i: 'Uruchamianie Akinator',
+		is: 'Czy to Twoja postać?',
+		win: 'Świetnie! Znów zgadłem.',
+		nowin: 'Ah, gratuluję Ci',
+		yay: 'Świetnie się z Tobą grało!',
 		res: '[yes (**y**) / no (**n**)]'
 	},
 	labels: { recalc: 'Recalculate' },
