@@ -1,12 +1,12 @@
 module.exports = {
-	lang: 'en',
-	customCommand: 'Command created successfully, use `/%n` to execute.',
-	alreadyExists: 'The command already exists.',
+	lang: 'pl',
+	customCommand: 'Polecenie zostało utworzone, użyj `/%n`, aby wykonać.',
+	alreadyExists: 'Polecenie już istnieje.',
 	ticket: {
-		sus: 'Success!',
-		already: 'Sorry, you already have a ticket.',
-		await: 'Wait until one of the attendants answers you.',
-		created: 'Your ticket has been created.',
+		sus: 'Udało się!',
+		already: 'Zgłoszenie zostało już utworzone.',
+		await: 'Zaczekaj, aż jedna z osób odpowie na Twoje zgłoszenie.',
+		created: 'Twoje zgłoszenie zostało utworzone.',
 		delete: 'Your ticket has been closed and will be deleted in 10 seconds.',
 		create: 'To create a ticket click on the button below,',
 		labels: {
