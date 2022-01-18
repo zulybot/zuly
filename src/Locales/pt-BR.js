@@ -1,5 +1,9 @@
 module.exports = {
 	lang: 'pt',
+	botban: {
+		title: 'Você está banido!',
+		description: '↳ Você foi banido de utilizar a `%z` por: `%r`\n> <:zu_info:911303533859590144> Você pode pedir uma apelação em nosso [servidor de suporte](https://discord.gg/pyyyJpw5QW).',
+	},
 	customCommand: 'Comando criado com sucesso, use `/%n` para executar.',
 	alreadyExists: 'O comando já existe.',
 	ticket: {
@@ -190,7 +194,8 @@ module.exports = {
 		mot2: 'Punido por:',
 		mot3: 'Motivo:',
 		the: 'O Usuário',
-		foi: 'foi punido com sucesso.'
+		foi: 'foi punido com sucesso.',
+		dev: 'Você não pode punir o desenvolvedor do bot.'
 	},
 	clear: {
 		msg: 'mensagens** limpas com sucesso',
@@ -223,6 +228,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Informações de:',
 		tag: 'Tag de:',
+		badges: 'Emblemas de:',
 		id: 'ID de:',
 		create: 'Conta criada dia:'
 	},

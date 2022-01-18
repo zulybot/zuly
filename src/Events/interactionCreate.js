@@ -102,6 +102,24 @@ module.exports = class InteractionEvent {
 			console.log(e);
 		}
 		if (interaction instanceof Eris.CommandInteraction) {
+			const blacklist = await global.db.get(`botban-${interaction.member.user.id}`);
+			if (blacklist) {
+				const msg = interaction;
+				let idioma = require('../Config/idiomas.js');
+				let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
+				lang = lang.replace(/-/g, '_');
+				idioma = idioma[lang];
+				const embed = new global.zuly.manager.Ebl();
+				embed.setTitle(`<:zu_banCat:933106129871966228> ${idioma.botban.title} | ${global.zuly.user.username}`);
+				embed.setDescription(`${idioma.botban.description.replace('%z', global.zuly.user.username).replace('%r', blacklist)}`);
+				embed.setColor('#ff0000');
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				embed.setThumbnail(global.zuly.user.avatarURL);
+				return interaction.createMessage({
+					content: `<@${interaction.member.user.id}>`,
+					embeds: [embed.get()]
+				});
+			}
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
 				if (!command) {

@@ -51,7 +51,7 @@ module.exports = class CalcCommand {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const banner = await global.zuly.getRESTBanner(user.id);
 		if (banner.startsWith('https://singlecolorimage.com/')) {
-			const hex = banner.replace('https://singlecolorimage.com/get/', '').replace('/960x540', '');
+			const hex = banner.replace('https://singlecolorimage.com/get/', '').replace('/600x240', '');
 			const embed = new ctx.embed();
 			embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
 			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.hex} **#${hex}**`);

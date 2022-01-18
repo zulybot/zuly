@@ -71,9 +71,14 @@ async function banner (id) {
 	let hexString;
 	let userBanner;
 
-	if (user.accentColor !== null || user.bannerURL == null) {
-		hexString = user.accentColor.toString(16) || '000000';
-		userBanner = `https://singlecolorimage.com/get/${hexString}/960x540`;
+	if (user.bannerURL == null) {
+		if (user.accentColor === null) {
+			userBanner = 'https://singlecolorimage.com/get/ffcbdb/600x240';
+		}
+		else {
+			hexString = user.accentColor.toString(16);
+			userBanner = `https://singlecolorimage.com/get/${hexString}/600x240`;
+		}
 	}
 	else {
 		userBanner = user.bannerURL;
