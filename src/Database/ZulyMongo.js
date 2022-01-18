@@ -153,8 +153,10 @@ class Database extends EventEmitter {
      * @return {Promise<any | null>}
      */
 	async remove (key) {
-		const obj = await this.get(key);
-		return obj ? obj.remove() : null;
+		await this.model?.findOneAndDelete({
+			name: key
+		}).exec();
+		return true;
 	}
 
 	/**

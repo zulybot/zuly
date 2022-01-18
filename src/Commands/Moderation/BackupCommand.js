@@ -3,7 +3,8 @@ module.exports = class BackupCommand {
 		return {
 			permissoes: {
 				membro: ['administrator'],
-				bot: ['administrator']
+				bot: ['administrator'],
+				dono: true
 			},
 			pt: {
 				nome: 'backup',
@@ -126,7 +127,7 @@ module.exports = class BackupCommand {
 		}
 		if (ctx.args[0] === 'list') {
 			const backupdb = await global.db.get(`backups.${ctx.message.author.id}`);
-			if (!backupdb) {
+			if (!backupdb || !backupdb.length) {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Você não possui backups.`,
 				});
@@ -162,7 +163,7 @@ module.exports = class BackupCommand {
 			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author.mention} **|** Você deseja carregar o backup? Saiba que todas as suas configurações serão substituidas pelo backup, não será recuperado **mensagens, cargos & canais** depois desse processo.\n> Para carregar reaja com \`✅\`.`);
 			const { ReactionCollector } = require('eris-collector');
 			msg.addReaction('✅');
-			let filter = (m, emoji, user) => emoji.name === '✅';
+			let filter = (m, emoji) => emoji.name === '✅';
 			let collector = new ReactionCollector(global.zuly, msg, filter, {
 				time: 30000
 			});
@@ -234,10 +235,13 @@ module.exports = class BackupCommand {
 				}
 			});
 		}
-		/*
 		if (ctx.args[0] === 'delete') {
-
+			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
+			await global.db.remove(`backups.${ctx.args[1]}.guild`);
+			await global.db.remove(`backups.${ctx.args[1]}.roles`);
+			await global.db.remove(`backups.${ctx.args[1]}.channels`);
+			await global.db.pull(`backups.${ctx.message.author.id}`, ctx.args[1]);
+			return ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** Backup \`${ctx.args[1]}\` deletado com sucesso.`);
 		}
-		*/
 	}
 };
