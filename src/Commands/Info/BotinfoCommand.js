@@ -45,7 +45,7 @@ module.exports = class BotinfoCommand {
 		const desenvolvedores = await global.db.get('devs');
 		for (const desenvolvedor of desenvolvedores) {
 			const dev = await global.zuly.getRESTUser(desenvolvedor);
-			devs.push(dev.username);
+			devs.push(dev.username + '#' + dev.discriminator);
 		}
 
 		const space = global.zuly.music.nodes.get('space');

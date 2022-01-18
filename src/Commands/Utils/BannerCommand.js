@@ -50,17 +50,32 @@ module.exports = class CalcCommand {
 	async run (ctx) {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const banner = await global.zuly.getRESTBanner(user.id);
-
-		const embed = new ctx.embed();
-		embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
-		embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${banner || 'https://imgur.com/XVLqrn1.png'})`);
-		embed.setColor('#ffcbdb');
-		embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
-		embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
-			embeds: [embed.get()]
-		});
+		if (banner.startsWith('https://singlecolorimage.com/')) {
+			const hex = banner.replace('https://singlecolorimage.com/get/', '').replace('/960x540', '');
+			const embed = new ctx.embed();
+			embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
+			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.hex} **#${hex}**`);
+			embed.setColor('#ffcbdb');
+			embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
+			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			});
+		}
+		else {
+			const embed = new ctx.embed();
+			embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
+			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${banner || 'https://imgur.com/XVLqrn1.png'})`);
+			embed.setColor('#ffcbdb');
+			embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
+			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			});
+		}
 	}
 };

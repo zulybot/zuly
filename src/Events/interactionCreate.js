@@ -8,6 +8,7 @@ module.exports = class InteractionEvent {
 	}
 	async run (interaction) {
 		const Eris = require('eris');
+		await interaction.acknowledge(1);
 		try {
 			if (interaction instanceof Eris.ComponentInteraction) {
 
@@ -152,7 +153,9 @@ module.exports = class InteractionEvent {
 				idioma = idioma[lang];
 
 				const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
-				msg.channel.slashReply = interaction.createMessage.bind(interaction);
+
+				msg.channel.slashReply = interaction.createFollowup.bind(interaction);
+
 				global.zuly.statcord.postCommand(interaction.data.name, msg.author.id);
 
 				if (command.permissoes) {
@@ -183,7 +186,7 @@ module.exports = class InteractionEvent {
 					if (command.permissoes.dono) {
 						const developers = await global.db.get('devs');
 						if (!developers) {
-							await global.db.set('devs', ['726449359167684734', '392087996821667841', '699416429338034268']);
+							await global.db.set('devs', ['717766639260532826', '726449359167684734', '452618703792766987', '630493603575103519']);
 						}
 
 						if (!developers.includes(msg.member.id)) {

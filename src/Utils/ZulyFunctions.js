@@ -1,7 +1,6 @@
+/* eslint-disable require-await */
 /* eslint-disable no-useless-concat */
-const config = require('../Config/config');
 const API = require('../API/keys');
-const fetch = require('node-fetch');
 const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
@@ -67,28 +66,21 @@ async function getBugHunter (user) {
 }
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
-	const request = await fetch(`https://canary.discord.com/api/v9/users/${id}`, {
-		headers: {
-			Authorization: `Bot ${config.token}`
-		}
-	});
-	const data = await request.json();
-	const user = data.id;
-	if (data.message === 'Unknown User') new Error('Usuário desconhecido.');
-	if (!data.banner) return null;
-	const banner = data.banner;
-	let format = {};
-	if (banner.startsWith('a_')) {
-		format = '.gif';
+	const user = await global.zuly.getRESTUser(id);
+
+	let hexString;
+	let userBanner;
+
+	if (user.accentColor !== null || user.bannerURL == null) {
+		hexString = user.accentColor.toString(16) || '000000';
+		userBanner = `https://singlecolorimage.com/get/${hexString}/960x540`;
 	}
 	else {
-		format = '.png';
+		userBanner = user.bannerURL;
 	}
-	const size = 512;
-	const url = `https://cdn.discordapp.com/banners/${user}/${banner}${format}?size=${size}`;
-	return url || 'https://i.imgur.com/2dwGomm.png';
+	// const url = user.bannerURL || `https://singlecolorimage.com/get/${hexString}/960x540`;
+	return userBanner;
 }
-
 function uptime (lang) {
 	let uptimeSecs = global.zuly.uptime / 1000;
 	const days = Math.floor(uptimeSecs / 86400);
