@@ -1,5 +1,7 @@
 module.exports = {
 	lang: 'en',
+	customCommand: 'Command created successfully, use `/%n` to execute.',
+	alreadyExists: 'The command already exists.',
 	ticket: {
 		sus: 'Success!',
 		already: 'Sorry, you already have a ticket.',
@@ -11,6 +13,16 @@ module.exports = {
 			delete: 'Close',
 			create: 'Open Ticket'
 		}
+	},
+	logs: {
+		oldMessage: 'Old Message:',
+		newMessage: 'New Message:',
+		deleted: 'Message Deleted:',
+		channel: 'Channel:',
+		url: 'Link:',
+		message: { title: 'Message Logs' },
+		jump: 'Go to message',
+		set: 'Channel set to `%c`'
 	},
 	aki: {
 		reg: 'pt',
