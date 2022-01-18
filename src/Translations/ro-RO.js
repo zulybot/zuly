@@ -1,5 +1,9 @@
 module.exports = {
 	lang: 'ro',
+	botban: {
+		title: 'You are banned!',
+		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
+	},
 	customCommand: 'Command created successfully, use `/%n` to execute.',
 	alreadyExists: 'The command already exists.',
 	ticket: {
@@ -182,7 +186,8 @@ module.exports = {
 		mot2: 'Pedepsit de:',
 		mot3: 'Motivul:',
 		the: 'Utilizatorul',
-		foi: 'a fost pedepsit cu succes.'
+		foi: 'a fost pedepsit cu succes.',
+		dev: 'You cannot punish the bot developer.'
 	},
 	clear: {
 		msg: 'mesaje** șterse cu succes',
@@ -215,6 +220,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Informații:',
 		tag: 'Etichetă de: ',
+		badges: 'Badges of:',
 		id: 'ID-ul lui: ',
 		create: 'Contul a fost creat: '
 	},
