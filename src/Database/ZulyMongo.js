@@ -86,7 +86,7 @@ class Database extends EventEmitter {
 	/**
      * Disconnect Database
      */
-	async disconnect () {
+	disconnect () {
 		this.forcedDisconnect = true;
 		return Mongo.disconnect();
 	}

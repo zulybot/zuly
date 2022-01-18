@@ -101,7 +101,7 @@ module.exports = class BackupCommand {
 			guild.backup = genID;
 			guild.name = ctx.message.channel.guild.name;
 			guild.icon = ctx.message.channel.guild.icon;
-			guild.region = ctx.message.channel.guild.region;
+			guild.preferredLocale = ctx.message.channel.guild.preferredLocale;
 			guild.verificationLevel = ctx.message.channel.guild.verificationLevel;
 			guild.afkTimeout = ctx.message.channel.guild.afkTimeout;
 			guild.mfaLevel = ctx.message.channel.guild.mfaLevel;
@@ -196,7 +196,8 @@ module.exports = class BackupCommand {
 					});
 					setTimeout(() => {
 						// Criando Cargos
-						roles.forEach((cargo) => {
+						const cargosFoda = roles.sort((a, b) => a.position - b.position);
+						cargosFoda.forEach((cargo) => {
 							currentGuild.createRole({
 								name: cargo.name,
 								color: cargo.color,
@@ -210,7 +211,8 @@ module.exports = class BackupCommand {
 							});
 						});
 						// Criando Canais
-						channels.forEach((channel) => {
+						const canaisFoda = channels.sort((a, b) => a.position - b.position);
+						canaisFoda.forEach((channel) => {
 							currentGuild.createChannel(channel.name, channel.type, {
 								position: channel.position,
 								topic: channel.topic,
@@ -224,6 +226,7 @@ module.exports = class BackupCommand {
 						currentGuild.edit({
 							name: guild.name,
 							icon: guild.icon,
+							preferredLocale: guild.preferredLocale,
 							verificationLevel: guild.verificationLevel,
 							afkTimeout: guild.afkTimeout,
 							mfaLevel: guild.mfaLevel,

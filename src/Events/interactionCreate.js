@@ -125,7 +125,7 @@ module.exports = class InteractionEvent {
 				if (interaction.data && interaction.data.resolved && interaction.data.resolved.users) {
 					for (const {} in interaction.data.resolved.users) {
 						interaction.data.resolved.users.map(async (user) => {
-							interaction.mentions.push(user);
+							await interaction.mentions.push(user);
 						});
 					}
 				  }
