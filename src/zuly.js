@@ -32,7 +32,7 @@ const client = new Client(token, {
 	requestTimeout: 30000,
 	rest: {
 		baseURL: '/api/v9',
-		domain: 'discord.com',
+		domain: 'canary.discordapp.com',
 		latencyThreshold: 40000
 	},
 	restMode: !0

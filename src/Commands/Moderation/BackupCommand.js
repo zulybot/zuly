@@ -190,30 +190,32 @@ module.exports = class BackupCommand {
 					});
 					// Deletando Cargos
 					currentGuild.roles.forEach((role) => {
+						if (role.managed) return;
 						role.delete().catch((e) => {
 							console.log(e);
 						});
 					});
+
 					setTimeout(() => {
 						// Criando Cargos
 						const cargosFoda = roles.sort((a, b) => a.position - b.position);
-						cargosFoda.forEach((cargo) => {
+						for (const role of cargosFoda) {
 							currentGuild.createRole({
-								name: cargo.name,
-								color: cargo.color,
-								permissions: cargo.permissions || 0,
-								mentionable: cargo.mentionable,
-								hoist: cargo.hoist,
-								position: cargo.position,
+								name: role.name,
+								color: role.color,
+								permissions: role.permissions || 0,
+								mentionable: role.mentionable,
+								hoist: role.hoist,
+								position: role.position,
 								reason: 'Backup',
 							}).catch((e) => {
 								console.log(e);
 							});
-						});
+						}
 						// Criando Canais
 						const canaisFoda = channels.sort((a, b) => a.position - b.position);
-						canaisFoda.forEach((channel) => {
-							currentGuild.createChannel(channel.name, channel.type, {
+						for (const channel of canaisFoda) {
+							currentGuild.createRole({
 								position: channel.position,
 								topic: channel.topic,
 								rateLimitPerUser: channel.rateLimitPerUser || 0,
@@ -221,7 +223,7 @@ module.exports = class BackupCommand {
 							}).catch((e) => {
 								console.log(e);
 							});
-						});
+						}
 						// Editando Servidor
 						currentGuild.edit({
 							name: guild.name,
