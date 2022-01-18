@@ -222,6 +222,7 @@ module.exports = {
 	avatar: {
 		title: 'Poza de proful a lui:',
 		download: 'Link de descărcare:',
+		hex: 'Hex to use in your profile:',
 		click: 'Click aici'
 	},
 	perfil: {
