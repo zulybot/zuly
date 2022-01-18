@@ -222,6 +222,7 @@ module.exports = {
 	avatar: {
 		title: 'Avatar from:',
 		download: 'Download link:',
+		hex: 'Hex to use in your profile:',
 		click: 'Click Here'
 	},
 	perfil: {
