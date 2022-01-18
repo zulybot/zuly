@@ -40,7 +40,7 @@
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
     "byte-size": "^8.1.0",
-    "canvas": "^2.8.0",
+    "canvas": "^2.9.0",
     "colors": "^1.4.2",
     "cron": "^1.8.2",
     "deepai": "^1.0.17",
