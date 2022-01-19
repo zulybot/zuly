@@ -1,5 +1,9 @@
 module.exports = {
 	lang: 'es',
+	botban: {
+		title: 'You are banned!',
+		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
+	},
 	customCommand: 'Command created successfully, use `/%n` to execute.',
 	alreadyExists: 'The command already exists.',
 	ticket: {
@@ -182,7 +186,8 @@ module.exports = {
 		mot2: 'Punido por:',
 		mot3: 'Motivo:',
 		the: 'O Usuário',
-		foi: 'foi punido com sucesso.'
+		foi: 'foi punido com sucesso.',
+		dev: 'You cannot punish the bot developer.'
 	},
 	clear: {
 		msg: 'mensagens** limpas com sucesso',
@@ -215,6 +220,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Informações de:',
 		tag: 'Tag de:',
+		badges: 'Badges of:',
 		id: 'ID de:',
 		create: 'Conta criada dia:'
 	},
@@ -222,6 +228,7 @@ module.exports = {
 	avatar: {
 		title: 'Avatar de:',
 		download: 'Link para download:',
+		hex: 'Hex to use in your profile:',
 		click: 'Clique Aqui'
 	},
 	perfil: {

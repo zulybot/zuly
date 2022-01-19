@@ -1,5 +1,9 @@
 module.exports = {
 	lang: 'pl',
+	botban: {
+		title: 'You are banned!',
+		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
+	},
 	customCommand: 'Polecenie zostało utworzone, użyj `/%n`, aby wykonać.',
 	alreadyExists: 'Polecenie już istnieje.',
 	ticket: {
@@ -182,7 +186,8 @@ module.exports = {
 		mot2: 'Punished for:',
 		mot3: 'Reason:',
 		the: 'The User',
-		foi: 'has been successfully punished.'
+		foi: 'has been successfully punished.',
+		dev: 'You cannot punish the bot developer.'
 	},
 	clear: {
 		msg: 'messages** cleared successfully',
@@ -215,6 +220,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Information:',
 		tag: 'Tag of: ',
+		badges: 'Badges of:',
 		id: 'ID of: ',
 		create: 'Account created day: '
 	},
@@ -222,6 +228,7 @@ module.exports = {
 	avatar: {
 		title: 'Avatar from:',
 		download: 'Download link:',
+		hex: 'Hex to use in your profile:',
 		click: 'Click Here'
 	},
 	perfil: {
