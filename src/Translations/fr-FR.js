@@ -1,152 +1,152 @@
 module.exports = {
-	lang: 'pt',
+	lang: 'fr',
 	botban: {
-		title: 'You are banned!',
-		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
+		title: 'Vous êtes banni!',
+		description: '↳ Vous avez été interdit d\'utiliser `%z` par : `%r`\n> <:zu_info:911303533859590144> Vous pouvez faire appel sur notre [serveur d\'assistance](https://discord.gg/pyyyJpw5QW).'
 	},
-	customCommand: 'Command created successfully, use `/%n` to execute.',
-	alreadyExists: 'The command already exists.',
+	customCommand: 'La commande a été créée avec succès, utilisez `/%n` pour l\'exécuter.',
+	alreadyExists: 'La commande existe déjà.',
 	ticket: {
-		sus: 'Success!',
-		already: 'Sorry, you already have a ticket.',
-		await: 'Wait until one of the attendants answers you.',
-		created: 'Your ticket has been created.',
-		delete: 'Your ticket has been closed and will be deleted in 10 seconds.',
-		create: 'To create a ticket click on the button below,',
+		sus: 'Succès!',
+		already: 'Désolé, vous avez déjà un billet.',
+		await: 'Attendez que l\'un des préposés vous réponde.',
+		created: 'Votre billet a été créé.',
+		delete: 'Votre ticket a été clôturé et sera supprimé dans 10 secondes.',
+		create: 'Pour créer un ticket cliquez sur le bouton ci-dessous,',
 		labels: {
-			delete: 'Close',
-			create: 'Open Ticket'
+			delete: 'Fermer',
+			create: 'Ticket Ouvert'
 		}
 	},
 	logs: {
-		oldMessage: 'Old Message:',
-		newMessage: 'New Message:',
-		deleted: 'Message Deleted:',
-		channel: 'Channel:',
-		url: 'Link:',
-		message: { title: 'Message Logs' },
-		jump: 'Go to message',
-		set: 'Channel set to `%c`'
+		oldMessage: 'Ancien message:',
+		newMessage: 'Nouveau message:',
+		deleted: 'Message supprimé:',
+		channel: 'Canaliser:',
+		url: 'Lien:',
+		message: { title: 'Journaux des messages' },
+		jump: 'Aller au message',
+		set: 'Chaîne définie sur `%c`'
 	},
 	aki: {
-		reg: 'pt',
+		reg: 'fr',
 		q: 'Question:',
-		r: 'Answers:',
-		i: 'Starting Akinator',
-		is: 'Is this your character?',
-		win: 'Great! I got it right once more.',
-		nowin: 'Uh, you won',
-		yay: 'I loved playing with you!',
-		res: '[yes (**y**) / no (**n**)]'
+		r: 'Réponses:',
+		i: 'Démarrer Akinator',
+		is: 'Est-ce votre personnage ?',
+		win: 'Super! J\'ai bien compris une fois de plus.',
+		nowin: 'Euh, tu as gagné',
+		yay: 'J\'ai adoré jouer avec toi!',
+		res: '[oui (**y**) / non (**n**)]'
 	},
-	labels: { recalc: 'Recalculate' },
+	labels: { recalc: 'Recalculer' },
 	guess: {
-		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
-		started: 'It\'s started!',
-		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
-		win: 'You got it right! The chosen Number was `%num`!'
+		start: 'Le jeu commencera dans **5 secondes** avec un nombre compris entre `%min` et `%max`.',
+		started: 'C\'est commencé !',
+		number: 'Le nombre choisi était `%num`, les utilisateurs doivent le deviner pour gagner l\'événement.',
+		win: 'Vous avez bien compris! Le nombre choisi était `%num`!'
 	},
 	lockdown: {
-		pass: 'To start lockdown, send `lock` in chat.\n> ⚠️ If you want to cancel, send something else in chat.',
-		cancel: 'Lockdown has been successfully cancelled.',
-		success: 'Lockdown was successfully executed.',
-		locking: 'Lockdown is in progress.',
-		noCanal: 'No channels have been locked.'
+		pass: 'Pour démarrer le verrouillage, envoyez `verrouiller` dans le chat.\n> ⚠️ Si vous souhaitez annuler, envoyez autre chose en chat.',
+		cancel: 'Le confinement a été annulé avec succès.',
+		success: 'Le verrouillage a été exécuté avec succès.',
+		locking: 'Le confinement est en cours.',
+		noCanal: 'Aucune chaîne n\'a été verrouillée.'
 	},
-	print: { website: 'Print from website:' },
+	print: { website: 'Imprimer depuis le site Web:' },
 	mention: {
-		hello: 'Hello %user!',
-		about: 'I am a multifunctional bot for discord!',
-		help: 'To know my commands, type **/help**.',
+		hello: 'Bonjour %utilisateur!',
+		about: 'Je suis un bot multifonctionnel pour Discord !',
+		help: 'Pour connaître mes commandes, tapez **/help**.',
 		labels: {
-			support: 'Support Server',
-			invite: 'Invite',
-			website: 'Website'
+			support: 'Serveur d\'assistance',
+			invite: 'Inviter',
+			website: 'Site Internet'
 		}
 	},
 	reactionRole: {
-		invalidMessage: 'Could not find message with id `%id%`',
-		sucess: 'ReactionRole created successfully!'
+		invalidMessage: 'Impossible de trouver le message avec l\'identifiant `%id%`',
+		sucess: 'ReactionRole créé avec succès !'
 	},
 	eventLog: {
 		fields: {
-			deletedMessage: 'Deleted Message:',
-			oldMessage: 'Old Message:',
-			newMessage: 'New Message:'
+			deletedMessage: 'Message supprimé :',
+			oldMessage: 'Ancien message:',
+			newMessage: 'Nouveau message:'
 		},
-		channel: 'Channel:'
+		channel: 'Canaliser:'
 	},
-	docs: { args: 'Say what will be searched for in the documentation.' },
+	docs: { args: 'Dites ce qui sera recherché dans la documentation.' },
 	fnshop: {
-		args: 'Include the channel ID that will be sent to the fortnite store.',
-		channel: 'I don\'t have permission to send messages on the mentioned channel.',
-		sucess: 'Channel set successfully!'
+		args: 'Inclure l\'ID du canal qui sera envoyé au magasin fortnite.',
+		channel: 'Je n\'ai pas la permission d\'envoyer des messages sur le canal mentionné.',
+		sucess: 'Chaîne définie avec succès !'
 	},
 	message: {
-		P: 'Olá, humano!',
-		view: 'Eu não tenho permissão de ler o histórico de mensagens!',
-		the: 'O Comando',
-		unk: 'não existe ou não pode ser executado no momento!',
+		P: 'Bonjour, humain!',
+		view: 'Je n\'ai pas la permission de lire l\'historique des messages !',
+		the: 'La Commande',
+		unk: 'n\'existe pas ou ne peut pas être exécuté pour le moment!',
 		user: 'Você não tem todas as permissões necessárias para usar este comando!\nPermissões necessárias:',
 		bot: 'Eu não tenho todas as permissões necessárias para executar este comando! \n Permissões necessárias:',
 		dev: 'Apenas meus desenvolvedores podem usar este comando!',
 		c: 'Aguarde %t segundos para usar outro comando.',
 		e: 'Ops, ocorreu um erro!',
 		e2: 'Reporte este erro!',
-		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
-		nsfw: 'Esse comando só pode ser usado em canais nsfw'
+		e3: 'Mon équipe est probablement déjà au courant de cette erreur, mais qu\'en est-il de votre aide ? Vous pouvez ouvrir un [issue](https://github.com/zulybot/zuly/issues) dans [github](https://github. om/zulybot/zuly) ou rapportez-le à mon [serveur de support](https://discord.gg/pyyyJpw5QW), faisons de la discord un meilleur endroit, ensemble 🤝',
+		nsfw: 'Cette commande ne peut être utilisée que sur les salons nsfw'
 	},
 	host: {
-		db: 'Eu utilizo [MongoDB](https://mongodb.com) para meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
-		vps: 'Eu sou hospedada na VPS, utilizando maquinas da [OVH](https://ovh.com), com sistema operacional <:zu_ubuntu:880496793740255253> Ubuntu.'
+		db: 'Nous avons utilisé [MongoDB](https://mongodb.com) pour meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
+		vps: 'Il est hébergé sur un VPS, utilise des machines de [OVH](https://ovh.com), avec le système opérationnel <:zu_ubuntu:880496793740255253> Ubuntu.'
 	},
 	giveaway: {
-		sec: 'segundos',
-		min: 'minutos',
-		hrs: 'horas',
-		day: 'dias',
-		term: 'Terminou ás',
-		host: 'Sorteio de: {user}',
-		win: 'ganhador(es)',
-		wins: 'Parabéns, {winners}! Você ganhou **{prize}**!\n{messageURL}',
-		addReaction: 'Reaja com 🎁 para participar!',
-		restante: 'Tempo Restante:',
-		no: 'Sorteio cancelado, sem participações válidas',
-		give: 'SORTEIO',
-		giveend: 'SORTEIO ENCERRADO',
-		start: 'Você não usou o comando corretamente, utilize: `%pgiveaway-start [tempo(10s, 10m)] [ganhadores(1, 1w)] [prêmio(fotos de gatinhos)]`, não inclua **[]** ou **()**.',
+		sec: 'secondes',
+		min: 'minutes',
+		hrs: 'heures',
+		day: 'Jours',
+		term: 'Terminé à',
+		host: 'Hébergé par: {user}',
+		win: 'gagnant(s)',
+		wins: 'Félicitations, {winners}! Vous avez gagné **{prize}**!\n{messageURL}',
+		addReaction: 'Réagissez avec 🎉 pour participer!',
+		restante: 'Temps restant:',
+		no: 'Giveawy annulé, aucune participation valide.',
+		give: 'DONNÉE',
+		giveend: 'DONNÉE TERMINÉ',
+		start: 'Vous n\'avez pas utilisé la commande correctement, utilisez : `%pgiveaway [temps (10s, 10m)] [gagnants (1, 1w)] [prix (photos de chats)]`, n\'incluez pas **[]** ou **()**.',
 		end: 'Você não usou o comando corretamente, utilize: `%pgiveaway-end [id da mensagem]`',
-		reroll: 'Você não usou o comando corretamente, utilize: `%pgiveaway-reroll [id da mensagem]`',
-		novo: 'Novo ganhador(es): {winners}! Parabéns, vocês ganharam **{prize}**\n{messageURL}',
-		err: 'Sem participações válidas, nenhum(s) novo(s) vencedor(es) escolhidos!'
+		reroll: 'Vous n\'avez pas utilisé la commande correctement, utilisez : `%pgiveaway-reroll [id du message]`',
+		novo: 'Nouveau(x) gagnant(s) : {winners}! Félicitations, vous avez gagné **{prize}**\n{messageURL}',
+		err: 'Aucune participation valide, aucun nouveau gagnant ne peut être choisi!'
 	},
 	help: {
-		title: 'Lista de Comandos • ',
-		creators: 'Eu fui desenvolvida por ',
-		description: '> Meu prefixo atual é: `%p`\n> Caso tenha alguma dúvida entre em meu servidor de suporte: [Clique Aqui](https://discord.gg/pyyyJpw5QW)\n> Me adicione clicando [aqui](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
-		nsfw: 'Você precisa estar em um canal NSFW para ver os comandos nsfw. '
+		title: 'Liste de commandes • ',
+		creators: 'J\'ai été développé par ',
+		description: '> Mon préfixe actuel est : `%p`\n> Si vous avez des questions, veuillez entrer mon serveur de support : [Cliquez ici](https://discord. g/pyyyJpw5QW)\n> Ajoutez-moi en cliquant sur [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
+		nsfw: 'Vous devez être sur un canal NSFW pour voir les commandes nsfw. '
 	},
 	calc: {
-		ex: 'Estão faltando argumentos, utilize, `%pcalc <expressão>`',
+		ex: 'Ams manquant, utiliser, `%pcalc <expression>`',
 		inv: 'Expressão invalida.',
-		res: 'Resultado'
+		res: 'Résultats'
 	},
 	botinfo: {
-		texto: 'Hi, I\'m %bot, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Resources:'
+		texto: 'Bonjour, je suis %bot, un bot avec des fonctionnalités uniques dont chaque serveur a besoin ! Je connais actuellement **%u personnes différentes ** qui utilisent mes fonctionnalités et je suis sur **%g serveurs différents ** .\n\nJe suis développé par `%devs` en utilisant [Eris](https://abal.moe/Eris/) en utilisant [Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/fr/)',
+		recursos: 'Ressources:'
 	},
 	messages: {
-		tem: 'tem',
-		msg: 'mensagens',
-		title: 'Mensagens'
+		tem: 'a',
+		msg: 'messages',
+		title: 'Messages'
 	},
 	together: {
-		channel: 'Você precisa estar em um canal de voz para executar este comando.',
-		done: 'Basta clicar no link e você será redirecionado para a atividade:',
-		done2: '**(só funciona no computador)**'
+		channel: 'Vous devez être sur un salon vocal pour exécuter cette commande.',
+		done: 'Cliquez simplement sur le lien et vous serez redirigé vers l\'activité:',
+		done2: '**(ne fonctionne que sur ordinateur)**'
 	},
 	erela: {
-		np: 'Tocando agora',
+		np: 'En cours de lecture',
 		end: 'A música acabou, estou saindo',
 		skip: 'The song was successfully skipped.',
 		not: 'Não estou tocando nada no servidor.',
@@ -159,27 +159,27 @@ module.exports = {
 	},
 	play: {
 		nada: 'Arguments are missing, use `%pplay <music | url>`',
-		add: 'Adicionado a fila',
-		can: 'Você precisa estar em um canal de voz para ouvir música.'
+		add: 'Ajouter à la file d\'attente',
+		can: 'Vous devez être sur un salon vocal pour écouter de la musique.'
 	},
 	waifu: {
-		casar: 'Reaja com 💖 para se casar',
-		casou: 'Você se casou com %w',
-		dono: 'Dono',
-		utl: 'Utilize: %pwaifu-info [ID]',
-		casado: 'Você já casou recentemente, você pode casar a cada 2 horas'
+		casar: 'Réagissez avec 💖 pour vous marier',
+		casou: 'Vous vous êtes marié avec %w',
+		dono: 'Propriétaire',
+		utl: 'Utilisation: %pwaifu-info [ID]',
+		casado: 'Avez vous récemment marié, vous pouvez vous marier toutes les 2 heures'
 	},
 	tradutor: {
-		lang: 'Você precisa especificar a linguagem, examplo: %translator **en** Oi',
-		text: 'Você precisa especificar o texto, examplo: %translator en  **Oi** '
+		lang: 'Vous devez spécifier la langue, exemple : %translator **fr** hello',
+		text: 'Vous devez spécifier la langue, exemple : %translator **fr** hello** '
 	},
 	invite: {
-		add: 'Me Adicione ao seu servidor!',
-		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/pyyyJpw5QW), yay'
+		add: 'Invite-moi sur ton serveur!',
+		desc: 'Yay, avez-vous aimé mes commandes ? Ou mes fonctionnalités ? [Ajoutez-moi](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nVous avez besoin d\'aide ou quelque chose ? Connectez-vous à mon [serveur de support](https://discord.gg/pyyyJpw5QW), yay'
 	},
 	ban: {
-		noarg: '**Mencione** algum usuário ou dê o **ID** do mesmo.',
-		vc: 'Você deseja mesmo punir',
+		noarg: '**Mention** un utilisateur ou donnez l\'**ID** du même.',
+		vc: 'Voulez-vous vraiment supprimer',
 		r: '✅',
 		r2: '✅',
 		mot: 'Não Definido',
