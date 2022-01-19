@@ -148,17 +148,17 @@ module.exports = {
 	erela: {
 		np: 'En cours de lecture',
 		end: 'A música acabou, estou saindo',
-		skip: 'The song was successfully skipped.',
-		not: 'Não estou tocando nada no servidor.',
-		voice: 'I was alone on the voice channel, I\'m leaving!',
-		duration: 'Duration:',
+		skip: 'La chanson a été ignorée avec succès.',
+		not: 'Je ne joue rien sur le serveur.',
+		voice: 'J\'étais seul sur le canal vocal, je pars !',
+		duration: 'Durée :',
 		loop: {
-			ativado: 'Current Song Loop has been enabled.',
-			desativado: 'Current Song Loop has been turned off.'
+			ativado: 'La boucle actuelle de la chanson a été activée.',
+			desativado: 'La boucle actuelle de musique a été désactivée.'
 		}
 	},
 	play: {
-		nada: 'Arguments are missing, use `%pplay <music | url>`',
+		nada: 'Les arguments sont manquants, utilisez `%pplay <music | url>`',
 		add: 'Ajouter à la file d\'attente',
 		can: 'Vous devez être sur un salon vocal pour écouter de la musique.'
 	},
@@ -182,81 +182,81 @@ module.exports = {
 		vc: 'Voulez-vous vraiment supprimer',
 		r: '✅',
 		r2: '✅',
-		mot: 'Não Definido',
-		mot2: 'Punido por:',
-		mot3: 'Motivo:',
-		the: 'O Usuário',
-		foi: 'foi punido com sucesso.',
-		dev: 'You cannot punish the bot developer.'
+		mot: 'Non défini',
+		mot2: 'Pensé pour:',
+		mot3: 'Raison:',
+		the: 'L\'utilisateur(trice)',
+		foi: 'a été punie avec succès.',
+		dev: 'Vous ne pouvez pas punir le développeur du bot.'
 	},
 	clear: {
-		msg: 'mensagens** limpas com sucesso',
-		no: 'Insira a quantidade de mensagens a serem limpas',
-		p: 'Procurando mensagens, isso pode levar 30 segundos...',
-		num: 'Eu só consigo limpar entre 2 a 2000 mensagens'
+		msg: 'entrées effacées avec succès',
+		no: 'Entrez le nombre de messages à nettoyer',
+		p: 'Recherche de messages, cela peut prendre 30 secondes...',
+		num: 'Je ne peux clarifier qu\'entre 2 et 2000 messages'
 	},
 	baninfo: {
-		user: 'Usuário:',
-		reason: 'Motivo',
-		desban: 'Para desbanir reaja com 🐹.'
+		user: 'Utilisateur:',
+		reason: 'Raison:',
+		desban: 'Pour dé-bannir réagissent avec 🐹.'
 	},
 	multiLang: {
-		unknownLanguage: 'Idioma desconhecido.\n<:zu_info:880812942713573396> Idiomas disponíveis: %langs',
-		insertLang: 'Você não específicou um idioma. Para alterar o idioma do bot, utilize `%pidioma %langs`'
+		unknownLanguage: 'Langue inconnue.\n<:zu_info:880812942713573396> Langues disponibles : %langs',
+		insertLang: 'Vous n\'avez pas spécifié de langue. Pour changer la langue du bot, exécutez `%plangue %langs`'
 	},
 	autorole: {
-		insertRole: 'Você não especificou um cargo, utilize: `%pautorole <@cargo | cargo id | desativar>.`',
-		success: 'Certo, agora membros que entrarem no servidor terão o cargo `%cargo` adicionado automaticamente.',
-		disabled: 'Autorole foi desativado com sucesso.',
-		noset: 'Não Setado',
-		bot: 'Mencione o cargo que será dado quando algum BOT entrar no servidor.',
-		botset: 'O Autorole de bots foi setado para os cargos:',
-		user: 'Mencione o cargo que será dado quando algum usuário entrar no servidor.',
-		userset: 'O Autorole de usuários foi setado para os cargos:',
-		mem: 'Membros',
-		del: 'Desativar',
-		del2: 'Reaja com ❌ para desativar/deletar'
+		insertRole: 'Vous n\'avez pas spécifié de rôle, utilisez: `%pautorole <@role | id de rôle | disable>.`',
+		success: 'Ok, maintenant les membres qui rejoignent le serveur auront le message `%cargo` automatiquement ajouté.',
+		disabled: 'Le profile a été correctement mis à jour.',
+		noset: 'Valeur non définie',
+		bot: 'Mentionnez les rôles qui seront donnés quand un BOT entre dans le serveur.',
+		botset: 'Les bots Autorole ont été configurés sur les rôles :',
+		user: 'Mentionnez les rôles qui seront donnés quand un utilisateur entre sur le serveur.',
+		userset: 'L\'utilisateur Autorole a été défini pour les rôles :',
+		mem: 'Membres',
+		del: 'Désactiver',
+		del2: 'Réagir avec ❌ pour désactiver/supprimer'
 	},
 	userinfo: {
-		inf: 'Informações de:',
-		tag: 'Tag de:',
-		badges: 'Badges of:',
-		id: 'ID de:',
-		create: 'Conta criada dia:'
+		inf: 'Informations :',
+		tag: 'Étiquette de : ',
+		badges: 'Insignes de :',
+		id: 'Identifiant de : ',
+		create: 'Compte créé dans: '
 	},
-	slash: 'devido a alguns problemas de compatibilidade, mudei completamente para **Comandos Slash**, se os comandos não aparecerem, adicione-me novamente clicando aqui: [adicionar](https://zulybot.xyz/add), não é necessário remover o bot, caso os comandos ainda não foram atualizados em seu servidor, pode levar até uma hora para que sejam atualizados em todos os servidores, devido ao discord.',
+	slash: 'en raison de problèmes de compatibilité, j\'ai été complètement passé à **Commandes Slash**, si les commandes n\'apparaissent pas, ajoutez-moi en cliquant ici : [add](https://zulybot. yz/add), il n\'est pas nécessaire de supprimer le bot pour cela et si les commandes n\'ont pas encore été mises à jour sur votre serveur, il peut prendre jusqu\'à une heure pour les mettre à jour sur tous les serveurs, en raison de la discord.',
 	avatar: {
-		title: 'Avatar de:',
-		download: 'Link para download:',
-		hex: 'Hex to use in your profile:',
-		click: 'Clique Aqui'
+		title: 'Avatar depuis:',
+		download: 'Lien de téléchargement :',
+		hex: 'Hex à utiliser dans votre profil :',
+		click: 'Cliquez ici'
 	},
 	perfil: {
-		ngm: 'NINGUÉM',
-		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
-		comp: 'Clique no `🛒` para comprar',
-		succ: 'Background comprado com sucesso',
-		no: 'Você não tem dinheiro suficiente para comprar este background'
+		ngm: 'NON-BODY',
+		desc: 'C\'est vraiment mon ami, saviez-vous que vous pouvez changer cela en utilisant "%paboutme " ?',
+		comp: 'Cliquez sur `🛒` pour acheter',
+		succ: 'Fond d\'écran acheté avec succès',
+		no: 'Vous n\'avez pas assez d\'argent pour acheter ce fond d\'écran'
 	},
 	filters: {
-		ativado: 'The filter %f has been successfully enabled.',
-		desativado: 'Filter %f was successfully disabled.'
+		ativado: 'Le filtre %f a été activé avec succès.',
+		desativado: 'Le filtre %f a été désactivé avec succès.'
 	},
 	economy: {
-		jacoletou: 'Você já coletou sua recompensa diária hoje! Tente novamente em:',
-		recebeu: 'Você recebeu:',
-		noarg: 'Estão faltando argumentos, utilize: `%presgatar <codigo>.`',
-		resgatado: 'Você já resgatou esse código.',
-		nocode: 'Esse código não existe.',
-		sucesso: 'Você resgatou o promocode **%p** e ganhou **%v ryos** 🥳'
+		jacoletou: 'Vous avez déjà collecté votre récompense quotidienne aujourd\'hui! Réessayez sur:',
+		recebeu: 'Vous avez reçu:',
+		noarg: 'Il y a des arguments manquants, utilisez: `%presgate <code>.`',
+		resgatado: 'Vous avez déjà utilisé ce code.',
+		nocode: 'Ce guide n\'existe pas.',
+		sucesso: 'Vous avez racheté le code promotionnel **%p** et gagné **%v ryos** 🥳'
 	},
 	sobre: {
-		nada: 'Preciso de algum argumento, utilize: `%psobremim <texto>`',
-		alt: 'Sobre alterado para: `%t`'
+		nada: 'J\'ai besoin d\'un argument, utilisez: `%poverim <text>`',
+		alt: 'A propos de changé en : `%t`'
 	},
 	nsfw: {
-		activated: 'System activated successfully!',
-		disabled: 'System successfully disabled!',
-		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
+		activated: 'Système activé avec succès !',
+		disabled: 'Système désactivé avec succès !',
+		nonsfw: 'N\'envoyez pas de contenu NSFW en dehors des canaux NSFW.'
 	}
 };
