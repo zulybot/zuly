@@ -16,6 +16,11 @@ module.exports = class PingCommand {
 				categoria: '📖 » Information',
 				desc: 'See bot latency.'
 			},
+			fr: {
+				nome: 'ping',
+				categoria: '📖 » Information',
+				desc: 'Voir la latence du bot.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

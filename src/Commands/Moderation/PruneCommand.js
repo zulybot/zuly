@@ -16,6 +16,11 @@ module.exports = class PruneCommand {
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
 				desc: 'Clear messages from any channel.'
 			},
+			fr: {
+				nome: 'prune',
+				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				desc: 'Nettoyer les messages d\'un canal.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

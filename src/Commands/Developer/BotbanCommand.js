@@ -16,6 +16,11 @@ module.exports = class BanCommand {
 				categoria: '💻 » Dev',
 				desc: 'Ban some user from using the bot.'
 			},
+			fr: {
+				nome: 'botban',
+				categoria: '💻 » Dev',
+				desc: 'Interdire à certains utilisateurs d\'utiliser le bot.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

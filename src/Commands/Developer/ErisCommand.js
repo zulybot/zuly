@@ -16,6 +16,11 @@ module.exports = class ExecCommand {
 				categoria: '💻 » Dev',
 				desc: 'Search for something in the eris.js documentation.'
 			},
+			fr: {
+				nome: 'eris',
+				categoria: '💻 » Dev',
+				desc: 'Recherchez quelque chose dans la documentation eris.js.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

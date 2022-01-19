@@ -16,6 +16,11 @@ module.exports = class AnimuCommand {
 				categoria: '🎵 » Music',
 				desc: 'Play anime radio, Animu.'
 			},
+			fr: {
+				nome: 'animu',
+				categoria: '🎵 » Musique',
+				desc: 'Joue la radio d\'anime, Animu.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

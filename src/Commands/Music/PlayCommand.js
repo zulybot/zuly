@@ -16,6 +16,11 @@ module.exports = class PlayCommand {
 				categoria: '🎵 » Music',
 				desc: 'Listen musics, yay.'
 			},
+			fr: {
+				nome: 'play',
+				categoria: '🎵 » Musique',
+				desc: 'Écouter des musiques, yay.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

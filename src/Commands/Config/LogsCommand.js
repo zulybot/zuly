@@ -15,6 +15,11 @@ module.exports = class LangCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Sets a channel for message logs.'
 			},
+			fr: {
+				nome: 'logs',
+				categoria: '⚙️ » Configuration',
+				desc: 'Définit un canal pour les journaux de messages.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -16,6 +16,11 @@ module.exports = class DailyCommand {
 				categoria: '💰 » Economy',
 				desc: 'Change your "About Me" to some cool phrase.'
 			},
+			fr: {
+				nome: 'aboutme',
+				categoria: '💰 » Économie',
+				desc: 'Change votre "À Propos de Moi" pour une phrase super cool.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

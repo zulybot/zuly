@@ -15,6 +15,11 @@ module.exports = class TicketCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Configure the ticket system.'
 			},
+			fr: {
+				nome: 'ticket',
+				categoria: '⚙️ » Configuration',
+				desc: 'Configurez le système de tickets.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -16,6 +16,11 @@ module.exports = class BaninfoCommand {
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
 				desc: 'See some ban info.'
 			},
+			fr: {
+				nome: 'baninfo',
+				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				desc: 'Voir les informations d\'un ban.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

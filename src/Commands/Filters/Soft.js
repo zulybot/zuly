@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the soft filter.'
 			},
+			fr: {
+				nome: 'soft',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre soft.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

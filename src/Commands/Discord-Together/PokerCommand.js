@@ -16,6 +16,11 @@ module.exports = class PokerCommand {
 				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
 				desc: 'Play poker on discord'
 			},
+			fr: {
+				nome: 'poker',
+				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
+				desc: 'Jouer poker sur discord'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -16,6 +16,11 @@ module.exports = class EvalCommand {
 				categoria: '💻 » Dev',
 				desc: 'Delete an economy promocode'
 			},
+			fr: {
+				nome: 'promodelete',
+				categoria: '💻 » Dev',
+				desc: 'Supprimer un code promotionnel économique.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -19,6 +19,11 @@ module.exports = class Ajuda {
 				categoria: '📖 » Information',
 				desc: 'View my command list!'
 			},
+			fr: {
+				nome: 'help',
+				categoria: '📖 » Information',
+				desc: 'Voir ma liste de commandes!'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup
@@ -170,7 +175,108 @@ module.exports = class Ajuda {
 				});
 
 				break;
+			case 'fr-fr':
+				if (ctx.args[0]) {
+					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
+					const help = new ctx.embed();
+					help.setTitle('<:zu_info:880812942713573396> ' + `Infos commande: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
+					help.addField('📚 La description:', `\`${cmd.fr.desc}\``, false);
+					help.addField(':small_blue_diamond: Autorisations des robots:', `\`${cmd.permissoes.bot.join('`, `') || 'Cette commande n\'a pas besoin d\'autorisations.'}\``, false);
+					help.addField(':small_orange_diamond: Autorisations utilisateur:', `\`${cmd.permissoes.membro.join('`, `') || 'Cette commande n\'a pas besoin d\'autorisations spéciales pour s\'exécuter.'}\``, false);
+					help.setThumbnail(global.zuly.user.avatarURL);
+					help.setColor('#ffcbdb');
+					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
+					return ctx.message.channel.slashReply({
+						content: ctx.message.author.mention,
+						embeds: [help.get()],
+						components: [
+							{
+								type: 1,
+								components: [
+									{
+										type: 2,
+										label: `${ctx.idioma.mention.labels.support}`,
+										style: 5,
+										url: 'https://discord.gg/pyyyJpw5QW'
+									},
+									{
+										type: 2,
+										label: `${ctx.idioma.mention.labels.invite}`,
+										style: 5,
+										url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
+									},
+									{
+										type: 2,
+										label: `${ctx.idioma.mention.labels.website}`,
+										style: 5,
+										url: 'https://zulybot.xyz/'
+									}
+								]
+							}
+						],
+						flags: ctx.ephemeral
+					});
+				}
+
+				global.zuly.commands.forEach(comando => {
+					if (comando.permissoes.nsfw) {
+						if (!ctx.message.channel.nsfw) return;
+					}
+					if (!comando.permissoes.dono) {
+						// console.log(`[HELP] Commando ${comando.pt.nome} foi exbido no ajuda`.brightCyan)
+					}
+					else {
+						return;
+					}
+					if (!categorias[comando.fr.categoria]) { categorias[comando.fr.categoria] = []; }
+					categorias[comando.fr.categoria].push(
+						`\`${comando.fr.nome}\``
+					);
+				});
+				embed.setDescription(`>>> Bonjour, mon nom est: **${global.zuly.user.username}**!\nJ'ai actuellement: **${global.zuly.commands.size}** commandes;\nAjoute [moi](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou rejoignez mon [soutien](https://discord.gg/pyyyJpw5QW) si tu veux!\n↳ [Hé, que diriez-vous de jeter un œil au Twitch de mon ami Lucaas?](https://www.twitch.tv/lucaas0007)`);
+				embed.setThumbnail(global.zuly.user.avatarURL);
+				for (const categoria in categorias) {
+					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
+				}
+				if (!ctx.message.channel.nsfw) {
+					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
+				}
+				else {
+					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
+				}
+				ctx.message.channel.slashReply({
+					content: ctx.message.author.mention,
+					embeds: [embed.get()],
+					components: [
+						{
+							type: 1,
+							components: [
+								{
+									type: 2,
+									label: `${ctx.idioma.mention.labels.support}`,
+									style: 5,
+									url: 'https://discord.gg/pyyyJpw5QW'
+								},
+								{
+									type: 2,
+									label: `${ctx.idioma.mention.labels.invite}`,
+									style: 5,
+									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
+								},
+								{
+									type: 2,
+									label: `${ctx.idioma.mention.labels.website}`,
+									style: 5,
+									url: 'https://zulybot.xyz/'
+								}
+							]
+						}
+					],
+					flags: ctx.ephemeral
+				});
+				break;
 			case 'en-us':
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));

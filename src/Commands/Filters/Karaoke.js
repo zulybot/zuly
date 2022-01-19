@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the karaoke filter.'
 			},
+			fr: {
+				nome: 'karaoke',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre karaoke.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

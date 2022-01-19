@@ -17,6 +17,11 @@ module.exports = class PingCommand {
 				categoria: '🕰️ » Utility',
 				desc: 'See the amount of messages from any user.'
 			},
+			fr: {
+				nome: 'messages',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Voir le nombre de messages d\'un utilisateur.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

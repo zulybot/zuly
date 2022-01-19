@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the nightcore filter.'
 			},
+			fr: {
+				nome: 'nightcore',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre nightcore.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

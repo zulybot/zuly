@@ -16,6 +16,11 @@ module.exports = class GivawayStart {
 				categoria: '🎁 » Giveaway',
 				desc: 'End a giveaway'
 			},
+			fr: {
+				nome: 'giveaway-end',
+				categoria: '🎁 » Giveaway',
+				desc: 'Termine un giveaway'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

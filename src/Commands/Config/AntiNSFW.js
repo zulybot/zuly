@@ -15,6 +15,11 @@ module.exports = class LangCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Protect your NSFW content server out of NSFW channels.'
 			},
+			fr: {
+				nome: 'antinsfw',
+				categoria: '⚙️ » Configuration',
+				desc: 'Protégez votre serveur de contenu NSFW des canaux NSFW.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -16,6 +16,11 @@ module.exports = class Nitro {
 				categoria: '⭐ » Fun',
 				desc: '"Buy" a nitro for you.'
 			},
+			fr: {
+				nome: 'nitro',
+				categoria: '⭐ » Divertissement',
+				desc: '"Achetez" un nitro pour vous.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

@@ -16,6 +16,11 @@ module.exports = class BanCommand {
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
 				desc: 'Unban some idiot user from your server.'
 			},
+			fr: {
+				nome: 'unban',
+				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				desc: 'Débannir quelqu\'un de votre serveur.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

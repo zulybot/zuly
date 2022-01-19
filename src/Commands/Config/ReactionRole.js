@@ -15,6 +15,11 @@ module.exports = class ReactionRoleCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Create roles by reaction in a message you want.'
 			},
+			fr: {
+				nome: 'reactionrole',
+				categoria: '⚙️ » Configuration',
+				desc: 'Créez des rôles par réaction dans un message que vous voulez.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

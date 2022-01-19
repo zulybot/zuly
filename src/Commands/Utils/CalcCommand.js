@@ -16,6 +16,11 @@ module.exports = class CalcCommand {
 				categoria: '🕰️ » Utility',
 				desc: 'Calculates an arithmetic expression.'
 			},
+			fr: {
+				nome: 'calc',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Calcule une expression arithmétique.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

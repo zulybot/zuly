@@ -16,6 +16,11 @@ module.exports = class ChessCommand {
 				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
 				desc: 'Play chess on discord'
 			},
+			fr: {
+				nome: 'chess',
+				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
+				desc: 'Jouer xadrez sur discord'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

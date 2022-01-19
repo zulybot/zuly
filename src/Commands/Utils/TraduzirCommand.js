@@ -18,6 +18,11 @@ module.exports = class PingCommand {
 				categoria: '🕰️ » Utility',
 				desc: 'Translate messages to any language.'
 			},
+			fr: {
+				nome: 'translator',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Traduire des messages dans n\'importe quel langage.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

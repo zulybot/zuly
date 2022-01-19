@@ -17,6 +17,11 @@ module.exports = class AutoroleCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Automatically assign roles to new ones on your server.'
 			},
+			fr: {
+				nome: 'autorole',
+				categoria: '⚙️ » Configuration',
+				desc: 'Attribuez automatiquement des rôles aux nouveaux sur votre serveur.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

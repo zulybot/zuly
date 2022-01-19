@@ -16,6 +16,11 @@ module.exports = class DailyCommand {
 				categoria: '💰 » Economy',
 				desc: 'Shows the amount of money you have.'
 			},
+			fr: {
+				nome: 'balance',
+				categoria: '💰 » Économie',
+				desc: 'Affiche le montant de l\'argent que vous avez.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

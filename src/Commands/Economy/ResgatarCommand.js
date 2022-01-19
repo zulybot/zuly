@@ -16,6 +16,11 @@ module.exports = class ResgatarCommand {
 				categoria: '💰 » Economy',
 				desc: 'Redeem some valid code in the economy.'
 			},
+			fr: {
+				nome: 'resgatar',
+				categoria: '💰 » Économie',
+				desc: 'Récupérer un code valide dans l\'économie.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

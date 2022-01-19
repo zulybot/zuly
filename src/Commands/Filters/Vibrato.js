@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the vibrato filter.'
 			},
+			fr: {
+				nome: 'vibrato',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre vibrato.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

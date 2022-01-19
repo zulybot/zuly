@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Music',
 				desc: 'Stop the music.'
 			},
+			fr: {
+				nome: 'stop',
+				categoria: '🎵 » Musique',
+				desc: 'Arrête la musique.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

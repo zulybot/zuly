@@ -15,6 +15,11 @@ module.exports = class LangCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Changes the bot language.'
 			},
+			fr: {
+				nome: 'lang',
+				categoria: '⚙️ » Configuration',
+				desc: 'Modifie la langue du bot.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup
@@ -35,12 +40,16 @@ module.exports = class LangCommand {
 					required: false,
 					choices: [
 						{
-							name: 'portuguese',
+							name: 'português',
 							value: 'pt-br'
 						},
 						{
 							name: 'english',
 							value: 'en-us'
+						},
+						{
+							name: 'français',
+							value: 'fr-fr'
 						}
 					]
 				}
@@ -51,7 +60,7 @@ module.exports = class LangCommand {
 	}
 
 	async run (ctx) {
-		const langs = ['pt-br', 'en-us'];
+		const langs = ['pt-br', 'en-us', 'fr-fr'];
 
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
@@ -80,6 +89,11 @@ module.exports = class LangCommand {
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[1]);
 					return ctx.message.channel.slashReply({
 						content: ':white_check_mark: **|** Now I will speak `english-us` on this guild!'
+					});
+				case langs[2]:
+					await global.db.set(`idioma-${ctx.message.guildID}`, langs[2]);
+					return ctx.message.channel.slashReply({
+						content: ':white_check_mark: **|** Maintenant, je vais parler "français-fr" sur cette guilde!'
 					});
 			}
 		}

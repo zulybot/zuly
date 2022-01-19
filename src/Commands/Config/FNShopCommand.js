@@ -15,6 +15,11 @@ module.exports = class LangCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Set any channel to receive the daily fortnite store.'
 			},
+			fr: {
+				nome: 'fortnite',
+				categoria: '⚙️ » Configuration',
+				desc: 'Définissez n\'importe quel canal pour recevoir le magasin fortnite quotidien.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

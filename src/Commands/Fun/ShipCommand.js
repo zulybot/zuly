@@ -16,6 +16,11 @@ module.exports = class ShipCommand {
 				categoria: '⭐ » Fun',
 				desc: 'Ship you with someone else.'
 			},
+			fr: {
+				nome: 'ship',
+				categoria: '⭐ » Divertissement',
+				desc: 'Shippe avec quelqu\'un d\'autre.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

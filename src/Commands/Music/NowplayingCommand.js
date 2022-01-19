@@ -16,6 +16,11 @@ module.exports = class NowplayingCommand {
 				categoria: '🎵 » Music',
 				desc: 'The song that\'s playing now.'
 			},
+			fr: {
+				nome: 'nowplaying',
+				categoria: '🎵 » Musique',
+				desc: 'La musique qui est en cours de lecture.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

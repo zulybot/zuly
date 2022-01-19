@@ -16,6 +16,11 @@ module.exports = class CalcCommand {
 				categoria: '🕰️ » Utility',
 				desc: 'Color any image.'
 			},
+			fr: {
+				nome: 'colorizer',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Colorer une image.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

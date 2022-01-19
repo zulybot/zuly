@@ -17,6 +17,11 @@ module.exports = class EvalCommand {
 				categoria: '💰 » Economy',
 				desc: 'See your profile in the economy.'
 			},
+			fr: {
+				nome: 'profile',
+				categoria: '💰 » Économie',
+				desc: 'Voir votre profil dans l\'économie.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

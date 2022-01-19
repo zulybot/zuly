@@ -16,6 +16,11 @@ module.exports = class BotinfoCommand {
 				categoria: '📖 » Information',
 				desc: 'See bot information.'
 			},
+			fr: {
+				nome: 'botinfo',
+				categoria: '📖 » Information',
+				desc: 'Voir les informations du bot.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

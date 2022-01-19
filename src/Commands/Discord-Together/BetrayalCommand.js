@@ -16,6 +16,11 @@ module.exports = class BetrayalCommand {
 				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
 				desc: 'Play betrayal on discord'
 			},
+			fr: {
+				nome: 'betrayal',
+				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
+				desc: 'Jouer betrayal sur discord'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

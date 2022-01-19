@@ -15,6 +15,11 @@ module.exports = class LangCommand {
 				categoria: '⚙️ » Configuration',
 				desc: 'Create a custom command for your server.'
 			},
+			fr: {
+				nome: 'custom-command',
+				categoria: '⚙️ » Configuration',
+				desc: 'Créez une commande personnalisée pour votre serveur.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

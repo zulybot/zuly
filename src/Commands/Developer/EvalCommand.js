@@ -16,6 +16,11 @@ module.exports = class EvalCommand {
 				categoria: '💻 » Dev',
 				desc: 'Value codes.'
 			},
+			fr: {
+				nome: 'eval',
+				categoria: '💻 » Dev',
+				desc: 'Codes de valeur.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

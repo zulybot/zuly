@@ -16,6 +16,11 @@ module.exports = class CalcCommand {
 				categoria: '🕰️ » Utility',
 				desc: 'See a user\'s banner.'
 			},
+			fr: {
+				nome: 'banner',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Voir le banner d\'un utilisateur.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

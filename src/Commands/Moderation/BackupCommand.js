@@ -16,6 +16,11 @@ module.exports = class BackupCommand {
 				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
 				desc: 'Manage backups of your server.'
 			},
+			fr: {
+				nome: 'backup',
+				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				desc: 'Gérer les sauvegardes de votre serveur.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

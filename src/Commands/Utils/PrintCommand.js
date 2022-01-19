@@ -4,7 +4,7 @@ module.exports = class PrintCommand {
 			permissoes: {
 				membro: [],
 				bot: ['embedLinks'],
-				dono: false
+				dono: true
 			},
 			pt: {
 				nome: 'print',
@@ -15,6 +15,11 @@ module.exports = class PrintCommand {
 				nome: 'print',
 				categoria: '🕰️ » Utility',
 				desc: 'Take a print from a website.'
+			},
+			fr: {
+				nome: 'print',
+				categoria: '🕰️ » Utilitaires',
+				desc: 'Prendre un print de n\'importe quel site.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

@@ -16,6 +16,11 @@ module.exports = class HostCommand {
 				categoria: '📖 » Information',
 				desc: 'See host information.'
 			},
+			fr: {
+				nome: 'host',
+				categoria: '📖 » Information',
+				desc: 'Voir les informations de la machine hôte.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

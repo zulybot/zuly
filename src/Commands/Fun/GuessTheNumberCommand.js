@@ -16,6 +16,11 @@ module.exports = class GuessCommand {
 				categoria: '⭐ » Fun',
 				desc: 'Guess the Number is a fun educational game.'
 			},
+			fr: {
+				nome: 'guess',
+				categoria: '⭐ » Divertissement',
+				desc: 'Deviner le nombre est un jeu d\'éducation divertissant.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

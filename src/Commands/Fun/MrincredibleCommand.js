@@ -16,6 +16,11 @@ module.exports = class MrincredibleCommand {
 				categoria: '⭐ » Fun',
 				desc: 'Make an incredible sir meme.'
 			},
+			fr: {
+				nome: 'mrincredible',
+				categoria: '⭐ » Divertissement',
+				desc: 'Faire un meme du sénéral incroyable.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

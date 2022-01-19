@@ -16,6 +16,11 @@ module.exports = class YoutubeCommand {
 				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
 				desc: 'Watch youtube on discord'
 			},
+			fr: {
+				nome: 'youtube',
+				categoria: '<:zu_discord:882305685650558996> » Discord-Together',
+				desc: 'Regarder youtube sur discord'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

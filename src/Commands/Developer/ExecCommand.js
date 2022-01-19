@@ -9,12 +9,17 @@ module.exports = class ExecCommand {
 			pt: {
 				nome: 'exec',
 				categoria: '💻 » Dev',
-				desc: 'Eval público para desenvolvedores testarem coisas.'
+				desc: 'Executar coisas no terminal.'
 			},
 			en: {
 				nome: 'exec',
 				categoria: '💻 » Dev',
-				desc: 'Public eval for developers to test things.'
+				desc: 'Run things in the terminal.'
+			},
+			fr: {
+				nome: 'exec',
+				categoria: '💻 » Dev',
+				desc: 'Exécutez les choses dans le terminal.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

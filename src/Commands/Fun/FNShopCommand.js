@@ -16,6 +16,11 @@ module.exports = class Nitro {
 				categoria: '⭐ » Fun',
 				desc: 'Shows the Fortnite Daily Store.'
 			},
+			fr: {
+				nome: 'fnshop',
+				categoria: '⭐ » Divertissement',
+				desc: 'Affiche la boutique du Fortnite quotidienne.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

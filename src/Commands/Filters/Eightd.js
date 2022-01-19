@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the eightd filter.'
 			},
+			fr: {
+				nome: 'eightd',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre eightd.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

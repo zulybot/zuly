@@ -17,6 +17,11 @@ module.exports = class RandomAnimeCommand {
 				categoria: '📺 » Anime',
 				desc: 'Random anime.'
 			},
+			fr: {
+				nome: 'random-anime',
+				categoria: '📺 » Animé',
+				desc: 'Animé au hasard.'
+			},
 			/*
 			SUB_COMMAND	1 = SubCommand
 			SUB_COMMAND_GROUP: 2 = SubCommandGroup

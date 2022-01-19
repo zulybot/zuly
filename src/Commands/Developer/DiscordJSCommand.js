@@ -16,6 +16,11 @@ module.exports = class ExecCommand {
 				categoria: '💻 » Dev',
 				desc: 'Search for something in the Discord.js documentation.'
 			},
+			fr: {
+				nome: 'discordjs',
+				categoria: '💻 » Dev',
+				desc: 'Recherchez quelque chose dans la documentation Discord.js.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup

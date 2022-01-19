@@ -16,6 +16,11 @@ module.exports = class StopCommand {
 				categoria: '🎵 » Filters',
 				desc: 'Activates the vaporwave filter.'
 			},
+			fr: {
+				nome: 'vaporwave',
+				categoria: '🎵 » Filtres',
+				desc: 'Active le filtre vaporwave.'
+			},
 			/*
             SUB_COMMAND	1 = SubCommand
             SUB_COMMAND_GROUP: 2 = SubCommandGroup
