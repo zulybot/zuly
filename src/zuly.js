@@ -27,7 +27,8 @@ const client = new Client(token, {
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
-	maxShards: 'auto',
+	firstShardID: 0,
+	maxShards: 2,
 	messageLimit: 50,
 	requestTimeout: 30000,
 	rest: {

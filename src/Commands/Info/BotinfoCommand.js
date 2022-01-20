@@ -43,7 +43,12 @@ module.exports = class BotinfoCommand {
 		// eslint-disable-next-line new-cap
 		const os = require('os');
 		const { cpuUsage } = require('../../CustomPackages/osUtils');
+		const { get } = require('axios');
 		const uptime = global.zuly.getBotUptime(ctx.idioma.lang);
+
+		const config = require('../../Config/config');
+
+		const res = await get(config.domain + 'api/status');
 
 		const devs = [];
 
@@ -60,11 +65,11 @@ module.exports = class BotinfoCommand {
 			const embed = new ctx.embed();
 			embed.setTitle(`🤖 Botinfo | ${global.zuly.user.username}`);
 			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', global.zuly.guilds.size).replace('%devs', devs.join(', ')).replace('%u', global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0).toLocaleString()));
+			embed.setDescription(ctx.idioma.botinfo.texto.replace('%bot', global.zuly.user.username).replace('%g', res.data.servers).replace('%devs', devs.join(', ')).replace('%u', res.data.users.toLocaleString().replace('.', ',')));
 			embed.addField(`<:zu_ram:889942152736555108> ${ctx.idioma.botinfo.recursos}`, `**Ram:** ${(process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb'} / ${(os.totalmem() / 1024 / 1024).toFixed(0) + 'mb'}\n**CPU:** ${v.toFixed(2)}%\n**Uptime:** ${uptime}`);
 			embed.addField('🎵 Lavalink:', `> **Space:**\n- **Ram:** ${global.zuly.bytes(space.stats.memory.used).value || 0}${global.zuly.bytes(space.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${space.stats.uptime === 0 ? 'Offline' : global.zuly.time2(space.stats.uptime)}\n> **Galaxy:**\n- **Ram:** ${global.zuly.bytes(galaxy.stats.memory.used).value || 0}${global.zuly.bytes(galaxy.stats.memory.used).unit || 'mb'}\n- **Uptime:** ${galaxy.stats.uptime === 0 ? 'Offline' : global.zuly.time2(galaxy.stats.uptime)}`);
 			embed.setColor('#ffcbdb');
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setFooter(`⤷ zulybot.xyz, ${ctx.idioma.botinfo.mem.replace('%m', (process.memoryUsage().rss / 1024 / 1024 / res.data.servers).toFixed(2) + 'kb')}`, global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
 				embeds: [embed.get()],

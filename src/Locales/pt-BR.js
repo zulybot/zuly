@@ -140,8 +140,9 @@ module.exports = {
 		res: 'Resultado'
 	},
 	botinfo: {
-		texto: 'Olá, sou a %bot, um bot com funcionalidades únicas, que todo servidor precisa! Atualmente conheço **%u pessoas** diferentes que utilizam de minhas funcionalidades e estou em **%g servidores** diferentes.\n\nSou desenvolvida por `%devs` utilizando [Eris](https://abal.moe/Eris/) utilizando [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) & [NodeJS](https://nodejs.org/en/)',
-		recursos: 'Recursos:'
+		texto: 'Olá, sou a **%bot**, um bot com funcionalidades únicas, que todo servidor precisa! Atualmente conheço **%u pessoas** diferentes que utilizam de minhas funcionalidades e estou em **%g servidores** diferentes.\n\nSou desenvolvida por `%devs` utilizando [Eris](https://abal.moe/Eris/) utilizando [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) & [NodeJS](https://nodejs.org/en/)',
+		recursos: 'Recursos:',
+		mem: 'esse servidor está usando %m da minha memória.',
 	},
 	messages: {
 		tem: 'tem',
