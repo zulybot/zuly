@@ -132,8 +132,9 @@ module.exports = {
 		res: 'Rezultat'
 	},
 	botinfo: {
-		texto: 'Bună, sunt %bot, un bot cu caracteristici unice de care are nevoie fiecare server! În prezent știu **%u persoane diferite** care folosesc caracteristicile mele și sunt pe **%g servere diferite**.\n\nSunt dezvoltat de către `%devs` folosind [Eris](https://abal.moe/Eris/) folosind [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Resources:'
+		texto: 'Hi, I\'m **%bot**, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
+		recursos: 'Resources:',
+		mem: 'this server is using %m of my memory.'
 	},
 	messages: {
 		tem: 'are',
