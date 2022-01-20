@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require('colors');
 const {
 	Client,
@@ -8,7 +9,8 @@ const {
 } = require('./CustomPackages/DBLAutoPoster');
 const {
 	token,
-	statcord
+	statcord,
+	cluster
 } = require('./Config/config');
 const {
 	top
@@ -18,26 +20,53 @@ const {
 } = require('eris-giveaways');
 const Statcord = require('statcord-eris');
 const DiscordTogether = require('./Client/discord-together');
-const client = new Client(token, {
-	autoReconnect: !0,
-	defaultImageFormat: 'png',
-	defaultImageSize: 4096,
-	getAllUsers: !1,
-	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
-	largeThreshold: 200,
-	maxReconnectAttempts: Infinity,
-	maxResumeAttempts: 100,
-	firstShardID: 0,
-	maxShards: 2,
-	messageLimit: 50,
-	requestTimeout: 30000,
-	rest: {
-		baseURL: '/api/v9',
-		domain: 'canary.discordapp.com',
-		latencyThreshold: 40000
-	},
-	restMode: !0
-});
+let client;
+if (cluster.id === 0) {
+	client = new Client(token, {
+		autoReconnect: !0,
+		defaultImageFormat: 'png',
+		defaultImageSize: 4096,
+		getAllUsers: !1,
+		intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
+		largeThreshold: 200,
+		maxReconnectAttempts: Infinity,
+		maxResumeAttempts: 100,
+		firstShardID: 0,
+		maxShards: 4,
+		lastShardID: 1,
+		messageLimit: 50,
+		requestTimeout: 30000,
+		rest: {
+			baseURL: '/api/v9',
+			domain: 'canary.discordapp.com',
+			latencyThreshold: 40000
+		},
+		restMode: !0
+	});
+}
+else {
+	client = new Client(token, {
+		autoReconnect: !0,
+		defaultImageFormat: 'png',
+		defaultImageSize: 4096,
+		getAllUsers: !1,
+		intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
+		largeThreshold: 200,
+		maxReconnectAttempts: Infinity,
+		maxResumeAttempts: 100,
+		firstShardID: 2,
+		maxShards: 4,
+		lastShardID: 3,
+		messageLimit: 50,
+		requestTimeout: 30000,
+		rest: {
+			baseURL: '/api/v9',
+			domain: 'canary.discordapp.com',
+			latencyThreshold: 40000
+		},
+		restMode: !0
+	});
+}
 client.giveawaysManager = new GiveawaysManager(client, {
 	storage: './src/db/giveaways.json',
 	updateCountdownEvery: 5000,

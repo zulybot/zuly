@@ -7,8 +7,7 @@ global.zuly.aliases.clear();
 async function loadCommands () {
 	const commands = await global.zuly.requestHandler.request('GET', `/applications/${config.client.id}/commands`, true);
 }
-loadCommands();
-fs.readdir('./src/Commands/', (err, cat) => {
+fs.readdir('./src/Commands/', async (err, cat) => {
 	if (err) throw err;
 	cat.forEach(categoria => {
 		console.log(`[CATEGORIAS] Carregando categoria ${categoria}`.brightCyan);
@@ -37,6 +36,7 @@ fs.readdir('./src/Commands/', (err, cat) => {
 						if (config.deploy === 'no') {
 							return
 						} else {
+							await loadCommands();
 							commands.map(async c => {
 								if (c.name === comando.en.nome) {
 									await global.zuly.requestHandler.request('PATCH', `/applications/${config.client.id}/commands/${c.id}`, true, {
