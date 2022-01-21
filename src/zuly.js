@@ -31,7 +31,7 @@ const client = new Client(token, {
 	maxResumeAttempts: 100,
 	firstShardID: cluster.firstShard,
 	maxShards: 4,
-	lastShardID: 1,
+	lastShardID: cluster.lastShard,
 	messageLimit: 50,
 	requestTimeout: 30000,
 	rest: {
