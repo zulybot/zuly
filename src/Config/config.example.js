@@ -18,6 +18,7 @@ module.exports = {
 		id: 0,
 		nome: 'pandora',
 		firstShard: 0,
-		lastShard: 1
+		lastShard: 1,
+		maxShards: 4
 	}
 };
