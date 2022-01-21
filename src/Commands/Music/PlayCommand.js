@@ -47,45 +47,50 @@ module.exports = class PlayCommand {
 	}
 
 	async run (ctx) {
-		if (!ctx.args[0]) {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.nada.replace('%p', ctx.prefix)}`
-			});
-		}
-		if (!ctx.message.member.voiceState.channelID) {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
-			});
-		}
-		const res = await global.zuly.music.search(ctx.args.join(' '), ctx.message.author);
-		const play = global.zuly.music.players.get(ctx.message.channel.guild.id);
-		if (!play) {
-			const player = global.zuly.music.create({
-				guild: ctx.message.channel.guild.id,
-				voiceChannel: ctx.message.member.voiceState.channelID,
-				textChannel: ctx.message.channel.id,
-				selfDeafen: true,
-				volume: 100
-			});
-			await player.connect();
-		}
-		const player = global.zuly.music.players.get(ctx.message.channel.guild.id);
-		player.queue.add(res.tracks[0]);
-		const track = res.tracks[0];
+		try {
+			if (!ctx.args[0]) {
+				return ctx.message.channel.slashReply({
+					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.nada.replace('%p', ctx.prefix)}`
+				});
+			}
+			if (!ctx.message.member.voiceState.channelID) {
+				return ctx.message.channel.slashReply({
+					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.play.can}`
+				});
+			}
+			const res = await global.zuly.music.search(ctx.args.join(' '), ctx.message.author);
+			const play = global.zuly.music.players.get(ctx.message.channel.guild.id);
+			if (!play) {
+				const player = global.zuly.music.create({
+					guild: ctx.message.channel.guild.id,
+					voiceChannel: ctx.message.member.voiceState.channelID,
+					textChannel: ctx.message.channel.id,
+					selfDeafen: true,
+					volume: 100
+				});
+				await player.connect();
+			}
+			const player = global.zuly.music.players.get(ctx.message.channel.guild.id);
+			player.queue.add(res.tracks[0]);
+			const track = res.tracks[0];
 
-		if (!player.playing && !player.paused && !player.queue.size) {
-			player.play();
+			if (!player.playing && !player.paused && !player.queue.size) {
+				player.play();
+			}
+			if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) {
+				player.play();
+			}
+			const embed = new ctx.embed();
+			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.play.add} **${track.title}**`);
+			embed.setColor('#ffcbdb');
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			ctx.message.channel.slashReply({
+				embeds: [embed.get()]
+			});
 		}
-		if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) {
-			player.play();
+		catch (e) {
+			console.log(e);
 		}
-		const embed = new ctx.embed();
-		embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.play.add} **${track.title}**`);
-		embed.setColor('#ffcbdb');
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		ctx.message.channel.slashReply({
-			embeds: [embed.get()]
-		});
 	}
 };
 

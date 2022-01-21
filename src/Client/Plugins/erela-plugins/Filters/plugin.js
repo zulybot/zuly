@@ -183,7 +183,7 @@ class customFilter extends erela_js_1.Plugin {
 					op: 'filters',
 					guildId: this.guild,
 					rotation: {
-						rotationHz: 0.2
+						rotationHz: 0.1
 					}
 				}, this._karaokeData = {
 					op: 'filters',

@@ -267,12 +267,13 @@ module.exports = class InteractionEvent {
 				}
 				catch (e) {
 					const system = require('../Config/system');
-
+					const { domain } = require('../Config/config');
+					const dominio = domain.replace('http://', '').replace('/', '');
 					const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
 					const embed = new global.zuly.manager.Ebl();
 					embed.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
 					embed.setColor('#ff0000');
-					embed.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
+					embed.setDescription(`\`\`\`js\n${errorMessage.replace(dominio, '127.0.0.1:3000')}\`\`\``);
 					embed.addField(`<:zu_bughunter_1:885918998426951721> ${idioma.message.e2}`, idioma.message.e3);
 					embed.setThumbnail(global.zuly.user.avatarURL);
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
@@ -287,7 +288,7 @@ module.exports = class InteractionEvent {
 
 					const embed2 = new global.zuly.manager.Ebl();
 					embed2.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
-					embed2.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
+					embed2.setDescription(`\`\`\`js\n${errorMessage.replace(dominio, '127.0.0.1:3000')}\`\`\``);
 					embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.channel.guild.name}\`\n🧭 **ID:** \`${msg.channel.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.channel.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.channel.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.channel.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.channel.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.channel.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.data.name}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 					embed2.setColor('#ff0000');
 					embed2.setThumbnail(global.zuly.user.avatarURL);

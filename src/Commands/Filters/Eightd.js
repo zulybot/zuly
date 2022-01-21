@@ -40,20 +40,25 @@ module.exports = class StopCommand {
 	}
 
 	async run (ctx) {
-		const player = await global.zuly.music.players.get(ctx.message.channel.guild.id);
-		if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`);
-		if (!player) {
-			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.not}`);
+		try {
+			const player = await global.zuly.music.players.get(ctx.message.channel.guild.id);
+			if (!ctx.message.member.voiceState.channelID) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.noc2}`);
+			if (!player) {
+				return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.player.not}`);
+			}
+			else {
+				if (player.eightD === false) {
+					player.eightD = true;
+					return ctx.message.channel.slashReply(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filters.ativado.replace('%f', 'eightD')}`);
+				}
+				if (player.eightD === true) {
+					player.eightD = false;
+					return ctx.message.channel.slashReply(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filters.desativado.replace('%f', 'eightD')}`);
+				}
+			}
 		}
-		else {
-			if (player.eightd === false) {
-				player.eightd = true;
-				return ctx.message.channel.slashReply(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filters.ativado.replace('%f', 'eightd')}`);
-			}
-			if (player.eightd === true) {
-				player.eightd = false;
-				return ctx.message.channel.slashReply(`✅ ${ctx.message.author.mention} **|** ${ctx.idioma.filters.desativado.replace('%f', 'eightd')}`);
-			}
+		catch (e) {
+			console.log(e);
 		}
 	}
 };

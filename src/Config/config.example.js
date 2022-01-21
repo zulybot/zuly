@@ -16,6 +16,8 @@ module.exports = {
 	},
 	cluster: {
 		id: 0,
-		nome: 'kayake',
+		nome: 'pandora',
+		firstShard: 0,
+		lastShard: 1
 	}
 };
