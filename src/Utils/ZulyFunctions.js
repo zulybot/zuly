@@ -4,6 +4,33 @@ const API = require('../API/keys');
 const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
+/*
+global.ramUsed = {};
+
+for (const key of Object.keys(process.memoryUsage())) {
+	const mem = Math.round(process.memoryUsage()[key]);
+	global.zuly.ramUsed[key] = {
+		gigabytes: mem / (1024 * 1024 * 1024),
+		megabyes: mem / (1024 * 1024),
+		kilobytes: mem / 1024,
+		bytes: mem
+	};
+}
+
+const totalMem =
+global.zuly.ramUsed.heapTotal.bytes |
+global.zuly.ramUsed.external.bytes |
+global.zuly.ramUsed.heapUsed.bytes |
+global.zuly.ramUsed.arrayBuffers.bytes |
+global.zuly.ramUsed.rss.bytes;
+
+global.zuly.ramUsed.total = {
+	gigabytes: totalMem / (1024 * 1024 * 1024),
+	megabyes: totalMem / (1024 * 1024),
+	kilobytes: totalMem / 1024,
+	bytes: totalMem
+};
+*/
 async function getWebhook (channel) {
 	const webhooks = await global.zuly.getChannelWebhooks(channel.id);
 	if (webhooks.length === 0) {

@@ -20,7 +20,7 @@ module.exports = class GuildCreate {
 			name: `🧭 → Servers [${res.data.servers + global.zuly.guilds.size}]`
 		});
 		ch2.edit({
-			name: `👤 → Users [${totalUsers}]`
+			name: `👤 → Users [${totalUsers.toLocaleString().replace('.', ',')}]`
 		});
 
 		const moment = require('moment');

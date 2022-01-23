@@ -6,17 +6,15 @@ module.exports = class ReadyEvent {
 		};
 	}
 	async run () {
+		// Carregando Handler
+		require('../Client/Handler/comandos');
+		// Mostrando que o bot está ligado.
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		global.zuly.editStatus('idle', {
 			game: global.zuly.user.username,
 			name: 'Starting...',
 			type: 5
 		});
-		setInterval(() => {
-			if (global.gc) {
-				global.gc();
-			}
-		}, 5000);
 		try {
 			require('../../assets/images/utils/fnshop.png');
 		}

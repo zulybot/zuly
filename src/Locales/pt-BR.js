@@ -1,5 +1,10 @@
 module.exports = {
 	lang: 'pt',
+	clusters: {
+		desc: '> Esse servidor está no cluster `%id`\n- Nome: `%name`\n- Ping: `%ping`',
+		field: 'Info Clusters:',
+		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumo: %ram'
+	},
 	botban: {
 		title: 'Você está banido!',
 		description: '↳ Você foi banido de utilizar a `%z` por: `%r`\n> <:zu_info:911303533859590144> Você pode pedir uma apelação em nosso [servidor de suporte](https://discord.gg/pyyyJpw5QW).',
