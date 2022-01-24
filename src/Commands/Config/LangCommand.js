@@ -93,7 +93,7 @@ module.exports = class LangCommand {
 				case langs[2]:
 					await global.db.set(`idioma-${ctx.message.guildID}`, langs[2]);
 					return ctx.message.channel.slashReply({
-						content: ':white_check_mark: **|** Maintenant, je vais parler "français-fr" sur cette guilde!'
+						content: ':white_check_mark: **|** Maintenant, je vais parler `français-fr` sur cette guilde!'
 					});
 			}
 		}

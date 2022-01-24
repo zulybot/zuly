@@ -5,6 +5,20 @@ module.exports = {
 		field: 'Info Clusters:',
 		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumo: %ram'
 	},
+	gender: {
+		title: 'Gênero',
+		desc: 'Olá, %u, eu gostaria de te conhecer melhor, o que você é? Menino? Menina? Ou nenhum dos dois? Eu preciso saber para que eu possa me adequar mais em minhas respostas!\n>>> - 🚹 Menino\n- 🚺 Menina\n- 🚻 Nenhum dos dois',
+		change: 'Gênero alterado para `%g` com sucesso!',
+		male: 'menino',
+		female: 'menina'
+	},
+	anagramWords: ['andar', 'apreciar', 'reconhecer', 'ter', 'anúncio', 'televisão', 'buraco', 'acadêmico', 'pacote',
+		'residente', 'puxar', 'tragédia', 'olhar', 'compacto', 'má', 'faca', 'perseguição', 'bomba', 'biscoito', 'leilão', 'tratar',
+	 'atrair', 'empregar', 'naufrágio', 'incerteza', 'rumor', 'formal', 'nobre', 'brincadeira', 'original', 'cover', 'ballet', 'cheiro',
+	  'ligação', 'refletir', 'barulhento', 'ignorante', 'pão', 'fraco', 'vidro', 'quarto', 'desordem', 'hall', 'manhã', 'conexão',
+	   'inocente', 'condenado', 'sugerir', 'filme', 'mínimo', 'curso', 'favorável', 'slot', 'registro', 'tocha', 'menor', 'laticínios',
+		'obrigado', 'caneta', 'alocação', 'qualificado', 'irmã', 'torre', 'espírito', 'proteção', 'ver', 'transação', 'harmonia',
+		'precedente'],
 	botban: {
 		title: 'Você está banido!',
 		description: '↳ Você foi banido de utilizar a `%z` por: `%r`\n> <:zu_info:911303533859590144> Você pode pedir uma apelação em nosso [servidor de suporte](https://discord.gg/pyyyJpw5QW).',

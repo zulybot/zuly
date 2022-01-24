@@ -3,8 +3,22 @@ module.exports = {
 	clusters: {
 		desc: '> This server is in cluster `%id`\n- Name: `%name`\n- Ping: `%ping`',
 		field: 'Info Clusters:',
-		faithfulDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumption: %ram'
+		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumption: %ram'
 	},
+	gender: {
+		title: 'Genre',
+		desc: 'Hello %u, I\'d like to get to know you better, what are you? Boy? Girl? Or neither? I need to know so I can better adapt my answers!\n>>> - 🚹 Boy\n- 🚺 Girl\n- 🚻 Neither',
+		change: 'Genre changed to `%g` successfully!',
+		male: 'boy',
+		female: 'girl'
+	},
+	anagramWords: ['floor', 'appreciate', 'recognize', 'have', 'announcement', 'television', 'hole', 'scholar', 'packet',
+		'resident', 'pull', 'tragedy', 'glance', 'compact', 'mean', 'knife', 'pursuit', 'pump', 'biscuit', 'auction', 'treat',
+	 'attract', 'employ', 'wreck', 'uncertainty', 'rumor', 'formal', 'noble', 'jest', 'original', 'cover', 'ballet', 'smell',
+	  'bond', 'reflect', 'loud', 'ignorant', 'bread', 'faint', 'glass', 'room', 'disorder', 'hall', 'morning', 'connection',
+	   'innocent', 'convict', 'suggest', 'film', 'minimum', 'course', 'favorable', 'slot', 'record', 'torch', 'minor', 'dairy',
+		'thank', 'pen', 'allocation', 'qualified', 'sister', 'tower', 'spirit', 'protection', 'see', 'transaction', 'harmony',
+		'precedent'],
 	botban: {
 		title: 'You are banned!',
 		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).',

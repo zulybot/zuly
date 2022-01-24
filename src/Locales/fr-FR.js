@@ -5,6 +5,20 @@ module.exports = {
 		field: 'Clusters d\'informations :',
 		fielDesc: '- Cluster %id\n- Ping : %p\n- PingDB : %pd\n- Consommation : %ram'
 	},
+	gender: {
+		title: 'Genre',
+		desc: 'Bonjour %u, j\'aimerais mieux te connaître, qui es-tu ? Garçon? Fille? Ou ni l\'un ni l\'autre ? J\'ai besoin de savoir pour mieux adapter mes réponses !\n>>> - 🚹 Garçon\n- 🚺 Fille\n- 🚻 Ni',
+		change: 'Le genre a été remplacé par `%g` avec succès !',
+		male: 'garçon',
+		female: 'fille'
+	},
+	anagramWords: ['étage', 'apprécier', 'reconnaître', 'avoir', 'annonce', 'télévision', 'trou', 'érudit', 'paquet',
+		'résident', 'tirer', 'tragédie', 'coup d\'œil', 'compact', 'méchant', 'couteau', 'poursuite', 'pompe', 'biscuit', 'enchères', 'régal',
+	 'attirer', 'employer', 'épave', 'incertitude', 'rumeur', 'formel', 'noble', 'plaisanterie', 'original', 'couverture', 'ballet', 'odeur',
+	  'lien', 'réfléchir', 'fort', 'ignorant', 'pain', 'évanoui', 'verre', 'pièce', 'désordre', 'hall', 'matin', 'connexion',
+	   'innocent', 'condamné', 'suggérer', 'film', 'minimum', 'cours', 'favorable', 'fente', 'record', 'torche', 'mineur', 'laitier',
+		'remercier', 'stylo', 'attribution', 'qualifié', 'soeur', 'tour', 'esprit', 'protection', 'voir', 'transaction', 'harmonie',
+		'précédent'],
 	botban: {
 		title: 'Vous êtes banni!',
 		description: '↳ Vous avez été interdit d\'utiliser `%z` par : `%r`\n> <:zu_info:911303533859590144> Vous pouvez faire appel sur notre [serveur d\'assistance](https://discord.gg/pyyyJpw5QW).'

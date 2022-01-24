@@ -156,6 +156,8 @@ module.exports = class InteractionEvent {
 								return `<@!${i.value}>`;
 							case 7:
 								return `<#${i.value}>`;
+							case 1:
+								return `${i.name}`;
 							default:
 								return i.value;
 						}
