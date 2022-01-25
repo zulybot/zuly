@@ -1,9 +1,9 @@
 module.exports = {
 	lang: 'es',
 	clusters: {
-		desc: '> This server is in cluster `%id`\n- Name: `%name`\n- Ping: `%ping`',
-		field: 'Info Clusters:',
-		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumption: %ram'
+		desc: 'Este servidor está en el cluster `%id`\n- Nombre: `%name`\n- Ping: `%ping`',
+		field: 'Información de los clusters:',
+		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumido: %ram'
 	},
 	gender: {
 		title: 'Genre',
