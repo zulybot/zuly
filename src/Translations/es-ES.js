@@ -6,7 +6,7 @@ module.exports = {
 		fielDesc: '- Cluster %id\n- Ping: %p\n- PingDB: %pd\n- Consumido: %ram'
 	},
 	gender: {
-		title: 'Genre',
+		title: 'Género',
 		desc: 'Hola %u, me gustaría saber más de ti. ¿Qué eres, chico, chica, o ninguno? ¡Lo necesito saber para que pueda adaptar mis respuestas!\n>>> - 🚹 Chico\n- 🚺 Chica\n- 🚻 Ninguno',
 		change: '¡Género cambiado a `%g` con éxito!',
 		male: 'chico',
@@ -95,80 +95,80 @@ module.exports = {
 		await: 'Espere hasta que uno de los asistentes te respondan.',
 		created: 'Su ticket ha sido creado.',
 		delete: 'Su ticket ha sido cerrado y será borrado en 10 segundos.',
-		create: 'To create a ticket click on the button below,',
+		create: 'Para crear un ticket haga clic en el botón de abajo,',
 		labels: {
-			delete: 'Close',
-			create: 'Open Ticket'
+			delete: 'Cerrar',
+			create: 'Abrir Ticket'
 		}
 	},
 	logs: {
-		oldMessage: 'Old Message:',
-		newMessage: 'New Message:',
-		deleted: 'Message Deleted:',
-		channel: 'Channel:',
-		url: 'Link:',
-		message: { title: 'Message Logs' },
-		jump: 'Go to message',
-		set: 'Channel set to `%c`'
+		oldMessage: 'Mensaje Viejo:',
+		newMessage: 'Mensaje Nuevo:',
+		deleted: 'Mensaje Eliminado:',
+		channel: 'Canal:',
+		url: 'Enlace:',
+		message: { title: 'Registros de Mensajes' },
+		jump: 'Ir al mensaje',
+		set: 'Canal puesto a `%c`'
 	},
 	aki: {
 		reg: 'pt',
-		q: 'Question:',
-		r: 'Answers:',
-		i: 'Starting Akinator',
-		is: 'Is this your character?',
-		win: 'Great! I got it right once more.',
-		nowin: 'Uh, you won',
-		yay: 'I loved playing with you!',
-		res: '[yes (**y**) / no (**n**)]'
+		q: 'Pregunta:',
+		r: 'Respuestas:',
+		i: 'Empezando Akinator',
+		is: '¿Es este tu carácter?',
+		win: '¡Bien! Lo tuve bien una vez más.',
+		nowin: 'Uh, ganaste',
+		yay: '¡Me encantó jugar contigo!',
+		res: '[sí (**y**) / no (**n**)]'
 	},
-	labels: { recalc: 'Recalculate' },
+	labels: { recalc: 'Recalcular' },
 	guess: {
-		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
-		started: 'It\'s started!',
-		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
-		win: 'You got it right! The chosen Number was `%num`!'
+		start: 'El Juego empezará en **5 segundos** con un número entre `%min` y `%max`.',
+		started: '¡Ha empezado!',
+		number: 'El Número elegido fue `%num`, los usuarios deben averiguarlo para ganar el evento.',
+		win: '¡Lo conseguiste! El Número elegido fue `%num`!'
 	},
 	lockdown: {
-		pass: 'To start lockdown, send `lock` in chat.\n> ⚠️ If you want to cancel, send something else in chat.',
-		cancel: 'Lockdown has been successfully cancelled.',
-		success: 'Lockdown was successfully executed.',
-		locking: 'Lockdown is in progress.',
-		noCanal: 'No channels have been locked.'
+		pass: 'Para empezar el bloqueo de canales, envíe `lock` en el chat.\n> ⚠️ Si quieres cancelarlo, envíe otra cosa en el chat.',
+		cancel: 'El bloqueo de canales se ha cancelado con éxito.',
+		success: 'El bloqueo de canales fue ejecutado con éxito.',
+		locking: 'El bloqueo de canales está en progreso.',
+		noCanal: 'Ningún canal fue bloqueado.'
 	},
-	print: { website: 'Print from website:' },
+	print: { website: 'Imprento del sitio web:' },
 	mention: {
-		hello: 'Hello %user!',
-		about: 'I am a multifunctional bot for discord!',
-		help: 'To know my commands, type **/help**.',
+		hello: '¡Hola %user!',
+		about: 'Soy un bot de Discord multifuncional!',
+		help: 'Para saber mis comandos, escriba **/help**.',
 		labels: {
-			support: 'Support Server',
-			invite: 'Invite',
-			website: 'Website'
+			support: 'Servidor de Soporte',
+			invite: 'Invitación',
+			website: 'Sitio web'
 		}
 	},
 	reactionRole: {
-		invalidMessage: 'Could not find message with id `%id%`',
-		sucess: 'ReactionRole created successfully!'
+		invalidMessage: 'No he podido encontrar ningún mensaje con el id `%id%`',
+		sucess: '¡ReactionRole creado con éxito!'
 	},
 	eventLog: {
 		fields: {
-			deletedMessage: 'Deleted Message:',
-			oldMessage: 'Old Message:',
-			newMessage: 'New Message:'
+			deletedMessage: 'Mensaje Eliminado:',
+			oldMessage: 'Mensaje Viejo:',
+			newMessage: 'Mensaje Nuevo:'
 		},
-		channel: 'Channel:'
+		channel: 'Canal:'
 	},
-	docs: { args: 'Say what will be searched for in the documentation.' },
+	docs: { args: 'Di que quieres buscar en la documentación.' },
 	fnshop: {
-		args: 'Include the channel ID that will be sent to the fortnite store.',
-		channel: 'I don\'t have permission to send messages on the mentioned channel.',
-		sucess: 'Channel set successfully!'
+		args: 'Incluye el ID del canal que será enviado en la tienda de fortnite.',
+		channel: 'No tengo permisos para enviar mensajes en el canal mencionado.',
+		sucess: '¡Canal puesto con éxito!'
 	},
 	message: {
 		P: '¡Hola humano!',
 		view: '¡No tengo permiso para leer el historial de mensajes!',
-		the: 'El comando',
+		the: 'El Comando',
 		unk: '¡no existe o no se puede ejecutar en este momento!',
 		user: '¡No tiene todos los permisos necesarios para usar este comando!\n Permisos requeridos:',
 		bot: '¡No tiene todos los permisos necesarios para usar este comando!\n Permisos requeridos:',
@@ -176,11 +176,11 @@ module.exports = {
 		c: 'Espere %t segundos para usar otro comando.',
 		e: '¡Ups, algo salió mal!',
 		e2: 'Notificar este error!',
-		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
-		nsfw: 'Este comando solo puede ser utilizado en el canal {0}'
+		e3: 'Mi equipo probablemente ya sabe sobre este error, pero ¿qué tal si tu ayudas? Puede abrir un [issue](https://github.com/zulybot/zuly/issues) en [github](https://github.com/zulybot/zuly) o reportarlo en mi [servidor de soporte](https://discord.gg/pyyyJpw5QW), hagamos el discord un lugar mejor, juntos 🤝',
+		nsfw: 'Este comando sólo se puede usar en canales nsfw'
 	},
 	host: {
-		db: 'Eu utilizo [MongoDB](https://mongodb.com) para meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
+		db: 'Yo utilizo [MongoDB](https://mongodb.com) para mi base de datos, hospedados en máquinas de <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
 		vps: 'Eu sou hospedada na VPS, utilizando maquinas da [OVH](https://ovh.com), com sistema operacional <:zu_ubuntu:880496793740255253> Ubuntu.'
 	},
 	giveaway: {
