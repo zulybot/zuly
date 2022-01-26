@@ -1456,10 +1456,10 @@ make-dir@^3.0.0, make-dir@^3.1.0:
   dependencies:
     semver "^6.0.0"
 
-math-expression-evaluator@^1.3.8:
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.3.8.tgz#320da3b2bc1512f4f50fc3020b2b1cd5c8e9d577"
-  integrity sha512-9FbRY3i6U+CbHgrdNbAUaisjWTozkm1ZfupYQJiZ87NtYHk2Zh9DvxMgp/fifxVhqTLpd5fCCLossUbpZxGeKw==
+math-expression-evaluator@^1.3.10:
+  version "1.3.10"
+  resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.3.10.tgz#9a5a6285de8cc056c1836a04991d443d77569110"
+  integrity sha512-Js2WSyQ853nk7mCNb8XDUzHrI20ZNlewfFyp4jU678zQ5K4VTLEX5Qms42EZGwtbpppwmf44Q5EaIsYA96/Jww==
 
 media-typer@0.3.0:
   version "0.3.0"
