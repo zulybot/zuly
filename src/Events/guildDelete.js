@@ -32,7 +32,7 @@ module.exports = class GuildCreate {
 
 		const embed = new global.zuly.manager.Ebl();
 		embed.setTitle(`<:zu_info:880812942713573396> GuildCreate | ${global.zuly.user.username}`),
-		embed.setDescription(`> 😎 Fui removida de um servidor, ah :( \`(Cluster ${config.cluster.id} (${config.cluster.nome}) | Shard ${guild.shard.id})\``);
+		embed.setDescription(`> 😭 Fui removida de um servidor, ah :( \`(Cluster ${config.cluster.id} (${config.cluster.nome}) | Shard ${guild.shard.id})\``);
 		embed.addField(`🌎 GuildInfo | ${guild.name}`, `🧭 **ID:** \`${guild.id} [${guild.shard.id}]\`\n👑 **Owner:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Members:** \`${guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${guild.premiumSubscriptionCount} boosts\`\n:calendar: **Created at:** \`${moment(guild.createdAt).format('📆 DD/MM/YY')} | ${moment(guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Lang:** \`${guild.preferredLocale}\``);
 		embed.setColor('#ff0000');
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
