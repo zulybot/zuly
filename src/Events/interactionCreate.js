@@ -8,6 +8,20 @@ module.exports = class InteractionEvent {
 	}
 	async run (interaction) {
 		const Eris = require('eris');
+		if (interaction instanceof Eris.AutocompleteInteraction) {
+			if (interaction.data.name === 'play') {
+				interaction.author = interaction.member.user;
+				const res = await global.zuly.music.search(interaction.data.options[0].value, interaction.author.id);
+				const tracks = [];
+				res.tracks.forEach(async (track) => {
+					tracks.push({
+						name: track.title,
+						value: track.uri
+					});
+				});
+				return interaction.result(tracks);
+			}
+		}
 		await interaction.acknowledge(1);
 		try {
 			if (interaction instanceof Eris.ComponentInteraction) {
@@ -171,9 +185,10 @@ module.exports = class InteractionEvent {
 				let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 				lang = lang.replace(/-/g, '_');
 				idioma = idioma[lang];
-
 				const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
+				msg.channel.guild.me = msg.channel.guild.members.get(msg.author.id);
+				msg.guild = msg.channel.guild;
 				msg.channel.slashReply = interaction.createFollowup.bind(interaction);
 
 				global.zuly.statcord.postCommand(interaction.data.name, msg.author.id);

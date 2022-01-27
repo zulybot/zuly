@@ -6,15 +6,19 @@ const {
 	Manager
 } = require('erela.js');
 const nodes = require('./nodes');
+// Plugins
 const Deezer = require('./erela-plugins/Deezer/index');
 const Spotify = require('./erela-plugins/Spotify/index');
-const Filter = require('./erela-plugins/Filters/index');
+const Apple = require('./erela-plugins/Apple/index');
+const Facebook = require('./erela-plugins/Facebook/index');
 const clientID = spotify.id;
 const clientSecret = spotify.secret;
+// Filters
+const Filter = require('./erela-plugins/Filters/index');
 require('./zulyPlayer');
 global.zuly.music = new Manager({
 	nodes: nodes,
-	plugins: [new Deezer(), new Spotify({
+	plugins: [new Apple(), new Facebook(), new Deezer(), new Spotify({
 		clientID,
 		clientSecret
 	}), new Filter()],
@@ -41,7 +45,7 @@ global.zuly.music = new Manager({
 	embed.setColor('#ffcbdb');
 	embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 	ch.createMessage({
-		embed: embed.get()
+		embeds: [embed.get()]
 	});
 }).on('queueEnd', async (player) => {
 	const ch = await global.zuly.getRESTChannel(player.textChannel);
@@ -54,7 +58,7 @@ global.zuly.music = new Manager({
 	embed.setColor('#ffcbdb');
 	embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 	ch.createMessage({
-		embed: embed.get()
+		embeds: [embed.get()]
 	});
 	player.destroy();
 }).on('playerMove', async (player, currentChannel, newChannel) => {

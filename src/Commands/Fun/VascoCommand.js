@@ -70,7 +70,7 @@ module.exports = class MrincredibleCommand {
 			foto.fillText(user.username.slice(0, 6).replace(/ /g, ''), 130, 120);
 		}
 		else {
-			foto.fillText(user.username.slice(0, 10).replace(/ /g, ''), 110, 120);
+			foto.fillText(user.username.slice(0, 8).replace(/ /g, ''), 110, 120);
 		}
 		foto.font = 'bold 30px sans-serif';
 

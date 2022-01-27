@@ -38,7 +38,8 @@ module.exports = class PlayCommand {
 					type: 3,
 					name: 'music',
 					description: 'The Music that will be played',
-					required: false
+					required: false,
+					autocomplete: true
 				}
 			],
 			aliases: ['p', 'tocar', 'som', 'somzao', 'somzão', 'dj'],
@@ -69,17 +70,26 @@ module.exports = class PlayCommand {
 					volume: 100
 				});
 				await player.connect();
+				ctx.message.member.voiceState.channel = await global.zuly.getRESTChannel(ctx.message.member.voiceState.channelID);
 			}
 			const player = global.zuly.music.players.get(ctx.message.channel.guild.id);
 			player.queue.add(res.tracks[0]);
 			const track = res.tracks[0];
 
-			if (!player.playing && !player.paused && !player.queue.size) {
+			if (!player.playing && !player.paused && player.queue.length === 1) {
 				player.play();
 			}
-			if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) {
+			else if (!player.playing && !player.paused && !player.queue.size) {
 				player.play();
 			}
+
+			if (ctx.message.member.voiceState.channel.type === 13) {
+				await global.zuly.requestHandler.request('PATCH', `/guilds/${ctx.message.channel.guild.id}/voice-states/@me`, true, {
+					channel_id: ctx.message.member.voiceState.channel.id,
+					suppress: false
+				});
+			}
+
 			const embed = new ctx.embed();
 			embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${ctx.idioma.play.add} **${track.title}**`);
 			embed.setColor('#ffcbdb');
