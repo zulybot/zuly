@@ -108,6 +108,12 @@ module.exports = {
 		channel: 'Channel:',
 		url: 'Link:',
 		message: { title: 'Message Logs' },
+		bans: { title: 'Ban Logs' },
+		user: 'User:',
+		reason: 'Reason:',
+		mod: 'Moderator:',
+		bani: 'Banned',
+		unbani: 'Unbanned',
 		jump: 'Go to message',
 		set: 'Channel set to `%c`'
 	},
