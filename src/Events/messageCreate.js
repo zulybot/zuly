@@ -12,6 +12,11 @@ module.exports = class MessageEventCommand {
 
 		if (message.channel.type === 1) return;
 
+		let idioma = require('../Config/idiomas');
+		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
+		lang = lang.replace(/-/g, '_');
+		idioma = idioma[lang];
+
 		const {
 			get
 		} = require('axios');
@@ -24,7 +29,12 @@ module.exports = class MessageEventCommand {
 			for (const domain of domains) {
 				if (message.content.includes(domain)) {
 					if (message.content.includes('twitch.tv') || message.content.includes('discord.gift')) return;
-					message.channel.createMessage(`:x: ${message.author.mention} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`);
+					message.channel.createMessage(`:x: ${message.author.mention} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`).then((msg) => {
+						setTimeout(() => {
+							msg.delete();
+						}, 3000);
+						message.delete();
+					});
 					break;
 				}
 			}
@@ -32,10 +42,6 @@ module.exports = class MessageEventCommand {
 
 		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
 		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
-		let idioma = require('../Config/idiomas');
-		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
-		lang = lang.replace(/-/g, '_');
-		idioma = idioma[lang];
 
 		if (message.author.bot) return;
 

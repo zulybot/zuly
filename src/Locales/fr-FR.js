@@ -43,7 +43,17 @@ module.exports = {
 		deleted: 'Message supprimé:',
 		channel: 'Canaliser:',
 		url: 'Lien:',
-		message: { title: 'Journaux des messages' },
+		message: {
+			title: 'Journaux des messages'
+		},
+		bans: {
+			title: 'Bannir les journaux'
+		},
+		user: 'Utilisateur:',
+		reason: 'Raison:',
+		mod: 'Modérateur:',
+		bani: 'Banni',
+		unbani: 'Non Banni',
 		jump: 'Aller au message',
 		set: 'Chaîne définie sur `%c`'
 	},

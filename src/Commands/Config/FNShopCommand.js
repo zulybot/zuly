@@ -33,7 +33,7 @@ module.exports = class LangCommand {
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
 			options: [{
-				type: 3,
+				type: 7,
 				name: 'channelid',
 				description: 'Channel ID to be used',
 				required: false
@@ -51,10 +51,10 @@ module.exports = class LangCommand {
 		}
 		const fnshop = await global.db.get(`fnshop-${ctx.message.channel.guild.id}`);
 		if (!fnshop) {
-			const canal = await global.zuly.getRESTChannel(ctx.args[0]);
+			const canal = await global.zuly.getRESTChannel(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
 			try {
 				canal.createMessage('<a:zu_fortnite:894977940926910485> **|** https://fn.zulybot.xyz/shop-now.png').then(async () => {
-					await global.db.set(`fnshop-${ctx.message.channel.guild.id}`, ctx.args[0]);
+					await global.db.set(`fnshop-${ctx.message.channel.guild.id}`, canal.id);
 					ctx.message.channel.slashReply({
 						content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.sucess}`
 					});

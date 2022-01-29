@@ -7,17 +7,15 @@ module.exports = class GuildCreate {
 	}
 	async run (guild) {
 		const config = require('../Config/config');
-		const { get } = require('axios');
 
-		const res = await get(config.domain + 'api/status');
-		const totalUsers = res.data.users + global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
+		const totalUsers = global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
 
 		const system = require('../Config/system');
 		const ch = await global.zuly.getRESTChannel('880863493472022539');
 		const ch2 = await global.zuly.getRESTChannel('902632703160094752');
 
 		ch.edit({
-			name: `🧭 → Servers [${res.data.servers + global.zuly.guilds.size}]`
+			name: `🧭 → Servers [${global.zuly.guilds.size}]`
 		});
 		ch2.edit({
 			name: `👤 → Users [${totalUsers.toLocaleString().replace('.', ',')}]`

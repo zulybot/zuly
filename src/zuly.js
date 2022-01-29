@@ -9,8 +9,7 @@ const {
 } = require('./CustomPackages/DBLAutoPoster');
 const {
 	token,
-	statcord,
-	cluster
+	statcord
 } = require('./Config/config');
 const {
 	top
@@ -25,13 +24,19 @@ const client = new Client(token, {
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
 	getAllUsers: !1,
-	intents: ['guilds', 'guildMembers', 'guildMessages', 'guildVoiceStates', 'guildMessageReactions', 'directMessages'],
+	intents: [
+		'guilds',
+		'guildBans',
+		'guildMembers',
+		'guildMessages',
+		'guildVoiceStates',
+		'guildMessageReactions',
+		'directMessages'
+	],
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
-	firstShardID: cluster.firstShard,
-	maxShards: cluster.maxShards,
-	lastShardID: cluster.lastShard,
+	maxShards: 'auto',
 	messageLimit: 50,
 	requestTimeout: 30000,
 	rest: {
@@ -64,7 +69,6 @@ client.statcord.on('autopost-start', () => {
 client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();
 client.aliases = new Collection();
-client.on('debug', console.log);
 const Zuly = require('./Client/zulybot.js');
 const ZulyBot = new Zuly(client);
 ZulyBot.iniciar().then((zuly) => {

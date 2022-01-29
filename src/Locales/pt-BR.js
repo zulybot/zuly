@@ -46,6 +46,14 @@ module.exports = {
 		message: {
 			title: 'Logs de Mensagem'
 		},
+		bans: {
+			title: 'Logs de Bans',
+		},
+		user: 'Usuário:',
+		reason: 'Motivo:',
+		mod: 'Moderador:',
+		bani: 'Banido',
+		desbani: 'Desbanido',
 		jump: 'Ir para mensagem',
 		set: 'Canal setado para `%c`'
 	},
