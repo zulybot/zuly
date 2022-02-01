@@ -12,7 +12,7 @@ export default class Export {
 
   public make (c: typeof DefaultClass): this {
     const t = new c(this.client);
-    this.base instanceof Command ? this.command = t as Command : this.event = t as Event;
+    this.type === "command" ? this.command = t as DefaultClass & Command : this.event = t as DefaultClass & Event;
     return this;
   }
 }

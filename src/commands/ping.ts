@@ -15,8 +15,8 @@ class PingCommand extends Command {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handler (slash: CommandInteraction) {
-    slash.createMessage("Pong!");
+  async run (interaction: CommandInteraction) {
+    interaction.channel.createMessage("Pong!");
   }
 }
 

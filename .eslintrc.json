@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["**/*.js"],
   "env": {
     "node": true,
     "browser": true,

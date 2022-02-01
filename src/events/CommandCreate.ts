@@ -9,8 +9,9 @@ class CommandCreateEvent extends Event {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handler (command: CommandInteraction) {
-    console.log(this.client.commands);
+  async handler (interaction: CommandInteraction) {
+    await interaction.acknowledge(1);
+    const command = Array.from(this.client.commands.values()).find((c) => c.name === interaction.data.name);
   }
 }
 
