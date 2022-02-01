@@ -8,8 +8,7 @@
     "dev": "nodemon",
     "compile": "tsc",
     "pretty": "prettier-eslint --write --eslint-path \\\"src/**/*.ts\"",
-    "start": "node .",
-    "forever": "forever -c \"node\" dist/index.js",
+    "start": "node --max_old_space_size=512 --always_compact --gc_global --optimize_for_size --expose-gc --gc-interval=1 .",
     "lint": "eslint --fix --ext .ts --ignore-path .gitignore ."
   },
   "keywords": [
@@ -38,7 +37,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@vitalets/google-translate-api": "^7.0.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^15.0.0",
     "eris": "^0.16.1",
     "readdirp": "^3.6.0"
   },

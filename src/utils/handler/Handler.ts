@@ -22,7 +22,8 @@ export default class Handler {
 
       for await (const entry of files) {
         const { basename, fullPath } = entry;
-        console.log(basename, fullPath)
+        console.log(basename, fullPath);
+
         this.loaded.push({
           name: basename,
           path: fullPath

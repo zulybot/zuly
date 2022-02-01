@@ -13,7 +13,7 @@ export default class Event {
   public async resolve (...value: unknown[]): Promise<void> {
     let error: Error;
     try {
-      this.handler(value);
+      this.handler(value[0]);
     }
     catch (err: unknown) {
       error = err as Error;
