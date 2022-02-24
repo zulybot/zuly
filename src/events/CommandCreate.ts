@@ -12,6 +12,7 @@ class CommandCreateEvent extends Event {
   async handler (interaction: CommandInteraction) {
     await interaction.acknowledge(1);
     const command = Array.from(this.client.commands.values()).find((c) => c.name === interaction.data.name);
+    command?.handler(interaction)
   }
 }
 

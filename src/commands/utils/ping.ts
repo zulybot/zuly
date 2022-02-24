@@ -1,13 +1,13 @@
 import { CommandInteraction } from "eris";
-import Command from "../interfaces/Command.js";
-import Export from "../interfaces/Export.js";
-import Zuly from "../zuly.js";
+import Command from "../../interfaces/Command.js";
+import Export from "../../interfaces/Export.js";
+import Zuly from "../../zuly.js";
 
 class PingCommand extends Command {
   constructor (client: Zuly) {
     super({
       name: "ping",
-      description: "Ping!",
+      description: "[🏓 » Utils] Ping!",
       type: 1,
       options: [],
       defaultPermission: false,
@@ -15,8 +15,8 @@ class PingCommand extends Command {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async run (interaction: CommandInteraction) {
-    interaction.channel.createMessage("Pong!");
+  async handler (interaction: CommandInteraction) {
+    interaction.createMessage("oi")
   }
 }
 
