@@ -21,6 +21,7 @@ src/Config/system.js
 src/Config/config.js
 src/API/keys.js
 yarn-error.log
+.env
 
 ## CONTAINER FILES
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = class BackupCommand {
 	constructor () {
 		return {
@@ -74,15 +75,20 @@ module.exports = class BackupCommand {
 		const genID = await Math.random().toString(36).slice(2, 10);
 		if (ctx.args[0] === 'create') {
 			const canais = [];
-			ctx.message.channel.guild.channels.forEach((channel) => {
+			ctx.message.channel.guild.channels.forEach(async (channel) => {
+				let categoria = null;
+				if (channel.parentID !== undefined && channel.parentID !== null) {
+					const ch = await global.zuly.getRESTChannel(channel.parentID);
+					categoria = ch.name;
+				}
 				canais.push({
 					id: channel.id,
 					name: channel.name,
 					type: Number(channel.type),
 					position: Number(channel.position),
 					topic: channel.topic,
+					category: categoria || null,
 					rateLimitPerUser: Number(channel.rateLimitPerUser) || 0,
-					// permissionOverwrites: channel.permissionOverwrites,
 					nsfw: channel.nsfw,
 				});
 			});
@@ -105,7 +111,7 @@ module.exports = class BackupCommand {
 			guild.id = ctx.message.channel.guild.id;
 			guild.backup = genID;
 			guild.name = ctx.message.channel.guild.name;
-			guild.icon = ctx.message.channel.guild.icon;
+			guild.icon = ctx.message.channel.guild.iconURL;
 			guild.preferredLocale = ctx.message.channel.guild.preferredLocale;
 			guild.verificationLevel = ctx.message.channel.guild.verificationLevel;
 			guild.afkTimeout = ctx.message.channel.guild.afkTimeout;
@@ -203,7 +209,7 @@ module.exports = class BackupCommand {
 
 					setTimeout(() => {
 						// Criando Cargos
-						const cargosFoda = roles.sort((a, b) => a.position - b.position);
+						const cargosFoda = roles.sort((a, b) => a.position + b.position);
 						for (const role of cargosFoda) {
 							currentGuild.createRole({
 								name: role.name,
@@ -218,9 +224,9 @@ module.exports = class BackupCommand {
 							});
 						}
 						// Criando Canais
-						const canaisFoda = channels.sort((a, b) => a.position - b.position);
+						const canaisFoda = channels.sort((a, b) => a.position + b.position);
 						for (const channel of canaisFoda) {
-							currentGuild.createRole({
+							currentGuild.createChannel(channel.name, channel.type, {
 								position: channel.position,
 								topic: channel.topic,
 								rateLimitPerUser: channel.rateLimitPerUser || 0,
