@@ -1,5 +1,4 @@
 # Hey there! Welcome to my official GitHub repository!
-
 <p align="center">
 I'm zuly, just a simple bot to discord!<br>
 Hi! I'm zuly, a 100% Brazilian bot focused on anime for otakus!<br>
@@ -13,8 +12,9 @@ Hi! I'm zuly, a 100% Brazilian bot focused on anime for otakus!<br>
 </p>
 
 ### 💻 Self-Hosting
+> __**We are not responsible for any mistakes made by you.**__
 - Install nodejs 14 or higher. You can download and install here: https://nodejs.org
-- Rename **all** .example files to name.js
+- Rename **all** name.example.js files to name.js
 > ⚙️ config.js
 ```js
 // config.js
