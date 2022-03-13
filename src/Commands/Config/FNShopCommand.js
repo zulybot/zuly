@@ -49,12 +49,12 @@ module.exports = class LangCommand {
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.args}`
 			});
 		}
-		const fnshop = await global.db.get(`fnshop-${ctx.message.channel.guild.id}`);
+		const fnshop = await global.zuly.db.get(`fnshop-${ctx.message.channel.guild.id}`);
 		if (!fnshop) {
 			const canal = await global.zuly.getRESTChannel(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
 			try {
 				canal.createMessage('<a:zu_fortnite:894977940926910485> **|** https://fn.zulybot.xyz/shop-now.png').then(async () => {
-					await global.db.set(`fnshop-${ctx.message.channel.guild.id}`, canal.id);
+					await global.zuly.db.set(`fnshop-${ctx.message.channel.guild.id}`, canal.id);
 					ctx.message.channel.slashReply({
 						content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.sucess}`
 					});

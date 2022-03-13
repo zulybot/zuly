@@ -52,7 +52,7 @@ module.exports = class BotinfoCommand {
 
 		const devs = [];
 
-		const desenvolvedores = await global.db.get('devs');
+		const desenvolvedores = await global.zuly.db.get('devs');
 		for (const desenvolvedor of desenvolvedores) {
 			const dev = await global.zuly.getRESTUser(desenvolvedor);
 			devs.push(dev.username + '#' + dev.discriminator);

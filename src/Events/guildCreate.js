@@ -1,4 +1,4 @@
-module.exports = class GuildCreate {
+module.exports = class GuildCreateEvent {
 	constructor () {
 		return {
 			nome: 'guildCreate',
@@ -27,7 +27,7 @@ module.exports = class GuildCreate {
 		const owner = await global.zuly.getRESTUser(guild.ownerID);
 
 		if (guild.preferredLocale !== 'pt-BR') {
-			await global.db.set(`idioma-${guild.id}`, 'en-us');
+			await global.zuly.db.set(`idioma-${guild.id}`, 'en-us');
 		}
 
 		const embed = new global.zuly.manager.Ebl();

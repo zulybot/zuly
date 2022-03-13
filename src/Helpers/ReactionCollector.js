@@ -1,32 +1,78 @@
 const CollectorBase = require('./Collector.js');
-module.exports = class extends CollectorBase {
-	constructor (e, t) {
-		super(e.channel.client), this.options = {
-			time: t.time ? t.time : 9e4,
-			emoji: t.emoji ? t.emoji : null,
-			user: t.user ? t.user : null,
-			message: t.message ? t.message : e,
-			max: t.max ? t.max : 5,
-			ignoreBots: !t.ignoreBots || t.ignoreBots,
-			acceptReactionRemove: !!t.acceptDeletedMessage,
-			stopOnCollect: !!t.stopOnCollect
-		}, this.createTimeout(this.options.time), this.client.on('messageReactionAdd', (e, t, o) => this.collect(e, t, o)), this.options.acceptReactionRemove && this.client.on('messageReactionRemove', (e, t, o) => this.collect(e, t, o)), this.on('collect', (e, t, o) => {
-			if (this.collectedSize += 1, this.collected.push({
-				message: e,
-				emoji: t,
-				reactor: o
-			}), this.options.stopOnCollect) return this.stopAll();
+
+module.exports = class ReactionCollector extends CollectorBase {
+	/**
+     * Creates Reaction Collector;
+     * @param {Message} message
+     * @param {{}} options
+     */
+	constructor (message, options) {
+		super(message.channel.client);
+
+		this.options = {
+			time: options.time ? options.time : 90000,
+			emoji: options.emoji ? options.emoji : null,
+			user: options.user ? options.user : null,
+			message: options.message ? options.message : message,
+			max: options.max ? options.max : 5,
+			ignoreBots: options.ignoreBots ? options.ignoreBots : true,
+			acceptReactionRemove: !!options.acceptDeletedMessage,
+			stopOnCollect: !!options.stopOnCollect
+		};
+
+		this.createTimeout(this.options.time);
+		this.client.on('messageReactionAdd', (message, emoji, reactor) => {
+			return this.collect(message, emoji, reactor);
+		});
+		if (this.options.acceptReactionRemove) {
+			this.client.on('messageReactionRemove', (message, emoji, reactor) => {
+				return this.collect(message, emoji, reactor);
+			});
+		}
+		this.on('collect', (m, e, r) => {
+			this.collectedSize += 1;
+			this.collected.push({
+				message: m,
+				emoji: e,
+				reactor: r
+			});
+			if (this.options.stopOnCollect) {
+				return this.stopAll();
+			}
 		});
 	}
 
-	collect (e, t, o) {
-		if (!(this.ended || o.user.bot && this.options.ignoreBots)) {
-			if (e.id !== this.options.message.id || o.id !== this.options.user.id) return null;
-			if (t === this.options.emoji) return this.emit('collect', e, t, o);
-			if (t.name !== this.options.emoji) {
-				if (t.id !== this.options.emoji) return null;
+	/**
+     * Collect Reactions
+     * @param {Message} message
+     * @param {Emoji}emoji
+     * @param {Member} reactor
+     * @returns {null|*}
+     */
+	collect (message, emoji, reactor) {
+		if (this.ended) return;
+		if (reactor.user.bot) {
+			if (this.options.ignoreBots) {
+				return;
 			}
-			else { this.emit('collect', e, t, o); };
+		}
+
+		if (
+			message.id !== this.options.message.id ||
+            reactor.id !== this.options.user.id
+		) {
+			return null;
+		}
+		else if (emoji === this.options.emoji) {
+			return this.emit('collect', message, emoji, reactor);
+		}
+		else if (emoji.name !== this.options.emoji) {
+			if (emoji.id !== this.options.emoji) {
+				return null;
+			}
+		}
+		else {
+			this.emit('collect', message, emoji, reactor);
 		}
 	}
 };

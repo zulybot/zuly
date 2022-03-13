@@ -39,15 +39,15 @@ module.exports = class LangCommand {
 	}
 
 	async run (ctx) {
-		const nsfw = await global.db.get(`nsfw-${ctx.message.guildID}`);
+		const nsfw = await global.zuly.db.get(`nsfw-${ctx.message.guildID}`);
 		if (nsfw) {
-			await global.db.delete(`nsfw-${ctx.message.guildID}`);
+			await global.zuly.db.delete(`nsfw-${ctx.message.guildID}`);
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.desativado}`
 			});
 		}
 		else {
-			await global.db.set(`nsfw-${ctx.message.guildID}`, true);
+			await global.zuly.db.set(`nsfw-${ctx.message.guildID}`, true);
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.ativado}`
 			});

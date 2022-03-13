@@ -49,7 +49,7 @@ module.exports = class EvalCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME>\``);
 
-		const code = await global.db.get(ctx.args[0].toUpperCase());
+		const code = await global.zuly.db.get(ctx.args[0].toUpperCase());
 		if (!code) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Esse código não existe`,
@@ -57,7 +57,7 @@ module.exports = class EvalCommand {
 			});
 		}
 		else {
-			await global.db.delete(ctx.args[0].toUpperCase());
+			await global.zuly.db.delete(ctx.args[0].toUpperCase());
 			const channel = await global.zuly.getRESTChannel('894981159119896576');
 			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Promocode: **${ctx.args[0].toUpperCase()}** ficou invalido.`);
 			return ctx.message.channel.slashReply({

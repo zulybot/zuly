@@ -1,35 +1,37 @@
-/**
- * Creates Message Reaction
- * @param {Channel} channel
- * @param {{
- *     channel: Channel,
- *     max: number,
- *     user: User,
- *     time: number,
- *     ignoreBots: boolean,
- *     stopOnCollect: boolean,
- *     accept: {
- *         deletedMessages: boolean,
- *         editedMessages: boolean
- *     },
- *     rules: {
- *         include: string,
- *         equal: string,
- *         start: string,
- *         end: string
- *     },
- * }} options
- */
 const CollectorBase = require('./Collector.js');
+
 module.exports = class MessageCollector extends CollectorBase {
+	/**
+     * Creates Message Reaction
+     * @param {Channel} channel
+     * @param {{
+     *     channel: Channel,
+     *     max: number,
+     *     user: User,
+     *     time: number,
+     *     ignoreBots: boolean,
+     *     stopOnCollect: boolean,
+     *     accept: {
+     *         deletedMessages: boolean,
+     *         editedMessages: boolean
+     *     },
+     *     rules: {
+     *         include: string,
+     *         equal: string,
+     *         start: string,
+     *         end: string
+     *     },
+     * }} options
+     */
 	constructor (channel, options) {
 		super(channel.client);
+
 		this.options = {
 			channel: options.channel ? options.channel : channel,
 			max: options?.max ?? 1,
 			user: options?.user,
 			time: options?.time ?? 90000,
-			ignoreBots: options?.ignoreBots ?? !0,
+			ignoreBots: options?.ignoreBots ?? true,
 			stopOnCollect: !!options.stopOnCollect,
 			accept: {
 				deletedMessages: !!options.accept?.deletedMessages,
@@ -42,6 +44,7 @@ module.exports = class MessageCollector extends CollectorBase {
 				end: options.rules?.ends
 			}
 		};
+
 		this.on('collect', (m, c, u) => {
 			this.collectedSize += 1;
 			this.collected.push({
@@ -73,10 +76,15 @@ module.exports = class MessageCollector extends CollectorBase {
 		if (this.collectedSize >= this.options.max) {
 			return;
 		}
+
 		if (this.options.ignoreBots) {
 			if (message.author.bot) return;
 		}
-		if (message.author.id !== this.options.user.idz || message.channel.id !== this.options.channel.id) {
+
+		if (
+			message.author.id !== this.options.user.id ||
+            message.channel.id !== this.options.channel.id
+		) {
 			return null;
 		}
 		else if (this.options.rules) {
@@ -101,6 +109,7 @@ module.exports = class MessageCollector extends CollectorBase {
 					return null;
 				}
 			}
+
 			return this.emit('collect', message, message.content, message.author);
 		}
 		else {

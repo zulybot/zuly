@@ -1,4 +1,4 @@
-module.exports = class DisconnectEvent {
+module.exports = class MessageReactionRemoveEvent {
 	constructor () {
 		return {
 			nome: 'messageReactionRemove',
@@ -9,7 +9,7 @@ module.exports = class DisconnectEvent {
 		const system = require('../Config/system.js');
 		const member = await message.channel.guild.getRESTMember(user);
 		if (member.bot) return;
-		const rr = await global.db.get(`reaction-${emoji.name}-${message.id}`);
+		const rr = await global.zuly.db.get(`reaction-${emoji.name}-${message.id}`);
 		if (rr) {
 			await member.removeRole(rr, `ReactionRole - ${global.zuly.user.username}`).then(async () => {
 				await global.zuly.executeWebhook(system.reactionRole.id, system.reactionRole.token, {

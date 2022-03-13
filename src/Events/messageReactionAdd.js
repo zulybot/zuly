@@ -1,4 +1,4 @@
-module.exports = class DisconnectEvent {
+module.exports = class MessageReactionAddEvent {
 	constructor () {
 		return {
 			nome: 'messageReactionAdd',
@@ -8,7 +8,7 @@ module.exports = class DisconnectEvent {
 	async run (message, emoji, member) {
 		const system = require('../Config/system.js');
 		if (member.bot) return;
-		const rr = await global.db.get(`reaction-${emoji.name}-${message.id}`);
+		const rr = await global.zuly.db.get(`reaction-${emoji.name}-${message.id}`);
 		if (rr) {
 			await member.addRole(rr, `ReactionRole - ${global.zuly.user.username}`).then(async () => {
 				await global.zuly.executeWebhook(system.reactionRole.id, system.reactionRole.token, {

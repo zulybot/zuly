@@ -83,13 +83,13 @@ module.exports = class BanCommand {
 		}
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		const devs = await global.db.get('devs');
+		const devs = await global.zuly.db.get('devs');
 		if (devs.includes(member.id)) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.dev}`
 			});
 		}
-		await global.db.set(`botban-${member.id}`, motivo);
+		await global.zuly.db.set(`botban-${member.id}`, motivo);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

@@ -22,12 +22,12 @@ module.exports = (app) => {
 			}).then(msg => {
 				msg.addReaction('⬆️');
 			});
-			const money = await global.db.get(`ryos-${user.id}`);
+			const money = await global.zuly.db.get(`ryos-${user.id}`);
 			if (money) {
-				await global.db.set(`ryos-${user.id}`, Number(money) + 2400);
+				await global.zuly.db.set(`ryos-${user.id}`, Number(money) + 2400);
 			}
 			else {
-				await global.db.set(`ryos-${user.id}`, 2400);
+				await global.zuly.db.set(`ryos-${user.id}`, 2400);
 			}
 			const embed2 = new global.zuly.manager.Ebl();
 			embed2.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);

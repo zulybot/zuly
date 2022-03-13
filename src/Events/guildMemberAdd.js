@@ -1,4 +1,4 @@
-module.exports = class guildMemberAdd {
+module.exports = class GuildMemberAddEvent {
 	constructor () {
 		return {
 			nome: 'guildMemberAdd',
@@ -6,8 +6,8 @@ module.exports = class guildMemberAdd {
 		};
 	}
 	async run (guild, member) {
-		const autorolebot = await global.db.get(`autorolebot-${guild.id}`);
-		const autoroleuser = await global.db.get(`autoroleuser-${guild.id}`);
+		const autorolebot = await global.zuly.db.get(`autorolebot-${guild.id}`);
+		const autoroleuser = await global.zuly.db.get(`autoroleuser-${guild.id}`);
 		if (!autorolebot || !autoroleuser) return;
 		if (member.user.bot) {
 			return autorolebot.forEach(async (role) => {

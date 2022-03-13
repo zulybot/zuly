@@ -8,26 +8,12 @@ module.exports = class InteractionEvent {
 	}
 	async run (interaction) {
 		const Eris = require('eris');
-		if (interaction instanceof Eris.AutocompleteInteraction) {
-			if (interaction.data.name === 'play') {
-				interaction.author = interaction.member.user;
-				const res = await global.zuly.music.search(interaction.data.options[0].value, interaction.author.id);
-				const tracks = [];
-				res.tracks.forEach(async (track) => {
-					tracks.push({
-						name: track.title,
-						value: track.uri
-					});
-				});
-				return interaction.result(tracks);
-			}
-		}
 		await interaction.acknowledge(1);
 		try {
 			if (interaction instanceof Eris.ComponentInteraction) {
 
 				let idioma = require('../Config/idiomas.js');
-				let lang = await global.db.get(`idioma-${interaction.channel.guild.id}`) || 'pt_br';
+				let lang = await global.zuly.db.get(`idioma-${interaction.channel.guild.id}`) || 'pt_br';
 				lang = lang.replace(/-/g, '_');
 				idioma = idioma[lang];
 
@@ -116,11 +102,11 @@ module.exports = class InteractionEvent {
 			console.log(e);
 		}
 		if (interaction instanceof Eris.CommandInteraction) {
-			const blacklist = await global.db.get(`botban-${interaction.member.user.id}`);
+			const blacklist = await global.zuly.db.get(`botban-${interaction.member.user.id}`);
 			if (blacklist) {
 				const msg = interaction;
 				let idioma = require('../Config/idiomas.js');
-				let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
+				let lang = await global.zuly.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 				lang = lang.replace(/-/g, '_');
 				idioma = idioma[lang];
 				const embed = new global.zuly.manager.Ebl();
@@ -137,7 +123,7 @@ module.exports = class InteractionEvent {
 			try {
 				const command = global.zuly.commands.get(interaction.data.name);
 				if (!command) {
-					const comando = await global.db.get(`custom-command-${interaction.data.name}-${interaction.channel.guild.id}`);
+					const comando = await global.zuly.db.get(`custom-command-${interaction.data.name}-${interaction.channel.guild.id}`);
 					if (comando) {
 						return interaction.createMessage({
 							content: comando.replace(/%author/g, `<@${interaction.member.user.id}>`),
@@ -182,10 +168,10 @@ module.exports = class InteractionEvent {
 
 				const msg = interaction;
 				let idioma = require('../Config/idiomas.js');
-				let lang = await global.db.get(`idioma-${msg.guildID}`) || 'pt_br';
+				let lang = await global.zuly.db.get(`idioma-${msg.guildID}`) || 'pt_br';
 				lang = lang.replace(/-/g, '_');
 				idioma = idioma[lang];
-				const prefix = await global.db.get(`prefix-${msg.channel.guild.id}`) ? global.db.get(`prefix-${msg.channel.guild.id}`) : '/';
+				const prefix = await global.zuly.db.get(`prefix-${msg.channel.guild.id}`) ? global.zuly.db.get(`prefix-${msg.channel.guild.id}`) : '/';
 
 				msg.channel.guild.me = msg.channel.guild.members.get(msg.author.id);
 				msg.guild = msg.channel.guild;
@@ -219,9 +205,9 @@ module.exports = class InteractionEvent {
 						}
 					}
 					if (command.permissoes.dono) {
-						const developers = await global.db.get('devs');
+						const developers = await global.zuly.db.get('devs');
 						if (!developers) {
-							await global.db.set('devs', ['717766639260532826', '726449359167684734', '452618703792766987', '630493603575103519']);
+							await global.zuly.db.set('devs', ['717766639260532826', '726449359167684734', '452618703792766987', '630493603575103519']);
 						}
 
 						if (!developers.includes(msg.member.id)) {

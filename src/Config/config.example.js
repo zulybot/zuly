@@ -6,7 +6,6 @@ module.exports = {
 	},
 	statcord: 'statcord.com-KEY',
 	deployslash: true,
-	deploy: 'yes',
 	domain: 'http://127.0.0.1:2601/',
 	mongodb: 'MONGODB-URI',
 	prefix: ['prefix-1', 'prefix-2'],

@@ -73,7 +73,7 @@ module.exports = class DailyCommand {
 			MeninoColetor.on('collect', async (m, reaction, user) => {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
-					await global.db.set(`gender-${ctx.message.author.id}`, 'male');
+					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'male');
 					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.male)}`);
 					// End Collectors
 					MeninoColetor.stop();
@@ -84,7 +84,7 @@ module.exports = class DailyCommand {
 			MeninaColetor.on('collect', async (m, reaction, user) => {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
-					await global.db.set(`gender-${ctx.message.author.id}`, 'female');
+					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'female');
 					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.female)}`);
 					// End Collectors
 					MeninoColetor.stop();
@@ -95,7 +95,7 @@ module.exports = class DailyCommand {
 			LgbtColetor.on('collect', async (m, reaction, user) => {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
-					await global.db.set(`gender-${ctx.message.author.id}`, 'lgbt');
+					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'lgbt');
 					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', 'lgbt')}`);
 					// End Collectors
 					MeninoColetor.stop();

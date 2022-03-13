@@ -52,7 +52,7 @@ module.exports = class DailyCommand {
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`
 			});
 		}
-		global.db.set(`about-${ctx.message.author.id}`, ctx.args.join(' '));
+		global.zuly.db.set(`about-${ctx.message.author.id}`, ctx.args.join(' '));
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`
 		});

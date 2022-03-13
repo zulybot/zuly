@@ -1,5 +1,4 @@
-'use strict';
-module.exports = class GuildBanCommand {
+module.exports = class GuildBanRemoveEvent {
 	constructor () {
 		return {
 			nome: 'guildBanRemove',
@@ -7,7 +6,7 @@ module.exports = class GuildBanCommand {
 		};
 	}
 	async run (guild, user) {
-		const channelDB = await global.db.get(`logs-${guild.id}`) || '927209681754132530';
+		const channelDB = await global.zuly.db.get(`logs-${guild.id}`) || '927209681754132530';
 		const channel = await global.zuly.getRESTChannel(channelDB);
 
 		const auditLog = await guild.getAuditLog({
@@ -19,7 +18,7 @@ module.exports = class GuildBanCommand {
 		const target = auditLog.users[0];
 
 		let idioma = require('../Config/idiomas');
-		let lang = await global.db.get(`idioma-${guild.id}`) || 'pt_br';
+		let lang = await global.zuly.db.get(`idioma-${guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 

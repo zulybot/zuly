@@ -1,5 +1,4 @@
-'use strict';
-module.exports = class MessageEventCommand {
+module.exports = class MessageCreateEvent {
 	constructor () {
 		return {
 			nome: 'messageCreate',
@@ -13,7 +12,7 @@ module.exports = class MessageEventCommand {
 		if (message.channel.type === 1) return;
 
 		let idioma = require('../Config/idiomas');
-		let lang = await global.db.get(`idioma-${message.guildID}`) || 'pt_br';
+		let lang = await global.zuly.db.get(`idioma-${message.guildID}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 
@@ -40,8 +39,8 @@ module.exports = class MessageEventCommand {
 			}
 		});
 
-		const mensagens = await global.db.get(`messages-${message.guildID}-${message.author.id}`);
-		await global.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
+		const mensagens = await global.zuly.db.get(`messages-${message.guildID}-${message.author.id}`);
+		await global.zuly.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
 
 		if (message.author.bot) return;
 

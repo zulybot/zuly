@@ -44,7 +44,7 @@ module.exports = class DailyCommand {
 		const moment = require('moment');
 		const quantia = Math.floor(Math.random() * 1500) + 500;
 		let amount = quantia;
-		const daily = await global.db.get(`daily-${ctx.message.author.id}`);
+		const daily = await global.zuly.db.get(`daily-${ctx.message.author.id}`);
 		const userPremium = await global.zuly.getPremium('doador', ctx.message.author.id);
 		if (userPremium === true) {
 			amount = Number(quantia) * 2;
@@ -59,14 +59,14 @@ module.exports = class DailyCommand {
 			ctx.message.channel.slashReply({
 				content: `💸 ${ctx.message.author.mention} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`
 			});
-			const money = global.db.get(`ryos-${ctx.message.author.id}`);
+			const money = global.zuly.db.get(`ryos-${ctx.message.author.id}`);
 			if (money) {
-				await global.db.add(`ryos-${ctx.message.author.id}`, Number(money) + Number(amount));
+				await global.zuly.db.add(`ryos-${ctx.message.author.id}`, Number(money) + Number(amount));
 			}
 			else {
-				await global.db.set(`ryos-${ctx.message.author.id}`, Number(amount));
+				await global.zuly.db.set(`ryos-${ctx.message.author.id}`, Number(amount));
 			}
-			await global.db.set(`daily-${ctx.message.author.id}`, Date.now());
+			await global.zuly.db.set(`daily-${ctx.message.author.id}`, Date.now());
 		 }
 	}
 };

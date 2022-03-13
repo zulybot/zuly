@@ -81,17 +81,17 @@ module.exports = class LangCommand {
 		else {
 			switch (langSelecionada) {
 				case langs[0]:
-					await global.db.set(`idioma-${ctx.message.guildID}`, langs[0]);
+					await global.zuly.db.set(`idioma-${ctx.message.guildID}`, langs[0]);
 					return ctx.message.channel.slashReply({
 						content: ':white_check_mark: **|** Agora irei falar `português-brasileiro` neste servidor!'
 					});
 				case langs[1]:
-					await global.db.set(`idioma-${ctx.message.guildID}`, langs[1]);
+					await global.zuly.db.set(`idioma-${ctx.message.guildID}`, langs[1]);
 					return ctx.message.channel.slashReply({
 						content: ':white_check_mark: **|** Now I will speak `english-us` on this guild!'
 					});
 				case langs[2]:
-					await global.db.set(`idioma-${ctx.message.guildID}`, langs[2]);
+					await global.zuly.db.set(`idioma-${ctx.message.guildID}`, langs[2]);
 					return ctx.message.channel.slashReply({
 						content: ':white_check_mark: **|** Maintenant, je vais parler `français-fr` sur cette guilde!'
 					});

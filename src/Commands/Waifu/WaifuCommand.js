@@ -49,7 +49,7 @@ module.exports = class EvalCommand {
 			const waifu = res[rand];
 			waifu.id = rand;
 			waifu.valor = Math.floor(Math.random() * 2000) + 18;
-			const dono = await global.db.get(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
+			const dono = await global.zuly.db.get(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
 			const timeout = 7200000;
 			const embed = new ctx.embed();
 			embed.setTitle(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
@@ -85,17 +85,17 @@ module.exports = class EvalCommand {
 					message.addReaction('💖');
 					MarryCollector.on('collect', async () => {
 						const date = Date.now();
-						const marrytime = await global.db.get(`timeout-${ctx.message.author.id}`);
+						const marrytime = await global.zuly.db.get(`timeout-${ctx.message.author.id}`);
 						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
-						const ryos = await global.db.get(`ryos-${ctx.message.author.id}`);
+						const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
 						if (ryos) {
-							global.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);
+							global.zuly.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);
 						}
 						else {
-							global.db.set(`ryos-${ctx.message.author.id}`, waifu.valor);
+							global.zuly.db.set(`ryos-${ctx.message.author.id}`, waifu.valor);
 						}
-						global.db.set(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
-						global.db.set(`timeout-${ctx.message.author.id}`, Date.now());
+						global.zuly.db.set(`waifu-${ctx.message.channel.guild.id}-${waifu.id}`, ctx.message.author.id);
+						global.zuly.db.set(`timeout-${ctx.message.author.id}`, Date.now());
 						const embed = new ctx.embed();
 						embed.setTitle(`♡︰𓂃 [${waifu.name}] ₊˚ฅ `);
 						embed.setDescription(`>>> ๑☕﹕ **Ryos:** ${waifu.valor}\n๑☕﹕ **Anime:** ${waifu.anime}`);

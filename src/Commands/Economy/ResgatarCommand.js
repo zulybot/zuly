@@ -53,26 +53,26 @@ module.exports = class ResgatarCommand {
 			});
 		}
 		const codigo = ctx.args[0].toUpperCase();
-		const valor = await global.db.get(codigo);
+		const valor = await global.zuly.db.get(codigo);
 		if (!valor) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.nocode}`
 			});
 		}
 		else {
-			const resgatado = await global.db.get(`${codigo}-${ctx.message.author.id}`);
+			const resgatado = await global.zuly.db.get(`${codigo}-${ctx.message.author.id}`);
 			if (resgatado) {
 				return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.resgatado}`);
 			}
 			else {
-				const ryos = await global.db.get(`ryos-${ctx.message.author.id}`);
+				const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
 				if (!ryos) {
-					await global.db.set(`ryos-${ctx.message.author.id}`, Number(valor));
+					await global.zuly.db.set(`ryos-${ctx.message.author.id}`, Number(valor));
 				}
 				else {
-					await global.db.add(`ryos-${ctx.message.author.id}`, Number(ryos) + Number(valor));
+					await global.zuly.db.add(`ryos-${ctx.message.author.id}`, Number(ryos) + Number(valor));
 				}
-				await global.db.set(`${codigo}-${ctx.message.author.id}`, true);
+				await global.zuly.db.set(`${codigo}-${ctx.message.author.id}`, true);
 				const embed = new ctx.embed();
 				embed.setTitle(`🎟️ Promocodes | ${global.zuly.user.username}`);
 				embed.setDescription(`> ${ctx.idioma.economy.sucesso.replace('%p', codigo).replace('%v', valor)}`);

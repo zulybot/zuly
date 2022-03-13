@@ -18,7 +18,6 @@ const {
 	GiveawaysManager
 } = require('eris-giveaways');
 const Statcord = require('statcord-eris');
-const DiscordTogether = require('./Client/discord-together');
 const client = new Client(token, {
 	autoReconnect: !0,
 	defaultImageFormat: 'png',
@@ -36,8 +35,8 @@ const client = new Client(token, {
 	largeThreshold: 200,
 	maxReconnectAttempts: Infinity,
 	maxResumeAttempts: 100,
-	maxShards: 'auto',
-	messageLimit: 50,
+	maxShards: 2,
+	messageLimit: 200,
 	requestTimeout: 30000,
 	rest: {
 		baseURL: '/api/v9',
@@ -66,7 +65,6 @@ client.statcord = new Statcord.Client({
 client.statcord.on('autopost-start', () => {
 	console.log('[STATCORD] Started autopost'.green);
 });
-client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();
 client.aliases = new Collection();
 const Zuly = require('./Client/zulybot.js');

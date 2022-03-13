@@ -83,7 +83,7 @@ module.exports = class BanCommand {
 		}
 		// const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.db.delete(`botban-${member.id}`);
+		await global.zuly.db.delete(`botban-${member.id}`);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

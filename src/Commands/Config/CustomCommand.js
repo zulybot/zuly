@@ -73,7 +73,7 @@ module.exports = class LangCommand {
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.customCommand}`.replace('%n', nome)
 		}).then(async () => {
-			await global.db.set(`custom-command-${nome}-${ctx.message.guildID}`, ctx.args[2]);
+			await global.zuly.db.set(`custom-command-${nome}-${ctx.message.guildID}`, ctx.args[2]);
 		});
 	}
 };

@@ -50,7 +50,7 @@ module.exports = class Ajuda {
 	}
 
 	async run (ctx) {
-		let idioma = await global.db.get(`idioma-${ctx.message.guildID}`) || 'pt-br';
+		let idioma = await global.zuly.db.get(`idioma-${ctx.message.guildID}`) || 'pt-br';
 		require('colors');
 		const devs = [];
 
@@ -58,7 +58,7 @@ module.exports = class Ajuda {
 			idioma = 'pt-br';
 		}
 
-		const desenvolvedores = await global.db.get('devs');
+		const desenvolvedores = await global.zuly.db.get('devs');
 		for (const desenvolvedor of desenvolvedores) {
 			const dev = await global.zuly.getRESTUser(desenvolvedor);
 			devs.push(dev.username);

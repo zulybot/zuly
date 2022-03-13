@@ -74,7 +74,7 @@ module.exports = class MrincredibleCommand {
 		}
 		foto.font = 'bold 30px sans-serif';
 
-		const gender = await global.db.get(`gender-${user.id}`);
+		const gender = await global.zuly.db.get(`gender-${user.id}`);
 		if (!gender) {
 			foto.fillText('vivo', 390, 120);
 		}

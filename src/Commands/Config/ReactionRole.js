@@ -72,7 +72,7 @@ module.exports = class ReactionRoleCommand {
 			return ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.sucess.replace('%id%', message_id)}`
 			}).then(async () => {
-				await global.db.set(`reaction-${emojiName}-${message_id}`, role.id);
+				await global.zuly.db.set(`reaction-${emojiName}-${message_id}`, role.id);
 				return mensagem.addReaction(ctx.args[2].replace(/<a:/g, '').replace(/>/g, '').replace(/<:/g, ''));
 			});
 		}

@@ -53,8 +53,8 @@ module.exports = class ShipCommand {
 			user2 = global.zuly.users.random();
 		}
 
-		const ship1 = await global.db.get(`ship-${user1.id}-${user2.id}`);
-		const ship2 = await global.db.get(`ship-${user1.id}-${user2.id}`);
+		const ship1 = await global.zuly.db.get(`ship-${user1.id}-${user2.id}`);
+		const ship2 = await global.zuly.db.get(`ship-${user1.id}-${user2.id}`);
 
 		const nome = user1.username.slice(0, 3) + user2.username.slice(0, 3);
 
@@ -106,8 +106,8 @@ module.exports = class ShipCommand {
 			name: 'ship.png'
 		}).then(async () => {
 			if (!ship1 && !ship2) {
-				await global.db.set(`ship-${user1.id}-${user2.id}`, porcentagem);
-				await global.db.set(`ship-${user2.id}-${user1.id}`, porcentagem);
+				await global.zuly.db.set(`ship-${user1.id}-${user2.id}`, porcentagem);
+				await global.zuly.db.set(`ship-${user2.id}-${user1.id}`, porcentagem);
 			}
 		});
 	}
