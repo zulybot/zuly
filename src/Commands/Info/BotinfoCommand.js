@@ -43,12 +43,7 @@ module.exports = class BotinfoCommand {
 		// eslint-disable-next-line new-cap
 		const os = require('os');
 		const { cpuUsage } = require('../../CustomPackages/osUtils');
-		const { get } = require('axios');
 		const uptime = global.zuly.getBotUptime(ctx.idioma.lang);
-
-		const config = require('../../Config/config');
-
-		const res = await get(config.domain + 'api/status');
 
 		const devs = [];
 
@@ -58,8 +53,8 @@ module.exports = class BotinfoCommand {
 			devs.push(dev.username + '#' + dev.discriminator);
 		}
 
-		const totalUsers = res.data.users + global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
-		const totalGuilds = res.data.servers + global.zuly.guilds.size;
+		const totalUsers = global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
+		const totalGuilds = global.zuly.guilds.size;
 
 		cpuUsage(function(v) {
 			const embed = new ctx.embed();
