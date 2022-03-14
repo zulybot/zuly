@@ -143,7 +143,10 @@ module.exports = class InteractionEvent {
 					embed.setThumbnail(global.zuly.user.avatarURL);
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
-					await global.zuly.executeWebhook(system.command.id, system.command.token, {
+					const { WebhookClient } = require('discord.js');
+					const hook = new WebhookClient(system.command.id, system.command.token);
+
+					await hook.send({
 						avatarURL: global.zuly.user.avatarURL,
 						username: global.zuly.user.username,
 						embeds: [embed.get()]
@@ -179,7 +182,10 @@ module.exports = class InteractionEvent {
 				embed2.setThumbnail(global.zuly.user.avatarURL);
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
-				await global.zuly.executeWebhook(system.error.id, system.error.token, {
+				const { WebhookClient } = require('discord.js');
+				const hook2 = new WebhookClient(system.error.id, system.error.token);
+
+				await hook2.send({
 					avatarURL: global.zuly.user.avatarURL,
 					username: global.zuly.user.username,
 					content: '<@&886680759237226556>',
