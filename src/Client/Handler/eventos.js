@@ -1,11 +1,22 @@
 const fs = require('fs');
-fs.readdir('./src/Events/', (e, o) => {
-	o.forEach(async e => {
-		delete require.cache[e];
-		const o = require(`../../Events/${e}`);
-		const n = e.replace('.js', '');
-		const r = new o(global.zuly, o.nome);
-		// await global.zuly.events.set(event.nome, event)
-		global.zuly[r.type || 'on'](r.nome, async (...e) => r.run(...e)), console.log(`[EVENTOS] Evento ${n} carregado usando os argumentos (${r.nome}).`.brightBlue);
+
+global.zuly.events.clear();
+
+fs.readdir('./src/Events/', (erro, eventos) => {
+	eventos.forEach(async evento => {
+		delete require.cache[evento];
+
+		const ArquivoEvento = require(`../../Events/${evento}`);
+		const Evento = evento.replace('.js', '');
+		const event = new ArquivoEvento(global.zuly, ArquivoEvento.nome);
+		await global.zuly.events.set(event.nome, event);
+		try {
+			global.zuly[event.type || 'on'](event.nome, async (...args) => event.run(...args));
+		}
+		catch (e) {
+			console.log(`[ERRO] Evento ${event.nome} não pode ser executado.`);
+			console.log(e);
+		}
+		console.log(`[EVENTOS] Evento ${Evento} carregado usando os argumentos (${event.nome}).`.brightBlue);
 	});
 });

@@ -6,18 +6,23 @@ module.exports = class GuildMemberAddEvent {
 		};
 	}
 	async run (guild, member) {
-		const autorolebot = await global.zuly.db.get(`autorolebot-${guild.id}`);
-		const autoroleuser = await global.zuly.db.get(`autoroleuser-${guild.id}`);
-		if (!autorolebot || !autoroleuser) return;
-		if (member.user.bot) {
-			return autorolebot.forEach(async (role) => {
-				member.addRole(role, 'AutoRole - Bot');
-			});
+		try {
+			const autorolebot = await global.zuly.db.get(`autorolebot-${guild.id}`);
+			const autoroleuser = await global.zuly.db.get(`autoroleuser-${guild.id}`);
+			// dê os cargos aos membros
+			if (autorolebot) {
+				autorolebot.map((id) => {
+					member.addRole(id);
+				});
+			}
+			else {
+				autoroleuser.map((id) => {
+					member.addRole(id);
+				});
+			}
 		}
-		else {
-			return autoroleuser.forEach(async (role) => {
-				member.addRole(role, 'AutoRole - User');
-			});
+		catch (e) {
+			console.log(e);
 		}
 	}
 };

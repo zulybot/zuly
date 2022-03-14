@@ -9,8 +9,14 @@ module.exports = class {
 	}
 
 	async reload () {
-		for (const e in require.cache)(e.includes('commands') || e.includes('utils') || e.includes('events')) && delete require.cache[e];
-		require('./Handler/comandos'), process.removeAllListeners(), global.zuly.removeAllListeners();
+		for(let cache in require.cache) {
+			if (cache.includes('commands') || cache.includes('utils') || cache.includes('events')) delete require.cache[cache];
+		  }
+
+		  require('./Handler/comandos');
+
+		  process.removeAllListeners();
+		  global.zuly.removeAllListeners();
 	}
 
 	get exit () {

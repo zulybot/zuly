@@ -177,8 +177,6 @@ module.exports = class InteractionEvent {
 				msg.guild = msg.channel.guild;
 				msg.channel.slashReply = interaction.createFollowup.bind(interaction);
 
-				global.zuly.statcord.postCommand(interaction.data.name, msg.author.id);
-
 				if (command.permissoes) {
 					if (command.permissoes.membro.length) {
 						if (!command.permissoes.membro.every(p => msg.channel.guild.members.get(msg.author.id).permissions.has(p))) {

@@ -28,7 +28,6 @@ module.exports = class ReadyEvent {
 				type: 5
 			});
 		}, 1000 * 180);
-		global.zuly.statcord.autopost();
 		require('../Integrations/app');
 	}
 };

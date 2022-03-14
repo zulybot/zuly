@@ -1,28 +1,30 @@
-/* eslint-disable no-unused-vars */
 require('colors');
 const {
 	Client,
 	Collection
 } = require('eris');
+
 const {
 	AutoPoster
 } = require('./CustomPackages/DBLAutoPoster');
+
 const {
-	token,
-	statcord
+	token
 } = require('./Config/config');
+
 const {
 	top
 } = require('./API/keys');
+
 const {
 	GiveawaysManager
 } = require('eris-giveaways');
-const Statcord = require('statcord-eris');
+
 const client = new Client(token, {
-	autoReconnect: !0,
+	restMode: true,
+	autoReconnect: true,
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
-	getAllUsers: !1,
 	intents: [
 		'guilds',
 		'guildBans',
@@ -32,19 +34,13 @@ const client = new Client(token, {
 		'guildMessageReactions',
 		'directMessages'
 	],
-	largeThreshold: 200,
-	maxReconnectAttempts: Infinity,
-	maxResumeAttempts: 100,
-	maxShards: 2,
-	messageLimit: 200,
-	requestTimeout: 30000,
 	rest: {
 		baseURL: '/api/v9',
 		domain: 'canary.discord.com',
 		latencyThreshold: 40000
 	},
-	restMode: !0
 });
+
 client.giveawaysManager = new GiveawaysManager(client, {
 	storage: './src/db/giveaways.json',
 	updateCountdownEvery: 5000,
@@ -55,26 +51,23 @@ client.giveawaysManager = new GiveawaysManager(client, {
 		reaction: '🎁'
 	}
 });
-client.statcord = new Statcord.Client({
-	key: statcord,
-	client,
-	postCpuStatistics: true,
-	postMemStatistics: true,
-	postNetworkStatistics: true
-});
-client.statcord.on('autopost-start', () => {
-	console.log('[STATCORD] Started autopost'.green);
-});
+
 client.commands = new Collection();
+client.events = new Collection();
 client.aliases = new Collection();
+
 const Zuly = require('./Client/zulybot.js');
 const ZulyBot = new Zuly(client);
+
 ZulyBot.iniciar().then((zuly) => {
 	console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.brightMagenta);
 });
+
 client.topgg = new AutoPoster(top.gg.token, client).on('posted', () => {
 	console.log('[DBL] Posted stats to Top.gg!'.green);
 });
+
 global.zuly = client;
 global.zuly.manager = ZulyBot;
+
 require('./ZulyUtilLoader');

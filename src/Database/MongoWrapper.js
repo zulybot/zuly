@@ -34,6 +34,7 @@ class Database extends EventEmitter {
 
 		// Alias
 		this.delete = this.remove;
+		this.del = this.remove;
 		this.add = this.inc;
 		this.rem = this.dec;
 		this.all = this.getAll;
