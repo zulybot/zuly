@@ -49,12 +49,12 @@ module.exports = class BotinfoCommand {
 
 		const desenvolvedores = await global.zuly.db.get('devs');
 		for (const desenvolvedor of desenvolvedores) {
-			const dev = await global.zuly.getRESTUser(desenvolvedor);
+			const dev = await global.zuly.users.fetch(desenvolvedor);
 			devs.push(dev.username + '#' + dev.discriminator);
 		}
 
-		const totalUsers = global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
-		const totalGuilds = global.zuly.guilds.size;
+		const totalUsers = global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
+		const totalGuilds = global.zuly.guilds.cache.size;
 
 		cpuUsage(function(v) {
 			const embed = new ctx.embed();
@@ -65,7 +65,7 @@ module.exports = class BotinfoCommand {
 			embed.setColor('#ffcbdb');
 			embed.setFooter(`⤷ zulybot.xyz, ${ctx.idioma.botinfo.mem.replace('%m', (process.memoryUsage().rss / 1024 / 1024 / totalGuilds).toFixed(2) + 'kb')}`, global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed.get()],
 				components: [
 					{
@@ -73,19 +73,19 @@ module.exports = class BotinfoCommand {
 						components: [
 							{
 								type: 2,
-								label: `${ctx.idioma.mention.labels.support}`,
+								label: `${ctx.idioma.labels.support}`,
 								style: 5,
 								url: 'https://discord.gg/pyyyJpw5QW'
 							},
 							{
 								type: 2,
-								label: `${ctx.idioma.mention.labels.invite}`,
+								label: `${ctx.idioma.labels.invite}`,
 								style: 5,
 								url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 							},
 							{
 								type: 2,
-								label: `${ctx.idioma.mention.labels.website}`,
+								label: `${ctx.idioma.labels.website}`,
 								style: 5,
 								url: 'https://zulybot.xyz/'
 							}

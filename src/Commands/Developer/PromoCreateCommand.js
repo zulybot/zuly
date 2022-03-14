@@ -55,13 +55,13 @@ module.exports = class EvalCommand {
 	async run (ctx) {
 		if (!ctx.args[0] || !ctx.args[1]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME> <VALOR EM RYOS>\``,
+				content: `:x: ${ctx.message.author} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME> <VALOR EM RYOS>\``,
 				flags: ctx.ephemeral
 			});
 		}
 		if (isNaN(ctx.args[1])) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** O Valor não é um número exato.`,
+				content: `:x: ${ctx.message.author} **|** O Valor não é um número exato.`,
 				flags: ctx.ephemeral
 			});
 		}
@@ -69,7 +69,7 @@ module.exports = class EvalCommand {
 		const code = await global.zuly.db.get(ctx.args[0].toUpperCase());
 		if (code) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** Esse código já existe`,
+				content: `:x: ${ctx.message.author} **|** Esse código já existe`,
 				flags: ctx.ephemeral
 			});
 		}
@@ -78,7 +78,7 @@ module.exports = class EvalCommand {
 			const channel = await global.zuly.getRESTChannel('894981159119896576');
 			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: **${ctx.args[0].toUpperCase()}** valendo **${Number(ctx.args[1])} ryos.**`);
 			return ctx.message.channel.slashReply({
-				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
+				content: `✅ ${ctx.message.author} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
 				flags: ctx.ephemeral
 			});
 		}

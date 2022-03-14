@@ -62,11 +62,11 @@ module.exports = class GivawayStart {
 		const ms = require('ms');
 		if (!ctx.args[0] || !ctx.args[1] || !ctx.args[2]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.giveaway.start.replace('%p', ctx.prefix)}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.giveaway.start.replace('%p', ctx.prefix)}`
 			});
 		}
 		ctx.message.channel.slashReply({
-			content: `🎁 ${ctx.message.author.mention} **|** Sucess!`
+			content: `🎁 ${ctx.message.author} **|** Sucess!`
 		});
 		global.zuly.giveawaysManager.start(ctx.message.channel, {
 			time: ms(ctx.args[0]),

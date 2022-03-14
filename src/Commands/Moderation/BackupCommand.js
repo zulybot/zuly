@@ -77,7 +77,7 @@ module.exports = class BackupCommand {
 		const nodeFetch = require('node-fetch');
 		if (ctx.args[0] === 'create') {
 			const canais = [];
-			ctx.message.channel.guild.channels.forEach(async (channel) => {
+			ctx.message.guild.channels.forEach(async (channel) => {
 				let parent = {};
 				if (channel.parentID) {
 					const canal = await global.zuly.getRESTChannel(channel.parentID);
@@ -98,7 +98,7 @@ module.exports = class BackupCommand {
 				await global.zuly.db.set(`backups.${genID}.channels`, canais);
 			}, 5000);
 			const cargos = [];
-			ctx.message.channel.guild.roles.forEach((role) => {
+			ctx.message.guild.roles.forEach((role) => {
 				if (role.managed) return;
 				cargos.push({
 					id: Number(role.id),
@@ -106,25 +106,25 @@ module.exports = class BackupCommand {
 					hoist: role.hoist,
 					color: Number(role.color),
 					position: Number(role.position),
-					mentionable: role.mentionable,
+					mentionable: roleable,
 				});
 			});
 			await global.zuly.db.set(`backups.${genID}.roles`, cargos);
 			const guild = {};
-			guild.id = ctx.message.channel.guild.id;
+			guild.id = ctx.message.guild.id;
 			guild.backup = genID;
-			guild.name = ctx.message.channel.guild.name;
-			guild.icon = (await nodeFetch(ctx.message.channel.guild.iconURL).then((res) => res.buffer())).toString('base64');
-			guild.preferredLocale = ctx.message.channel.guild.preferredLocale;
-			guild.verificationLevel = ctx.message.channel.guild.verificationLevel;
-			guild.afkTimeout = ctx.message.channel.guild.afkTimeout;
-			guild.mfaLevel = ctx.message.channel.guild.mfaLevel;
-			guild.splash = ctx.message.channel.guild.splash;
-			guild.welcomeScreen = ctx.message.channel.guild.welcomeScreen;
-			guild.widgetEnabled = ctx.message.channel.guild.widgetEnabled;
+			guild.name = ctx.message.guild.name;
+			guild.icon = (await nodeFetch(ctx.message.guild.iconURL).then((res) => res.buffer())).toString('base64');
+			guild.preferredLocale = ctx.message.guild.preferredLocale;
+			guild.verificationLevel = ctx.message.guild.verificationLevel;
+			guild.afkTimeout = ctx.message.guild.afkTimeout;
+			guild.mfaLevel = ctx.message.guild.mfaLevel;
+			guild.splash = ctx.message.guild.splash;
+			guild.welcomeScreen = ctx.message.guild.welcomeScreen;
+			guild.widgetEnabled = ctx.message.guild.widgetEnabled;
 			/*
-				for(const key of Object.keys(ctx.message.channel.guild)) {
-					guild[key] = ctx.message.channel.guild[key];
+				for(const key of Object.keys(ctx.message.guild)) {
+					guild[key] = ctx.message.guild[key];
 				}
 				*/
 			setTimeout(async () => {
@@ -139,7 +139,7 @@ module.exports = class BackupCommand {
 			}
 			setTimeout(() => {
 				ctx.message.channel.slashReply({
-					content: `:white_check_mark: ${ctx.message.author.mention} **|** Backup criado, ID: \`${genID}\`.`,
+					content: `:white_check_mark: ${ctx.message.author} **|** Backup criado, ID: \`${genID}\`.`,
 				});
 			}, 5000);
 		}
@@ -147,7 +147,7 @@ module.exports = class BackupCommand {
 			const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
 			if (!backupdb || !backupdb.length) {
 				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** Você não possui backups.`,
+					content: `:x: ${ctx.message.author} **|** Você não possui backups.`,
 				});
 			}
 			else {
@@ -168,17 +168,17 @@ module.exports = class BackupCommand {
 				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 				setTimeout(() => {
 					ctx.message.channel.slashReply({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [embed.get()],
 					});
 				}, 3000);
 			}
 		}
 		if (ctx.args[0] === 'load') {
-			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
+			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
 			const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
-			if (!backupdb.includes(ctx.args[1])) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Você não possui o backup com o ID \`${ctx.args[1]}\`.`);
-			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author.mention} **|** Você deseja carregar o backup? Saiba que todas as suas configurações serão substituidas pelo backup, não será recuperado **mensagens, cargos & canais** depois desse processo.\n> Para carregar reaja com \`✅\`.`);
+			if (!backupdb.includes(ctx.args[1])) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** Você não possui o backup com o ID \`${ctx.args[1]}\`.`);
+			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author} **|** Você deseja carregar o backup? Saiba que todas as suas configurações serão substituidas pelo backup, não será recuperado **mensagens, cargos & canais** depois desse processo.\n> Para carregar reaja com \`✅\`.`);
 			const { ReactionCollector } = require('eris-collector');
 			msg.addReaction('✅');
 			let filter = (m, emoji) => emoji.name === '✅';
@@ -192,7 +192,7 @@ module.exports = class BackupCommand {
 					const guild = await global.zuly.db.get(`backups.${ctx.args[1]}.guild`);
 					const roles = await global.zuly.db.get(`backups.${ctx.args[1]}.roles`);
 					const channels = await global.zuly.db.get(`backups.${ctx.args[1]}.channels`);
-					const currentGuild = ctx.message.channel.guild;
+					const currentGuild = ctx.message.guild;
 					// Setando servidor para status de load:
 					currentGuild.edit({
 						name: `Loading Backup | ${global.zuly.user.username}...`,
@@ -222,7 +222,7 @@ module.exports = class BackupCommand {
 								name: role.name,
 								color: role.color,
 								permissions: role.permissions || 0,
-								mentionable: role.mentionable,
+								mentionable: roleable,
 								hoist: role.hoist,
 								position: role.position,
 							}).catch(() => {
@@ -235,8 +235,8 @@ module.exports = class BackupCommand {
 							setTimeout(async () => {
 								let parentID;
 								let parent;
-								if (ctx.message.channel.guild.channels) {
-									parent = await ctx.message.channel.guild.channels.find(c => c.name === canal.parent);
+								if (ctx.message.guild.channels) {
+									parent = await ctx.message.guild.channels.find(c => c.name === canal.parent);
 									parentID = parent ? parent.id : null;
 								}
 								console.log(parent);
@@ -269,12 +269,12 @@ module.exports = class BackupCommand {
 			});
 		}
 		if (ctx.args[0] === 'delete') {
-			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
+			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
 			await global.zuly.db.remove(`backups.${ctx.args[1]}.guild`);
 			await global.zuly.db.remove(`backups.${ctx.args[1]}.roles`);
 			await global.zuly.db.remove(`backups.${ctx.args[1]}.channels`);
 			await global.zuly.db.pull(`backups.${ctx.message.author.id}`, ctx.args[1]);
-			return ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** Backup \`${ctx.args[1]}\` deletado com sucesso.`);
+			return ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** Backup \`${ctx.args[1]}\` deletado com sucesso.`);
 		}
 	}
 };

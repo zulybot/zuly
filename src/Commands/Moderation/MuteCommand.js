@@ -69,19 +69,19 @@ module.exports = class BanCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
-		if (!ctx.message.mentions[0]) {
-			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info).catch(() => {
+		if (!ctx.messages[0]) {
+			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
+					content: `:x: ${ctx.message.author} **|** Usuário desconhecido.`
 				});
 			});
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.messages[0];
 		}
 
 		let banReason = ctx.args[1];
@@ -97,10 +97,10 @@ module.exports = class BanCommand {
 
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.zuly.muteMember(ctx.message.channel.guild, member, motivo, timestamp(ctx.args[2]));
+		await global.zuly.muteMember(ctx.message.guild, member, motivo, timestamp(ctx.args[2]));
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
 		});
 	}
 };

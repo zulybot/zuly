@@ -14,7 +14,7 @@ module.exports = class MessageReactionAddEvent {
 				await global.zuly.executeWebhook(system.reactionRole.id, system.reactionRole.token, {
 					avatarURL: global.zuly.user.avatarURL,
 					username: global.zuly.user.username,
-					content: `> 💼 **ReactionRole** | O Usuário \`${member.user.username}#${member.user.discriminator} (${member.user.id})\` ganhou o cargo de id \`${rr}\` no servidor \`${message.channel.guild.name}\` através do sistema de reactionrole.`
+					content: `> 💼 **ReactionRole** | O Usuário \`${member.user.username}#${member.user.discriminator} (${member.user.id})\` ganhou o cargo de id \`${rr}\` no servidor \`${message.guild.name}\` através do sistema de reactionrole.`
 				});
 			});
 		}

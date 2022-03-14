@@ -52,15 +52,15 @@ module.exports = class BaninfoCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
-		if (!ctx.message.mentions[0]) {
-			member = await global.zuly.getRESTUser(ctx.args[0]).then(info => info);
+		if (!ctx.messages[0]) {
+			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info);
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.messages[0];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');
@@ -69,7 +69,7 @@ module.exports = class BaninfoCommand {
 		}
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		const banInfo = await ctx.message.channel.guild.getBan(member.id);
+		const banInfo = await ctx.message.guild.getBan(member.id);
 		const embed = new global.zuly.manager.Ebl();
 		embed.setTitle(`<:zu_certifiedmod:885193463111483412> BanInfo • ${member.username}#${member.discriminator}`);
 		embed.setColor('#ffcbdb');
@@ -78,7 +78,7 @@ module.exports = class BaninfoCommand {
 		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.avatarURL);
 		embed.setThumbnail(member.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		}).then(message => {
 			message.addReaction('🐹');
@@ -92,8 +92,8 @@ module.exports = class BaninfoCommand {
 				stopOnCollect: true
 			});
 			collector.on('collect', async () => {
-				await ctx.message.channel.guild.unbanMember(member.id, motivo);
-				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
+				await ctx.message.guild.unbanMember(member.id, motivo);
+				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
 			});
 		});
 	}

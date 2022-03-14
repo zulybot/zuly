@@ -49,7 +49,7 @@ module.exports = class CalcCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.calc.ex.replace('%p', ctx.prefix)}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.calc.ex.replace('%p', ctx.prefix)}`
 			});
 		}
 		const math = require('math-expression-evaluator');
@@ -58,10 +58,10 @@ module.exports = class CalcCommand {
 			val = math.eval(ctx.args.join(' '));
 		}
 		catch (err) {
-			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.calc.inv}`);
+			return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** ${ctx.idioma.calc.inv}`);
 		}
 		ctx.message.channel.slashReply({
-			content: `<:zu_calc:880851703442833408> ${ctx.message.author.mention} **|** ${ctx.idioma.calc.res}: \`${val}\``
+			content: `<:zu_calc:880851703442833408> ${ctx.message.author} **|** ${ctx.idioma.calc.res}: \`${val}\``
 		});
 	}
 };

@@ -40,7 +40,7 @@ module.exports = class TicketCommand {
 
 	async run (ctx) {
 		ctx.message.channel.slashReply({
-			content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.ticket.sus}`,
+			content: `✅ ${ctx.message.author} **|** ${ctx.idioma.ticket.sus}`,
 			flags: ctx.ephemeral
 		});
 		global.zuly.createMessage(ctx.message.channel.id, { embed:{

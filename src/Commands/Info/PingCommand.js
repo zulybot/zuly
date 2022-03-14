@@ -70,7 +70,7 @@ module.exports = class PingCommand {
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed.get()]
 			});
 		}
@@ -82,7 +82,7 @@ module.exports = class PingCommand {
 				mongoose.connection.db.admin().ping(() => r(Date.now() - date))
 			);
 			return ctx.message.channel.slashReply({
-				content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
+				content: `🏓 **|** ${ctx.message.author} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
 			});
 		}
 	}

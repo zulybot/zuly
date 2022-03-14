@@ -50,7 +50,7 @@ module.exports = class Ajuda {
 	}
 
 	async run (ctx) {
-		let idioma = await global.zuly.db.get(`idioma-${ctx.message.guildID}`) || 'pt-br';
+		let idioma = await global.zuly.db.get(`idioma-${ctx.message.guild.id}`) || 'pt-br';
 		require('colors');
 		const devs = [];
 
@@ -60,7 +60,7 @@ module.exports = class Ajuda {
 
 		const desenvolvedores = await global.zuly.db.get('devs');
 		for (const desenvolvedor of desenvolvedores) {
-			const dev = await global.zuly.getRESTUser(desenvolvedor);
+			const dev = await global.zuly.users.fetch(desenvolvedor);
 			devs.push(dev.username);
 		}
 
@@ -74,7 +74,7 @@ module.exports = class Ajuda {
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
 
-					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** Esse comando não existe`);
 					const help = new ctx.embed();
 					help.setTitle('<:zu_info:880812942713573396> ' + `Informações do comando: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.addField('📚 Descrição:', `\`${cmd.pt.desc}\``, false);
@@ -86,7 +86,7 @@ module.exports = class Ajuda {
 					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
 					return ctx.message.channel.slashReply({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [help.get()],
 						components: [
 							{
@@ -94,19 +94,19 @@ module.exports = class Ajuda {
 								components: [
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.support}`,
+										label: `${ctx.idioma.labels.support}`,
 										style: 5,
 										url: 'https://discord.gg/pyyyJpw5QW'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.invite}`,
+										label: `${ctx.idioma.labels.invite}`,
 										style: 5,
 										url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.website}`,
+										label: `${ctx.idioma.labels.website}`,
 										style: 5,
 										url: 'https://zulybot.xyz/'
 									}
@@ -144,7 +144,7 @@ module.exports = class Ajuda {
 					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
 				}
 				ctx.message.channel.slashReply({
-					content: ctx.message.author.mention,
+					content: ctx.message.author,
 					embeds: [embed.get()],
 					components: [
 						{
@@ -152,19 +152,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.support}`,
+									label: `${ctx.idioma.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.invite}`,
+									label: `${ctx.idioma.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.website}`,
+									label: `${ctx.idioma.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}
@@ -178,7 +178,7 @@ module.exports = class Ajuda {
 			case 'fr-fr':
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
-					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Esse comando não existe`);
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** Esse comando não existe`);
 					const help = new ctx.embed();
 					help.setTitle('<:zu_info:880812942713573396> ' + `Infos commande: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.addField('📚 La description:', `\`${cmd.fr.desc}\``, false);
@@ -189,7 +189,7 @@ module.exports = class Ajuda {
 					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
 					return ctx.message.channel.slashReply({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [help.get()],
 						components: [
 							{
@@ -197,19 +197,19 @@ module.exports = class Ajuda {
 								components: [
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.support}`,
+										label: `${ctx.idioma.labels.support}`,
 										style: 5,
 										url: 'https://discord.gg/pyyyJpw5QW'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.invite}`,
+										label: `${ctx.idioma.labels.invite}`,
 										style: 5,
 										url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.mention.labels.website}`,
+										label: `${ctx.idioma.labels.website}`,
 										style: 5,
 										url: 'https://zulybot.xyz/'
 									}
@@ -247,7 +247,7 @@ module.exports = class Ajuda {
 					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.avatarURL);
 				}
 				ctx.message.channel.slashReply({
-					content: ctx.message.author.mention,
+					content: ctx.message.author,
 					embeds: [embed.get()],
 					components: [
 						{
@@ -255,19 +255,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.support}`,
+									label: `${ctx.idioma.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.invite}`,
+									label: `${ctx.idioma.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.website}`,
+									label: `${ctx.idioma.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}
@@ -281,7 +281,7 @@ module.exports = class Ajuda {
 				if (ctx.args[0]) {
 					const cmd = await global.zuly.commands.get(ctx.args[0]) || global.zuly.commands.find(cmd => cmd.aliases.includes(ctx.args[0]));
 
-					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** This command does not exist`);
+					if (!cmd) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** This command does not exist`);
 					const help = new ctx.embed();
 					help.setTitle('<:zu_info:880812942713573396> ' + `Command information: \`${ctx.prefix}${cmd.pt.nome.toLowerCase()}\``);
 					help.addField('📚 Description:', `\`${cmd.en.desc}\``, false);
@@ -293,7 +293,7 @@ module.exports = class Ajuda {
 					help.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 
 					return ctx.message.channel.slashReply({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [help.get()],
 						flags: ctx.ephemeral
 					});
@@ -326,7 +326,7 @@ module.exports = class Ajuda {
 					embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.avatarURL);
 				}
 				ctx.message.channel.slashReply({
-					content: ctx.message.author.mention,
+					content: ctx.message.author,
 					embeds: [embed.get()],
 					components: [
 						{
@@ -334,19 +334,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.support}`,
+									label: `${ctx.idioma.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.invite}`,
+									label: `${ctx.idioma.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.mention.labels.website}`,
+									label: `${ctx.idioma.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}

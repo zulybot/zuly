@@ -53,7 +53,7 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const banner = await global.zuly.getRESTBanner(user.id);
 		if (banner.startsWith('https://singlecolorimage.com/')) {
 			const hex = banner.replace('https://singlecolorimage.com/get/', '').replace('/600x240', '');
@@ -65,7 +65,7 @@ module.exports = class CalcCommand {
 			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed.get()]
 			});
 		}
@@ -78,7 +78,7 @@ module.exports = class CalcCommand {
 			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed.get()]
 			});
 		}

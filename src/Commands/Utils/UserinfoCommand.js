@@ -81,7 +81,7 @@ module.exports = class CalcCommand {
 			}
 			return badges;
 		}
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
 		const userb = await global.zuly.getRESTBanner(user.id);
@@ -99,7 +99,7 @@ module.exports = class CalcCommand {
 		embed.setImage(userb);
 
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		}).catch((e) => {
 			console.log(e);
@@ -118,7 +118,7 @@ module.exports = class CalcCommand {
 			embed2.setThumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
 			embed2.setImage(userb);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed2.get()]
 			}).catch((e) => {
 				console.log(e);

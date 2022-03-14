@@ -6,13 +6,12 @@ module.exports = class MessageCreateEvent {
 		};
 	}
 	async run (message) {
-		message.client = global.zuly;
 		const config = require('../Config/config.js');
 
 		if (message.channel.type === 1) return;
 
 		let idioma = require('../Config/idiomas');
-		let lang = await global.zuly.db.get(`idioma-${message.guildID}`) || 'pt_br';
+		let lang = await global.zuly.db.get(`idioma-${message.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 
@@ -28,7 +27,7 @@ module.exports = class MessageCreateEvent {
 			for (const domain of domains) {
 				if (message.content.includes(domain)) {
 					if (message.content.includes('twitch.tv') || message.content.includes('discord.gift')) return;
-					message.channel.createMessage(`:x: ${message.author.mention} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`).then((msg) => {
+					message.channel.createMessage(`:x: ${message.author} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`).then((msg) => {
 						setTimeout(() => {
 							msg.delete();
 						}, 3000);
@@ -39,19 +38,19 @@ module.exports = class MessageCreateEvent {
 			}
 		});
 
-		const mensagens = await global.zuly.db.get(`messages-${message.guildID}-${message.author.id}`);
-		await global.zuly.db.set(`messages-${message.guildID}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
+		const mensagens = await global.zuly.db.get(`messages-${message.guild.id}-${message.author.id}`);
+		await global.zuly.db.set(`messages-${message.guild.id}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
 
 		if (message.author.bot) return;
 
 		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setAuthor(global.zuly.user.username, '', global.zuly.user.avatarURL);
-			embed.setDescription(`👋 ${idioma.mention.hello.replace('%user', message.author.mention)}\n> <:zu_info:911303533859590144> ${idioma.mention.about}\n> <:zu_slash:886681118470987967> ${idioma.mention.help}`);
+			embed.setDescription(`👋 ${idioma.hello.replace('%user', message.author)}\n> <:zu_info:911303533859590144> ${idioma.about}\n> <:zu_slash:886681118470987967> ${idioma.help}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			message.channel.createMessage({
-				content: message.author.mention,
+				content: message.author,
 				embeds: [embed.get()],
 				components: [
 					{
@@ -59,19 +58,19 @@ module.exports = class MessageCreateEvent {
 						components: [
 							{
 								type: 2,
-								label: `${idioma.mention.labels.support}`,
+								label: `${idioma.labels.support}`,
 								style: 5,
 								url: 'https://discord.gg/pyyyJpw5QW'
 							},
 							{
 								type: 2,
-								label: `${idioma.mention.labels.invite}`,
+								label: `${idioma.labels.invite}`,
 								style: 5,
 								url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 							},
 							{
 								type: 2,
-								label: `${idioma.mention.labels.website}`,
+								label: `${idioma.labels.website}`,
 								style: 5,
 								url: 'https://zulybot.xyz/'
 							}
@@ -93,12 +92,12 @@ module.exports = class MessageCreateEvent {
 		if (!command || command) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
-			embed.setDescription(`${message.author.mention}, ${idioma.slash}`);
+			embed.setDescription(`${message.author}, ${idioma.slash}`);
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(global.zuly.user.avatarURL);
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 			message.channel.createMessage({
-				content: message.author.mention,
+				content: message.author,
 				embeds: [embed.get()]
 			});
 		}

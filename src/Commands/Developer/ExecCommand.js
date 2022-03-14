@@ -51,26 +51,26 @@ module.exports = class ExecCommand {
 		const code = ctx.args[0];
 		if (!code) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será executado!`,
+				content: `:x: ${ctx.message.author} **|** Insira o código que será executado!`,
 				flags: ctx.ephemeral
 			});
 		}
 		else {
 			ctx.message.channel.slashReply({
-				content: `:white_check_mark: ${ctx.message.author.mention} **|** Executando...`,
+				content: `:white_check_mark: ${ctx.message.author} **|** Executando...`,
 				flags: ctx.ephemeral
 			});
 			try {
 				exec(code, (_erro, val) => {
 					ctx.message.createFollowup({
-						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${val}`,
+						content: `:white_check_mark: ${ctx.message.author} **|** ${val}`,
 						flags: ctx.ephemeral
 					});
 				});
 			  }
 			catch (err) {
 				ctx.message.createFollowup({
-					content: `:x: ${ctx.message.author.mention} **|** ${err}`,
+					content: `:x: ${ctx.message.author} **|** ${err}`,
 					flags: ctx.ephemeral
 				});
 			  }

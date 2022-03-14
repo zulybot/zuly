@@ -93,7 +93,7 @@ async function getBugHunter (user) {
 }
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');
-	const user = await global.zuly.getRESTUser(id);
+	const user = await global.zuly.users.fetch(id);
 
 	let hexString;
 	let userBanner;

@@ -4,8 +4,8 @@ module.exports = class {
 		this.client = e, this.Ebl = require('./EmbedBuilder').Embed, this.Button = require('./ButtonBuilder');
 	}
 
-	async iniciar () {
-		return await this.client.connect(), 'zulybot';
+	async iniciar (token) {
+		return await this.client.login(token), 'zulybot';
 	}
 
 	async reload () {

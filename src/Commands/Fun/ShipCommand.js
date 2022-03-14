@@ -42,11 +42,11 @@ module.exports = class ShipCommand {
 	async run (ctx) {
 		let porcentagem;
 		let user1 = ctx.message.author;
-		let user2 = ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]);
+		let user2 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]);
 
 		if (ctx.args[1]) {
-			user1 = ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]);
-			user2 = ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[1]);
+			user1 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]);
+			user2 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[1]);
 		}
 
 		if (!user2) {
@@ -101,7 +101,7 @@ module.exports = class ShipCommand {
 		foto.font = '300px Lemon-Brownies';
 		foto.fillText(`${nome}`, 2000, 2000);
 
-		ctx.message.channel.slashReply(`💖 ${ctx.message.author.mention} 💖`, {
+		ctx.message.channel.slashReply(`💖 ${ctx.message.author} 💖`, {
 			file: edit.toBuffer(),
 			name: 'ship.png'
 		}).then(async () => {

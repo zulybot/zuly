@@ -7,7 +7,7 @@ module.exports = class MessageReactionRemoveEvent {
 	}
 	async run (message, emoji, user) {
 		const system = require('../Config/system.js');
-		const member = await message.channel.guild.getRESTMember(user);
+		const member = await message.guild.getRESTMember(user);
 		if (member.bot) return;
 		const rr = await global.zuly.db.get(`reaction-${emoji.name}-${message.id}`);
 		if (rr) {
@@ -15,7 +15,7 @@ module.exports = class MessageReactionRemoveEvent {
 				await global.zuly.executeWebhook(system.reactionRole.id, system.reactionRole.token, {
 					avatarURL: global.zuly.user.avatarURL,
 					username: global.zuly.user.username,
-					content: `> 💼 **ReactionRole** | O Usuário \`${member.user.username}#${member.user.discriminator} (${member.user.id})\` perdeu o cargo de id \`${rr}\` no servidor \`${message.channel.guild.name}\` através do sistema de reactionrole.`
+					content: `> 💼 **ReactionRole** | O Usuário \`${member.user.username}#${member.user.discriminator} (${member.user.id})\` perdeu o cargo de id \`${rr}\` no servidor \`${message.guild.name}\` através do sistema de reactionrole.`
 				});
 			});
 		}

@@ -48,7 +48,7 @@ module.exports = class InviteCommand {
 		embed.setThumbnail(global.zuly.user.avatarURL);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		});
 	}

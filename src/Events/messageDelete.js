@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 module.exports = class MessageDeleteEvent {
 	constructor () {
 		return {
@@ -6,13 +7,14 @@ module.exports = class MessageDeleteEvent {
 		};
 	}
 	async run (newMessage) {
-		const channelDB = await global.zuly.db.get(`logs-${newMessage.guildID}`) || '927209681754132530';
+		/*
+		const channelDB = await global.zuly.db.get(`logs-${newmessage.guild.id}`) || '927209681754132530';
 		const channel = await global.zuly.getRESTChannel(channelDB);
 		if (newMessage.author.bot) return;
 		if (newMessage.author.id === global.zuly.user.id) return;
 
 		let idioma = require('../Config/idiomas');
-		let lang = await global.zuly.db.get(`idioma-${newMessage.guildID}`) || 'pt_br';
+		let lang = await global.zuly.db.get(`idioma-${newmessage.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 
@@ -40,5 +42,6 @@ module.exports = class MessageDeleteEvent {
 				}
 			]
 		});
+		*/
 	}
 };

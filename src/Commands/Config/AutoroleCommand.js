@@ -46,8 +46,8 @@ module.exports = class AutoroleCommand {
 			const ReactionCollector = require('../../Helpers/ReactionCollector');
 			const MessageCollector = require('../../Helpers/MessageCollector');
 			// PUXANDO O AUTOROLE
-			const autoroleuser = await global.zuly.db.get(`autoroleuser-${ctx.message.guildID}`);
-			const autorolebot = await global.zuly.db.get(`autorolebot-${ctx.message.guildID}`);
+			const autoroleuser = await global.zuly.db.get(`autoroleuser-${ctx.message.guild.id}`);
+			const autorolebot = await global.zuly.db.get(`autorolebot-${ctx.message.guild.id}`);
 			// CRIANDO A EMBED
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
@@ -75,7 +75,7 @@ module.exports = class AutoroleCommand {
 			embed.setColor('#ffcbdb');
 			// CRIANDO OS NEGOCIO
 			ctx.message.createMessage({
-				content: ctx.message.author.mention,
+				content: ctx.message.author,
 				embeds: [embed.get()]
 			}).then(msg => {
 				// ADICIONANDO REAÇÕES
@@ -117,7 +117,7 @@ module.exports = class AutoroleCommand {
 					msg.delete();
 					// INICIANDO COLETOR
 					ctx.message.createMessage({
-						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`
+						content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.bot}`
 					}).then(m => {
 						const mcol = new MessageCollector(m.channel, {
 							user: ctx.message.author,
@@ -134,24 +134,24 @@ module.exports = class AutoroleCommand {
 							// EMBED DE AUTOROLE-BOT
 							const embed2 = new global.zuly.manager.Ebl();
 							embed2.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-							embed2.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+							embed2.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
 							embed2.setColor('#ffcbdb');
 							// ENVIANDO A EMBED E CRIANDO AS COISAS
 							ctx.message.createMessage({
-								content: ctx.message.author.mention,
+								content: ctx.message.author,
 								embeds: [embed2.get()]
 							});
 							if (!autorolebot) {
-								await global.zuly.db.set(`autorolebot-${ctx.message.guildID}`, []);
+								await global.zuly.db.set(`autorolebot-${ctx.message.guild.id}`, []);
 								addrole.map(async auto => {
-									await global.zuly.db.push(`autorolebot-${ctx.message.guildID}`, auto);
+									await global.zuly.db.push(`autorolebot-${ctx.message.guild.id}`, auto);
 								});
 							}
 							else {
-								await global.zuly.db.del(`autorolebot-${ctx.message.guildID}`);
-								await global.zuly.db.set(`autorolebot-${ctx.message.guildID}`, []);
+								await global.zuly.db.del(`autorolebot-${ctx.message.guild.id}`);
+								await global.zuly.db.set(`autorolebot-${ctx.message.guild.id}`, []);
 								addrole.map(async auto => {
-									await global.zuly.db.push(`autorolebot-${ctx.message.guildID}`, auto);
+									await global.zuly.db.push(`autorolebot-${ctx.message.guild.id}`, auto);
 								});
 							}
 							// DELETANDO PARA DEIXAR O CHAT LIMPO OK?
@@ -164,7 +164,7 @@ module.exports = class AutoroleCommand {
 					msg.delete();
 					// INICIANDO COLETOR
 					ctx.message.createMessage({
-						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.user}`
+						content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.user}`
 					}).then(m => {
 						const mcol = new MessageCollector(m.channel, {
 							user: ctx.message.author,
@@ -181,24 +181,24 @@ module.exports = class AutoroleCommand {
 							// EMBED DE AUTOROLE-USER
 							const embed3 = new global.zuly.manager.Ebl();
 							embed3.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-							embed3.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+							embed3.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
 							embed3.setColor('#ffcbdb');
 							// ENVIANDO A EMBED E CRIANDO AS COISAS
 							ctx.message.createMessage({
-								content: ctx.message.author.mention,
+								content: ctx.message.author,
 								embeds: [embed3.get()]
 							});
 							if (!autoroleuser) {
-								await global.zuly.db.set(`autoroleuser-${ctx.message.guildID}`, []);
+								await global.zuly.db.set(`autoroleuser-${ctx.message.guild.id}`, []);
 								addrole.map(async auto => {
-									await global.zuly.db.push(`autoroleuser-${ctx.message.guildID}`, auto);
+									await global.zuly.db.push(`autoroleuser-${ctx.message.guild.id}`, auto);
 								});
 							}
 							else {
-								await global.zuly.db.del(`autoroleuser-${ctx.message.guildID}`);
-								await global.zuly.db.set(`autoroleuser-${ctx.message.guildID}`, []);
+								await global.zuly.db.del(`autoroleuser-${ctx.message.guild.id}`);
+								await global.zuly.db.set(`autoroleuser-${ctx.message.guild.id}`, []);
 								addrole.map(async auto => {
-									await global.zuly.db.push(`autoroleuser-${ctx.message.guildID}`, auto);
+									await global.zuly.db.push(`autoroleuser-${ctx.message.guild.id}`, auto);
 								});
 							}
 							// DELETANDO PARA DEIXAR O CHAT LIMPO OK?
@@ -208,15 +208,15 @@ module.exports = class AutoroleCommand {
 				});
 				// CASO O USER DELETE O AUTOROLE
 				del.on('collect', async () => {
-					await global.zuly.db.del(`autoroleuser-${ctx.message.guildID}`);
-					await global.zuly.db.del(`autorolebot-${ctx.message.guildID}`);
+					await global.zuly.db.del(`autoroleuser-${ctx.message.guild.id}`);
+					await global.zuly.db.del(`autorolebot-${ctx.message.guild.id}`);
 					// EMBED DE AUTOROLE-DELETED
 					const delb = new global.zuly.manager.Ebl();
 					delb.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-					delb.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.disabled}`);
+					delb.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.disabled}`);
 					delb.setColor('#ffcbdb');
 					return ctx.message.createMessage({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [delb.get()]
 					}).then(() => {
 						msg.delete();

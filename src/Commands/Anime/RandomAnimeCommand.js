@@ -92,7 +92,7 @@ module.exports = class RandomAnimeCommand {
 					embed.setThumbnail(anime.attributes.posterImage.large);
 					embed.setFooter('⤷ zulybot.xyz');
 					ctx.message.channel.slashReply({
-						content: ctx.message.author.mention,
+						content: ctx.message.author,
 						embeds: [embed.get()]
 					});
 				});

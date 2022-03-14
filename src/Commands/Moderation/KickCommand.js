@@ -62,15 +62,15 @@ module.exports = class KickCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
-		if (!ctx.message.mentions[0]) {
-			member = await global.zuly.getRESTUser(ctx.args[0]);
+		if (!ctx.messages[0]) {
+			member = await global.zuly.users.fetch(ctx.args[0]);
 		}
 		else {
-			member = await ctx.message.mentions[0];
+			member = await ctx.messages[0];
 		}
 		let banReason;
 		if (ctx.args[1]) {
@@ -79,7 +79,7 @@ module.exports = class KickCommand {
 		else {
 			banReason = ctx.idioma.ban.mot;
 		}
-		ctx.message.channel.guild.kickMember(member.id, `${ctx.idioma.ban.mot2} ${ctx.message.author.tag} - ${ctx.idioma.ban.mot3} ${banReason}`);
+		ctx.message.guild.kickMember(member.id, `${ctx.idioma.ban.mot2} ${ctx.message.author.tag} - ${ctx.idioma.ban.mot3} ${banReason}`);
 	}
 };
 

@@ -58,7 +58,7 @@ module.exports = class MrincredibleCommand {
 		const canvas = createCanvas(vasco.width, vasco.height);
 		const foto = canvas.getContext('2d');
 
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		const avatar = await loadImage(user.avatarURL);
 
 		foto.drawImage(avatar, 460, 250, 150, 160);
@@ -88,7 +88,7 @@ module.exports = class MrincredibleCommand {
 			foto.fillText('vivu', 390, 120);
 		}
 
-		ctx.message.channel.slashReply(ctx.message.author.mention, {
+		ctx.message.channel.slashReply(ctx.message.author, {
 			file: canvas.toBuffer(),
 			name: 'vasco.png'
 		});

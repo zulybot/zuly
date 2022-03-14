@@ -66,7 +66,7 @@ module.exports = class MrincredibleCommand {
 		foto.fillText(ctx.args[0].match(/.{1,23}/g).join('\n'), canvas.width / 50.9, canvas.height / 15.9, 655);
 		foto.fillText(ctx.args[1].match(/.{1,23}/g).join('\n'), canvas.width / 1.9, canvas.height / 15.9, 655);
 
-		ctx.message.channel.slashReply(ctx.message.author.mention, {
+		ctx.message.channel.slashReply(ctx.message.author, {
 			file: canvas.toBuffer(),
 			name: 'incriveis.png'
 		});

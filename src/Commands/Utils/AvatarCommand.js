@@ -53,7 +53,7 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 
 		const embed = new ctx.embed();
 		embed.setTitle(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);
@@ -63,7 +63,7 @@ module.exports = class CalcCommand {
 		embed.setThumbnail(global.zuly.avatarURL);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		});
 	}

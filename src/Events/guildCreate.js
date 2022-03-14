@@ -8,21 +8,21 @@ module.exports = class GuildCreateEvent {
 	async run (guild) {
 		const config = require('../Config/config');
 
-		const totalUsers = global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
+		const totalUsers = global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
 
 		const system = require('../Config/system');
 		const ch = await global.zuly.getRESTChannel('880863493472022539');
 		const ch2 = await global.zuly.getRESTChannel('902632703160094752');
 
 		ch.edit({
-			name: `🧭 → Servers [${global.zuly.guilds.size}]`
+			name: `🧭 → Servers [${global.zuly.guilds.cache.size}]`
 		});
 		ch2.edit({
 			name: `👤 → Users [${totalUsers.toLocaleString().replace('.', ',')}]`
 		});
 
 		const moment = require('moment');
-		const owner = await global.zuly.getRESTUser(guild.ownerID);
+		const owner = await global.zuly.users.fetch(guild.ownerID);
 
 		if (guild.preferredLocale !== 'pt-BR') {
 			await global.zuly.db.set(`idioma-${guild.id}`, 'en-us');

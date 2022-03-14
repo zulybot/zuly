@@ -54,9 +54,9 @@ module.exports = class PingCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
 		let valor;
-		const mensagens = await global.zuly.db.get(`messages-${ctx.message.guildID}-${user.id}`);
+		const mensagens = await global.zuly.db.get(`messages-${ctx.message.guild.id}-${user.id}`);
 		if (mensagens) {
 			valor = mensagens;
 		}
@@ -68,7 +68,7 @@ module.exports = class PingCommand {
 		embed.setColor('#ffcbdb');
 		embed.setDescription(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		});
 	}

@@ -9,7 +9,7 @@ module.exports = (app) => {
 			res.sendStatus(200);
 			const data = req.body;
 			const ch = await global.zuly.getRESTChannel('890316877031698464');
-			const user = await global.zuly.getRESTUser(data.user);
+			const user = await global.zuly.users.fetch(data.user);
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);
 			embed.setUrl('https://top.gg/bot/880173509077266483');
@@ -37,7 +37,7 @@ module.exports = (app) => {
 			embed2.setThumbnail(global.zuly.user.avatarURL);
 			const dm = await global.zuly.getDMChannel(user.id);
 			dm.createMessage({
-				content: user.mention,
+				content: user,
 				embeds: [embed2.get()]
 			}).catch(() => {
 				console.log('DM Fechada');

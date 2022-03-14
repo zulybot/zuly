@@ -52,12 +52,12 @@ module.exports = class DailyCommand {
 		if (daily !== null && timeout - (Date.now() - daily) > 0) {
 			const tt = moment(timeout - (Date.now() - daily)).format('HH:mm:ss');
 			ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.jacoletou} **${tt}**`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.economy.jacoletou} **${tt}**`
 			});
 		}
 		else {
 			ctx.message.channel.slashReply({
-				content: `💸 ${ctx.message.author.mention} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`
+				content: `💸 ${ctx.message.author} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`
 			});
 			const money = global.zuly.db.get(`ryos-${ctx.message.author.id}`);
 			if (money) {

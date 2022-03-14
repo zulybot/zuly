@@ -47,7 +47,7 @@ module.exports = class EvalCommand {
 			registerFont
 		  } = require('canvas');
 		  const { fillTextWithTwemoji } = require('node-canvas-with-twemoji-and-discord-emoji');
-		  const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		  const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		  const back = await global.zuly.db.get(`background-${user.id}`) || './assets/images/backgrounds/default.jpg';
 		  registerFont('./assets/fonts/Dunkin.otf', {
 			family: 'Dunkin'
@@ -90,7 +90,7 @@ module.exports = class EvalCommand {
 		  await fillTextWithTwemoji(foto, `${user.username.toUpperCase()}#${user.discriminator}`, canvas.width / 2.5, canvas.height / 6.5);
 		  foto.font = '17px Dunkin';
 		  await fillTextWithTwemoji(foto, about.match(/.{1,65}/g).join('\n'), canvas.width / 28, canvas.height / 1.17);
-		  ctx.message.channel.slashReply(ctx.message.author.mention, {
+		  ctx.message.channel.slashReply(ctx.message.author, {
 			file: canvas.toBuffer(),
 			name: 'profile.png'
 		  });

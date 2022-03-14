@@ -54,7 +54,7 @@ module.exports = class PrintCommand {
 		embed.setImage(`https://image.thum.io/get/maxAge/12/width/700/crop/900/${encodeURIComponent(ctx.args[0])}`);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()],
 			flags: ctx.ephemeral
 		});

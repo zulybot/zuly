@@ -2,7 +2,7 @@ require('colors');
 const {
 	Client,
 	Collection
-} = require('eris');
+} = require('discord.js');
 
 const {
 	AutoPoster
@@ -16,40 +16,19 @@ const {
 	top
 } = require('./API/keys');
 
-const {
-	GiveawaysManager
-} = require('eris-giveaways');
-
-const client = new Client(token, {
-	restMode: true,
-	autoReconnect: true,
+const client = new Client({
+	restTimeOffset: 1,
 	defaultImageFormat: 'png',
 	defaultImageSize: 4096,
 	intents: [
-		'guilds',
-		'guildBans',
-		'guildMembers',
-		'guildMessages',
-		'guildVoiceStates',
-		'guildMessageReactions',
-		'directMessages'
-	],
-	rest: {
-		baseURL: '/api/v9',
-		domain: 'canary.discord.com',
-		latencyThreshold: 40000
-	},
-});
-
-client.giveawaysManager = new GiveawaysManager(client, {
-	storage: './src/db/giveaways.json',
-	updateCountdownEvery: 5000,
-	default: {
-		botsCanWin: false,
-		embedColor: 0xFFCBDB,
-		embedColorEnd: 0xFFCBDB,
-		reaction: '🎁'
-	}
+		'GUILDS',
+		'GUILD_BANS',
+		'GUILD_MEMBERS',
+		'GUILD_MESSAGES',
+		'GUILD_VOICE_STATES',
+		'GUILD_MESSAGE_REACTIONS',
+		'DIRECT_MESSAGES'
+	]
 });
 
 client.commands = new Collection();
@@ -59,7 +38,7 @@ client.aliases = new Collection();
 const Zuly = require('./Client/zulybot.js');
 const ZulyBot = new Zuly(client);
 
-ZulyBot.iniciar().then((zuly) => {
+ZulyBot.iniciar(token).then((zuly) => {
 	console.log(`[CLIENT] ${zuly}, Tudo Carregado!`.brightMagenta);
 });
 

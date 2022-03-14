@@ -40,7 +40,7 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
 		const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`) || 0;
 		const embed = new ctx.embed();
 		embed.setTitle(`💰 Balance | ${global.zuly.user.username}`);
@@ -49,7 +49,7 @@ module.exports = class DailyCommand {
 		embed.setThumbnail(global.zuly.user.avatarURL);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		});
 	}

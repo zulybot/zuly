@@ -47,7 +47,7 @@ module.exports = class ExecCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.docs.args}`
+				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.docs.args}`
 			});
 		};
 		const { get } = require('axios');
@@ -61,7 +61,7 @@ module.exports = class ExecCommand {
 			if (!res.fields) {
 				embed.setDescription(`${res.description}`);
 				ctx.message.channel.slashReply({
-					content: ctx.message.author.mention,
+					content: ctx.message.author,
 					embeds: [embed.get()]
 				});
 			}
@@ -72,7 +72,7 @@ module.exports = class ExecCommand {
 					embed.addField(resu.name, resu.value);
 				});
 				ctx.message.channel.slashReply({
-					content: ctx.message.author.mention,
+					content: ctx.message.author,
 					embeds: [embed.get()]
 				});
 			}

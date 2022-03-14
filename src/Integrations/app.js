@@ -8,8 +8,8 @@ require('./SearcherBot')(app);
 require('./BotLists')(app);
 app.get('/api/status', async (req, res) => {
 	const { cluster } = require('../Config/config');
-	const guilds = global.zuly.guilds.size;
-	const users = await global.zuly.guilds.reduce((acc, guild) => acc + guild.memberCount, 0);
+	const guilds = global.zuly.guilds.cache.size;
+	const users = await global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
 	const mongoose = require('mongoose');
 	const date = Date.now();
 	const pingDB = new Promise((r) =>

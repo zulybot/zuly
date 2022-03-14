@@ -57,18 +57,18 @@ module.exports = class GuessCommand {
 			const number = Math.floor(Math.random() * 1500) + 500;
 			console.log(number);
 			ctx.message.channel.slashReply({
-				content: `⏰ ${ctx.message.author.mention} **|** ${ctx.idioma.guess.start.replace('%min', 500).replace('%max', 1500)}`
+				content: `⏰ ${ctx.message.author} **|** ${ctx.idioma.guess.start.replace('%min', 500).replace('%max', 1500)}`
 			});
 			setTimeout(() => {
 				ctx.message.channel.createMessage({
-					content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.guess.started}`
+					content: `✅ ${ctx.message.author} **|** ${ctx.idioma.guess.started}`
 				}).then(async msg => {
 					const dm = await ctx.message.author.getDMChannel();
 					dm.createMessage({
-						content: `👀 ${ctx.message.author.mention} **|** ${ctx.idioma.guess.number.replace('%num', number)}`
+						content: `👀 ${ctx.message.author} **|** ${ctx.idioma.guess.number.replace('%num', number)}`
 					}).catch(() => {
 						ctx.message.createFollowup({
-							content: `👀 ${ctx.message.author.mention} **|** ${ctx.idioma.guess.number.replace('%num', number)}`,
+							content: `👀 ${ctx.message.author} **|** ${ctx.idioma.guess.number.replace('%num', number)}`,
 							flags: ctx.ephemeral
 						});
 					});
@@ -80,10 +80,10 @@ module.exports = class GuessCommand {
 					});
 					collector.on('collect', async msg => {
 						ctx.message.channel.createMessage({
-							content: `✅ ${msg.author.mention} **|** ${ctx.idioma.guess.win.replace('%num', number)}`,
+							content: `✅ ${msg.author} **|** ${ctx.idioma.guess.win.replace('%num', number)}`,
 							messageReference: {
 								channelID: msg.channel.id,
-								guildID: msg.channel.guild.id,
+								guildID: msg.guild.id,
 								messageID: msg.id
 							}
 						}).then(() => {
@@ -97,18 +97,18 @@ module.exports = class GuessCommand {
 			const number = Math.floor(Math.random() * Number(ctx.args[1])) + Number(ctx.args[0]);
 			console.log(number);
 			ctx.message.channel.slashReply({
-				content: `⏰ ${ctx.message.author.mention} **|** ${ctx.idioma.guess.start.replace('%min', Number(ctx.args[0])).replace('%max', Number(ctx.args[1]))}`
+				content: `⏰ ${ctx.message.author} **|** ${ctx.idioma.guess.start.replace('%min', Number(ctx.args[0])).replace('%max', Number(ctx.args[1]))}`
 			});
 			setTimeout(() => {
 				ctx.message.channel.createMessage({
-					content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.guess.started}`
+					content: `✅ ${ctx.message.author} **|** ${ctx.idioma.guess.started}`
 				}).then(async msg => {
 					const dm = await ctx.message.author.getDMChannel();
 					dm.createMessage({
-						content: `👀 ${ctx.message.author.mention} **|** ${ctx.idioma.guess.number.replace('%num', number)}`
+						content: `👀 ${ctx.message.author} **|** ${ctx.idioma.guess.number.replace('%num', number)}`
 					}).catch(() => {
 						ctx.message.createFollowup({
-							content: `👀 ${ctx.message.author.mention} **|** ${ctx.idioma.guess.number.replace('%num', number)}`,
+							content: `👀 ${ctx.message.author} **|** ${ctx.idioma.guess.number.replace('%num', number)}`,
 							flags: ctx.ephemeral
 						});
 					});
@@ -120,10 +120,10 @@ module.exports = class GuessCommand {
 					});
 					collector.on('collect', async msg => {
 						ctx.message.channel.createMessage({
-							content: `✅ ${msg.author.mention} **|** ${ctx.idioma.guess.win.replace('%num', number)}`,
+							content: `✅ ${msg.author} **|** ${ctx.idioma.guess.win.replace('%num', number)}`,
 							messageReference: {
 								channelID: msg.channel.id,
-								guildID: msg.channel.guild.id,
+								guildID: msg.guild.id,
 								messageID: msg.id
 							}
 						}).then(() => {

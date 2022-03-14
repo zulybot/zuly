@@ -42,12 +42,12 @@ module.exports = class DailyCommand {
 	async run (ctx) {
 		const embed = new ctx.embed();
 		embed.setTitle(`${ctx.idioma.gender.title} | ${global.zuly.user.username}`);
-		embed.setDescription(ctx.idioma.gender.desc.replace('%u', ctx.message.author.mention));
+		embed.setDescription(ctx.idioma.gender.desc.replace('%u', ctx.message.author));
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
 		embed.setColor('#ffcbdb');
 		embed.setThumbnail(global.zuly.user.avatarURL);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: ctx.message.author,
 			embeds: [embed.get()]
 		}).then(async (msg) => {
 			const { ReactionCollector } = require('eris-collector');
@@ -74,7 +74,7 @@ module.exports = class DailyCommand {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
 					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'male');
-					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.male)}`);
+					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.male)}`);
 					// End Collectors
 					MeninoColetor.stop();
 					MeninaColetor.stop();
@@ -85,7 +85,7 @@ module.exports = class DailyCommand {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
 					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'female');
-					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.female)}`);
+					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.gender.change.replace('%g', ctx.idioma.gender.female)}`);
 					// End Collectors
 					MeninoColetor.stop();
 					MeninaColetor.stop();
@@ -96,7 +96,7 @@ module.exports = class DailyCommand {
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
 					await global.zuly.db.set(`gender-${ctx.message.author.id}`, 'lgbt');
-					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.gender.change.replace('%g', 'lgbt')}`);
+					ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.gender.change.replace('%g', 'lgbt')}`);
 					// End Collectors
 					MeninoColetor.stop();
 					MeninaColetor.stop();
