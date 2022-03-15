@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  star:
+  zuly:
     runs-on: ${{ matrix.os }}
 
     strategy:
