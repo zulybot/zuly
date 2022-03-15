@@ -108,6 +108,12 @@ module.exports = {
 		channel: 'Canaliser:',
 		url: 'Lien:',
 		message: { title: 'Journaux des messages' },
+		bans: { title: 'Ban Logs' },
+		user: 'User:',
+		reason: 'Reason:',
+		mod: 'Moderator:',
+		bani: 'Banned',
+		unbani: 'Unbanned',
 		jump: 'Aller au message',
 		set: 'Chaîne définie sur `%c`'
 	},
