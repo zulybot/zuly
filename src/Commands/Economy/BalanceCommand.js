@@ -46,10 +46,10 @@ module.exports = class DailyCommand {
 		embed.setTitle(`💰 Balance | ${global.zuly.user.username}`);
 		embed.addField(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);
 		embed.setColor('#ffcbdb');
-		embed.setThumbnail(global.zuly.user.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

@@ -84,8 +84,8 @@ module.exports = class ShipCommand {
 		const edit = createCanvas(base.width, base.height);
 		const foto = edit.getContext('2d');
 
-		const avatar1 = user1.avatarURL;
-		const avatar2 = user2.avatarURL;
+		const avatar1 = user1displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+		const avatar2 = user2displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
 		const img1 = await loadImage(avatar1);
 		const img2 = await loadImage(avatar2);
@@ -101,7 +101,7 @@ module.exports = class ShipCommand {
 		foto.font = '300px Lemon-Brownies';
 		foto.fillText(`${nome}`, 2000, 2000);
 
-		ctx.message.channel.slashReply(`💖 ${ctx.message.author} 💖`, {
+		ctx.message.channel.slashReply(`💖 ${ctx.message.author.mention} 💖`, {
 			file: edit.toBuffer(),
 			name: 'ship.png'
 		}).then(async () => {

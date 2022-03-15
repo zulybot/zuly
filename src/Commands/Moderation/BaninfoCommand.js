@@ -2,8 +2,8 @@ module.exports = class BaninfoCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['banMembers'],
-				bot: ['banMembers'],
+				membro: ['BAN_MEMBERS'],
+				bot: ['BAN_MEMBERS'],
 				dono: false
 			},
 			pt: {
@@ -52,7 +52,7 @@ module.exports = class BaninfoCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
@@ -75,10 +75,10 @@ module.exports = class BaninfoCommand {
 		embed.setColor('#ffcbdb');
 		embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${member.username}#${member.discriminator} (${member.id})\`\`\``);
 		embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
-		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.avatarURL);
-		embed.setThumbnail(member.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setThumbnail(memberdisplayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).then(message => {
 			message.addReaction('🐹');
@@ -93,7 +93,7 @@ module.exports = class BaninfoCommand {
 			});
 			collector.on('collect', async () => {
 				await ctx.message.guild.unbanMember(member.id, motivo);
-				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
+				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
 			});
 		});
 	}

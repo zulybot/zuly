@@ -2,7 +2,7 @@ module.exports = class LangCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: []
 			},
 			pt: {
@@ -62,7 +62,7 @@ module.exports = class LangCommand {
 		const command = await global.zuly.commands.get(nome);
 		if (command) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.alreadyExists}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.alreadyExists}`
 			});
 		}
 		await global.zuly.requestHandler.request('POST', `/applications/${global.zuly.user.id}/guilds/${ctx.message.guild.id}/commands`, true, {
@@ -71,7 +71,7 @@ module.exports = class LangCommand {
 			description: `[🌀 » Custom] ${ctx.args[1] || 'No Description'}`,
 		});
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.customCommand}`.replace('%n', nome)
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.customCommand}`.replace('%n', nome)
 		}).then(async () => {
 			await global.zuly.db.set(`custom-command-${nome}-${ctx.message.guild.id}`, ctx.args[2]);
 		});

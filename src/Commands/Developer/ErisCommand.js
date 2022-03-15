@@ -47,7 +47,7 @@ module.exports = class ExecCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.docs.args}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.docs.args}`
 			});
 		};
 		const {
@@ -58,12 +58,12 @@ module.exports = class ExecCommand {
 			const embed = new ctx.embed();
 			embed.setTitle('<:zu_eris:904419966323933184> Eris Docs');
 			embed.setColor('#ffcbdb');
-			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			if (!res.embed.fields) {
 				embed.setDescription(`>>> 📘 ${res.embed.description}`);
 				ctx.message.channel.slashReply({
-					content: ctx.message.author,
+					content: ctx.message.author.mention,
 					embeds: [embed.get()]
 				});
 			}
@@ -73,7 +73,7 @@ module.exports = class ExecCommand {
 					embed.addField(resu.name, resu.value);
 				});
 				ctx.message.channel.slashReply({
-					content: ctx.message.author,
+					content: ctx.message.author.mention,
 					embeds: [embed.get()]
 				});
 			}

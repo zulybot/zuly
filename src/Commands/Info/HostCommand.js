@@ -46,10 +46,10 @@ module.exports = class HostCommand {
 		embed.addField('<:zu_database:880537804046762054> Database:', ctx.idioma.host.db);
 		embed.addField('💻 VPS:', ctx.idioma.host.vps);
 		embed.setColor('#ffcbdb');
-		embed.setThumbnail(global.zuly.user.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

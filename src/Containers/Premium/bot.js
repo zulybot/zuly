@@ -23,7 +23,7 @@ client.on('guildCreate', async (guild) => {
 		embed.setDescription(`Olá, aparentemente você adicionou minha versão premium em seu servidor **${guild.name}**, muito obrigado por seu apoio! Com sua ajuda podemos investir cada vez mais em nossos projetos!`);
 		embed.setColor('#ffcbdb');
 		embed.setImage('https://tenor.com/bqUXw.gif');
-		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		dm.createMessage({
 			embeds: [embed.get()]
 		});
@@ -35,7 +35,7 @@ client.on('guildCreate', async (guild) => {
 		embed.setDescription('Olá, aparentemente você adicionou minha versão premium, porém aparentemente você não é um usuário premium, infelizmente tive que sair de seu servidor! <:zu_lori_sob:909096109618647040>');
 		embed.setColor('#ffcbdb');
 		embed.setImage('https://tenor.com/bqUXw.gif');
-		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		dm.createMessage({
 			embeds: [embed.get()]
 		}).then(() => {

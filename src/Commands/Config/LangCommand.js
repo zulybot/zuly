@@ -2,7 +2,7 @@ module.exports = class LangCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: []
 			},
 			pt: {
@@ -64,7 +64,7 @@ module.exports = class LangCommand {
 
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', '))
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.insertLang}`.replace('%p', ctx.prefix).replace('%langs', langs.join(', '))
 			});
 		}
 
@@ -76,7 +76,7 @@ module.exports = class LangCommand {
 		});
 
 		if (langSelecionada == null) {
-			return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** ${ctx.idioma.multiLang.unknownLanguage}`.replace('%langs', '`' + langs.join(', ') + '`'));
+			return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.multiLang.unknownLanguage}`.replace('%langs', '`' + langs.join(', ') + '`'));
 		}
 		else {
 			switch (langSelecionada) {

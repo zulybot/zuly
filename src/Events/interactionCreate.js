@@ -7,11 +7,14 @@ module.exports = class InteractionEvent {
 		};
 	}
 	async run (interaction) {
+		const { WebhookClient } = require('discord.js');
 		if (!interaction.isCommand()) return;
 		await interaction.deferReply();
 		const blacklist = await global.zuly.db.get(`botban-${interaction.member.user.id}`);
 		if (blacklist) {
 			const msg = interaction;
+			msg.author = msg.user;
+			msg.author.mention = `<@${msg.author.id}>`;
 			let idioma = require('../Config/idiomas.js');
 			let lang = await global.zuly.db.get(`idioma-${msg.guild.id}`) || 'pt_br';
 			lang = lang.replace(/-/g, '_');
@@ -20,8 +23,8 @@ module.exports = class InteractionEvent {
 			embed.setTitle(`<:zu_banCat:933106129871966228> ${idioma.botban.title} | ${global.zuly.user.username}`);
 			embed.setDescription(`${idioma.botban.description.replace('%z', global.zuly.user.username).replace('%r', blacklist)}`);
 			embed.setColor('#ff0000');
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-			embed.setThumbnail(global.zuly.user.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			return interaction.createMessage({
 				content: `<@${interaction.member.user.id}>`,
 				embeds: [embed.get()]
@@ -55,6 +58,8 @@ module.exports = class InteractionEvent {
 			}
 
 			const msg = interaction;
+			msg.author = msg.user;
+			msg.author.mention = `<@${msg.author.id}>`;
 			let idioma = require('../Config/idiomas.js');
 			let lang = await global.zuly.db.get(`idioma-${msg.guild.id}`) || 'pt_br';
 			lang = lang.replace(/-/g, '_');
@@ -67,7 +72,7 @@ module.exports = class InteractionEvent {
 				if (command.permissoes.membro.length) {
 					if (!command.permissoes.membro.every(p => msg.member.permissions.has(p))) {
 						return msg.channel.slashReply({
-							content: `:x: ${msg.author} **|** ${idioma.message.user} \`${command.permissoes.membro}\`.`,
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.user} \`${command.permissoes.membro}\`.`,
 							flags: 64
 						});
 					}
@@ -75,7 +80,7 @@ module.exports = class InteractionEvent {
 				if (command.permissoes.bot.length) {
 					if (!command.permissoes.bot.every(p => msg.guild.me.permissionsIn(msg.channel).has(p) || msg.guild.me.permissions.has(p))) {
 						return msg.channel.slashReply({
-							content: `:x: ${msg.author} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`,
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`,
 							flags: 64
 						});
 					}
@@ -83,7 +88,7 @@ module.exports = class InteractionEvent {
 				if (command.permissoes.nsfw) {
 					if (!msg.channel.nsfw) {
 						return msg.channel.slashReply({
-							content: `:x: ${msg.author} **|** ${idioma.message.nsfw}`,
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`,
 							flags: 64
 						});
 					}
@@ -96,12 +101,13 @@ module.exports = class InteractionEvent {
 
 					if (!developers.includes(msg.member.id)) {
 						return msg.channel.slashReply({
-							content: `:x: ${msg.author} **|** ${idioma.message.dev}.`,
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}.`,
 							flags: 64
 						});
 					}
 				}
 			}
+
 			this.ctx = {
 				id: msg.id,
 				user: msg.author,
@@ -133,60 +139,66 @@ module.exports = class InteractionEvent {
 					const system = require('../Config/system');
 
 					const moment = require('moment');
-					const owner = await global.zuly.users.fetch(msg.guild.ownerID);
+
+					const ownerA = await msg.guild.fetchOwner();
+					const owner = ownerA.user;
 					const embed = new global.zuly.manager.Ebl();
 
 					embed.setTitle('<:zu_slash:886681118470987967> Slash Commands');
 					embed.setColor('#ffcbdb');
 					embed.setDescription(`>>> 🌎 **Servidor:** \`${msg.guild.name}\`\n🧭 **ID:** \`${msg.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.commandName}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
-					embed.addField('<:zu_membros:885214377182109696> **Usuário:**', `>>> 📘 **Informações:** \`${msg.author.username}#${msg.author.discriminator} [${msg.author.id}]\`\n📆 **Criação da conta:** <t:${Math.floor(msg.author.createdAt / 1000)}>`);
-					embed.setThumbnail(global.zuly.user.avatarURL);
-					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+					embed.addField('<:zu_membros:885214377182109696> **Usuário:**', `>>> 📘 **Informações:** \`${msg.author.username}#${msg.author.discriminator} [${msg.author.id}]\``);
+					embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
-					const { WebhookClient } = require('discord.js');
-					const hook = new WebhookClient(system.command.id, system.command.token);
+					const hook = new WebhookClient({
+						token: system.command.token,
+						id: system.command.id,
+					});
 
 					await hook.send({
-						avatarURL: global.zuly.user.avatarURL,
+						avatarURL: global.zuly.user.displayAvatarURL(),
 						username: global.zuly.user.username,
 						embeds: [embed.get()]
 					});
 				});
 			}
 			catch (e) {
+				console.log(e);
 				const system = require('../Config/system');
-				const { domain } = require('../Config/config');
-				const dominio = domain.replace('http://', '').replace('/', '');
 				const errorMessage = e.stack.length > 1800 ? `${e.stack.slice(0, 1800)}...` : e.stack;
 				const embed = new global.zuly.manager.Ebl();
 				embed.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
 				embed.setColor('#ff0000');
-				embed.setDescription(`\`\`\`js\n${errorMessage.replace(dominio, '127.0.0.1:3000')}\`\`\``);
+				embed.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
 				embed.addField(`<:zu_bughunter_1:885918998426951721> ${idioma.message.e2}`, idioma.message.e3);
-				embed.setThumbnail(global.zuly.user.avatarURL);
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
 				msg.channel.slashReply({
-					content: msg.author,
+					content: msg.author.mention,
 					embeds: [embed.get()]
 				});
 
 				const moment = require('moment');
-				const owner = await msg.guild.fetchOwner();
+				const ownerA = await msg.guild.fetchOwner();
+				const owner = ownerA.user;
 
 				const embed2 = new global.zuly.manager.Ebl();
 				embed2.setTitle(`<:zu_error:900785481283944500> ${idioma.message.e}`);
-				embed2.setDescription(`\`\`\`js\n${errorMessage.replace(dominio, '127.0.0.1:3000')}\`\`\``);
+				embed2.setDescription(`\`\`\`js\n${errorMessage}\`\`\``);
 				embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.guild.name}\`\n🧭 **ID:** \`${msg.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.commandName}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 				embed2.setColor('#ff0000');
-				embed2.setThumbnail(global.zuly.user.avatarURL);
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				embed2.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
-				const { WebhookClient } = require('discord.js');
-				const hook2 = new WebhookClient(system.error.id, system.error.token);
+				const hook2 = new WebhookClient({
+					id: system.error.id,
+					token: system.error.token
+				});
 
 				await hook2.send({
-					avatarURL: global.zuly.user.avatarURL,
+					avatarURL: global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }),
 					username: global.zuly.user.username,
 					content: '<@&886680759237226556>',
 					embeds: [embed2.get()]

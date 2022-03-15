@@ -49,20 +49,20 @@ module.exports = class ResgatarCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.economy.noarg.replace('%p', ctx.prefix)}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.noarg.replace('%p', ctx.prefix)}`
 			});
 		}
 		const codigo = ctx.args[0].toUpperCase();
 		const valor = await global.zuly.db.get(codigo);
 		if (!valor) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.economy.nocode}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.nocode}`
 			});
 		}
 		else {
 			const resgatado = await global.zuly.db.get(`${codigo}-${ctx.message.author.id}`);
 			if (resgatado) {
-				return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** ${ctx.idioma.economy.resgatado}`);
+				return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.resgatado}`);
 			}
 			else {
 				const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
@@ -77,10 +77,10 @@ module.exports = class ResgatarCommand {
 				embed.setTitle(`🎟️ Promocodes | ${global.zuly.user.username}`);
 				embed.setDescription(`> ${ctx.idioma.economy.sucesso.replace('%p', codigo).replace('%v', valor)}`);
 				embed.setColor('#ffcbdb');
-				embed.setThumbnail(global.zuly.user.avatarURL);
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				return ctx.message.channel.slashReply({
-					content: ctx.message.author,
+					content: ctx.message.author.mention,
 					embeds: [embed.get()]
 				});
 			}

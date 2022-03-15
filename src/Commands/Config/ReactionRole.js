@@ -2,8 +2,8 @@ module.exports = class ReactionRoleCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild', 'manageRoles'],
-				bot: ['manageRoles', 'useExternalEmojis', 'addReactions']
+				membro: ['MANAGE_GUILD', 'manageRoles'],
+				bot: ['manageRoles', 'useExternalEmojis', 'ADD_REACTIONS']
 			},
 			pt: {
 				nome: 'reactionrole',
@@ -65,12 +65,12 @@ module.exports = class ReactionRoleCommand {
 		const mensagem = await global.zuly.getMessage(ctx.message.channel.id, message_id);
 		if (!mensagem) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.reactionRole.invalidMessage.replace('%id%', message_id)}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.invalidMessage.replace('%id%', message_id)}`
 			});
 		}
 		else {
 			return ctx.message.channel.slashReply({
-				content: `✅ ${ctx.message.author} **|** ${ctx.idioma.reactionRole.sucess.replace('%id%', message_id)}`
+				content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.sucess.replace('%id%', message_id)}`
 			}).then(async () => {
 				await global.zuly.db.set(`reaction-${emojiName}-${message_id}`, role.id);
 				return mensagem.addReaction(ctx.args[2].replace(/<a:/g, '').replace(/>/g, '').replace(/<:/g, ''));

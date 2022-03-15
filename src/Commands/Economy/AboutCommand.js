@@ -49,12 +49,12 @@ module.exports = class DailyCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.sobre.nada}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.nada}`
 			});
 		}
 		global.zuly.db.set(`about-${ctx.message.author.id}`, ctx.args.join(' '));
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.sobre.alt.replace('%t', ctx.args.join(' ').replace(/`/g, ''))}`
 		});
 	}
 };

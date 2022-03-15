@@ -53,53 +53,50 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const { Constants: { UserFlags } } = require('eris');
-
-		const badgeEmojis = {
-			DISCORD_EMPLOYEE: '<:zu_staffdc:933096931197071380>',
-			DISCORD_PARTNER: '<:zu_partner:885196140042158170>',
-			HYPESQUAD_EVENTS: '<:zu_hypesquad:885919442117222400>',
-			BUG_HUNTER_LEVEL_1: '<:zu_bughunter_1:885918998426951721>',
-			HOUSE_BRAVERY: '<:zu_bravery:885918769422151750>',
-			HOUSE_BRILLIANCE: '<:zu_brilliance:885918816654213191>',
-			HOUSE_BALANCE: '<:zu_balance:885918786878836827>',
-			EARLY_SUPPORTER: '<:zu_supporter:885919070476705792>',
-			BUG_HUNTER_LEVEL_2: '<:zu_bughunter_2:885919018349920306>',
-			VERIFIED_BOT_DEVELOPER: '<:zu_developer:885918499380293692>',
-			CERTIFIED_MODERATOR: '<:zu_certifiedmod:885193463111483412>',
-			VERIFIED_BOT: '<:zu_verifiedbot_1:885923881108504616><:zu_verifiedbot_2:885923960473153546>',
-			BOT: '<:zu_bot:885923705316859955>',
-			BOT_HTTP_INTERACTIONS: '<:zu_bot:885923705316859955>'
-		};
-
 		function getUserBadges (user) {
-			const badges = [];
-			for (const flag in UserFlags) {
-				if (user.publicFlags & UserFlags[flag]) {
-					badges.push(badgeEmojis[flag]);
-				}
+			const badgeEmojis = {
+				DISCORD_EMPLOYEE: '<:zu_staffdc:933096931197071380>',
+				PARTNERED_SERVER_OWNER: '<:zu_partner:885196140042158170>',
+				HYPESQUAD_EVENTS: '<:zu_hypesquad:885919442117222400>',
+				BUGHUNTER_LEVEL_1: '<:zu_bughunter_1:885918998426951721>',
+				HOUSE_BRAVERY: '<:zu_bravery:885918769422151750>',
+				HOUSE_BRILLIANCE: '<:zu_brilliance:885918816654213191>',
+				HOUSE_BALANCE: '<:zu_balance:885918786878836827>',
+				EARLY_SUPPORTER: '<:zu_supporter:885919070476705792>',
+				BUGHUNTER_LEVEL_2: '<:zu_bughunter_2:885919018349920306>',
+				EARLY_VERIFIED_BOT_DEVELOPER: '<:zu_developer:885918499380293692>',
+				CERTIFIED_MODERATOR: '<:zu_certifiedmod:885193463111483412>',
+				VERIFIED_BOT: '<:zu_verifiedbot_1:885923881108504616><:zu_verifiedbot_2:885923960473153546>',
+				BOT: '<:zu_bot:885923705316859955>',
+				BOT_HTTP_INTERACTIONS: '<:zu_bot:885923705316859955>'
+			};
+			const userBadges = user.flags?.toArray() || '';
+			let badgesArray = '';
+			for (let i = 0; i < userBadges.length; i++) {
+			  badgesArray += badgeEmojis[userBadges[i]];
 			}
-			return badges;
+			return badgesArray;
 		}
-		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+
+		const user = await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) || ctx.message.author;
 		const badges = getUserBadges(user);
 		const embed = new ctx.embed();
 		const userb = await global.zuly.getRESTBanner(user.id);
 		if (user.avatar.startsWith('a_')) {
-			embed.setTitle(`${user.username} <:zu_nitro:885919779205029898>${badges.join('')}`);
+			embed.setTitle(`${user.username} <:zu_nitro:885919779205029898>${badges}`);
 		}
 		else {
-			embed.setTitle(`${user.username} <:zu_basic:885925886837264384>${badges.join('')}`);
+			embed.setTitle(`${user.username} <:zu_basic:885925886837264384>${badges}`);
 		}
 		embed.addField(`📘 ${ctx.idioma.userinfo.tag} __${user.username}__`, `\`${user.username}#${user.discriminator}\``, true);
 		embed.addField(`📚 ${ctx.idioma.userinfo.id} __${user.username}__`, `\`${user.id}\``, true);
 		embed.addField(`📆 ${ctx.idioma.userinfo.create}`, `<t:${Math.floor(user.createdAt / 1000)}>`, true);
 		embed.setColor('#ffcbdb');
-		embed.setThumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
+		embed.setThumbnail(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }) || 'https://i.imgur.com/2dwGomm.png');
 		embed.setImage(userb);
 
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).catch((e) => {
 			console.log(e);
@@ -115,10 +112,10 @@ module.exports = class CalcCommand {
 			embed2.addField(`📚 ${ctx.idioma.userinfo.id} __${user.username}__`, `\`${user.id}\``, true);
 			embed2.addField(`📆 ${ctx.idioma.userinfo.create}`, `<t:${Math.floor(user.createdAt / 1000)}>`);
 			embed2.setColor('#ffcbdb');
-			embed2.setThumbnail(user.avatarURL || 'https://i.imgur.com/2dwGomm.png');
+			embed2.setThumbnail(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }) || 'https://i.imgur.com/2dwGomm.png');
 			embed2.setImage(userb);
 			ctx.message.channel.slashReply({
-				content: ctx.message.author,
+				content: ctx.message.author.mention,
 				embeds: [embed2.get()]
 			}).catch((e) => {
 				console.log(e);

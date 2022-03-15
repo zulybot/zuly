@@ -4,8 +4,8 @@ module.exports = class AutoroleCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild', 'manageRoles'],
-				bot: ['manageRoles', 'useExternalEmojis', 'addReactions', 'manageMessages']
+				membro: ['MANAGE_GUILD', 'manageRoles'],
+				bot: ['manageRoles', 'useExternalEmojis', 'ADD_REACTIONS', 'manageMessages']
 			},
 			pt: {
 				nome: 'autorole',
@@ -74,8 +74,8 @@ module.exports = class AutoroleCommand {
 			// COR DA EMBED
 			embed.setColor('#ffcbdb');
 			// CRIANDO OS NEGOCIO
-			ctx.message.createMessage({
-				content: ctx.message.author,
+			ctx.message.editReply({
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			}).then(msg => {
 				// ADICIONANDO REAÇÕES
@@ -116,8 +116,8 @@ module.exports = class AutoroleCommand {
 				bot.on('collect', () => {
 					msg.delete();
 					// INICIANDO COLETOR
-					ctx.message.createMessage({
-						content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.bot}`
+					ctx.message.editReply({
+						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.bot}`
 					}).then(m => {
 						const mcol = new MessageCollector(m.channel, {
 							user: ctx.message.author,
@@ -134,11 +134,11 @@ module.exports = class AutoroleCommand {
 							// EMBED DE AUTOROLE-BOT
 							const embed2 = new global.zuly.manager.Ebl();
 							embed2.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-							embed2.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+							embed2.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.botset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
 							embed2.setColor('#ffcbdb');
 							// ENVIANDO A EMBED E CRIANDO AS COISAS
-							ctx.message.createMessage({
-								content: ctx.message.author,
+							ctx.message.editReply({
+								content: ctx.message.author.mention,
 								embeds: [embed2.get()]
 							});
 							if (!autorolebot) {
@@ -163,8 +163,8 @@ module.exports = class AutoroleCommand {
 				user.on('collect', () => {
 					msg.delete();
 					// INICIANDO COLETOR
-					ctx.message.createMessage({
-						content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.user}`
+					ctx.message.editReply({
+						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.user}`
 					}).then(m => {
 						const mcol = new MessageCollector(m.channel, {
 							user: ctx.message.author,
@@ -181,11 +181,11 @@ module.exports = class AutoroleCommand {
 							// EMBED DE AUTOROLE-USER
 							const embed3 = new global.zuly.manager.Ebl();
 							embed3.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-							embed3.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
+							embed3.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.userset} ${addrole.map((rolee) => `<@&${rolee}>`).join(', ')}`);
 							embed3.setColor('#ffcbdb');
 							// ENVIANDO A EMBED E CRIANDO AS COISAS
-							ctx.message.createMessage({
-								content: ctx.message.author,
+							ctx.message.editReply({
+								content: ctx.message.author.mention,
 								embeds: [embed3.get()]
 							});
 							if (!autoroleuser) {
@@ -213,10 +213,10 @@ module.exports = class AutoroleCommand {
 					// EMBED DE AUTOROLE-DELETED
 					const delb = new global.zuly.manager.Ebl();
 					delb.setTitle(`📋 Autorole | ${global.zuly.user.username}`);
-					delb.setDescription(`:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.autorole.disabled}`);
+					delb.setDescription(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.autorole.disabled}`);
 					delb.setColor('#ffcbdb');
-					return ctx.message.createMessage({
-						content: ctx.message.author,
+					return ctx.message.editReply({
+						content: ctx.message.author.mention,
 						embeds: [delb.get()]
 					}).then(() => {
 						msg.delete();

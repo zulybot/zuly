@@ -16,6 +16,10 @@ const {
 	top
 } = require('./API/keys');
 
+const {
+	GiveawaysManager
+} = require('discord-giveaways');
+
 const client = new Client({
 	restTimeOffset: 1,
 	defaultImageFormat: 'png',
@@ -28,9 +32,29 @@ const client = new Client({
 		'GUILD_VOICE_STATES',
 		'GUILD_MESSAGE_REACTIONS',
 		'DIRECT_MESSAGES'
+	],
+	partials: [
+		'USER',
+		'GUILD',
+		'CHANNEL',
+		'MESSAGE',
+		'REACTION'
 	]
 });
 
+client.giveawaysManager = new GiveawaysManager(client, {
+	storage: './src/db/giveaways.json',
+	updateCountdownEvery: 5000,
+	default: {
+		botsCanWin: false,
+		embedColor: '#FFCBDB',
+		embedColorEnd: '#FFCBDB',
+		reaction: '🎁'
+	}
+});
+
+client.backup = require('discord-backup');
+// Collections
 client.commands = new Collection();
 client.events = new Collection();
 client.aliases = new Collection();

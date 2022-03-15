@@ -2,7 +2,7 @@ module.exports = class LangCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: []
 			},
 			pt: {
@@ -46,11 +46,11 @@ module.exports = class LangCommand {
 	}
 
 	async run (ctx) {
-		const canal = await global.zuly.getRESTChannel(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
+		const canal = await global.zuly.channels.cache.get(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
 		await global.zuly.db.set(`logs-${ctx.message.guild.id}`, canal.id);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.logs.set}`.replace('%c', canal.name)
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.logs.set}`.replace('%c', canal.name)
 		});
 	}
 };

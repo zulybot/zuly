@@ -67,13 +67,13 @@ module.exports = class CalcCommand {
 			const res = response.data;
 			if (!ctx.message.channel.nsfw) {
 				ctx.message.channel.slashReply({
-					content: `📸 ${ctx.message.author} **|** ${res.link}`,
+					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`,
 					flags: ctx.ephemeral
 				});
 			}
 			else {
 				ctx.message.channel.slashReply({
-					content: `📸 ${ctx.message.author} **|** ${res.link}`
+					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`
 				});
 			}
 		});

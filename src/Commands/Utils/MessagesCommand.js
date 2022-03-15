@@ -68,7 +68,7 @@ module.exports = class PingCommand {
 		embed.setColor('#ffcbdb');
 		embed.setDescription(`**${user.username}** ${ctx.idioma.messages.tem} **${valor} ${ctx.idioma.messages.msg}**`);
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

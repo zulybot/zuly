@@ -63,13 +63,13 @@ module.exports = class EvalCommand {
 			embed.setColor('#ffcbdb');
 			embed.setImage(waifu.image);
 			if (!dono) {
-				embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.waifu.casar, global.zuly.user.avatarURL);
+				embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.waifu.casar, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			}
 			else {
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			}
 			ctx.message.channel.slashReply({
-				content: ctx.message.author,
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			}).then(async message => {
 				if (!dono) {
@@ -86,7 +86,7 @@ module.exports = class EvalCommand {
 					MarryCollector.on('collect', async () => {
 						const date = Date.now();
 						const marrytime = await global.zuly.db.get(`timeout-${ctx.message.author.id}`);
-						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.slashReply(`:x: ${ctx.message.author} **|** ${ctx.idioma.waifu.casado}`);
+						if (marrytime !== null && timeout - (date - marrytime) > 0) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.waifu.casado}`);
 						const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
 						if (ryos) {
 							global.zuly.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);
@@ -103,7 +103,7 @@ module.exports = class EvalCommand {
 						embed.setImage(waifu.image);
 						embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.waifu.casou.replace('%w', waifu.name), waifu.image);
 						message.edit({
-							content: ctx.message.author,
+							content: ctx.message.author.mention,
 							embeds: [embed.get()]
 						});
 					});

@@ -44,7 +44,7 @@ module.exports = class Nitro {
 		const file = await readFile('./assets/images/utils/fnshop.png');
 
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			file: file,
 			name: 'fnshop.png'
 		});

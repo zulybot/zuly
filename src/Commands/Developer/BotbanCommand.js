@@ -62,14 +62,14 @@ module.exports = class BanCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
 		if (!ctx.messages[0]) {
 			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author} **|** Usuário desconhecido.`
+					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
 				});
 			});
 		}
@@ -86,13 +86,13 @@ module.exports = class BanCommand {
 		const devs = await global.zuly.db.get('devs');
 		if (devs.includes(member.id)) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.dev}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.dev}`
 			});
 		}
 		await global.zuly.db.set(`botban-${member.id}`, motivo);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
 		});
 	}
 };

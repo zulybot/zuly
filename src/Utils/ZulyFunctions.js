@@ -35,7 +35,7 @@ async function getWebhook (channel) {
 	const webhooks = await global.zuly.getChannelWebhooks(channel.id);
 	if (webhooks.length === 0) {
 		const webhook = channel.createWebhook({
-			avatar: global.zuly.user.avatarURL,
+			avatar: global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }),
 			name: global.zuly.user.username,
 			reason: 'Zuly | EventLog'
 		});
@@ -98,17 +98,17 @@ async function banner (id) {
 	let hexString;
 	let userBanner;
 
-	if (user.bannerURL == null) {
+	if (user.banner == null) {
 		if (user.accentColor === null) {
 			userBanner = 'https://singlecolorimage.com/get/ffcbdb/600x240';
 		}
 		else {
-			hexString = user.accentColor.toString(16);
+			hexString = user.accentColor ? user.accentColor.toString(16) : 'ffcbdb';
 			userBanner = `https://singlecolorimage.com/get/${hexString}/600x240`;
 		}
 	}
 	else {
-		userBanner = user.bannerURL;
+		userBanner = user.bannerURL({ dynamic: true, size: 4096 });
 	}
 	// const url = user.bannerURL || `https://singlecolorimage.com/get/${hexString}/960x540`;
 	return userBanner;

@@ -2,7 +2,7 @@ module.exports = class GivawayStart {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: ['embedLinks'],
 				dono: false
 			},
@@ -49,11 +49,11 @@ module.exports = class GivawayStart {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.giveaway.reroll.replace('%p', ctx.prefix)}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.giveaway.reroll.replace('%p', ctx.prefix)}`
 			});
 		}
 		ctx.message.channel.slashReply({
-			content: `🎁 ${ctx.message.author} **|** Sucess!`
+			content: `🎁 ${ctx.message.author.mention} **|** Sucess!`
 		});
 		global.zuly.giveawaysManager.reroll(ctx.args[0], {
 			messages: {

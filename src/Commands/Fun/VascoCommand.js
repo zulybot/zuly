@@ -58,8 +58,8 @@ module.exports = class MrincredibleCommand {
 		const canvas = createCanvas(vasco.width, vasco.height);
 		const foto = canvas.getContext('2d');
 
-		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
-		const avatar = await loadImage(user.avatarURL);
+		const user = await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) || ctx.message.author;
+		const avatar = await loadImage(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
 		foto.drawImage(avatar, 460, 250, 150, 160);
 		foto.drawImage(vasco, 0, 0, canvas.width, canvas.height);

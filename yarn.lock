@@ -535,7 +535,22 @@ discord-api-types@^0.26.0:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.26.1.tgz#726f766ddc37d60da95740991d22cb6ef2ed787b"
   integrity sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==
 
-discord.js@^13.6.0:
+discord-backup@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-3.0.1.tgz#4208ee7d33103f7a84e8c7cfad888e315c396bf8"
+  integrity sha512-V0KsDHJPVx+zjWPv11alWmHSQ/CO4Mnzko3afDotz6U45py37igjFOCfHCqV3Q3AT6kk7Hi4H5pgA3H7qPw2zw==
+  dependencies:
+    discord.js "^13.0.1"
+
+discord-giveaways@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/discord-giveaways/-/discord-giveaways-5.1.1.tgz#d0cae7a9c7c6c5a315794b7715af8fdc8a0c8e9b"
+  integrity sha512-TogRQrnyDVtu+/juWwK22ykBKO1K8p7yPfXEZ67xao70bkNj+FLw0lOaBQqdomNWa3JypaE9FNXLgY0LaRyJIg==
+  dependencies:
+    deepmerge "^4.2.2"
+    serialize-javascript "^6.0.0"
+
+discord.js@^13.0.1, discord.js@^13.6.0:
   version "13.6.0"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-13.6.0.tgz#d8a8a591dbf25cbcf9c783d5ddf22c4694860475"
   integrity sha512-tXNR8zgsEPxPBvGk3AQjJ9ljIIC6/LOPjzKwpwz8Y1Q2X66Vi3ZqFgRHYwnHKC0jC0F+l4LzxlhmOJsBZDNg9g==
@@ -593,15 +608,6 @@ eris-collector@^1.0.1:
   dependencies:
     events "^3.1.0"
 
-eris-giveaways@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/eris-giveaways/-/eris-giveaways-1.0.3.tgz#20d185c3f10b9fcce11ea2ea75efa19b4668c507"
-  integrity sha512-aRXuPyK4kj9wFZmioZpbj9g70YVMC5jAE0DXGr//ff4YS5mUZsbIWX7vLdJs1EvNfMwg3hTIm/mafSAm3kYYDw==
-  dependencies:
-    deepmerge "^4.2.2"
-    eris "github:bsian03/eris#v9"
-    serialize-javascript "^6.0.0"
-
 eris@0.16.1:
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/eris/-/eris-0.16.1.tgz#44b0a9220944fc73dd74538cd614826bfbfcde61"
@@ -611,15 +617,6 @@ eris@0.16.1:
   optionalDependencies:
     opusscript "^0.0.8"
     tweetnacl "^1.0.3"
-
-"eris@github:bsian03/eris#v9":
-  version "0.16.0-dev"
-  resolved "https://codeload.github.com/bsian03/eris/tar.gz/d65f3b337bd1b6040cfadedc28fedc13b0a58bf5"
-  dependencies:
-    ws "^7.4.6"
-  optionalDependencies:
-    opusscript "^0.0.8"
-    tweetnacl "^1.0.1"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -1796,7 +1793,7 @@ tslib@^2.3.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-tweetnacl@^1.0.1, tweetnacl@^1.0.3:
+tweetnacl@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
   integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
@@ -1940,11 +1937,6 @@ write-file-atomic@^3.0.0:
     is-typedarray "^1.0.0"
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
-
-ws@^7.4.6:
-  version "7.5.6"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.6.tgz#e59fc509fb15ddfb65487ee9765c5a51dec5fe7b"
-  integrity sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==
 
 ws@^8.2.3:
   version "8.2.3"

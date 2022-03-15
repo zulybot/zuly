@@ -11,8 +11,8 @@ module.exports = class GuildCreateEvent {
 		const totalUsers = global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
 
 		const system = require('../Config/system');
-		const ch = await global.zuly.getRESTChannel('880863493472022539');
-		const ch2 = await global.zuly.getRESTChannel('902632703160094752');
+		const ch = await global.zuly.channels.cache.get('880863493472022539');
+		const ch2 = await global.zuly.channels.cache.get('902632703160094752');
 
 		ch.edit({
 			name: `🧭 → Servers [${global.zuly.guilds.cache.size}]`
@@ -33,11 +33,11 @@ module.exports = class GuildCreateEvent {
 		embed.setDescription(`> 😎 Fui adicionado a um servidor, yay! \`(Cluster ${config.cluster.id} (${config.cluster.nome}) | Shard ${guild.shard.id})\``);
 		embed.addField(`🌎 GuildInfo | ${guild.name}`, `🧭 **ID:** \`${guild.id} [${guild.shard.id}]\`\n👑 **Owner:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Members:** \`${guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${guild.premiumSubscriptionCount} boosts\`\n:calendar: **Created at:** \`${moment(guild.createdAt).format('📆 DD/MM/YY')} | ${moment(guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Lang:** \`${guild.preferredLocale}\``);
 		embed.setColor('#2ECC71');
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
-		embed.setThumbnail(global.zuly.user.avatarURL);
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
 		await global.zuly.executeWebhook(system.gcreate.id, system.gcreate.token, {
-			avatarURL: global.zuly.user.avatarURL,
+			avatarURL: global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }),
 			username: global.zuly.user.username,
 			embeds: [embed.get()]
 		});

@@ -2,7 +2,7 @@ module.exports = class LangCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: []
 			},
 			pt: {
@@ -43,13 +43,13 @@ module.exports = class LangCommand {
 		if (nsfw) {
 			await global.zuly.db.delete(`nsfw-${ctx.message.guild.id}`);
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.nsfw.desativado}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.desativado}`
 			});
 		}
 		else {
 			await global.zuly.db.set(`nsfw-${ctx.message.guild.id}`, true);
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.nsfw.ativado}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.nsfw.ativado}`
 			});
 		}
 	}

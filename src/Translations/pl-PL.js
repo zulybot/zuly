@@ -191,7 +191,7 @@ module.exports = {
 		term: 'Ended at',
 		host: 'Hosted by: {user}',
 		win: 'winner(s)',
-		wins: 'Congratulations, {winners}! You won **{prize}**!\n{messageURL}',
+		wins: 'Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}',
 		addReaction: 'addReaction with 🎁 to participate!',
 		restante: 'Time remaining:',
 		no: 'Giveaway cancelled, no valid participations',
@@ -200,7 +200,7 @@ module.exports = {
 		start: 'You did not use the command correctly, use: `%pgiveaway [time (10s, 10m)] [winners (1, 1w)] [prize (photos of kittens)]`, do not include **[]** or **()**.',
 		end: 'You didn\'t use the command correctly, use: `%pgiveaway-end [message id]`',
 		reroll: 'You didn\'t use the command correctly, use: `%pgiveaway-reroll [message id]`',
-		novo: 'New winner(s): {winners}! Congratulations, you won **{prize}**\n{messageURL}',
+		novo: 'New winner(s): {winners}! Congratulations, you won **{this.prize}**\n{this.messageURL}',
 		err: 'No valid participations, no new winner(s) can be chosen!'
 	},
 	help: {

@@ -53,17 +53,17 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) || ctx.message.author;
 
 		const embed = new ctx.embed();
 		embed.setTitle(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);
-		embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${user.avatarURL})`);
+		embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 })})`);
 		embed.setColor('#ffcbdb');
-		embed.setImage(user.avatarURL);
-		embed.setThumbnail(global.zuly.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		embed.setImage(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

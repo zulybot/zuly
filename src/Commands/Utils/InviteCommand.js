@@ -45,10 +45,10 @@ module.exports = class InviteCommand {
 		embed.setTitle(`📩 ${ctx.idioma.invite.add}`);
 		embed.setDescription(ctx.idioma.invite.desc.replace('%id', global.zuly.user.id));
 		embed.setColor('#ffcbdb');
-		embed.setThumbnail(global.zuly.user.avatarURL);
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author,
+			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

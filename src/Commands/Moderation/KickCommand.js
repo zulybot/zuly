@@ -2,8 +2,8 @@ module.exports = class KickCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['kickMembers'],
-				bot: ['kickMembers'],
+				membro: ['KICK_MEMBERS'],
+				bot: ['KICK_MEMBERS'],
 				dono: false
 			},
 			pt: {
@@ -62,7 +62,7 @@ module.exports = class KickCommand {
 		let member;
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 

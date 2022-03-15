@@ -52,7 +52,7 @@ module.exports = class EvalCommand {
 		const msg = ctx.args.join(' ');
 		if (!msg) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** Insira o código que será evaluado!`,
+				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será evaluado!`,
 				flags: ctx.ephemeral
 			});
 		}

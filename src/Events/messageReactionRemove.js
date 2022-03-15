@@ -13,7 +13,7 @@ module.exports = class MessageReactionRemoveEvent {
 		if (rr) {
 			await member.removeRole(rr, `ReactionRole - ${global.zuly.user.username}`).then(async () => {
 				await global.zuly.executeWebhook(system.reactionRole.id, system.reactionRole.token, {
-					avatarURL: global.zuly.user.avatarURL,
+					avatarURL: global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }),
 					username: global.zuly.user.username,
 					content: `> 💼 **ReactionRole** | O Usuário \`${member.user.username}#${member.user.discriminator} (${member.user.id})\` perdeu o cargo de id \`${rr}\` no servidor \`${message.guild.name}\` através do sistema de reactionrole.`
 				});

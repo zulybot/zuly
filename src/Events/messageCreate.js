@@ -45,10 +45,10 @@ module.exports = class MessageCreateEvent {
 
 		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
 			const embed = new global.zuly.manager.Ebl();
-			embed.setAuthor(global.zuly.user.username, '', global.zuly.user.avatarURL);
+			embed.setAuthor(global.zuly.user.username, '', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			embed.setDescription(`👋 ${idioma.hello.replace('%user', message.author)}\n> <:zu_info:911303533859590144> ${idioma.about}\n> <:zu_slash:886681118470987967> ${idioma.help}`);
 			embed.setColor('#ffcbdb');
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			message.channel.createMessage({
 				content: message.author,
 				embeds: [embed.get()],
@@ -94,8 +94,8 @@ module.exports = class MessageCreateEvent {
 			embed.setTitle(`<:zu_slash:886288977668243566> SlashCommands | ${global.zuly.user.username}`);
 			embed.setDescription(`${message.author}, ${idioma.slash}`);
 			embed.setColor('#ffcbdb');
-			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			message.channel.createMessage({
 				content: message.author,
 				embeds: [embed.get()]

@@ -2,7 +2,7 @@ module.exports = class LangCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageGuild'],
+				membro: ['MANAGE_GUILD'],
 				bot: []
 			},
 			pt: {
@@ -46,23 +46,23 @@ module.exports = class LangCommand {
 	async run (ctx) {
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.fnshop.args}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.args}`
 			});
 		}
 		const fnshop = await global.zuly.db.get(`fnshop-${ctx.message.guild.id}`);
 		if (!fnshop) {
-			const canal = await global.zuly.getRESTChannel(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
+			const canal = await global.zuly.channels.cache.get(ctx.args[0].replace(/<#/g, '').replace(/>/g, ''));
 			try {
 				canal.createMessage('<a:zu_fortnite:894977940926910485> **|** https://fn.zulybot.xyz/shop-now.png').then(async () => {
 					await global.zuly.db.set(`fnshop-${ctx.message.guild.id}`, canal.id);
 					ctx.message.channel.slashReply({
-						content: `✅ ${ctx.message.author} **|** ${ctx.idioma.fnshop.sucess}`
+						content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.sucess}`
 					});
 				});
 			}
 			catch (e) {
 				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author} **|** ${ctx.idioma.fnshop.channel}`
+					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.fnshop.channel}`
 				});
 			}
 		}

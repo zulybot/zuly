@@ -191,7 +191,7 @@ module.exports = {
 		term: 'încheiat la',
 		host: 'Găzduit de: {user}',
 		win: 'câştigător(i)',
-		wins: 'Felicitări, {winners}! Ai câștigat **{prize}**!\n{messageURL}',
+		wins: 'Felicitări, {winners}! Ai câștigat **{this.prize}**!\n{this.messageURL}',
 		addReaction: 'adauga reactie cu :wrapped_cadft: pentru a participa!',
 		restante: 'Timpul rămas',
 		no: 'Giveaway a fost anulat, nicio participare valabilă',
@@ -200,7 +200,7 @@ module.exports = {
 		start: 'Nu ai folosit comanda corect, utilizează:%pgiveaway [timp (10), 10m)] [câștigători (1, 1w)] [premiu (fotografii de pisici)]", nu include **[]** sau **()**.',
 		end: 'Nu ai folosit comanda corect, foloseşte:%pgiveaway-end [message id]`',
 		reroll: 'Nu ai folosit comanda corect, foloseşte:%pgiveaway-reroll [message id]`',
-		novo: 'Câștigători noi: {winners}! Felicitări, ai câștigat **{prize}**\n{messageURL}',
+		novo: 'Câștigători noi: {winners}! Felicitări, ai câștigat **{this.prize}**\n{this.messageURL}',
 		err: 'Nu se pot alege nici o participare validă, nici un câștigător/câștigători noi!'
 	},
 	help: {

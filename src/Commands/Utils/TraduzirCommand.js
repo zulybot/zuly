@@ -56,17 +56,17 @@ module.exports = class PingCommand {
 
 	async run (ctx) {
 		if (!ctx.args[0]) return ctx.message.channel.slashReply({
-			content: `:x: ${ctx.message.author} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
+			content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
 		});
 		if (!ctx.args[1]) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
+				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.tradutor.text.replace(/%/g, ctx.prefix)}`
 			});
 		}
 		const translate = require('@vitalets/google-translate-api');
 		translate(ctx.args.slice(1).join(' '), { to: ctx.args[0] }).then(res => {
 			ctx.message.channel.slashReply({
-				content: `🌎 ${ctx.message.author} **|** ` + '`' + res.text.replace(/`/g, '').replace(/@/g, '') + '`'
+				content: `🌎 ${ctx.message.author.mention} **|** ` + '`' + res.text.replace(/`/g, '').replace(/@/g, '') + '`'
 			});
 		});
 	}

@@ -143,7 +143,7 @@ module.exports = {
 		term: 'Terminou ás',
 		host: 'Sorteio de: {user}',
 		win: 'ganhador(es)',
-		wins: 'Parabéns, {winners}! Você ganhou **{prize}**!\n{messageURL}',
+		wins: 'Parabéns, {winners}! Você ganhou **{this.prize}**!\n{this.messageURL}',
 		addReaction: 'Reaja com 🎁 para participar!',
 		restante: 'Tempo Restante:',
 		no: 'Sorteio cancelado, sem participações válidas',
@@ -152,7 +152,7 @@ module.exports = {
 		start: 'Você não usou o comando corretamente, utilize: `%pgiveaway-start [tempo(10s, 10m)] [ganhadores(1, 1w)] [prêmio(fotos de gatinhos)]`, não inclua **[]** ou **()**.',
 		end: 'Você não usou o comando corretamente, utilize: `%pgiveaway-end [id da mensagem]`',
 		reroll: 'Você não usou o comando corretamente, utilize: `%pgiveaway-reroll [id da mensagem]`',
-		novo: 'Novo ganhador(es): {winners}! Parabéns, vocês ganharam **{prize}**\n{messageURL}',
+		novo: 'Novo ganhador(es): {winners}! Parabéns, vocês ganharam **{this.prize}**\n{this.messageURL}',
 		err: 'Sem participações válidas, nenhum(s) novo(s) vencedor(es) escolhidos!'
 	},
 	help: {

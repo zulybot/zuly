@@ -53,7 +53,7 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		const user = await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) || ctx.message.author;
 		const banner = await global.zuly.getRESTBanner(user.id);
 		if (banner.startsWith('https://singlecolorimage.com/')) {
 			const hex = banner.replace('https://singlecolorimage.com/get/', '').replace('/600x240', '');
@@ -62,10 +62,10 @@ module.exports = class CalcCommand {
 			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.hex} **#${hex}**`);
 			embed.setColor('#ffcbdb');
 			embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
-			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setThumbnail(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }) || global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			ctx.message.channel.slashReply({
-				content: ctx.message.author,
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});
 		}
@@ -75,10 +75,10 @@ module.exports = class CalcCommand {
 			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.download} [${ctx.idioma.avatar.click}](${banner || 'https://imgur.com/XVLqrn1.png'})`);
 			embed.setColor('#ffcbdb');
 			embed.setImage(banner || 'https://imgur.com/XVLqrn1.png');
-			embed.setThumbnail(user.avatarURL || global.zuly.avatarURL);
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setThumbnail(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }) || global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			ctx.message.channel.slashReply({
-				content: ctx.message.author,
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});
 		}

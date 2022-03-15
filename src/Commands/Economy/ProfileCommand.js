@@ -54,7 +54,7 @@ module.exports = class EvalCommand {
 		  });
 		  const background = await loadImage('./assets/images/profile/profile.png');
 		  const back2 = await loadImage(back);
-		  const avatar = await loadImage(user.avatarURL);
+		  const avatar = await loadImage(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		  const canvas = createCanvas(background.width, background.height);
 		  const foto = canvas.getContext('2d');
 		  const about = await global.zuly.db.get(`about-${user.id}`) || ctx.idioma.perfil.desc.replace('%p', ctx.prefix);

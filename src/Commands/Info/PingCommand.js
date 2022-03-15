@@ -67,10 +67,10 @@ module.exports = class PingCommand {
 			embed.setDescription(`${ctx.idioma.clusters.desc.replace('%id', cluster.id).replace('%name', cluster.nome).replace('%ping', global.zuly.shards.random().latency + 'ms')}`);
 			embed.addField(ctx.idioma.clusters.field, `\`\`\`${ctx.idioma.clusters.fielDesc.replace('%id', cluster.id).replace('%name', cluster.nome).replace('%p', global.zuly.shards.random().latency + 'ms').replace('%pd', await pingDB + 'ms').replace('%ram', (process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb')}\`\`\``);
 			embed.setColor('#ffcbdb');
-			embed.setThumbnail(global.zuly.user.avatarURL);
-			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.avatarURL);
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			ctx.message.channel.slashReply({
-				content: ctx.message.author,
+				content: ctx.message.author.mention,
 				embeds: [embed.get()]
 			});
 		}
@@ -82,7 +82,7 @@ module.exports = class PingCommand {
 				mongoose.connection.db.admin().ping(() => r(Date.now() - date))
 			);
 			return ctx.message.channel.slashReply({
-				content: `🏓 **|** ${ctx.message.author} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
+				content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.shards.random().latency}ms\`\n- **Database:** \`${await pingDB}ms\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
 			});
 		}
 	}

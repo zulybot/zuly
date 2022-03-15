@@ -14,6 +14,7 @@ src/db/giveaways.json
 
 ## CONFIDENCIAL files
 
+/backups
 src/Archive
 src/Client/Plugins/nodes.js
 src/Config/player.js
