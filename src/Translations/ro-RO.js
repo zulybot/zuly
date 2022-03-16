@@ -1,6 +1,6 @@
 module.exports = {
 	lang: 'ro',
-	dashboard: 'The Bot configuration has been migrated to the dashboard, access this link: https://zulybot.xyz/dashboard/%g',
+	dashboard: 'Configurația bot-ului a fost migrată pe panel, accesați acest link: https://zulybot.xyz/dashboard/%g',
 	clusters: {
 		desc: '> This server is in cluster `%id`\n- Name: `%name`\n- Ping: `%ping`',
 		field: 'Info Clusters:',
@@ -149,22 +149,22 @@ module.exports = {
 		about: 'I am a multifunctional bot for discord!',
 		help: 'To know my commands, type **/help**.',
 		labels: {
-			support: 'Support Server',
-			invite: 'Invite',
+			support: 'Server de asistență',
+			invite: 'Invită',
 			website: 'Website'
 		}
 	},
 	reactionRole: {
-		invalidMessage: 'Could not find message with id `%id%`',
-		sucess: 'ReactionRole created successfully!'
+		invalidMessage: 'Nu s-a putut găsi mesajul cu id-ul `%id%`',
+		sucess: 'Categoria a fost creata.'
 	},
 	eventLog: {
 		fields: {
-			deletedMessage: 'Deleted Message:',
-			oldMessage: 'Old Message:',
-			newMessage: 'New Message:'
+			deletedMessage: 'Mesaje șterse:',
+			oldMessage: 'Mesaje vechi:',
+			newMessage: 'Mesaje noi:'
 		},
-		channel: 'Channel:'
+		channel: 'Canal:'
 	},
 	docs: { args: 'Spuneți ce se va căuta în documentație.' },
 	fnshop: {
@@ -198,8 +198,8 @@ module.exports = {
 		term: 'încheiat la',
 		host: 'Găzduit de: {user}',
 		win: 'câştigător(i)',
-		wins: 'Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}',
-		react: 'react with 🎁 to participate!',
+		wins: 'Felicitări, {winners}! Ai câștigat **{this.prize}**!\n{this.messageURL}',
+		react: 'reacționează cu 🎁 pentru a participa!',
 		restante: 'Timpul rămas',
 		no: 'Giveaway a fost anulat, nicio participare valabilă',
 		give: 'GIVEWAY',
@@ -207,7 +207,7 @@ module.exports = {
 		start: 'Nu ai folosit comanda corect, utilizează:%pgiveaway [timp (10), 10m)] [câștigători (1, 1w)] [premiu (fotografii de pisici)]", nu include **[]** sau **()**.',
 		end: 'Nu ai folosit comanda corect, foloseşte:%pgiveaway-end [message id]`',
 		reroll: 'Nu ai folosit comanda corect, foloseşte:%pgiveaway-reroll [message id]`',
-		novo: 'New winner(s): {winners}! Congratulations, you won **{this.prize}**\n{this.messageURL}',
+		novo: 'Câștigători noi: {winners}! Felicitări, ai câștigat **{this.prize}**\n{this.messageURL}',
 		err: 'Nu se pot alege nici o participare validă, nici un câștigător/câștigători noi!'
 	},
 	help: {
@@ -222,9 +222,9 @@ module.exports = {
 		res: 'Rezultat'
 	},
 	botinfo: {
-		texto: 'Hi, I\'m **%bot**, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Resources:',
-		mem: 'this server is using %m of my memory.'
+		texto: 'Salut, eu sunt **%bo**, un bot cu caracteristici unice de care are nevoie fiecare server! Cunosc în prezent **%u persoane diferite** care folosesc caracteristicile mele şi sunt pe **%g servere diferit**.\n\nSunt dezvoltat de `%devs` folosind [Eris](https://abal.moe/Eris/) folosind [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
+		recursos: 'Resurse:',
+		mem: 'acest server folosește %m din memoria mea.'
 	},
 	messages: {
 		tem: 'are',
@@ -239,17 +239,17 @@ module.exports = {
 	erela: {
 		np: 'Canta acum',
 		end: 'Cântecul s-a terminat, inchid redarea',
-		skip: 'The song was successfully skipped.',
+		skip: 'Melodia a fost omisă.',
 		not: 'Nu cânt nimic pe server.',
 		voice: 'Eram singur pe canalul vocal, asadar am iesit!',
 		duration: 'Durată:',
 		loop: {
-			ativado: 'Current Song Loop has been enabled.',
-			desativado: 'Current Song Loop has been turned off.'
+			ativado: 'Bucla curentă a melodiilor a fost oprită.',
+			desativado: 'Bucla curentă a melodiilor a fost oprită.'
 		}
 	},
 	play: {
-		nada: 'Arguments are missing, use `%pplay <music | url>`',
+		nada: 'Argumentele lipsesc, folosește `%pplay <music | url>`',
 		add: 'Adăugare la coadă',
 		can: 'Trebuie să fii pe un canal de voce pentru a asculta muzica.'
 	},
@@ -259,7 +259,7 @@ module.exports = {
 		dono: 'Proprietar',
 		utl: 'Utilizează: %pwaifu-info [ID]',
 		casado: 'Ai fost căsătorit recent, te poți căsători la fiecare 2 ore',
-		noharem: 'You don\'t have waifus, use `%pwaifu roll` to add one.'
+		noharem: 'Nu aveți waifuri, folosiți "%pwaifu roll" pentru a adăuga unul.'
 	},
 	tradutor: {
 		lang: 'Trebuie să specificați limba, exemplul: %translator **ro** buna',
@@ -279,7 +279,7 @@ module.exports = {
 		mot3: 'Motivul:',
 		the: 'Utilizatorul',
 		foi: 'a fost pedepsit cu succes.',
-		dev: 'You cannot punish the bot developer.'
+		dev: 'Nu poți pedepsi dezvoltatorul botului.'
 	},
 	clear: {
 		msg: 'mesaje** șterse cu succes',
@@ -312,7 +312,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Informații:',
 		tag: 'Etichetă de: ',
-		badges: 'Badges of:',
+		badges: 'Insigne:',
 		id: 'ID-ul lui: ',
 		create: 'Contul a fost creat: '
 	},
@@ -320,7 +320,7 @@ module.exports = {
 	avatar: {
 		title: 'Poza de proful a lui:',
 		download: 'Link de descărcare:',
-		hex: 'Hex to use in your profile:',
+		hex: 'Hex utilizat în profilul dvs.:',
 		click: 'Click aici'
 	},
 	perfil: {
@@ -331,8 +331,8 @@ module.exports = {
 		no: 'Nu ai suficienți bani pentru a cumpăra acest fundal'
 	},
 	filters: {
-		ativado: 'The filter %f has been successfully enabled.',
-		desativado: 'Filter %f was successfully disabled.'
+		ativado: 'Filtrul %f a fost activat cu succes.',
+		desativado: 'Filtrul %f a fost dezactivat cu succes.'
 	},
 	economy: {
 		jacoletou: 'Ai colectat deja recompensa zilnică astăzi! Încearcă din nou pe:',
