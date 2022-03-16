@@ -198,7 +198,7 @@ module.exports = {
 		host: 'Hosted by: {user}',
 		win: 'winner(s)',
 		wins: 'Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}',
-		addReaction: 'addReaction with 🎁 to participate!',
+		react: 'react with 🎁 to participate!',
 		restante: 'Time remaining:',
 		no: 'Giveaway cancelled, no valid participations',
 		give: 'GIVEAWAY',

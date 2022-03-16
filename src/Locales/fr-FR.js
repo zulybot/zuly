@@ -1,5 +1,6 @@
 module.exports = {
 	lang: 'fr',
+	dashboard: 'La configuration du bot a été migrée vers le tableau de bord, accédez à ce lien : https://zulybot.xyz/dashboard/%g',
 	clusters: {
 		desc: '> Ce serveur est dans le cluster `%id`\n- Nom : `%name`\n- Ping : `%ping`',
 		field: 'Clusters d\'informations :',
@@ -138,7 +139,7 @@ module.exports = {
 		host: 'Hébergé par: {user}',
 		win: 'gagnant(s)',
 		wins: 'Félicitations, {winners}! Vous avez gagné **{this.prize}**!\n{this.messageURL}',
-		addReaction: 'Réagissez avec 🎉 pour participer!',
+		react: 'Réagissez avec 🎉 pour participer!',
 		restante: 'Temps restant:',
 		no: 'Giveawy annulé, aucune participation valide.',
 		give: 'DONNÉE',
@@ -197,7 +198,8 @@ module.exports = {
 		casou: 'Vous vous êtes marié avec %w',
 		dono: 'Propriétaire',
 		utl: 'Utilisation: %pwaifu-info [ID]',
-		casado: 'Avez vous récemment marié, vous pouvez vous marier toutes les 2 heures'
+		casado: 'Avez vous récemment marié, vous pouvez vous marier toutes les 2 heures',
+		noharem: 'Vous n\'avez pas de waifus, utilisez `%pwaifu roll` pour en ajouter un.'
 	},
 	tradutor: {
 		lang: 'Vous devez spécifier la langue, exemple : %translator **fr** hello',

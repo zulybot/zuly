@@ -3,7 +3,7 @@ module.exports = class CalcCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {
@@ -35,14 +35,8 @@ module.exports = class CalcCommand {
             */
 			options: [
 				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
-				},
-				{
 					type: 6,
-					name: 'usermention',
+					name: 'user',
 					description: 'The User Mention',
 					required: false
 				}

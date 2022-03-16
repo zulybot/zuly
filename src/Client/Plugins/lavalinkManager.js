@@ -44,7 +44,7 @@ global.zuly.music = new Manager({
 	embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.np} **${track.title}**`);
 	embed.setColor('#ffcbdb');
 	embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-	ch.createMessage({
+	ch.send({
 		embeds: [embed.get()]
 	});
 }).on('queueEnd', async (player) => {
@@ -57,7 +57,7 @@ global.zuly.music = new Manager({
 	embed.setDescription(`<:zu_mp3:882310253226635284> **|** ${idioma.erela.end}`);
 	embed.setColor('#ffcbdb');
 	embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-	ch.createMessage({
+	ch.send({
 		embeds: [embed.get()]
 	});
 	player.destroy();

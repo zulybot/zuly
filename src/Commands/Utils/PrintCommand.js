@@ -3,7 +3,7 @@ module.exports = class PrintCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: true
 			},
 			pt: {
@@ -47,16 +47,18 @@ module.exports = class PrintCommand {
 	}
 
 	async run (ctx) {
+		const { MessageAttachment } = require('discord.js');
+		const attachment = new MessageAttachment(`https://image.thum.io/get/maxAge/12/width/700/crop/900/${encodeURIComponent(ctx.args[0])}`, 'print.png');
+
 		const embed = new ctx.embed();
 		embed.setTitle(`📸 Print | ${global.zuly.user.username}`);
 		embed.setDescription(`> <:zu_info:911303533859590144> ${ctx.args[0]}`);
 		embed.setColor('#ffcbdb');
-		embed.setImage(`https://image.thum.io/get/maxAge/12/width/700/crop/900/${encodeURIComponent(ctx.args[0])}`);
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
-			embeds: [embed.get()],
-			flags: ctx.ephemeral
+			content: `📸 ${ctx.message.author.mention} | <${ctx.args[0]}>`,
+			files: [attachment],
+			ephemeral: true
 		});
 	}
 };

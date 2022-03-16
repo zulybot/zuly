@@ -38,7 +38,7 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'code',
 					description: 'the code',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['eval', 'e'],

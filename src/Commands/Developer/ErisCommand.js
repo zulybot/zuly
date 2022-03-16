@@ -37,7 +37,7 @@ module.exports = class ExecCommand {
 				type: 3,
 				name: 'term',
 				description: 'the term to search',
-				required: false
+				required: true
 			}],
 			aliases: ['eris.js', 'eris', 'erisjs'],
 			run: this.run

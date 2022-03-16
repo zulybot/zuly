@@ -198,7 +198,7 @@ module.exports = {
 		host: 'Hébergé par: {user}',
 		win: 'gagnant(s)',
 		wins: 'Félicitations, {winners}! Vous avez gagné **{this.prize}**!\n{this.messageURL}',
-		addReaction: 'Réagissez avec 🎉 pour participer!',
+		react: 'Réagissez avec 🎉 pour participer!',
 		restante: 'Temps restant:',
 		no: 'Giveawy annulé, aucune participation valide.',
 		give: 'DONNÉE',

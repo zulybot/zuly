@@ -4,7 +4,7 @@ module.exports = class InviteCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {

@@ -8,21 +8,11 @@ module.exports = class GuildDeleteEvent {
 	async run (guild) {
 		const config = require('../Config/config');
 
-		const totalUsers = global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
-
 		const system = require('../Config/system');
-		const ch = await global.zuly.channels.cache.get('880863493472022539');
-		const ch2 = await global.zuly.channels.cache.get('902632703160094752');
-
-		ch.edit({
-			name: `🧭 → Servers [${global.zuly.guilds.cache.size}]`
-		});
-		ch2.edit({
-			name: `👤 → Users [${totalUsers.toLocaleString().replace('.', ',')}]`
-		});
 
 		const moment = require('moment');
-		const owner = await global.zuly.users.fetch(guild.ownerID);
+		const ownerA = await guild.fetchOwner();
+		const owner = ownerA.user;
 
 		if (guild.preferredLocale !== 'pt-BR') {
 			await global.zuly.db.set(`idioma-${guild.id}`, 'en-us');
@@ -36,8 +26,15 @@ module.exports = class GuildDeleteEvent {
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
-		await global.zuly.executeWebhook(system.gdelete.id, system.gdelete.token, {
-			avatarURL: global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }),
+		const { WebhookClient } = require('discord.js');
+
+		const hook = new WebhookClient({
+			token: system.gdelete.token,
+			id: system.gdelete.id,
+		});
+
+		await hook.send({
+			avatarURL: global.zuly.user.displayAvatarURL(),
 			username: global.zuly.user.username,
 			embeds: [embed.get()]
 		});

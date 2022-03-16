@@ -38,7 +38,7 @@ module.exports = class ExecCommand {
 					type: 3,
 					name: 'code',
 					description: 'the code',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['exec', 'ec', 'publiceval'],

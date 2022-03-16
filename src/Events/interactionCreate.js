@@ -25,7 +25,7 @@ module.exports = class InteractionEvent {
 			embed.setColor('#ff0000');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-			return interaction.createMessage({
+			return interaction.editReply({
 				content: `<@${interaction.member.user.id}>`,
 				embeds: [embed.get()]
 			});
@@ -35,13 +35,8 @@ module.exports = class InteractionEvent {
 			if (!command) {
 				const comando = await global.zuly.db.get(`custom-command-${interaction.commandName}-${interaction.guild.id}`);
 				if (comando) {
-					return interaction.createMessage({
+					return interaction.editReply({
 						content: comando.replace(/%author/g, `<@${interaction.member.user.id}>`),
-						allowedMentions: {
-							everyone: false,
-							users: true,
-							roles: false,
-						}
 					});
 				}
 			}
@@ -127,8 +122,8 @@ module.exports = class InteractionEvent {
 				reply: function(texto) {
 					msg.channel.slashReply(...texto);
 				},
-				addReaction: function(emoji) {
-					msg.addReaction(emoji);
+				react: function(emoji) {
+					msg.react(emoji);
 				},
 				fetch: async function(url) {
 					await global.zuly.manager.fetch(url);

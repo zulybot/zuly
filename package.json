@@ -34,6 +34,7 @@
   "author": "AndreLucaas",
   "license": "Apache-2.0",
   "dependencies": {
+    "@discordjs/rest": "^0.3.0",
     "@jpbberry/typed-emitter": "^1.2.1",
     "@top-gg/sdk": "^3.1.3",
     "@vitalets/google-translate-api": "^7.0.0",
@@ -46,8 +47,7 @@
     "discord-backup": "^3.0.1",
     "discord-giveaways": "^5.1.1",
     "discord.js": "^13.6.0",
-    "eris": "0.16.1",
-    "eris-collector": "^1.0.1",
+    "discord.js-akinator": "^3.4.2",
     "express": "^4.17.2",
     "math-expression-evaluator": "^1.3.14",
     "moment": "^2.29.1",

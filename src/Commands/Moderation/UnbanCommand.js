@@ -36,21 +36,15 @@ module.exports = class BanCommand {
 			options: [
 				{
 					type: 6,
-					name: 'usermention',
-					description: 'The User Mention',
-					required: false
-				},
-				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
+					name: 'user',
+					description: 'The user to unban.',
+					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the unban',
-					required: false
+					description: 'The reason for the unban.',
+					required: true
 				}
 			],
 			aliases: ['desbanir', 'hackunban', 'forceunban'],
@@ -66,7 +60,7 @@ module.exports = class BanCommand {
 			});
 		}
 
-		if (!ctx.messages[0]) {
+		if (ctx.args[0]) {
 			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
@@ -74,7 +68,7 @@ module.exports = class BanCommand {
 			});
 		}
 		else {
-			member = await ctx.messages[0];
+			member = await ctx.args[0];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');
@@ -83,7 +77,8 @@ module.exports = class BanCommand {
 		}
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await ctx.message.guild.unbanMember(member.id, motivo);
+		ctx.message.guild.members.unban(member.id, motivo);
+
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
 		});

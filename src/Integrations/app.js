@@ -22,7 +22,7 @@ app.get('/api/status', async (req, res) => {
 		lastShard: cluster.lastShard,
 		servers: guilds,
 		users: users,
-		ping: global.zuly.shards.random().latency,
+		ping: global.zuly.ws.ping,
 		ram: (process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb',
 		pingDB: await pingDB + 'ms'
 	});

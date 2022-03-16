@@ -38,13 +38,13 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'name',
 					description: 'Nome do PROMOCODE',
-					required: false
+					required: true
 				},
 				{
 					type: 3,
 					name: 'valor',
 					description: 'Valor do PROMOCODE',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['pcreate', 'promocode-create', 'criar-promocode', 'criar-promo', 'pcriar'],
@@ -76,7 +76,7 @@ module.exports = class EvalCommand {
 		else {
 			await global.zuly.db.set(ctx.args[0].toUpperCase(), Number(ctx.args[1]));
 			const channel = await global.zuly.channels.cache.get('894981159119896576');
-			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: **${ctx.args[0].toUpperCase()}** valendo **${Number(ctx.args[1])} ryos.**`);
+			channel.send(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: **${ctx.args[0].toUpperCase()}** valendo **${Number(ctx.args[1])} ryos.**`);
 			return ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
 				flags: ctx.ephemeral

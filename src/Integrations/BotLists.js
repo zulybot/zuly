@@ -16,11 +16,11 @@ module.exports = (app) => {
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }) || global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			embed.setDescription(`⬆️ \`${user.username}#${user.discriminator}\` votou em mim no **[top.gg](https://top.gg/bot/880173509077266483)** e recebeu **2400 ryos** vote você também!\n🔗 **Link:** https://top.gg/bot/880173509077266483`);
-			ch.createMessage({
+			ch.send({
 				content: `<@${data.user}>`,
 				embed: embed.get()
 			}).then(msg => {
-				msg.addReaction('⬆️');
+				msg.react('⬆️');
 			});
 			const money = await global.zuly.db.get(`ryos-${user.id}`);
 			if (money) {
@@ -36,7 +36,7 @@ module.exports = (app) => {
 			embed2.setColor('#ffcbdb');
 			embed2.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			const dm = await global.zuly.getDMChannel(user.id);
-			dm.createMessage({
+			dm.send({
 				content: user,
 				embeds: [embed2.get()]
 			}).catch(() => {

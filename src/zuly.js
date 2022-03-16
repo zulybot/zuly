@@ -1,24 +1,11 @@
 require('colors');
-const {
-	Client,
-	Collection
-} = require('discord.js');
-
-const {
-	AutoPoster
-} = require('./CustomPackages/DBLAutoPoster');
-
-const {
-	token
-} = require('./Config/config');
-
-const {
-	top
-} = require('./API/keys');
-
-const {
-	GiveawaysManager
-} = require('discord-giveaways');
+const { Client, Collection } = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { AutoPoster } = require('./CustomPackages/DBLAutoPoster');
+const { token } = require('./Config/config');
+const { top } = require('./API/keys');
+const { GiveawaysManager } = require('discord-giveaways');
+const SnakeGame = require('./Helpers/SnakeGame');
 
 const client = new Client({
 	restTimeOffset: 1,
@@ -29,9 +16,10 @@ const client = new Client({
 		'GUILD_BANS',
 		'GUILD_MEMBERS',
 		'GUILD_MESSAGES',
+		'DIRECT_MESSAGES',
 		'GUILD_VOICE_STATES',
 		'GUILD_MESSAGE_REACTIONS',
-		'DIRECT_MESSAGES'
+		'GUILD_EMOJIS_AND_STICKERS'
 	],
 	partials: [
 		'USER',
@@ -53,6 +41,16 @@ client.giveawaysManager = new GiveawaysManager(client, {
 	}
 });
 
+// Games
+client.snakecord = new SnakeGame({
+	title: 'SnakeCord | Zuly',
+	color: '#ffcbdb',
+	timestamp: false,
+	gameOverTitle: 'Fim do Jogo',
+});
+// Plugins
+client.restAPI = new REST({ version: '9' }).setToken(token);
+client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');
 // Collections
 client.commands = new Collection();

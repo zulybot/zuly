@@ -3,7 +3,7 @@ module.exports = class ShipCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['attachFiles'],
+				bot: ['ATTACH_FILES'],
 				dono: true
 			},
 			pt: {
@@ -42,11 +42,11 @@ module.exports = class ShipCommand {
 	async run (ctx) {
 		let porcentagem;
 		let user1 = ctx.message.author;
-		let user2 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]);
+		let user2 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]);
 
 		if (ctx.args[1]) {
-			user1 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]);
-			user2 = ctx.messages[0] || await global.zuly.users.fetch(ctx.args[1]);
+			user1 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]);
+			user2 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[1]);
 		}
 
 		if (!user2) {
@@ -84,8 +84,8 @@ module.exports = class ShipCommand {
 		const edit = createCanvas(base.width, base.height);
 		const foto = edit.getContext('2d');
 
-		const avatar1 = user1displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
-		const avatar2 = user2displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+		const avatar1 = user1.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+		const avatar2 = user2.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
 		const img1 = await loadImage(avatar1);
 		const img2 = await loadImage(avatar2);

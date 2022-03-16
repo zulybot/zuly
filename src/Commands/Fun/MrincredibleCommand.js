@@ -4,7 +4,7 @@ module.exports = class MrincredibleCommand {
 			permissoes: {
 				membro: [],
 				bot: [],
-				dono: false
+				dono: true
 			},
 			pt: {
 				nome: 'mrincredible',
@@ -66,8 +66,8 @@ module.exports = class MrincredibleCommand {
 		foto.fillText(ctx.args[0].match(/.{1,23}/g).join('\n'), canvas.width / 50.9, canvas.height / 15.9, 655);
 		foto.fillText(ctx.args[1].match(/.{1,23}/g).join('\n'), canvas.width / 1.9, canvas.height / 15.9, 655);
 
-		ctx.message.channel.slashReply(ctx.message.author, {
-			file: canvas.toBuffer(),
+		ctx.message.channel.slashReply({
+			files: canvas.toBuffer(),
 			name: 'incriveis.png'
 		});
 	}

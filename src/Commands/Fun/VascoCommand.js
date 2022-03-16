@@ -1,10 +1,10 @@
-module.exports = class MrincredibleCommand {
+module.exports = class VascoCommand {
 	constructor () {
 		return {
 			permissoes: {
 				membro: [],
 				bot: [],
-				dono: false
+				dono: true
 			},
 			pt: {
 				nome: 'vasco',
@@ -35,14 +35,8 @@ module.exports = class MrincredibleCommand {
 			*/
 			options: [
 				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
-				},
-				{
 					type: 6,
-					name: 'usermention',
+					name: 'user',
 					description: 'The User Mention',
 					required: false
 				}
@@ -88,9 +82,12 @@ module.exports = class MrincredibleCommand {
 			foto.fillText('vivu', 390, 120);
 		}
 
-		ctx.message.channel.slashReply(ctx.message.author, {
-			file: canvas.toBuffer(),
-			name: 'vasco.png'
+		const { MessageAttachment } = require('discord.js');
+		const attachment = new MessageAttachment(canvas.toBuffer(), 'vasco.png');
+
+		ctx.message.channel.slashReply({
+			content: ctx.message.author.mention,
+			files: [attachment]
 		});
 	}
 };

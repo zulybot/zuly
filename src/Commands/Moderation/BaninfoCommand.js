@@ -56,11 +56,11 @@ module.exports = class BaninfoCommand {
 			});
 		}
 
-		if (!ctx.messages[0]) {
+		if (!ctx.args[0]) {
 			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info);
 		}
 		else {
-			member = await ctx.messages[0];
+			member = await ctx.args[0];
 		}
 
 		let banReason = ctx.args.splice(1).join(' ');
@@ -76,12 +76,12 @@ module.exports = class BaninfoCommand {
 		embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${member.username}#${member.discriminator} (${member.id})\`\`\``);
 		embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
 		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-		embed.setThumbnail(memberdisplayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setThumbnail(member.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		}).then(message => {
-			message.addReaction('🐹');
+			message.react('🐹');
 			const collector = new ReactionCollector(message, {
 				user: ctx.message.author,
 				ignoreBot: true,

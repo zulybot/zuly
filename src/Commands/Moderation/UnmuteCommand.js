@@ -36,22 +36,16 @@ module.exports = class BanCommand {
 			options: [
 				{
 					type: 6,
-					name: 'usermention',
-					description: 'The User Mention',
-					required: false
-				},
-				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
+					name: 'user',
+					description: 'The user to mute.',
+					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the ban',
-					required: false
-				},
+					description: 'The reason for the unmute',
+					required: true
+				}
 			],
 			aliases: ['banir', 'hackban', 'forceban'],
 			run: this.run
@@ -59,22 +53,19 @@ module.exports = class BanCommand {
 	}
 
 	async run (ctx) {
-		let member;
+		const member = await ctx.message.guild.members.fetch(ctx.args[0]);
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
-		if (!ctx.messages[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
+		if (ctx.args[0]) {
+			await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
 				});
 			});
-		}
-		else {
-			member = await ctx.messages[0];
 		}
 
 		let banReason = ctx.args[1];
@@ -84,10 +75,10 @@ module.exports = class BanCommand {
 
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.zuly.unmuteMember(ctx.message.guild, member, motivo);
+		await member.timeout(null, motivo);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.user.username}** ${ctx.idioma.ban.foi}`
 		});
 	}
 };

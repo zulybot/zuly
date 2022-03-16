@@ -6,7 +6,7 @@ module.exports = class Ajuda {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {

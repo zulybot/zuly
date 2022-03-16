@@ -3,7 +3,7 @@ module.exports = class CalcCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {
@@ -47,35 +47,24 @@ module.exports = class CalcCommand {
 	}
 
 	async run (ctx) {
-		const API = require('../../API/keys');
+		const { MessageAttachment } = require('discord.js');
 		const result = await global.zuly.deepai.callStandardApi('colorizer', {
 			image: ctx.args[0]
 		});
-		const { request } = require('axios');
-		request({
-			method: 'POST',
-			url: 'https://api-ssl.bitly.com/v4/bitlinks',
-			headers: {
-				Authorization: `Bearer ${API.bit}`,
-				'Content-Type': 'application/json'
-			},
-			data: {
-				domain: 'bit.ly',
-				long_url: result.output_url
-			}
-		}).then(response => {
-			const res = response.data;
-			if (!ctx.message.channel.nsfw) {
-				ctx.message.channel.slashReply({
-					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`,
-					flags: ctx.ephemeral
-				});
-			}
-			else {
-				ctx.message.channel.slashReply({
-					content: `📸 ${ctx.message.author.mention} **|** ${res.link}`
-				});
-			}
-		});
+		const image = result.output_url;
+		const attachment = new MessageAttachment(image);
+		if (!ctx.message.channel.nsfw) {
+			ctx.message.channel.slashReply({
+				content: `📸 ${ctx.message.author.mention}`,
+				files: [attachment],
+				flags: ctx.ephemeral
+			});
+		}
+		else {
+			ctx.message.channel.slashReply({
+				content: `📸 ${ctx.message.author.mention}`,
+				files: [attachment],
+			});
+		}
 	}
 };

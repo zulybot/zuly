@@ -3,7 +3,7 @@ module.exports = class GivawayStart {
 		return {
 			permissoes: {
 				membro: ['MANAGE_GUILD'],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {

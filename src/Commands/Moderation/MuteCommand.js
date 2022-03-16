@@ -36,27 +36,21 @@ module.exports = class BanCommand {
 			options: [
 				{
 					type: 6,
-					name: 'usermention',
-					description: 'The User Mention',
-					required: false
-				},
-				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
+					name: 'user',
+					description: 'The user to mute.',
+					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the ban',
-					required: false
+					description: 'The reason for the mute',
+					required: true
 				},
 				{
 					type: 3,
 					name: 'time',
 					description: 'How long will the mute last',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['banir', 'hackban', 'forceban'],
@@ -66,22 +60,19 @@ module.exports = class BanCommand {
 
 	async run (ctx) {
 		const ms = require('ms');
-		let member;
+		const member = await ctx.message.guild.members.fetch(ctx.args[0]);
 		if (!ctx.args[0]) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
 			});
 		}
 
-		if (!ctx.messages[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
+		if (ctx.args[0]) {
+			await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
 				});
 			});
-		}
-		else {
-			member = await ctx.messages[0];
 		}
 
 		let banReason = ctx.args[1];
@@ -89,18 +80,12 @@ module.exports = class BanCommand {
 			banReason = `${ctx.idioma.ban.mot}`;
 		}
 
-		function timestamp (date) {
-			let s = new Date(Date.now() + ms(date)).toUTCString();
-			s = new Date(s).toISOString();
-			return s;
-		}
-
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.zuly.muteMember(ctx.message.guild, member, motivo, timestamp(ctx.args[2]));
+		await member.timeout(ms(ctx.args[2]), motivo);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.user.username}** ${ctx.idioma.ban.foi}`
 		});
 	}
 };

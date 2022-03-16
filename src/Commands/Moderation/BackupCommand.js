@@ -137,7 +137,6 @@ module.exports = class BackupCommand {
 			msg.react('✅');
 			let collector = new ReactionCollector(msg);
 			collector.on('collect', async (reaction, user) => {
-				console.log(reaction.emoji.name);
 				if (user.id !== ctx.message.author.id) return;
 				if (user.id === ctx.message.author.id) {
 					msg.delete();

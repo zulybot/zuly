@@ -27,7 +27,7 @@ module.exports = class MessageCreateEvent {
 			for (const domain of domains) {
 				if (message.content.includes(domain)) {
 					if (message.content.includes('twitch.tv') || message.content.includes('discord.gift')) return;
-					message.channel.createMessage(`:x: ${message.author} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`).then((msg) => {
+					message.channel.send(`:x: ${message.author} **|** Este domínio foi bloqueado por ser suspeito de spam/phishing, caso acesse este site, você corre o risco de perder sua conta.`).then((msg) => {
 						setTimeout(() => {
 							msg.delete();
 						}, 3000);
@@ -49,7 +49,7 @@ module.exports = class MessageCreateEvent {
 			embed.setDescription(`👋 ${idioma.hello.replace('%user', message.author)}\n> <:zu_info:911303533859590144> ${idioma.about}\n> <:zu_slash:886681118470987967> ${idioma.help}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-			message.channel.createMessage({
+			message.channel.send({
 				content: message.author,
 				embeds: [embed.get()],
 				components: [
@@ -96,7 +96,7 @@ module.exports = class MessageCreateEvent {
 			embed.setColor('#ffcbdb');
 			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-			message.channel.createMessage({
+			message.channel.send({
 				content: message.author,
 				embeds: [embed.get()]
 			});

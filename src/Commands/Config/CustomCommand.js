@@ -65,10 +65,14 @@ module.exports = class LangCommand {
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.alreadyExists}`
 			});
 		}
-		await global.zuly.requestHandler.request('POST', `/applications/${global.zuly.user.id}/guilds/${ctx.message.guild.id}/commands`, true, {
-			type: 1,
-			name: nome,
-			description: `[🌀 » Custom] ${ctx.args[1] || 'No Description'}`,
+		await global.zuly.restAPI.put(global.zuly.routes.applicationGuildCommands(global.zuly.user.id, ctx.message.guild.id), {
+			body: [
+				{
+					type: 1,
+					name: nome,
+					description: `${ctx.args[1] || 'No Description'}`,
+				}
+			]
 		});
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.customCommand}`.replace('%n', nome)

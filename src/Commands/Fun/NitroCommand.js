@@ -1,9 +1,9 @@
-module.exports = class Nitro {
+module.exports = class NitroCommand {
 	constructor () {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['attachFiles'],
+				bot: ['ATTACH_FILES'],
 				dono: false
 			},
 			pt: {
@@ -40,10 +40,12 @@ module.exports = class Nitro {
 	}
 
 	async run (ctx) {
-		const { readFile } = require('fs/promises');
-		ctx.message.channel.slashReply(`<:zu_nitro:885919779205029898> ${ctx.message.author.mention} **|** discord\\.gift/${Math.random().toString(36).slice(-8)}`, {
-			file: await readFile('./assets/images/memes/nitrofake.png'),
-			name: 'nitro.png'
+		const { MessageAttachment } = require('discord.js');
+		const attachment = new MessageAttachment('./assets/images/memes/nitrofake.png', 'nitro.png');
+
+		ctx.message.channel.slashReply({
+			content: ctx.message.author.mention,
+			files: [attachment]
 		});
 	}
 };

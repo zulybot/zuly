@@ -3,7 +3,7 @@ module.exports = class CalcCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {
@@ -38,7 +38,7 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'expression',
 					description: 'The Expression that will be evaluated',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['math', 'calcular', 'calculadora'],

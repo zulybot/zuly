@@ -198,7 +198,7 @@ module.exports = {
 		host: 'Găzduit de: {user}',
 		win: 'câştigător(i)',
 		wins: 'Felicitări, {winners}! Ai câștigat **{this.prize}**!\n{this.messageURL}',
-		addReaction: 'adauga reactie cu :wrapped_cadft: pentru a participa!',
+		react: 'adauga reactie cu :wrapped_cadft: pentru a participa!',
 		restante: 'Timpul rămas',
 		no: 'Giveaway a fost anulat, nicio participare valabilă',
 		give: 'GIVEWAY',

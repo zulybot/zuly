@@ -38,7 +38,7 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'name',
 					description: 'Nome do PROMOCODE',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['pdelete', 'promocode-delete', 'deletar-promocode', 'deletar-promo', 'pdeletar'],
@@ -59,7 +59,7 @@ module.exports = class EvalCommand {
 		else {
 			await global.zuly.db.delete(ctx.args[0].toUpperCase());
 			const channel = await global.zuly.channels.cache.get('894981159119896576');
-			channel.createMessage(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Promocode: **${ctx.args[0].toUpperCase()}** ficou invalido.`);
+			channel.send(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Promocode: **${ctx.args[0].toUpperCase()}** ficou invalido.`);
 			return ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`,
 				flags: ctx.ephemeral

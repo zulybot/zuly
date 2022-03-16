@@ -54,7 +54,7 @@ module.exports = class PingCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.messages[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
+		const user = ctx.args[0] ? ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
 		let valor;
 		const mensagens = await global.zuly.db.get(`messages-${ctx.message.guild.id}-${user.id}`);
 		if (mensagens) {

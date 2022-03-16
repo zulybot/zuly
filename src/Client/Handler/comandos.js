@@ -2,6 +2,7 @@
 const config = require('../../Config/config');
 const comandos = [];
 const fs = require('fs');
+const { command } = require('../../Config/system');
 // Apagar comandos e aliases existentes (reload).
 global.zuly.commands.clear();
 global.zuly.aliases.clear();
@@ -50,25 +51,9 @@ fs.readdir('./src/Commands/', (err, cat) => {
 });
 if (config.deployslash) {
 	setTimeout(async () => {
-		const commands = await global.zuly.requestHandler.request('GET', `/applications/${config.client.id}/commands`, true);
-		// Atualizar comandos Antigos
-		commands.forEach(async (cmd) => {
-			const command = global.zuly.commands.get(cmd.name);
-			if (!command) {
-				await global.zuly.requestHandler.request('DELETE', `/applications/${config.client.id}/commands/${cmd.id}`, true);
-			}
-			else {
-				await global.zuly.requestHandler.request('PATCH', `/applications/${config.client.id}/commands/${cmd.id}`, true, {
-					name: command.en.nome,
-					description: command.en.desc,
-					options: command.options
-				});
-			}
-		});
-		// Adicionar comandos novos.
-		comandos.forEach(async (cmd) => {
-			await global.zuly.requestHandler.request('POST', `/applications/${config.client.id}/commands`, true, cmd);
-		});
+		global.zuly.restAPI.put(global.zuly.routes.applicationCommands(config.client.id), {
+			body: comandos
+		}).then(() => console.log('[SLASH] Registrados com sucesso.')).catch(console.error);
 	}, 5000);
 }
 // Davi e LRD fez.

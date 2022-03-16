@@ -3,7 +3,7 @@ module.exports = class GivawayStart {
 		return {
 			permissoes: {
 				membro: ['MANAGE_GUILD'],
-				bot: ['embedLinks'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {
@@ -73,7 +73,7 @@ module.exports = class GivawayStart {
 			winnerCount: parseInt(ctx.args[1]),
 			prize: ctx.args.slice(2).join(' '),
 			messages: {
-				inviteToParticipate: ctx.idioma.giveaway.addReaction,
+				inviteToParticipate: ctx.idioma.giveaway.react,
 				drawing: `${ctx.idioma.giveaway.restante} **{timestamp}**`,
 				winMessage: '🎁 ' + ctx.idioma.giveaway.wins,
 				noWinner: ctx.idioma.giveaway.no,

@@ -32,7 +32,7 @@ module.exports = {
 		host: 'Sorteio de: {user}',
 		win: 'ganhador(es)',
 		wins: 'Parabéns, {winners}! Você ganhou **{this.prize}**!\n{this.messageURL}',
-		addReaction: 'Reaja com 🎁 para participar!',
+		react: 'Reaja com 🎁 para participar!',
 		restante: 'Tempo Restante:',
 		no: 'Sorteio cancelado, sem participações válidas',
 		give: 'SORTEIO',

@@ -43,8 +43,8 @@ module.exports = class AutoroleCommand {
 	async run (ctx) {
 		try {
 			// COLETORES
-			const ReactionCollector = require('../../Helpers/ReactionCollector');
-			const MessageCollector = require('../../Helpers/MessageCollector');
+			const ReactionCollector = require('../src/Helpers/ReactionCollector');
+			const MessageCollector = require('../src/Helpers/MessageCollector');
 			// PUXANDO O AUTOROLE
 			const autoroleuser = await global.zuly.db.get(`autoroleuser-${ctx.message.guild.id}`);
 			const autorolebot = await global.zuly.db.get(`autorolebot-${ctx.message.guild.id}`);
@@ -79,9 +79,9 @@ module.exports = class AutoroleCommand {
 				embeds: [embed.get()]
 			}).then(msg => {
 				// ADICIONANDO REAÇÕES
-				msg.addReaction('🤖');
-				msg.addReaction(':zu_membros:885214377182109696');
-				msg.addReaction('❌');
+				msg.react('🤖');
+				msg.react(':zu_membros:885214377182109696');
+				msg.react('❌');
 				// CRIANDO COLETOR DE AUTOROLE BOT
 				const bot = new ReactionCollector(msg, {
 					user: ctx.message.author,
