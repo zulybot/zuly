@@ -1,6 +1,19 @@
 module.exports = {
 	lang: 'ro',
 	dashboard: 'Configurația bot-ului a fost migrată pe panel, accesați acest link: https://zulybot.xyz/dashboard/%g',
+	backup: {
+		create: { success: 'Backup created successfully!\n⤷ ID: `%id`, time taken to create: `%t`' },
+		list: {
+			noBackups: 'You don\'t have backups.',
+			backupList: 'Backup List:',
+			backupID: 'ID: %id'
+		},
+		load: {
+			success: 'Backup successfully loaded!',
+			error: 'Backup not found.',
+			confirm: 'Do you want to load the backup? Please be aware that all your settings will be overwritten by the backup, **messages, positions & channels** will not be recovered after this process.\n> To load react with `✅`.'
+		}
+	},
 	clusters: {
 		desc: '> This server is in cluster `%id`\n- Name: `%name`\n- Ping: `%ping`',
 		field: 'Info Clusters:',
@@ -259,7 +272,13 @@ module.exports = {
 		dono: 'Proprietar',
 		utl: 'Utilizează: %pwaifu-info [ID]',
 		casado: 'Ai fost căsătorit recent, te poți căsători la fiecare 2 ore',
-		noharem: 'Nu aveți waifuri, folosiți "%pwaifu roll" pentru a adăuga unul.'
+		noharem: 'Nu aveți waifuri, folosiți "%pwaifu roll" pentru a adăuga unul.',
+		battle: 'Battle of Waifus',
+		battleDesc: '**%u** is looking for a partner for a waifus duel, who will face it?',
+		label: 'Me!',
+		yms: 'You cannot battle with yourself.',
+		bat: '%u, you will battle %2u, you have 30 seconds to choose a waifu (player found in `%t`).',
+		select: 'Nothing Selected.'
 	},
 	tradutor: {
 		lang: 'Trebuie să specificați limba, exemplul: %translator **ro** buna',
