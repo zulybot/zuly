@@ -1,6 +1,21 @@
 module.exports = {
 	lang: 'pt',
 	dashboard: 'A Configuração do bot foi migrada para o dashboard, acesse por esse link: https://zulybot.xyz/dashboard/%g',
+	backup: {
+		create: {
+			success: 'Backup criado com sucesso!\n⤷ ID: `%id`, tempo gasto para criar: `%t`',
+		},
+		list: {
+			noBackups: 'Você não possui backups.',
+			backupList: 'Lista de backups:',
+			backupID: 'ID: %id',
+		},
+		load: {
+			success: 'Backup carregado com sucesso!',
+			error: 'Backup não encontrado.',
+			confirm: 'Você deseja carregar o backup? Saiba que todas as suas configurações serão substituidas pelo backup, não será recuperado **mensagens, cargos & canais** depois desse processo.\n> Para carregar reaja com `✅`.',
+		}
+	},
 	clusters: {
 		desc: '> Esse servidor está no cluster `%id`\n- Nome: `%name`\n- Ping: `%ping`',
 		field: 'Info Clusters:',
@@ -206,6 +221,12 @@ module.exports = {
 		utl: 'Utilize: %pwaifu-info [ID]',
 		casado: 'Você já casou recentemente, você pode casar a cada 2 horas',
 		noharem: 'Você não tem waifus, use `%pwaifu roll` para adicionar um.',
+		battle: 'Batalha de Waifus',
+		battleDesc: '**%u** está procurando um parceiro para um duelo de waifus, quem vai encarar?',
+		label: 'Eu!',
+		yms: 'Você não pode batalhar com você mesmo.',
+		bat: '%u, você irá batalhar com %2u, vocês tem 30 segundos para escolher uma waifu (jogador encontrado em `%t`).',
+		select: 'Nada Selecionado.'
 	},
 	tradutor: {
 		lang: 'Você precisa especificar a linguagem, examplo: %translator **en** Oi',

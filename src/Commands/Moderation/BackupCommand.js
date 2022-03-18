@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-
-const { client } = require('../../Config/config');
-
 /* eslint-disable no-undef */
 module.exports = class BackupCommand {
 	constructor () {
@@ -78,6 +74,7 @@ module.exports = class BackupCommand {
 	async run (ctx) {
 		const genID = await Math.random().toString(36).slice(2, 10);
 		if (ctx.args[0] === 'create') {
+			const tempo = Date.now();
 			global.zuly.backup.create(ctx.message.guild, {
 				maxMessagesPerChannel: 0,
 				saveImages: 'base64'
@@ -91,7 +88,7 @@ module.exports = class BackupCommand {
 					await global.zuly.db.set(`backups.${ctx.message.author.id}`, [genID]);
 				}
 				ctx.message.channel.slashReply({
-					content: `:white_check_mark: ${ctx.message.author.mention} **|** Backup criado, ID: \`${genID}\`.`,
+					content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.create.success}`.replace('%t', require('pretty-ms')(Date.now() - tempo)).replace('%id', genID),
 				});
 			});
 		}
@@ -99,7 +96,7 @@ module.exports = class BackupCommand {
 			const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
 			if (!backupdb || !backupdb.length) {
 				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** Você não possui backups.`,
+					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.list.noBackups}`,
 				});
 			}
 			else {
@@ -110,7 +107,7 @@ module.exports = class BackupCommand {
 					backupdb.map(async (back) => {
 						const backa = await global.zuly.db.get(`backups.${back}`);
 						await global.zuly.backup.fetch(backa).then((backup) => {
-							embed.addField(`Backup ID: ${back}`, `↳ **${backup.data.name}**\n↳ \`/backup load ${back}\``);
+							embed.addField(`${ctx.idioma.backup.list.backupID} ${back}`, `↳ **${backup.data.name}**\n↳ \`/backup load ${back}\``, true);
 						});
 					});
 				}
@@ -129,10 +126,10 @@ module.exports = class BackupCommand {
 			}
 		}
 		if (ctx.args[0] === 'load') {
-			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Insira o ID do backup após o comando, caso não saiba, use \`/backup list\`.`);
+			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.error}`);
 			const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
-			if (!backupdb.includes(ctx.args[1])) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** Você não possui o backup com o ID \`${ctx.args[1]}\`.`);
-			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author.mention} **|** Você deseja carregar o backup? Saiba que todas as suas configurações serão substituidas pelo backup, não será recuperado **mensagens, cargos & canais** depois desse processo.\n> Para carregar reaja com \`✅\`.`);
+			if (!backupdb.includes(ctx.args[1])) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.error}`);
+			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.confirm}`);
 			const { ReactionCollector } = require('discord.js');
 			msg.react('✅');
 			let collector = new ReactionCollector(msg);

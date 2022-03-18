@@ -53,7 +53,7 @@ module.exports = class EvalCommand {
 		if (!msg) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será evaluado!`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('mongo')) return;
@@ -63,13 +63,13 @@ module.exports = class EvalCommand {
 			if (typeof eva !== 'string') eva = await require('util').inspect(eva, { depth: 0 });
 			ctx.message.channel.slashReply({
 				content: `\`\`\`js\n${eva.replace(regexToken, '\'amas\'').slice(0, 1990)}\`\`\``,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		catch (e) {
 			ctx.message.channel.slashReply({
 				content: `\`\`\`js\n${`${e}`.slice(0, 1990)}\`\`\``,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 	}

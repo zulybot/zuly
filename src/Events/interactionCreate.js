@@ -68,7 +68,7 @@ module.exports = class InteractionEvent {
 					if (!command.permissoes.membro.every(p => msg.member.permissions.has(p))) {
 						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.user} \`${command.permissoes.membro}\`.`,
-							flags: 64
+							ephemeral: true
 						});
 					}
 				}
@@ -76,7 +76,7 @@ module.exports = class InteractionEvent {
 					if (!command.permissoes.bot.every(p => msg.guild.me.permissionsIn(msg.channel).has(p) || msg.guild.me.permissions.has(p))) {
 						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.bot} \`${command.permissoes.bot}\`.`,
-							flags: 64
+							ephemeral: true
 						});
 					}
 				}
@@ -84,7 +84,7 @@ module.exports = class InteractionEvent {
 					if (!msg.channel.nsfw) {
 						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.nsfw}`,
-							flags: 64
+							ephemeral: true
 						});
 					}
 				}
@@ -97,7 +97,7 @@ module.exports = class InteractionEvent {
 					if (!developers.includes(msg.member.id)) {
 						return msg.channel.slashReply({
 							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}.`,
-							flags: 64
+							ephemeral: true
 						});
 					}
 				}

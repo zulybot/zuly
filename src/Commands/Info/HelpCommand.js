@@ -113,7 +113,7 @@ module.exports = class Ajuda {
 								]
 							}
 						],
-						flags: ctx.ephemeral
+						ephemeral: true
 					});
 				}
 
@@ -171,7 +171,7 @@ module.exports = class Ajuda {
 							]
 						}
 					],
-					flags: ctx.ephemeral
+					ephemeral: true
 				});
 
 				break;
@@ -216,7 +216,7 @@ module.exports = class Ajuda {
 								]
 							}
 						],
-						flags: ctx.ephemeral
+						ephemeral: true
 					});
 				}
 
@@ -274,7 +274,7 @@ module.exports = class Ajuda {
 							]
 						}
 					],
-					flags: ctx.ephemeral
+					ephemeral: true
 				});
 				break;
 			case 'en-us':
@@ -295,7 +295,7 @@ module.exports = class Ajuda {
 					return ctx.message.channel.slashReply({
 						content: ctx.message.author.mention,
 						embeds: [help.get()],
-						flags: ctx.ephemeral
+						ephemeral: true
 					});
 				}
 				global.zuly.commands.forEach(cmd => {
@@ -353,7 +353,7 @@ module.exports = class Ajuda {
 							]
 						}
 					],
-					flags: ctx.ephemeral
+					ephemeral: true
 				});
 				break;
 		}

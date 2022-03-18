@@ -8,8 +8,11 @@ module.exports = class MessageCreateEvent {
 	async run (message) {
 		const config = require('../Config/config.js');
 
-		if (message.channel.type === 1) return;
-
+		if (!message.guild.id) {
+			return message.reply({
+				content: `:x:`
+			});
+		};
 		let idioma = require('../Config/idiomas');
 		let lang = await global.zuly.db.get(`idioma-${message.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');

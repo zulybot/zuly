@@ -53,7 +53,7 @@ module.exports = class EvalCommand {
 		if (!code) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Esse código não existe`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		else {
@@ -62,7 +62,7 @@ module.exports = class EvalCommand {
 			channel.send(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Promocode: **${ctx.args[0].toUpperCase()}** ficou invalido.`);
 			return ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** deletado com sucesso!`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 	}

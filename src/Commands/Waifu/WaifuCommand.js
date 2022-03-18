@@ -1,3 +1,4 @@
+/* eslint-disable max-nested-callbacks */
 /* eslint-disable new-cap */
 module.exports = class EvalCommand {
 	constructor () {

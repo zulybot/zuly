@@ -55,7 +55,7 @@ client.on('ready', async () => {
 	} = require('../../../package.json');
 	console.log('[PREMIUM] Estou Pronto!'.green);
 	await global.premium.user.setActivity(`zulybot.xyz | ${global.premium.user.username} [v${version}]`, {
-		game: global.zuly.user.username,
+		game: global.premium.user.username,
 		type: 5
 	});
 });

@@ -56,13 +56,13 @@ module.exports = class EvalCommand {
 		if (!ctx.args[0] || !ctx.args[1]) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Insira os 2 campos, \`${ctx.prefix}pcreate <NOME> <VALOR EM RYOS>\``,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		if (isNaN(ctx.args[1])) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** O Valor não é um número exato.`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 
@@ -70,7 +70,7 @@ module.exports = class EvalCommand {
 		if (code) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Esse código já existe`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		else {
@@ -79,7 +79,7 @@ module.exports = class EvalCommand {
 			channel.send(`<:zu_ticket:890950181120507935> <@&894983704554930247> **|** Novo promocode: **${ctx.args[0].toUpperCase()}** valendo **${Number(ctx.args[1])} ryos.**`);
 			return ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** Promocode **${ctx.args[0].toUpperCase()}** criado com sucesso!`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 	}

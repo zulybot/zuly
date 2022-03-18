@@ -57,7 +57,7 @@ module.exports = class CalcCommand {
 			ctx.message.channel.slashReply({
 				content: `📸 ${ctx.message.author.mention}`,
 				files: [attachment],
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		else {

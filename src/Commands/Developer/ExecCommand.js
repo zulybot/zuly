@@ -52,26 +52,26 @@ module.exports = class ExecCommand {
 		if (!code) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** Insira o código que será executado!`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 		}
 		else {
 			ctx.message.channel.slashReply({
 				content: `:white_check_mark: ${ctx.message.author.mention} **|** Executando...`,
-				flags: ctx.ephemeral
+				ephemeral: true
 			});
 			try {
 				exec(code, (_erro, val) => {
 					ctx.message.channel.slashReply({
 						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${val}`,
-						flags: ctx.ephemeral
+						ephemeral: true
 					});
 				});
 			  }
 			catch (err) {
 				ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** ${err}`,
-					flags: ctx.ephemeral
+					ephemeral: true
 				});
 			  }
 		}
