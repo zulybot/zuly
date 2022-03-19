@@ -30,8 +30,21 @@ const client = new Client({
 	]
 });
 
+// Games
+client.snakecord = new SnakeGame({
+	title: 'SnakeCord | Zuly',
+	color: '#ffcbdb',
+	timestamp: false,
+	gameOverTitle: 'Fim do Jogo',
+});
+
+// Plugins
+client.restAPI = new REST({ version: '9' }).setToken(token);
+client.routes = require('discord-api-types/v9').Routes;
+client.backup = require('discord-backup');
+client.version = require('../package.json').version;
 client.giveawaysManager = new GiveawaysManager(client, {
-	storage: './src/db/giveaways.json',
+	storage: './JSON/giveaways.json',
 	updateCountdownEvery: 5000,
 	default: {
 		botsCanWin: false,
@@ -40,18 +53,6 @@ client.giveawaysManager = new GiveawaysManager(client, {
 		reaction: '🎁'
 	}
 });
-
-// Games
-client.snakecord = new SnakeGame({
-	title: 'SnakeCord | Zuly',
-	color: '#ffcbdb',
-	timestamp: false,
-	gameOverTitle: 'Fim do Jogo',
-});
-// Plugins
-client.restAPI = new REST({ version: '9' }).setToken(token);
-client.routes = require('discord-api-types/v9').Routes;
-client.backup = require('discord-backup');
 // Collections
 client.commands = new Collection();
 client.events = new Collection();
@@ -71,4 +72,7 @@ client.topgg = new AutoPoster(top.gg.token, client).on('posted', () => {
 global.zuly = client;
 global.zuly.manager = ZulyBot;
 
-require('./ZulyUtilLoader');
+require('./Client/Handler/eventos');
+require('./Database/DatabaseConnect');
+require('./Utils/ZulyFunctions');
+require('./Containers/Premium/bot');

@@ -10,7 +10,7 @@ Dockerfile
 ## DATABASE FILES
 
 data/base.json
-src/db/giveaways.json
+/JSON/giveaways.json
 
 ## CONFIDENCIAL files
 

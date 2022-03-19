@@ -94,19 +94,19 @@ module.exports = class Ajuda {
 								components: [
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.support}`,
+										label: `${ctx.idioma.mention.labels.support}`,
 										style: 5,
 										url: 'https://discord.gg/pyyyJpw5QW'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.invite}`,
+										label: `${ctx.idioma.mention.labels.invite}`,
 										style: 5,
 										url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.website}`,
+										label: `${ctx.idioma.mention.labels.website}`,
 										style: 5,
 										url: 'https://zulybot.xyz/'
 									}
@@ -152,19 +152,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.support}`,
+									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.invite}`,
+									label: `${ctx.idioma.mention.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.website}`,
+									label: `${ctx.idioma.mention.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}
@@ -197,19 +197,19 @@ module.exports = class Ajuda {
 								components: [
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.support}`,
+										label: `${ctx.idioma.mention.labels.support}`,
 										style: 5,
 										url: 'https://discord.gg/pyyyJpw5QW'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.invite}`,
+										label: `${ctx.idioma.mention.labels.invite}`,
 										style: 5,
 										url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 									},
 									{
 										type: 2,
-										label: `${ctx.idioma.labels.website}`,
+										label: `${ctx.idioma.mention.labels.website}`,
 										style: 5,
 										url: 'https://zulybot.xyz/'
 									}
@@ -255,19 +255,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.support}`,
+									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.invite}`,
+									label: `${ctx.idioma.mention.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.website}`,
+									label: `${ctx.idioma.mention.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}
@@ -334,19 +334,19 @@ module.exports = class Ajuda {
 							components: [
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.support}`,
+									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
 									url: 'https://discord.gg/pyyyJpw5QW'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.invite}`,
+									label: `${ctx.idioma.mention.labels.invite}`,
 									style: 5,
 									url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 								},
 								{
 									type: 2,
-									label: `${ctx.idioma.labels.website}`,
+									label: `${ctx.idioma.mention.labels.website}`,
 									style: 5,
 									url: 'https://zulybot.xyz/'
 								}

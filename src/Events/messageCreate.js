@@ -8,11 +8,9 @@ module.exports = class MessageCreateEvent {
 	async run (message) {
 		const config = require('../Config/config.js');
 
-		if (!message.guild.id) {
-			return message.reply({
-				content: `:x:`
-			});
-		};
+		if (message.author.bot) return;
+		if (!message.guild) return;
+
 		let idioma = require('../Config/idiomas');
 		let lang = await global.zuly.db.get(`idioma-${message.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');
@@ -44,16 +42,14 @@ module.exports = class MessageCreateEvent {
 		const mensagens = await global.zuly.db.get(`messages-${message.guild.id}-${message.author.id}`);
 		await global.zuly.db.set(`messages-${message.guild.id}-${message.author.id}`, mensagens ? mensagens + 1 : 1);
 
-		if (message.author.bot) return;
-
 		if (message.content === `<@${global.zuly.user.id}>` || message.content === `<@!${global.zuly.user.id}>`) {
 			const embed = new global.zuly.manager.Ebl();
 			embed.setAuthor(global.zuly.user.username, '', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-			embed.setDescription(`👋 ${idioma.hello.replace('%user', message.author)}\n> <:zu_info:911303533859590144> ${idioma.about}\n> <:zu_slash:886681118470987967> ${idioma.help}`);
+			embed.setDescription(`👋 ${idioma.mention.hello.replace('%user', message.author)}\n> <:zu_info:911303533859590144> ${idioma.mention.about}\n> <:zu_slash:886681118470987967> ${idioma.mention.help}`);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			message.channel.send({
-				content: message.author,
+				content: message.author.mention,
 				embeds: [embed.get()],
 				components: [
 					{
@@ -61,19 +57,19 @@ module.exports = class MessageCreateEvent {
 						components: [
 							{
 								type: 2,
-								label: `${idioma.labels.support}`,
+								label: `${idioma.mention.labels.support}`,
 								style: 5,
 								url: 'https://discord.gg/pyyyJpw5QW'
 							},
 							{
 								type: 2,
-								label: `${idioma.labels.invite}`,
+								label: `${idioma.mention.labels.invite}`,
 								style: 5,
 								url: 'https://discord.com/oauth2/authorize?client_id=' + global.zuly.user.id + '&scope=bot%20applications.commands&permissions=268823622'
 							},
 							{
 								type: 2,
-								label: `${idioma.labels.website}`,
+								label: `${idioma.mention.labels.website}`,
 								style: 5,
 								url: 'https://zulybot.xyz/'
 							}
@@ -100,7 +96,7 @@ module.exports = class MessageCreateEvent {
 			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			message.channel.send({
-				content: message.author,
+				content: message.author.mention,
 				embeds: [embed.get()]
 			});
 		}

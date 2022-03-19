@@ -10,6 +10,12 @@ module.exports = class InteractionEvent {
 		const { WebhookClient } = require('discord.js');
 		if (!interaction.isCommand()) return;
 		await interaction.deferReply();
+		if (!interaction.guild) {
+			return interaction.editReply({
+				content: ':x: **|** Slash commands cannot be used via direct message.',
+				ephemeral: true
+			});
+		};
 		const blacklist = await global.zuly.db.get(`botban-${interaction.member.user.id}`);
 		if (blacklist) {
 			const msg = interaction;

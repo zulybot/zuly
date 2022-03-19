@@ -2,11 +2,11 @@
   "name": "zuly",
   "version": "3.0",
   "description": "Hi, I'm zuly, a just brazilian bot focused on anime!",
-  "main": "src/zuly.js",
+  "main": "src/zulyClusters.js",
   "scripts": {
     "dev": "nodemon",
     "start": "node --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=1 .",
-    "forever": "forever -c \"node --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=1\" src/zuly.js",
+    "forever": "forever -c \"node --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=1\" src/zulyClusters.js",
     "lint": "eslint --fix --ext .js --ignore-path .gitignore ."
   },
   "keywords": [
