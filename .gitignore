@@ -14,6 +14,7 @@ data/base.json
 
 ## CONFIDENCIAL files
 
+/zulybot.xyz
 /backups
 src/Archive
 src/Client/Plugins/nodes.js

@@ -2,8 +2,8 @@ module.exports = class ReactionRoleCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['MANAGE_GUILD', 'manageRoles'],
-				bot: ['manageRoles', 'useExternalEmojis', 'ADD_REACTIONS']
+				membro: ['MANAGE_GUILD', 'MANAGE_ROLES'],
+				bot: ['MANAGE_ROLES', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 			},
 			pt: {
 				nome: 'reactionrole',

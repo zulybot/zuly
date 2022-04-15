@@ -1,4 +1,4 @@
-module.exports = class LangCommand {
+module.exports = class CustomCommand {
 	constructor () {
 		return {
 			permissoes: {

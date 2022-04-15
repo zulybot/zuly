@@ -4,7 +4,7 @@ module.exports = class EvalCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: [],
+				bot: ['ATTACH_FILES'],
 				dono: true
 			},
 			pt: {
@@ -34,7 +34,14 @@ module.exports = class EvalCommand {
 			MENTIONABLE: 9 = Includes users and roles
 			NUMBER: 10 = Any double between -2^53 and 2^53
 			*/
-			options: [],
+			options: [
+				{
+					type: 6,
+					name: 'user',
+					description: 'The User Mention',
+					required: false
+				}
+			],
 			aliases: ['perfil', 'status'],
 			run: this.run
 		};

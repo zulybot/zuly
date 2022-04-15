@@ -4,7 +4,7 @@ module.exports = class ShipCommand {
 			permissoes: {
 				membro: [],
 				bot: ['ATTACH_FILES'],
-				dono: true
+				dono: false
 			},
 			pt: {
 				nome: 'ship',
@@ -33,7 +33,20 @@ module.exports = class ShipCommand {
 			MENTIONABLE: 9 = Includes users and roles
 			NUMBER: 10 = Any double between -2^53 and 2^53
 			*/
-			options: [],
+			options: [
+				{
+					type: 6,
+					name: 'user1',
+					description: 'The first ship user.',
+					required: true
+				},
+				{
+					type: 6,
+					name: 'user2',
+					description: 'The second ship user.',
+					required: true
+				}
+			],
 			aliases: ['shippar', 'casal'],
 			run: this.run
 		};
@@ -42,11 +55,11 @@ module.exports = class ShipCommand {
 	async run (ctx) {
 		let porcentagem;
 		let user1 = ctx.message.author;
-		let user2 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]);
+		let user2 = await global.zuly.users.fetch(ctx.args[0]);
 
 		if (ctx.args[1]) {
-			user1 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]);
-			user2 = ctx.args[0] || await global.zuly.users.fetch(ctx.args[1]);
+			user1 = await global.zuly.users.fetch(ctx.args[0]);
+			user2 = await global.zuly.users.fetch(ctx.args[1]);
 		}
 
 		if (!user2) {
@@ -79,7 +92,7 @@ module.exports = class ShipCommand {
 			family: 'Lemon-Brownies'
 		});
 
-		const base = await loadImage('./assets/images/ship.png');
+		const base = await loadImage('./assets/images/profile/ship.png');
 
 		const edit = createCanvas(base.width, base.height);
 		const foto = edit.getContext('2d');
@@ -96,14 +109,36 @@ module.exports = class ShipCommand {
 		foto.drawImage(base, 0, 0);
 
 		foto.font = '430px Lemon-Brownies';
+		foto.fillStyle = '#7149cd';
+		foto.fillText(`${porcentagem}%`, 1650, 1300);
+		foto.font = '200px Lemon-Brownies';
 		foto.fillStyle = '#ffffff';
-		foto.fillText(`${porcentagem}%`, 1630, 1300);
-		foto.font = '300px Lemon-Brownies';
-		foto.fillText(`${nome}`, 2000, 2000);
+		foto.fillText(`${nome}`, 1650, 2100);
 
-		ctx.message.channel.slashReply(`💖 ${ctx.message.author.mention} 💖`, {
-			file: edit.toBuffer(),
-			name: 'ship.png'
+		const { MessageAttachment } = require('discord.js');
+		const attachment = new MessageAttachment(edit.toBuffer(), 'ship.png');
+
+		let description;
+
+		if (porcentagem <= 23) {
+			description = `${ctx.idioma.ship.d1}`;
+		  }
+
+		  if (porcentagem > 23 && porcentagem <= 47) {
+			description = `${ctx.idioma.ship.d2}`;
+		  }
+
+		  if (porcentagem > 47 && porcentagem <= 80) {
+			description = `${ctx.idioma.ship.d3}`;
+		  }
+
+		  if (porcentagem > 80) {
+			description = `${ctx.idioma.ship.d4}`;
+		  }
+
+		ctx.message.channel.slashReply({
+			content: `💖 ${ctx.message.author.mention} 💖\n<:zu_yay:892019273323663420> \`${user1.username}\` + \`${user2.username}\` = \`${nome}\`\n<:zu_sad_cat_joinha:890676282487095316> ${description}`,
+			files: [attachment],
 		}).then(async () => {
 			if (!ship1 && !ship2) {
 				await global.zuly.db.set(`ship-${user1.id}-${user2.id}`, porcentagem);

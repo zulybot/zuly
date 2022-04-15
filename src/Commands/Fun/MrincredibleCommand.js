@@ -3,8 +3,8 @@ module.exports = class MrincredibleCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: [],
-				dono: true
+				bot: ['ATTACH_FILES'],
+				dono: false
 			},
 			pt: {
 				nome: 'mrincredible',

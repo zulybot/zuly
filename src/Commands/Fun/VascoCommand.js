@@ -3,8 +3,8 @@ module.exports = class VascoCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: [],
-				dono: true
+				bot: ['ATTACH_FILES'],
+				dono: false
 			},
 			pt: {
 				nome: 'vasco',
@@ -38,7 +38,7 @@ module.exports = class VascoCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: true
 				}
 			],
 			aliases: [],

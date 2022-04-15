@@ -3,7 +3,7 @@ module.exports = class ResgatarCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: [],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {

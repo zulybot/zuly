@@ -1,5 +1,12 @@
 module.exports = {
 	lang: 'fr',
+	bateau: {
+		nou: 'Mentionnez un utilisateur à expédier',
+		d1 : 'Vous n\'êtes pas compatibles, vous êtes très différents les uns des autres 😔',
+		d2: 'Vous pouvez être amis, mais je ne vois pas de meilleur avenir entre vous, vous vous ressemblez 🤝',
+		j3 : 'Vous pouvez être en couple, les goûts sont quasiment les mêmes et vous vous connaissez beaucoup 👀',
+		d4 : 'Vous êtes parfaits, faits l\'un pour l\'autre, allez-y, vous avez tout pour vous débrouiller ❤️'
+	},
 	dashboard: 'La configuration du bot a été migrée vers le tableau de bord, accédez à ce lien : https://zulybot.xyz/dashboard/%g',
 	backup: {
 		create: {

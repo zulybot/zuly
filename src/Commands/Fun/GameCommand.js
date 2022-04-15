@@ -3,7 +3,7 @@ module.exports = class GameCommand {
 		return {
 			permissoes: {
 				membro: [],
-				bot: ['ATTACH_FILES', 'EMBED_LINKS', 'ADD_REACTIONS'],
+				bot: ['EMBED_LINKS'],
 				dono: false
 			},
 			pt: {
