@@ -152,12 +152,10 @@ module.exports = class InteractionEvent {
 					embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
-					const hook = new WebhookClient({
+					new WebhookClient({
 						token: system.command.token,
 						id: system.command.id,
-					});
-
-					await hook.send({
+					}).send({
 						avatarURL: global.zuly.user.displayAvatarURL(),
 						username: global.zuly.user.username,
 						embeds: [embed.get()]
