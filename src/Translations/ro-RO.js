@@ -193,6 +193,7 @@ module.exports = {
 		sucess: 'Canalul setat cu succes!'
 	},
 	message: {
+		mod: 'This command can only be used by my moderators!',
 		P: 'Bună, omule!',
 		view: 'Nu am permisiunea să citesc istoria mesajelor!',
 		the: 'Comanda',
