@@ -193,6 +193,7 @@ module.exports = {
 		sucess: 'Channel set successfully!'
 	},
 	message: {
+		mod: 'This command can only be used by my moderators!',
 		P: 'Привет, человек!',
 		view: 'У меня нет разрешения на чтение истории сообщений!',
 		the: 'Команда',
