@@ -50,7 +50,7 @@
     "discord.js-akinator": "^3.4.2",
     "express": "^4.17.3",
     "math-expression-evaluator": "^1.3.14",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "mongoose": "^6.2.6",
     "ms": "^2.1.3",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
