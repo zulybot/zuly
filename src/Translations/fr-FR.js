@@ -193,6 +193,7 @@ module.exports = {
 		sucess: 'Chaîne définie avec succès !'
 	},
 	message: {
+		mod: 'This command can only be used by my moderators!',
 		P: 'Bonjour, humain!',
 		view: 'Je n\'ai pas la permission de lire l\'historique des messages !',
 		the: 'La Commande',
