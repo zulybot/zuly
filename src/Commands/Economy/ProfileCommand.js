@@ -54,7 +54,7 @@ module.exports = class EvalCommand {
 			registerFont
 		  } = require('canvas');
 		  const { fillTextWithTwemoji } = require('node-canvas-with-twemoji-and-discord-emoji');
-		  const user = ctx.args[0] ? ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
+		  const user = ctx.args[0] ? await global.zuly.users.fetch(ctx.args[0]).catch(() => ctx.message.author) : ctx.message.author;
 		  const back = await global.zuly.db.get(`background-${user.id}`) || './assets/images/backgrounds/default.jpg';
 		  registerFont('./assets/fonts/Dunkin.otf', {
 			family: 'Dunkin'
@@ -75,16 +75,16 @@ module.exports = class EvalCommand {
 		  if (bugHunter && userPremium) {
 			const bug = await loadImage('./assets/images/badges/bughunter.png');
 			const early = await loadImage('./assets/images/badges/earlysupport.png');
-			foto.drawImage(early, 650, 60, 60, 45);
-			foto.drawImage(bug, 700, 60, 60, 45);
+			foto.drawImage(early, 650, 60, 60, 50);
+			foto.drawImage(bug, 700, 60, 60, 50);
 		  }
 		else if (bugHunter) {
 			const early = await loadImage('./assets/images/badges/bughunter.png');
-			foto.drawImage(early, 650, 60, 60, 45);
+			foto.drawImage(early, 650, 60, 60, 50);
 		  }
 		else if (userPremium) {
 			const early = await loadImage('./assets/images/badges/earlysupport.png');
-			foto.drawImage(early, 650, 60, 60, 45);
+			foto.drawImage(early, 650, 60, 60, 50);
 		  }
 
 		  if (user.username.length > 9) {
@@ -97,9 +97,11 @@ module.exports = class EvalCommand {
 		  await fillTextWithTwemoji(foto, `${user.username.toUpperCase()}#${user.discriminator}`, canvas.width / 2.5, canvas.height / 6.5);
 		  foto.font = '17px Dunkin';
 		  await fillTextWithTwemoji(foto, about.match(/.{1,65}/g).join('\n'), canvas.width / 28, canvas.height / 1.17);
+		const { MessageAttachment } = require('discord.js');
+		const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 		  ctx.message.channel.slashReply({
-			file: canvas.toBuffer(),
-			name: 'profile.png'
+			content: ctx.message.author.mention,
+			files: [attachment],
 		  });
 	}
 };

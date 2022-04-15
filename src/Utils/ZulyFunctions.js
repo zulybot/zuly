@@ -61,33 +61,33 @@ async function unmuteMember (guild, member, reason) {
 async function getPremium (typename, user) {
 	const tipo = typename.toLowerCase();
 	if (tipo === 'doador') {
-		const guild = await global.zuly.getRESTGuild('880174783294214184');
-		const membro = await guild.getRESTMember(user);
+		const guild = await global.zuly.guilds.cache.get('880174783294214184');
+		const membro = await guild.members.cache.get(user);
 		if (!membro) {
 			return false;
 		}
-		else if (membro.roles.includes('903708588806119465') || membro.roles.includes('880399661184200725')) {
+		else if (membro.roles.cache.has('903708588806119465') || membro.roles.cache.has('880399661184200725')) {
 			return true;
 		}
 	}
 	if (tipo === 'essencial') {
-		const guild = await global.zuly.getRESTGuild('880174783294214184');
-		const membro = await guild.getRESTMember(user);
+		const guild = await global.zuly.guilds.cache.get('880174783294214184');
+		const membro = await guild.members.cache.get(user);
 		if (!membro) {
 			return false;
 		}
-		else if (membro.roles.includes('903710903420223548')) {
+		else if (membro.roles.cache.has('903710903420223548')) {
 			return true;
 		}
 	}
 }
 async function getBugHunter (user) {
-	const guild = await global.zuly.getRESTGuild('880174783294214184');
-	const membro = await guild.getRESTMember(user);
+	const guild = await global.zuly.guilds.cache.get('880174783294214184');
+	const membro = await guild.members.cache.get(user);
 	if (!membro) {
 		return false;
 	}
-	else if (membro.roles.includes('912014349277737051')) {
+	else if (membro.roles.cache.has('912014349277737051')) {
 		return true;
 	}
 }

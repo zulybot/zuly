@@ -52,9 +52,9 @@ module.exports = class GameCommand {
 
 	async run (ctx) {
 		if (ctx.args[0] === 'akinator') {
-			const akinator = require('discord.js-akinator');
+			const akinator = require('../../Helpers/Akinator/index');
 			ctx.message.channel.slashReply({
-				content: `<:zu_aki:913754145385754675> ${ctx.message.author.mention} **|** ${ctx.idioma.aki.i}`,
+				content: `<:zu_aki:913754145385754675> ${ctx.message.author.mention} **|** ${ctx.idioma.aki.i}.`,
 			});
 			return akinator(ctx.message, {
 				language: ctx.idioma.lang,
