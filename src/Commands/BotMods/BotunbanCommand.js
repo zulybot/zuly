@@ -4,22 +4,22 @@ module.exports = class BanCommand {
 			permissoes: {
 				membro: [],
 				bot: [],
-				dono: true
+				botmod: true,
 			},
 			pt: {
-				nome: 'botban',
+				nome: 'botunban',
 				categoria: '💻 » Dev',
-				desc: 'Bane algum usuário de usar o bot.'
+				desc: 'Desbane algum usuário de usar o bot.'
 			},
 			en: {
-				nome: 'botban',
+				nome: 'botunban',
 				categoria: '💻 » Dev',
-				desc: 'Ban some user from using the bot.'
+				desc: 'Unban some user from using the bot.'
 			},
 			fr: {
 				nome: 'botban',
 				categoria: '💻 » Dev',
-				desc: 'Interdire à certains utilisateurs d\'utiliser le bot.'
+				desc: 'Débannir certains utilisateurs d\'utiliser le bot.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand
@@ -38,16 +38,16 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the ban',
+					description: 'The reason for the unban',
 					required: false
 				}
 			],
-			aliases: ['zulyban'],
+			aliases: ['zulyunban'],
 			run: this.run
 		};
 	}
@@ -74,15 +74,9 @@ module.exports = class BanCommand {
 		if (!banReason) {
 			banReason = `${ctx.idioma.ban.mot}`;
 		}
-		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
+		// const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		const devs = await global.zuly.db.get('devs');
-		if (devs.includes(member.id)) {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.dev}`
-			});
-		}
-		await global.zuly.db.set(`botban-${member.id}`, motivo);
+		await global.zuly.db.delete(`botban-${member.id}`);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

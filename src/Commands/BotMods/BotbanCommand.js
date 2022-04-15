@@ -4,22 +4,22 @@ module.exports = class BanCommand {
 			permissoes: {
 				membro: [],
 				bot: [],
-				dono: true
+				botmod: true,
 			},
 			pt: {
-				nome: 'botunban',
+				nome: 'botban',
 				categoria: '💻 » Dev',
-				desc: 'Desbane algum usuário de usar o bot.'
+				desc: 'Bane algum usuário de usar o bot.'
 			},
 			en: {
-				nome: 'botunban',
+				nome: 'botban',
 				categoria: '💻 » Dev',
-				desc: 'Unban some user from using the bot.'
+				desc: 'Ban some user from using the bot.'
 			},
 			fr: {
 				nome: 'botban',
 				categoria: '💻 » Dev',
-				desc: 'Débannir certains utilisateurs d\'utiliser le bot.'
+				desc: 'Interdire à certains utilisateurs d\'utiliser le bot.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand
@@ -38,16 +38,16 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the unban',
+					description: 'The reason for the ban',
 					required: false
 				}
 			],
-			aliases: ['zulyunban'],
+			aliases: ['zulyban'],
 			run: this.run
 		};
 	}
@@ -74,9 +74,27 @@ module.exports = class BanCommand {
 		if (!banReason) {
 			banReason = `${ctx.idioma.ban.mot}`;
 		}
-		// const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
+		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.zuly.db.delete(`botban-${member.id}`);
+		const mods = await global.zuly.db.get('mods');
+		const deve = await global.zuly.db.get('devs');
+
+		const devs = [];
+
+		mods.forEach(mod => {
+			devs.push(mod);
+		});
+
+		deve.forEach(dev => {
+			devs.push(dev);
+		});
+
+		if (devs.includes(member.id)) {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Você não pode punir moderadores do bot.`
+			});
+		}
+		await global.zuly.db.set(`botban-${member.id}`, motivo);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

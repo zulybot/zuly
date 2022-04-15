@@ -141,6 +141,7 @@ module.exports = {
 		sucess: 'Canal setado com sucesso!'
 	},
 	message: {
+		mod: 'Esse comando só pode ser usado por meus moderadores!',
 		P: 'Olá, humano!',
 		view: 'Eu não tenho permissão de ler o histórico de mensagens!',
 		the: 'O Comando',

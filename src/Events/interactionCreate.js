@@ -94,6 +94,26 @@ module.exports = class InteractionEvent {
 						});
 					}
 				}
+				if (command.permissoes.botmod) {
+					const botdev = await global.zuly.db.get('devs');
+					const developers = await global.zuly.db.get('mods');
+					if (!developers) {
+						await global.zuly.db.set('mods', ['485922669208797226', '931933669432651838', '395592015611428864', '470976775145390082']);
+						return msg.channel.slashReply({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.mod}`,
+							ephemeral: true
+						});
+					}
+					botdev.forEach(dev => {
+						developers.push(dev);
+					});
+					if (!developers.includes(msg.member.id)) {
+						return msg.channel.slashReply({
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.mod}`,
+							ephemeral: true
+						});
+					}
+				}
 				if (command.permissoes.dono) {
 					const developers = await global.zuly.db.get('devs');
 					if (!developers) {
@@ -102,7 +122,7 @@ module.exports = class InteractionEvent {
 
 					if (!developers.includes(msg.member.id)) {
 						return msg.channel.slashReply({
-							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}.`,
+							content: `:x: ${msg.author.mention} **|** ${idioma.message.dev}`,
 							ephemeral: true
 						});
 					}
