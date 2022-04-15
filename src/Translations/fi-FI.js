@@ -1,5 +1,12 @@
 module.exports = {
 	lang: 'en',
+	ship: {
+		nou: 'Mention some user to ship',
+		d1: 'You are not compatible, you are very different from each other 😔',
+		d2: 'You can be friends, but I don\'t see a better future between you, you are similar to each other 🤝',
+		d3: 'You can be a couple, the tastes are almost the same and you know each other a lot 👀',
+		d4: 'You are perfect, made for each other, go ahead, you have everything to work out ❤️'
+	},
 	dashboard: 'The Bot configuration has been migrated to the dashboard, access this link: https://zulybot.xyz/dashboard/%g',
 	backup: {
 		create: { success: 'Backup created successfully!\n⤷ ID: `%id`, time taken to create: `%t`' },
