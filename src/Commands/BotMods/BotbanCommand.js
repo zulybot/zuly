@@ -53,22 +53,7 @@ module.exports = class BanCommand {
 	}
 
 	async run (ctx) {
-		let member;
-		if (!ctx.args[0]) {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
-			});
-		}
-		if (ctx.args[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
-				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
-				});
-			});
-		}
-		else {
-			member = await ctx.args[0];
-		}
+		const member = await global.zuly.users.fetch(ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
@@ -95,6 +80,9 @@ module.exports = class BanCommand {
 			});
 		}
 		await global.zuly.db.set(`botban-${member.id}`, motivo);
+
+		const channel = await global.zuly.channels.cache.get('964867847245426689');
+		channel.send(`:white_check_mark: **|** O Usuário \`${member.tag}\` (\`${member.id}\`) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`

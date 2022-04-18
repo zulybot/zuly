@@ -7,19 +7,19 @@ module.exports = class BanCommand {
 				botmod: true,
 			},
 			pt: {
-				nome: 'botunban',
+				nome: 'guildban',
 				categoria: '💻 » Dev',
-				desc: 'Desbane algum usuário de usar o bot.'
+				desc: 'Bane algum usuário de usar o bot.'
 			},
 			en: {
-				nome: 'botunban',
+				nome: 'guildban',
 				categoria: '💻 » Dev',
-				desc: 'Unban some user from using the bot.'
+				desc: 'Ban some user from using the bot.'
 			},
 			fr: {
-				nome: 'botunban',
+				nome: 'guildban',
 				categoria: '💻 » Dev',
-				desc: 'Débannir certains utilisateurs d\'utiliser le bot.'
+				desc: 'Interdire à certains utilisateurs d\'utiliser le bot.'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand
@@ -35,25 +35,25 @@ module.exports = class BanCommand {
             */
 			options: [
 				{
-					type: 6,
-					name: 'user',
-					description: 'The User Mention',
+					type: 3,
+					name: 'guild',
+					description: 'The Guild ID',
 					required: true
 				},
 				{
 					type: 3,
 					name: 'reason',
-					description: 'The reason for the unban',
+					description: 'The reason for the ban',
 					required: false
 				}
 			],
-			aliases: ['zulyunban'],
+			aliases: ['zulyban'],
 			run: this.run
 		};
 	}
 
 	async run (ctx) {
-		const member = await global.zuly.users.fetch(ctx.args[0]);
+		const member = await global.zuly.guilds.cache.get(ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
@@ -61,14 +61,32 @@ module.exports = class BanCommand {
 		}
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		await global.zuly.db.delete(`botban-${member.id}`);
+		if (ctx.args[0] === '880174783294214184') {
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Você não pode banir o servidor de suporte do bot.`
+			});
+		}
 
-		const channel = await global.zuly.channels.cache.get('964867847245426689');
-		channel.send(`:white_check_mark: **|** O Usuário \`${member.tag}\` (\`${member.id}\`) foi desbanido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
+		const guilds = await global.zuly.db.get('guilds');
+
+		if (!guilds) {
+			await global.zuly.db.set('guilds', [member.id]);
+		}
+		else {
+			await global.zuly.db.push('guilds', member.id);
+		}
+
+		await global.zuly.db.set(`guildban-${member.id}`, motivo);
+		await global.zuly.db.set(`alderaybanned-${member.id}`, motivo);
+
+		const channel = await global.zuly.channels.cache.get('964867838835830784');
+		channel.send(`:white_check_mark: **|** O Servidor ${member.name} (${member.id}) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
 
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
 		});
+
+		member.leave();
 	}
 };
 // ADG, Davi e LRD

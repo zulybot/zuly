@@ -38,5 +38,24 @@ module.exports = class GuildCreateEvent {
 			username: global.zuly.user.username,
 			embeds: [embed.get()]
 		});
+
+		const guilda = await global.zuly.db.get(`guildban-${guild.id}`);
+
+		if (guilda) {
+			try {
+				await hook.send({
+					avatarURL: global.zuly.user.displayAvatarURL(),
+					username: global.zuly.user.username,
+					content: `✅ **|** Fui adicionada no servidor \`${guild.name}\` (\`${guild.id}\`) porém o servidor está banido.\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`
+				});
+				const canal = await guild.channels.cache.random();
+				canal.send(`✅ **|** Fui adicionada no servidor \`${guild.name}\` porém o servidor está banido.\n↳ Caso ache que seja um erro, entre em meu suporte: https://discord.gg/pyyyJpw5QW\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`).then(async () => {
+					await guild.leave();
+				});
+			}
+			catch (e) {
+				console.log(e);
+			}
+		}
 	}
 };
