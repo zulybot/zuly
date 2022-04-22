@@ -11,6 +11,11 @@ module.exports = class MessageCreateEvent {
 		if (message.author.bot) return;
 		if (!message.guild) return;
 
+		const nqn = await global.db.get(`nqn-${message.guild.id}`);
+		if (nqn) {
+			await global.zuly.nqn(message);
+		}
+
 		let idioma = require('../Config/idiomas');
 		let lang = await global.zuly.db.get(`idioma-${message.guild.id}`) || 'pt_br';
 		lang = lang.replace(/-/g, '_');

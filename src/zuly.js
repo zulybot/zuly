@@ -53,6 +53,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
 		reaction: '🎁'
 	}
 });
+
 // Collections
 client.commands = new Collection();
 client.events = new Collection();

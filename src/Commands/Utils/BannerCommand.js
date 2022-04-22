@@ -4,7 +4,7 @@ module.exports = class CalcCommand {
 			permissoes: {
 				membro: [],
 				bot: ['EMBED_LINKS'],
-				dono: false
+				dono: true
 			},
 			pt: {
 				nome: 'banner',

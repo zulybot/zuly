@@ -102,7 +102,7 @@ module.exports = class RandomAnimeCommand {
 						embed.addField(`⛔ ${age}`, ager);
 						embed.setColor('#ffcbdb');
 						embed.setThumbnail(anime.attributes.posterImage.large);
-						embed.setFooter('⤷ zulybot.xyz');
+						embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 						ctx.message.channel.slashReply({
 							content: ctx.message.author.mention,
 							embeds: [embed.get()]
@@ -159,7 +159,7 @@ module.exports = class RandomAnimeCommand {
 						embed.addField(`⛔ ${age}`, ager);
 						embed.setColor('#ffcbdb');
 						embed.setThumbnail(anime.attributes.posterImage.large);
-						embed.setFooter('⤷ zulybot.xyz');
+						embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 						ctx.message.channel.slashReply({
 							content: ctx.message.author.mention,
 							embeds: [embed.get()]

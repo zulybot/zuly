@@ -40,13 +40,13 @@ module.exports = class PingCommand {
 					type: 3,
 					name: 'language',
 					description: 'The language you want to translate',
-					required: false,
+					required: true,
 				},
 				{
 					type: 3,
 					name: 'message',
 					description: 'The Message to be translated',
-					required: false,
+					required: true,
 				}
 			],
 			aliases: ['traduzir', 'tradutor'],

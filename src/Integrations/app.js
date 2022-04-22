@@ -6,6 +6,9 @@ app.use(express.json());
 app.use(bodyParser.json());
 require('./SearcherBot')(app);
 require('./BotLists')(app);
+app.get('/api/commands', async (req, res) => {
+	return res.json(global.zuly.commands);
+});
 app.get('/api/status', async (req, res) => {
 	const { cluster } = require('../Config/config');
 	const guilds = global.zuly.guilds.cache.size;
