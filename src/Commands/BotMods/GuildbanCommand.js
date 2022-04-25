@@ -76,6 +76,7 @@ module.exports = class BanCommand {
 			await global.zuly.db.push('guilds', member.id);
 		}
 
+		await global.zuly.db.set('guildcache-' + member.id, member)
 		await global.zuly.db.set(`guildban-${member.id}`, motivo);
 		await global.zuly.db.set(`alderaybanned-${member.id}`, motivo);
 

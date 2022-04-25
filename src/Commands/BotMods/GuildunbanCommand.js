@@ -53,7 +53,7 @@ module.exports = class BanCommand {
 	}
 
 	async run (ctx) {
-		const member = await global.zuly.guilds.cache.get(ctx.args[0]);
+		const member = await global.zuly.db.get('guildcache-' + ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
