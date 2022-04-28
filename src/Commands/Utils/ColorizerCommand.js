@@ -38,7 +38,7 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'image',
 					description: 'The Image Link',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],

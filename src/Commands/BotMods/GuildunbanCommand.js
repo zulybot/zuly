@@ -53,7 +53,8 @@ module.exports = class BanCommand {
 	}
 
 	async run (ctx) {
-		const member = await global.zuly.db.get('guildcache-' + ctx.args[0]);
+		const member = await global.zuly.db.get(`guildcache-${ctx.args[0]}`);
+		console.log(member);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
@@ -77,13 +78,13 @@ module.exports = class BanCommand {
 			await global.zuly.db.pull('guilds', member.id);
 		}
 
-		await global.zuly.db.delete(`guildban-${member.id}`);
+		await global.zuly.db.del(`guildban-${member.id}`);
 
 		const channel = await global.zuly.channels.cache.get('964867838835830784');
 		channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi desbanido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
 		});
 	}
 };

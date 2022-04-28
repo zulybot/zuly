@@ -6,6 +6,7 @@ module.exports = class GuildCreateEvent {
 		};
 	}
 	async run (guild) {
+		await global.zuly.db.set(`guildcache-${guild.id}`, guild);
 		const config = require('../Config/config');
 
 		const system = require('../Config/system');
@@ -51,6 +52,8 @@ module.exports = class GuildCreateEvent {
 				const canal = await guild.channels.cache.random();
 				canal.send(`✅ **|** Fui adicionada no servidor \`${guild.name}\` porém o servidor está banido.\n↳ Caso ache que seja um erro, entre em meu suporte: https://discord.gg/pyyyJpw5QW\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`).then(async () => {
 					await guild.leave();
+				}).catch((e) => {
+					console.log(e);
 				});
 			}
 			catch (e) {

@@ -6,28 +6,41 @@ module.exports = class ReadyEvent {
 		};
 	}
 	async run () {
-		// Carregando Handler
+		const { CronJob } = require('cron');
+
+		// COMMAND HANDLER
+
 		require('../Client/Handler/comandos');
-		// Mostrando que o bot está ligado.
+
+		// FIRST STATUS UPDATE
+
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
-		global.zuly.user.setActivity(global.zuly.user.username, {
+		global.zuly.user.setActivity(`Starting | [v${global.zuly.version}]`, {
 			game: global.zuly.user.username,
 			type: 5
 		});
 
-		const adg = await global.zuly.users.fetch('726449359167684734');
-		const status = [`zulybot.xyz | ${global.zuly.user.username} [v${global.zuly.version}]`, `I'm on ${global.zuly.guilds.cache.size} servers | ${global.zuly.user.username} [v$global.zuly.version]`, `Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v$global.zuly.version]`, `/help | ${global.zuly.user.username} [v$global.zuly.version]`, `/upvote | ${global.zuly.user.username} [v$global.zuly.version]`, `/invite | ${global.zuly.user.username} [v$global.zuly.version]`, `Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v$global.zuly.version]`, `I was created by: ${adg.username}#${adg.discriminator}`];
+		const adg = await global.zuly.users.fetch('717766639260532826');
+		const status = [`zulybot.xyz | ${global.zuly.user.username} [v${global.zuly.version}]`, `I'm on ${global.zuly.guilds.cache.size} servers | ${global.zuly.user.username} [v${global.zuly.version}]`, `Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v${global.zuly.version}]`, `/help | ${global.zuly.user.username} [v${global.zuly.version}]`, `/upvote | ${global.zuly.user.username} [v${global.zuly.version}]`, `/invite | ${global.zuly.user.username} [v${global.zuly.version}]`, `Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v${global.zuly.version}]`, `I was created by: ${adg.username}#${adg.discriminator}`];
 		const presence = ['online', 'idle', 'dnd'];
 
-		setInterval(async () => {
+		// STATUS UPDATE
+
+		new CronJob('0 */3 * * * *', async () => {
 			global.zuly.user.setStatus(presence[Math.floor(Math.random() * presence.length)]);
 			global.zuly.user.setActivity(status[Math.floor(Math.random() * status.length)], {
 				game: status[Math.floor(Math.random() * status.length)],
-				type: 5
+				type: Math.floor(Math.random() * 5) + 1
 			});
-		}, 1000 * 180);
+		}).start();
+
+		// GUILD BAN CHECK
 
 		const guilds = await global.zuly.db.get('guilds');
+		if (!guilds) {
+			return global.zuly.db.set('guilds', []);
+		}
+
 		guilds.forEach(async (guildid) => {
 			const system = require('../Config/system');
 			const { WebhookClient } = require('discord.js');
@@ -49,6 +62,53 @@ module.exports = class ReadyEvent {
 				});
 			}
 		});
+
+		// AUTOMATIC FUNCTIONS
+
+		new CronJob('0 */5 * * * *', async () => {
+			// https://meme-api.herokuapp.com/gimme/dankmemes
+			const { get } = require('axios');
+			await get('https://meme-api.herokuapp.com/gimme/dankmemes').then(async (res) => {
+				const channel = global.zuly.channels.cache.get('968204686765211668');
+
+				let idioma = require('../Config/idiomas');
+				let lang = await global.zuly.db.get(`idioma-${channel.guild.id}`) || 'pt_br';
+				lang = lang.replace(/-/g, '_');
+				idioma = idioma[lang];
+
+				const data = res.data;
+
+				const embed = new global.zuly.manager.Ebl();
+
+				if (idioma.lang === 'en') {
+					embed.setTitle(data.title);
+					embed.setUrl(data.postLink);
+					embed.setImage(data.url);
+				}
+				else if (idioma.lang === 'pt') {
+					const translate = require('@vitalets/google-translate-api');
+					const title = await translate(data.title, { to: 'pt' });
+					embed.setTitle(title.text);
+					embed.setUrl(data.postLink);
+					embed.setImage(data.url);
+				}
+				else if (idioma.lang === 'fr') {
+					const translate = require('@vitalets/google-translate-api');
+					const title = await translate(data.title, { to: 'fr' });
+					embed.setTitle(title.text);
+					embed.setUrl(data.postLink);
+					embed.setImage(data.url);
+				}
+				embed.setColor('#ffcbdb');
+				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				channel.send({
+					embeds: [embed.get()]
+				});
+			});
+		}).start();
+
+		// WEBSERVICES
 
 		require('../Integrations/app');
 	}

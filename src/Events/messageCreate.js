@@ -11,7 +11,7 @@ module.exports = class MessageCreateEvent {
 		if (message.author.bot) return;
 		if (!message.guild) return;
 
-		const nqn = await global.db.get(`nqn-${message.guild.id}`);
+		const nqn = await global.zuly.db.get(`nqn-${message.guild.id}`);
 		if (nqn) {
 			await global.zuly.nqn(message);
 		}

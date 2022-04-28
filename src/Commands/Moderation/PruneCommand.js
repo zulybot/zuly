@@ -2,8 +2,8 @@ module.exports = class PruneCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageMessages'],
-				bot: ['manageMessages'],
+				membro: ['MANAGE_MESSAGES'],
+				bot: ['MANAGE_MESSAGES'],
 				dono: false
 			},
 			pt: {

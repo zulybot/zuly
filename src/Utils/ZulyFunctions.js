@@ -93,7 +93,7 @@ async function getBugHunter (user) {
 async function nqn (message) {
 	let { client } = message;
 	if (message.author.bot) return;
-	let msg = message.content.replace(/@/g, '');
+	let msg = message.content;
 
 	let emojis = msg.match(/(?<=:)([^:\s]+)(?=:)/g);
 	if (!emojis) return;
@@ -123,28 +123,27 @@ async function nqn (message) {
 	if (msg === message.content) return;
 
 	let webhook = await message.channel.fetchWebhooks();
-	webhook = webhook.find((x) => x.name === 'Zuly | NQN');
+	webhook = webhook.find((x) => x.name === `${global.zuly.user.username} | NQN`);
 
 	if (!webhook) {
-		webhook = await message.channel.createWebhook('Zuly | NQN', {
-			avatar: client.user.displayAvatarURL({ dynamic: true })
+		webhook = await message.channel.createWebhook(`${global.zuly.user.username} | NQN`, {
+			avatar: client.user.displayAvatarURL({ dynamic: true, size: 4096 })
 		});
 	}
 
-	await webhook.edit({
-		name: message.member.nickname
+	message.delete().catch((err) => {});
+	webhook.send({
+		content: msg,
+		username: message.member.nickname
 			? message.member.nickname
 			: message.author.username,
-		avatar: message.author.displayAvatarURL({ dynamic: true })
-	});
-
-	message.delete().catch((err) => {});
-	webhook.send(msg).catch((err) => {});
-
-	await webhook.edit({
-		name: 'Zuly | NQN',
-		avatar: client.user.displayAvatarURL({ dynamic: true })
-	});
+		avatarURL: message.author.displayAvatarURL({ dynamic: true, size: 4096 }),
+		allowedMentions: {
+			users: [],
+			roles: [],
+			everyone: false
+		}
+	}).catch((err) => {});
 }
 async function banner (id) {
 	if (!id) new Error('Não foi fornecido o ID do usuário');

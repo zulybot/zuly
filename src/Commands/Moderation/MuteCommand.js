@@ -2,8 +2,8 @@ module.exports = class BanCommand {
 	constructor () {
 		return {
 			permissoes: {
-				membro: ['manageMessages'],
-				bot: ['manageMessages'],
+				membro: ['MODERATE_MEMBERS'],
+				bot: ['MODERATE_MEMBERS'],
 				dono: false
 			},
 			pt: {

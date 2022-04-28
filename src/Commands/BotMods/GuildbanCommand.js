@@ -76,15 +76,15 @@ module.exports = class BanCommand {
 			await global.zuly.db.push('guilds', member.id);
 		}
 
-		await global.zuly.db.set('guildcache-' + member.id, member)
+		await global.zuly.db.set(`guildcache-${ctx.args[0]}`, member);
 		await global.zuly.db.set(`guildban-${member.id}`, motivo);
 		await global.zuly.db.set(`alderaybanned-${member.id}`, motivo);
 
 		const channel = await global.zuly.channels.cache.get('964867838835830784');
-		channel.send(`:white_check_mark: **|** O Servidor ${member.name} (${member.id}) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
+		channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
 
 		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`
+			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
 		});
 
 		member.leave();
