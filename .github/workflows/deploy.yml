@@ -2,7 +2,7 @@ on:
   push:
     branch:
       - master
-name: 🚀 Deploy bot on VPS
+name: 🚀 Deploy Zuly on VPS
 jobs:
   deploy-via-sftp:
     runs-on: ubuntu-latest
