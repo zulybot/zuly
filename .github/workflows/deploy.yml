@@ -27,10 +27,10 @@ jobs:
           SSH_HOST: ${{ secrets.FTP_HOST }}
           SSH_PORT: ${{ secrets.FTP_PORT }}
       - name: Stopping bot
-        run: ssh prod 'systemctl --user stop adg'
+        run: ssh prod 'systemctl --user stop zuly'
       - name: Cloning repository
-        run: ssh prod 'cd zulybot && git fetch && git reset --hard origin/main'
+        run: ssh prod 'cd zuly && git fetch && git reset --hard origin/main'
       - name: Install dependencies
-        run: ssh prod 'bash --login -c "cd zulybot && yarn"'
+        run: ssh prod 'bash --login -c "cd zuly && yarn"'
       - name: Starting bot
-        run: ssh prod 'systemctl --user start zulybot'
+        run: ssh prod 'systemctl --user start zuly'
