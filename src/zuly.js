@@ -6,7 +6,7 @@ const { token } = require('./Config/config');
 const { top } = require('./API/keys');
 const { GiveawaysManager } = require('discord-giveaways');
 const SnakeGame = require('./Helpers/SnakeGame');
-
+// Creating the client
 const client = new Client({
 	restTimeOffset: 1,
 	defaultImageFormat: 'png',
