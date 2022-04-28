@@ -1,20 +1,56 @@
-on: 
+name: Deploy
+on:
   push:
-    branch:
-      - master
-name: 🚀 Deploy Zuly on VPS
+    branches:
+      - 'main'
 jobs:
-  deploy-via-sftp:
+  lint:
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Install Node v16
+        uses: actions/setup-node@v2
         with:
-          username: ${{ secrets.FTP_USER }}
-          server: ${{ secrets.FTP_HOST }}
-          port: ${{ secrets.FTP_PORT }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: ./*
-          remote_path: /home/discord/zuly
-          args: '-o ConnectTimeout=5'
+          node-version: 16
+          cache: npm
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run ESLint
+        run: npm run lint
+  deploy:
+    name: "Deploy to production"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: lint
+    steps:
+      - name: Setup ssh
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$FTP_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+          cat >>~/.ssh/config << END
+          Host prod
+            HostName $FTP_HOST
+            User $FTP_USER
+            Port $FTP_PORT
+            IdentityFile ~/.ssh/key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.FTP_USER }}
+          SSH_KEY: ${{ secrets.FTP_KEY }}
+          SSH_HOST: ${{ secrets.FTP_HOST }}
+          SSH_PORT: ${{ secrets.FTP_PORT }}
+      - name: Stopping bot
+        run: ssh prod 'systemctl --user stop zulybot'
+      - name: Cloning repository
+        run: ssh prod 'cd zulybot && git fetch && git reset --hard origin/main'
+      - name: Install dependencies
+        run: ssh prod 'bash --login -c "cd zulybot && npm ci"'
+      - name: Starting bot
+        run: ssh prod 'systemctl --user start zulybot'
