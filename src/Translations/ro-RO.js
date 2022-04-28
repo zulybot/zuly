@@ -312,7 +312,7 @@ module.exports = {
 		msg: 'mesaje** șterse cu succes',
 		no: 'Introduceți numărul de mesaje ce vor fi curățate',
 		p: 'Căutând mesaje, ar putea dura 30 de secunde...',
-		num: 'Nu pot decât să sterg între 2 și 2000 de mesaje'
+		num: 'I can only clear between 2 to 100 messages'
 	},
 	baninfo: {
 		user: 'Utilizator:',
