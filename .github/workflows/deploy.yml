@@ -7,8 +7,6 @@ jobs:
   deploy:
     name: "Deploy to production"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: lint
     steps:
       - name: Setup ssh
         run: |
