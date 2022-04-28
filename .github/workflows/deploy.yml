@@ -4,38 +4,6 @@ on:
     branches:
       - 'master'
 jobs:
-  lint:
-    name: ESLint
-    runs-on: ubuntu-latest
-    steps:
-        runs-on: ${{ matrix.os }}
-
-      strategy:
-        matrix:
-          os: [ubuntu-latest]
-          node: [16]
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      
-      - name: Get yarn cache directory path 🛠
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.7
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn
-      
-      - name: Run ESLint
-        run: yarn lint
   deploy:
     name: "Deploy to production"
     runs-on: ubuntu-latest
