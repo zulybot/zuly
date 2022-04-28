@@ -312,7 +312,7 @@ module.exports = {
 		msg: 'entrées effacées avec succès',
 		no: 'Entrez le nombre de messages à nettoyer',
 		p: 'Recherche de messages, cela peut prendre 30 secondes...',
-		num: 'Je ne peux clarifier qu\'entre 2 et 2000 messages'
+		num: 'I can only clear between 2 to 100 messages'
 	},
 	baninfo: {
 		user: 'Utilisateur:',
