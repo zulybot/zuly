@@ -6,7 +6,14 @@ module.exports = class GuildCreateEvent {
 		};
 	}
 	async run (guild) {
-		await global.zuly.db.set(`guildcache-${guild.id}`, guild);
+		await global.zuly.db.set(`cache-${guild.id}`, {
+			id: guild.id,
+			name: guild.name,
+			icon: guild.iconURL(),
+			owner: guild.ownerID,
+			members: guild.memberCount,
+			boosts: guild.premiumSubscriptionCount,
+		});
 		const config = require('../Config/config');
 
 		const system = require('../Config/system');
@@ -49,12 +56,16 @@ module.exports = class GuildCreateEvent {
 					username: global.zuly.user.username,
 					content: `✅ **|** Fui adicionada no servidor \`${guild.name}\` (\`${guild.id}\`) porém o servidor está banido.\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`
 				});
-				const canal = await guild.channels.cache.random();
-				canal.send(`✅ **|** Fui adicionada no servidor \`${guild.name}\` porém o servidor está banido.\n↳ Caso ache que seja um erro, entre em meu suporte: https://discord.gg/pyyyJpw5QW\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`).then(async () => {
+				try {
+					const canal = await guild.channels.cache.random();
+					canal.send(`✅ **|** Fui adicionada no servidor \`${guild.name}\` porém o servidor está banido.\n↳ Caso ache que seja um erro, entre em meu suporte: https://discord.gg/pyyyJpw5QW\n>>> <:zu_info:911303533859590144> **Motivo:** ${guilda}`).then(async () => {
+						await guild.leave();
+					});
+				}
+				catch (e) {
 					await guild.leave();
-				}).catch((e) => {
 					console.log(e);
-				});
+				}
 			}
 			catch (e) {
 				console.log(e);

@@ -53,39 +53,40 @@ module.exports = class BanCommand {
 	}
 
 	async run (ctx) {
-		const member = await global.zuly.db.get(`guildcache-${ctx.args[0]}`);
-		console.log(member);
+		const member = await global.zuly.db.get(`cache-${ctx.args[0]}`);
+		setTimeout(async () => {
+			console.log(member);
+			let banReason = ctx.args.splice(1).join(' ');
+			if (!banReason) {
+				banReason = `${ctx.idioma.ban.mot}`;
+			}
 
-		let banReason = ctx.args.splice(1).join(' ');
-		if (!banReason) {
-			banReason = `${ctx.idioma.ban.mot}`;
-		}
+			const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
+			if (ctx.args[0] === '880174783294214184') {
+				return ctx.message.channel.slashReply({
+					content: `:x: ${ctx.message.author.mention} **|** Você não pode banir o servidor de suporte do bot.`
+				});
+			}
 
-		if (ctx.args[0] === '880174783294214184') {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** Você não pode banir o servidor de suporte do bot.`
+			const guilds = await global.zuly.db.get('guilds');
+
+			if (!guilds) {
+				await global.zuly.db.set('guilds', []);
+			}
+			else {
+				await global.zuly.db.pull('guilds', member.id);
+			}
+
+			await global.zuly.db.del(`guildban-${member.id}`);
+
+			const channel = await global.zuly.channels.cache.get('964867838835830784');
+			channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi desbanido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
+
+			ctx.message.channel.slashReply({
+				content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
 			});
-		}
-
-		const guilds = await global.zuly.db.get('guilds');
-
-		if (!guilds) {
-			await global.zuly.db.set('guilds', []);
-		}
-		else {
-			await global.zuly.db.pull('guilds', member.id);
-		}
-
-		await global.zuly.db.del(`guildban-${member.id}`);
-
-		const channel = await global.zuly.channels.cache.get('964867838835830784');
-		channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi desbanido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
-
-		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
-		});
+		}, 1000);
 	}
 };
 // ADG, Davi e LRD

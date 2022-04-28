@@ -7,7 +7,7 @@ if (uri.includes('zulybotc')) {
 }
 
 global.zuly.db = new DatabaseManager(config.mongodb, 'zulybot');
-global.zuly.db.on('ready', () => {
+global.zuly.db.on('ready', async () => {
 	console.log('[MONGO] Estou pronta!'.yellow);
 });
 

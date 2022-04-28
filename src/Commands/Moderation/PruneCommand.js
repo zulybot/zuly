@@ -53,21 +53,27 @@ module.exports = class PruneCommand {
 			});
 		}
 		// ctx.message.delete()
-		if (Number(ctx.args[0]) > 2000 || Number(ctx.args[0]) < 2) {
+		if (Number(ctx.args[0]) > 100 || Number(ctx.args[0]) < 2) {
 			return ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.clear.num}.`
 			});
 		}
 		const ids = [];
-		const messages = await ctx.message.channel.getMessages(Number(ctx.args[0]) + 1);
+
+		const messages = await ctx.message.channel.messages.fetch({
+			limit: Number(ctx.args[0])
+		});
 
 		messages.forEach((m) => {
 			ids.push(m.id);
 		});
 
-		ctx.message.channel.deleteMessages(ids);
 		ctx.message.channel.slashReply({
 			content: `:white_check_mark: ${ctx.message.author.mention} **|** **${ctx.args[0]} ${ctx.idioma.clear.msg}.`
+		}).then(() => {
+			ctx.message.channel.bulkDelete(ids).catch(async (e) => {
+				console.log(e);
+			});
 		});
 	}
 };

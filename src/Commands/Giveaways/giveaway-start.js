@@ -69,6 +69,7 @@ module.exports = class GivawayStart {
 			content: `🎁 ${ctx.message.author.mention} **|** Sucess!`
 		});
 		global.zuly.giveawaysManager.start(ctx.message.channel, {
+			dmWinner: true,
 			duration: ms(ctx.args[0]),
 			winnerCount: parseInt(ctx.args[1]),
 			prize: ctx.args.slice(2).join(' '),

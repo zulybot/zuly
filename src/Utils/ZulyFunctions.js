@@ -1,6 +1,5 @@
 /* eslint-disable */
 const API = require('../API/keys');
-const byteSize = require('byte-size');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
 /*
@@ -189,9 +188,6 @@ async function isNsfw (url) {
 	});
 	console.log(response);
 }
-function bytes (size) {
-	return byteSize(size);
-}
 function time2 (s) {
 	function pad (n, z) {
 		z = z || 2;
@@ -260,7 +256,7 @@ global.zuly.download = download;
 global.zuly.getBugHunter = getBugHunter;
 global.zuly.getPremium = getPremium;
 global.zuly.time2 = time2;
-global.zuly.bytes = bytes;
+// global.zuly.bytes = bytes;
 global.zuly.isNsfw = isNsfw;
 global.zuly.deepai = deepai;
 global.zuly.getBotUptime = uptime;

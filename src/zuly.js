@@ -5,6 +5,7 @@ const { AutoPoster } = require('./CustomPackages/DBLAutoPoster');
 const { token } = require('./Config/config');
 const { top } = require('./API/keys');
 const { GiveawaysManager } = require('discord-giveaways');
+const giveawayModel = require('./Schemas/GiveawaySchema');
 const SnakeGame = require('./Helpers/SnakeGame');
 // Creating the client
 const client = new Client({
@@ -43,8 +44,24 @@ client.restAPI = new REST({ version: '9' }).setToken(token);
 client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');
 client.version = require('../package.json').version;
-client.giveawaysManager = new GiveawaysManager(client, {
-	storage: './JSON/giveaways.json',
+const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
+	async getAllGiveaways () {
+		return giveawayModel.find().lean().exec();
+	}
+	async saveGiveaway (messageId, giveawayData) {
+		await giveawayModel.create(giveawayData);
+		return true;
+	}
+	async editGiveaway (messageId, giveawayData) {
+		await giveawayModel.updateOne({ messageId }, giveawayData, { omitUndefined: true }).exec();
+		return true;
+	}
+	async deleteGiveaway (messageId) {
+		await giveawayModel.deleteOne({ messageId }).exec();
+		return true;
+	}
+};
+client.giveawaysManager = new GiveawayManagerWithOwnDatabase(client, {
 	updateCountdownEvery: 5000,
 	default: {
 		botsCanWin: false,

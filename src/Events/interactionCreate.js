@@ -143,10 +143,10 @@ module.exports = class InteractionEvent {
 				embed: require('../Client/EmbedBuilder').Embed,
 				// Functions
 				send: function(texto) {
-					msg.channel.slashReply(...texto);
+					msg.channel.slashReply.bind(texto);
 				},
 				reply: function(texto) {
-					msg.channel.slashReply(...texto);
+					msg.channel.slashReply.bind(texto);
 				},
 				react: function(emoji) {
 					msg.react(emoji);

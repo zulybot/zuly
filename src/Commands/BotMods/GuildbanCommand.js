@@ -54,40 +54,48 @@ module.exports = class BanCommand {
 
 	async run (ctx) {
 		const member = await global.zuly.guilds.cache.get(ctx.args[0]);
+		setTimeout(async () => {
+			let banReason = ctx.args.splice(1).join(' ');
+			if (!banReason) {
+				banReason = `${ctx.idioma.ban.mot}`;
+			}
+			const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 
-		let banReason = ctx.args.splice(1).join(' ');
-		if (!banReason) {
-			banReason = `${ctx.idioma.ban.mot}`;
-		}
-		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
+			if (ctx.args[0] === '880174783294214184') {
+				return ctx.message.channel.slashReply({
+					content: `:x: ${ctx.message.author.mention} **|** Você não pode banir o servidor de suporte do bot.`
+				});
+			}
 
-		if (ctx.args[0] === '880174783294214184') {
-			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** Você não pode banir o servidor de suporte do bot.`
+			const guilds = await global.zuly.db.get('guilds');
+
+			if (!guilds) {
+				await global.zuly.db.set('guilds', [member.id]);
+			}
+			else {
+				await global.zuly.db.push('guilds', member.id);
+			}
+
+			await global.zuly.db.set(`cache-${ctx.args[0]}`, {
+				id: member.id,
+				name: member.name,
+				icon: member.iconURL(),
+				owner: member.ownerID,
+				members: member.memberCount,
+				boosts: member.premiumSubscriptionCount,
 			});
-		}
+			await global.zuly.db.set(`guildban-${member.id}`, motivo);
+			await global.zuly.db.set(`alderaybanned-${member.id}`, motivo);
 
-		const guilds = await global.zuly.db.get('guilds');
+			const channel = await global.zuly.channels.cache.get('964867838835830784');
+			channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
 
-		if (!guilds) {
-			await global.zuly.db.set('guilds', [member.id]);
-		}
-		else {
-			await global.zuly.db.push('guilds', member.id);
-		}
+			ctx.message.channel.slashReply({
+				content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
+			});
 
-		await global.zuly.db.set(`guildcache-${ctx.args[0]}`, member);
-		await global.zuly.db.set(`guildban-${member.id}`, motivo);
-		await global.zuly.db.set(`alderaybanned-${member.id}`, motivo);
-
-		const channel = await global.zuly.channels.cache.get('964867838835830784');
-		channel.send(`:white_check_mark: **|** O Servidor \`${member.name}\` (\`${member.id}\`) foi banido do bot.\n> <:zu_info:911303533859590144> \`${motivo}\``);
-
-		ctx.message.channel.slashReply({
-			content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.name}** ${ctx.idioma.ban.foi}`
-		});
-
-		member.leave();
+			member.leave();
+		}, 1000);
 	}
 };
 // ADG, Davi e LRD
