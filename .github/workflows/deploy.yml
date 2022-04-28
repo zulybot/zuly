@@ -1,8 +1,10 @@
+name: 🚀 Deploy Zuly on VPS
+
 on: 
   push:
     branch:
       - master
-name: 🚀 Deploy Zuly on VPS
+
 jobs:
   add-know-host:
     - name: Adding Known Hosts
@@ -15,6 +17,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
       - uses: actions/checkout@v2 
+
   deploy-via-sftp:
     runs-on: ubuntu-latest
     steps:
