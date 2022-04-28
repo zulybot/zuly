@@ -312,7 +312,7 @@ module.exports = {
 		msg: 'mensagens** limpas com sucesso',
 		no: 'Insira a quantidade de mensagens a serem limpas',
 		p: 'Procurando mensagens, isso pode levar 30 segundos...',
-		num: 'Eu só consigo limpar entre 2 a 2000 mensagens'
+		num: 'I can only clear between 2 to 100 messages'
 	},
 	baninfo: {
 		user: 'Usuário:',
