@@ -69,12 +69,7 @@ module.exports = class BanCommand {
 
 			const guilds = await global.zuly.db.get('guilds');
 
-			if (!guilds) {
-				await global.zuly.db.set('guilds', [member.id]);
-			}
-			else {
-				await global.zuly.db.push('guilds', member.id);
-			}
+			await (!guilds ? global.zuly.db.set('guilds', [member.id]) : global.zuly.db.push('guilds', member.id));
 
 			await global.zuly.db.set(`cache-${ctx.args[0]}`, {
 				id: member.id,

@@ -60,19 +60,9 @@ module.exports = class KickCommand {
 			});
 		}
 
-		if (ctx.args[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]);
-		}
-		else {
-			member = await ctx.args[0];
-		}
+		member = await (ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]) : ctx.args[0]);
 		let banReason;
-		if (ctx.args[1]) {
-			banReason = ctx.args.slice(1).join(' ');
-		}
-		else {
-			banReason = ctx.idioma.ban.mot;
-		}
+		banReason = ctx.args[1] ? ctx.args.slice(1).join(' ') : ctx.idioma.ban.mot;
 
 		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
 

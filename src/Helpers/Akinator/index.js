@@ -134,12 +134,7 @@ module.exports = async function(input, options = {}) {
 
 		let startingMessage;
 
-		if (input.commandName && !input.replied && !input.deferred) {
-			startingMessage = await input.reply({ embeds: [startingEmbed] });
-		}
-		else {
-			startingMessage = await input.channel.send({ embeds: [startingEmbed] });
-		}
+		startingMessage = await (input.commandName && !input.replied && !input.deferred ? input.reply({ embeds: [startingEmbed] }) : input.channel.send({ embeds: [startingEmbed] }));
 
 		// get translation object for the language
 		let translations = require(`${__dirname}/translations/${options.language}.json`);
@@ -173,8 +168,7 @@ module.exports = async function(input, options = {}) {
 			akiEmbed.fields.push({ name: translations.pleaseType, value: `**Y** or **${translations.yes}**\n**N** or **${translations.no}**\n**I** or **IDK**\n**P** or **${translations.probably}**\n**PN** or **${translations.probablyNot}**\n**B** or **${translations.back}**` });
 		}
 
-		if (input.user) await input.deleteReply();
-		else await startingMessage.delete();
+		await (input.user ? input.deleteReply() : startingMessage.delete());
 
 		let akiMessage = await inputData.channel.send({ embeds: [akiEmbed] });
 		let updatedAkiEmbed = akiMessage.embeds[0];
@@ -234,8 +228,7 @@ module.exports = async function(input, options = {}) {
 								]
 							};
 
-							if (options.useButtons) await response.editReply({ embeds: [finishedGameCorrect], components: [] });
-							else await akiMessage.edit({ embeds: [finishedGameCorrect], components: [] });
+							await (options.useButtons ? response.editReply({ embeds: [finishedGameCorrect], components: [] }) : akiMessage.edit({ embeds: [finishedGameCorrect], components: [] }));
 							notFinished = false;
 
 
@@ -250,13 +243,11 @@ module.exports = async function(input, options = {}) {
 									author: { name: usertag, icon_url: avatar }
 								};
 
-								if (options.useButtons) await response.editReply({ embeds: [finishedGameDefeated], components: [] });
-								else await akiMessage.edit({ embeds: [finishedGameDefeated], components: [] });
+								await (options.useButtons ? response.editReply({ embeds: [finishedGameDefeated], components: [] }) : akiMessage.edit({ embeds: [finishedGameDefeated], components: [] }));
 								notFinished = false;
 							}
 							else {
-								if (options.useButtons) await response.editReply({ embeds: [guessEmbed], components: [] });
-								else await akiMessage.edit({ embeds: [guessEmbed], components: [] });
+								await (options.useButtons ? response.editReply({ embeds: [guessEmbed], components: [] }) : akiMessage.edit({ embeds: [guessEmbed], components: [] }));
 								aki.progress = 50;
 							}
 						}
@@ -319,8 +310,7 @@ module.exports = async function(input, options = {}) {
 
 					if (!options.useButtons) thinkingEmbed.fields.push({ name: translations.pleaseType, value: `**Y** or **${translations.yes}**\n**N** or **${translations.no}**\n**I** or **IDK**\n**P** or **${translations.probably}**\n**PN** or **${translations.probablyNot}**\n**B** or **${translations.back}**` });
 
-					if (options.useButtons) await response.editReply({ embeds: [thinkingEmbed], components: [] });
-					else await akiMessage.edit({ embeds: [thinkingEmbed], components: [] });
+					await (options.useButtons ? response.editReply({ embeds: [thinkingEmbed], components: [] }) : akiMessage.edit({ embeds: [thinkingEmbed], components: [] }));
 					akiMessage.embeds[0] = thinkingEmbed;
 
 					if (answer == 'b' || answer == translations.back.toLowerCase()) {

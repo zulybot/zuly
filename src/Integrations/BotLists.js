@@ -23,12 +23,7 @@ module.exports = (app) => {
 				msg.react('⬆️');
 			});
 			const money = await global.zuly.db.get(`money-${user.id}`);
-			if (money) {
-				await global.zuly.db.set(`money-${user.id}`, Number(money) + 2400);
-			}
-			else {
-				await global.zuly.db.set(`money-${user.id}`, 2400);
-			}
+			await (money ? global.zuly.db.set(`money-${user.id}`, Number(money) + 2400) : global.zuly.db.set(`money-${user.id}`, 2400));
 			const embed2 = new global.zuly.manager.Ebl();
 			embed2.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);
 			embed2.setUrl('https://top.gg/bot/880173509077266483');
