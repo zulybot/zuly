@@ -42,7 +42,7 @@ const erela_js_1 = require('erela.js'),
 	REGEX = /^(?:https?:\/\/|)?(?:www\.)?deezer\.com\/(?:\w{2}\/)?(track|album|playlist)\/(\d+)/,
 	buildSearch = (e, t, r, i) => ({
 		loadType: e,
-		tracks: t != null ? t : [],
+		tracks: t !== null ? t : [],
 		playlist: i ? {
 			name: i,
 			duration: t.reduce((e, t) => e + (t.duration || 0), 0)
