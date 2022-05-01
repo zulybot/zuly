@@ -57,12 +57,7 @@ module.exports = class PingCommand {
 		const user = ctx.args[0] ? ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
 		let valor;
 		const mensagens = await global.zuly.db.get(`messages-${ctx.message.guild.id}-${user.id}`);
-		if (mensagens) {
-			valor = mensagens;
-		}
-		else {
-			valor = 0;
-		}
+		valor = mensagens ? mensagens : 0;
 		const embed = new ctx.embed();
 		embed.setTitle(`💬 ${ctx.idioma.messages.title}`);
 		embed.setColor('#ffcbdb');

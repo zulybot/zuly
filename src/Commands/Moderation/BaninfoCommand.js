@@ -56,12 +56,7 @@ module.exports = class BaninfoCommand {
 			});
 		}
 
-		if (!ctx.args[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info);
-		}
-		else {
-			member = await ctx.args[0];
-		}
+		member = await (!ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]).then(info => info) : ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {

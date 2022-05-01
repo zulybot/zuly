@@ -269,12 +269,7 @@ class Database extends EventEmitter {
 	async includes (key, value) {
 		const obj = await this.get(key);
 
-		if (obj) {
-			return obj.value.includes(value);
-		}
-		else {
-			return false;
-		}
+		return obj ? obj.value.includes(value) : false;
 	}
 
 	/**

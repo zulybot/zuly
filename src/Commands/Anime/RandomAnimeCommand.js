@@ -67,33 +67,13 @@ module.exports = class RandomAnimeCommand {
 						let age;
 						let ager;
 
-						if (ctx.idioma.lang === 'pt') {
-							rating = 'Avaliação:';
-						}
-						else {
-							rating = 'Rating:';
-						}
+						rating = ctx.idioma.lang === 'pt' ? 'Avaliação:' : 'Rating:';
 
-						if (ctx.idioma.lang === 'pt') {
-							age = 'Classificação etária:';
-						}
-						else {
-							age = 'Age Rating:';
-						}
+						age = ctx.idioma.lang === 'pt' ? 'Classificação etária:' : 'Age Rating:';
 
-						if (ctx.idioma.lang === 'pt') {
-							text = synopsis.text;
-						}
-						else {
-							text = anime.attributes.synopsis;
-						}
+						text = ctx.idioma.lang === 'pt' ? synopsis.text : anime.attributes.synopsis;
 
-						if (ctx.idioma.lang === 'pt') {
-							ager = ratinge.text;
-						}
-						else {
-							ager = anime.attributes.ageRatingGuide;
-						}
+						ager = ctx.idioma.lang === 'pt' ? ratinge.text : anime.attributes.ageRatingGuide;
 
 						const embed = new ctx.embed();
 						embed.setTitle('📺 Random Anime | ' + anime.attributes.canonicalTitle);
@@ -124,33 +104,13 @@ module.exports = class RandomAnimeCommand {
 						let age;
 						let ager;
 
-						if (ctx.idioma.lang === 'pt') {
-							rating = 'Avaliação:';
-						}
-						else {
-							rating = 'Rating:';
-						}
+						rating = ctx.idioma.lang === 'pt' ? 'Avaliação:' : 'Rating:';
 
-						if (ctx.idioma.lang === 'pt') {
-							age = 'Classificação etária:';
-						}
-						else {
-							age = 'Age Rating:';
-						}
+						age = ctx.idioma.lang === 'pt' ? 'Classificação etária:' : 'Age Rating:';
 
-						if (ctx.idioma.lang === 'pt') {
-							text = synopsis.text;
-						}
-						else {
-							text = anime.attributes.synopsis;
-						}
+						text = ctx.idioma.lang === 'pt' ? synopsis.text : anime.attributes.synopsis;
 
-						if (ctx.idioma.lang === 'pt') {
-							ager = ratinge.text;
-						}
-						else {
-							ager = anime.attributes.ageRatingGuide || 'Não definido';
-						}
+						ager = ctx.idioma.lang === 'pt' ? ratinge.text : anime.attributes.ageRatingGuide || 'Não definido';
 
 						const embed = new ctx.embed();
 						embed.setTitle('📺 Random Manga | ' + anime.attributes.canonicalTitle);

@@ -60,16 +60,11 @@ module.exports = class BanCommand {
 			});
 		}
 
-		if (ctx.args[0]) {
-			member = await global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
+		member = await (ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
 				return ctx.message.channel.slashReply({
 					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
 				});
-			});
-		}
-		else {
-			member = await ctx.args[0];
-		}
+			}) : ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
