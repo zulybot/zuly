@@ -3,19 +3,19 @@ name: zuly
 on:
   push:
     branches:
-      - master
+      - next
   pull_request:
     branches:
-      - master
+      - next
 
 jobs:
-  star:
+  lint:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
+        node: [16]
 
     steps:
       - name: Checkout 🛎
