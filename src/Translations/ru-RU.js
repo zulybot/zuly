@@ -1,5 +1,20 @@
 module.exports = {
 	lang: 'pt',
+	report: {
+		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
+		id: 'Form ID:',
+		dm: 'See your direct messages!'
+	},
+	daily: {
+		coletado: 'You have collected **%m stars** daily, come back tomorrow and collect again.',
+		coletou: 'You have already collected your daily reward, collect it again in **%time**'
+	},
+	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
+	ball: {
+		title: '🎱 Magic Ball',
+		field1: '**Question:**',
+		field2: '**Answer:**'
+	},
 	ship: {
 		nou: 'Mention some user to ship',
 		d1: 'You are not compatible, you are very different from each other 😔',
@@ -355,6 +370,7 @@ module.exports = {
 		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
 		comp: 'Clique no `🛒` para comprar',
 		succ: 'Background comprado com sucesso',
+		sep: 'Background set successfully',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
 	filters: {
@@ -362,6 +378,8 @@ module.exports = {
 		desativado: 'Filter %f was successfully disabled.'
 	},
 	economy: {
+		carteira: 'Wallet:',
+		banco: 'Bank:',
 		jacoletou: 'Сегодня вы уже получили свою ежедневную награду! Попробуйте еще раз:',
 		recebeu: 'Ты получил:',
 		noarg: 'Estão faltando argumentos, utilize: `%presgatar <codigo>.`',
