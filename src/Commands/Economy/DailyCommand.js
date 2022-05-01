@@ -61,7 +61,7 @@ module.exports = class DailyCommand {
 				embeds: [embed.get()]
 			});
 		}
-		else if (dailytime != null && timeout - (Date.now() - dailytime) > 0) {
+		else if (dailytime !== null && timeout - (Date.now() - dailytime) > 0) {
 			const tt = moment(timeout - (Date.now() - dailytime)).format('HH:mm:ss');
 
 			const embed = new ctx.embed();
