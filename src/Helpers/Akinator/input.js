@@ -21,31 +21,21 @@ module.exports = async function awaitInput (useButtons, input, botMessage, isGue
 
 		let answerTypes = [];
 
-		if (isGuessFilter) {
-			answerTypes = [yes, no];
-		}
-		else {
-			answerTypes = [yes, no, idk, probably, probablyNot, back, stop];
-		}
+		answerTypes = isGuessFilter ? [yes, no] : [yes, no, idk, probably, probablyNot, back, stop];
 
 		let choice = await buttonMenu(input.client, input, botMessage, answerTypes, 60000);
-		if (!choice) return null;
-		else return choice;
+		return !choice ? null : choice;
 	}
 	else {
 		let filter;
-		if (isGuessFilter) {
-			filter = x => {
+		filter = isGuessFilter ? x => {
 				return x.author.id === input.author.id && [
 					'y',
 					translations.yes.toLowerCase(),
 					'n',
 					translations.no.toLowerCase(),
 				].includes(x.content.toLowerCase());
-			};
-		}
-		else {
-			filter = x => {
+			} : x => {
 				return x.author.id === input.author.id && [
 					'y',
 					translations.yes.toLowerCase(),
@@ -65,7 +55,6 @@ module.exports = async function awaitInput (useButtons, input, botMessage, isGue
 					translations.stop.toLowerCase(),
 				].includes(x.content.toLowerCase());
 			};
-		}
 		let response = await input.channel.awaitMessages({
 			filter: filter,
 			max: 1,

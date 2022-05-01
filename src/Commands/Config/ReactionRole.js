@@ -63,18 +63,13 @@ module.exports = class ReactionRoleCommand {
 		const role = await ctx.message.guild.roles.fetch(roleID);
 		const emojiName = ctx.args[2].replace(/<a:/g, '').replace(/>/g, '').replace(/<:/g, '').replace(/\d/g, '').replace(/:/g, '');
 		const mensagem = await ctx.message.channel.messages.fetch(message_id);
-		if (!mensagem) {
-			return ctx.message.channel.slashReply({
+		return !mensagem ? ctx.message.channel.slashReply({
 				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.invalidMessage.replace('%id%', message_id)}`
-			});
-		}
-		else {
-			return ctx.message.channel.slashReply({
+			}) : ctx.message.channel.slashReply({
 				content: `✅ ${ctx.message.author.mention} **|** ${ctx.idioma.reactionRole.sucess.replace('%id%', message_id)}`
 			}).then(async () => {
 				await global.zuly.db.set(`reaction-${emojiName}-${message_id}`, role.id);
 				return mensagem.react(ctx.args[2].replace(/<a:/g, '').replace(/>/g, '').replace(/<:/g, ''));
 			});
-		}
 	}
 };

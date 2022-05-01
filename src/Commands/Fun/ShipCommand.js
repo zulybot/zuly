@@ -71,12 +71,7 @@ module.exports = class ShipCommand {
 
 		const nome = user1.username.slice(0, 3) + user2.username.slice(0, 3);
 
-		if (!ship1 && !ship2) {
-			porcentagem = Math.floor(Math.random() * 101);
-		}
-		else {
-			porcentagem = ship1;
-		}
+		porcentagem = !ship1 && !ship2 ? Math.floor(Math.random() * 101) : ship1;
 
 		if (user1.id === user2.id) {
 			porcentagem = 50;

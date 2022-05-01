@@ -81,12 +81,7 @@ module.exports = class BackupCommand {
 			}).then(async (backupData) => {
 				await global.zuly.db.set(`backups.${genID}`, backupData.id);
 				const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
-				if (backupdb) {
-					await global.zuly.db.push(`backups.${ctx.message.author.id}`, genID);
-				}
-				else {
-					await global.zuly.db.set(`backups.${ctx.message.author.id}`, [genID]);
-				}
+				await (backupdb ? global.zuly.db.push(`backups.${ctx.message.author.id}`, genID) : global.zuly.db.set(`backups.${ctx.message.author.id}`, [genID]));
 				ctx.message.channel.slashReply({
 					content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.create.success}`.replace('%t', require('pretty-ms')(Date.now() - tempo)).replace('%id', genID),
 				});

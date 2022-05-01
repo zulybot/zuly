@@ -66,12 +66,7 @@ module.exports = class ResgatarCommand {
 			}
 			else {
 				const ryos = await global.zuly.db.get(`money-${ctx.message.author.id}`);
-				if (!ryos) {
-					await global.zuly.db.set(`money-${ctx.message.author.id}`, Number(valor));
-				}
-				else {
-					await global.zuly.db.add(`money-${ctx.message.author.id}`, Number(ryos) + Number(valor));
-				}
+				await (!ryos ? global.zuly.db.set(`money-${ctx.message.author.id}`, Number(valor)) : global.zuly.db.add(`money-${ctx.message.author.id}`, Number(ryos) + Number(valor)));
 				await global.zuly.db.set(`${codigo}-${ctx.message.author.id}`, true);
 				const embed = new ctx.embed();
 				embed.setTitle(`🎟️ Promocodes | ${global.zuly.user.username}`);
