@@ -38,7 +38,7 @@ module.exports = class DailyCommand {
 					type: 3,
 					name: 'about',
 					description: 'Write your about me',
-					required: false
+					required: true
 				}
 			],
 			aliases: ['about', 'sobre', 'sobremim'],

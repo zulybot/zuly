@@ -209,7 +209,7 @@ module.exports = class InteractionEvent {
 				embed2.addField('<:zu_bughunter_1:885918998426951721> Resolvam!', `>>> 🌎 **Servidor:** \`${msg.guild.name}\`\n🧭 **ID:** \`${msg.guild.id}\`\n👑 **Dono:** \`${owner.username}#${owner.discriminator} [${owner.id}]\`\n🔍 **Membros:** \`${msg.guild.memberCount} members\`\n<a:zu_booster:880862453712429098> **Boosts:** \`${msg.guild.premiumSubscriptionCount} boosts\`\n:calendar: **Criado em:** \`${moment(msg.guild.createdAt).format('📆 DD/MM/YY')} | ${moment(msg.guild.createdAt).format('⏰ HH:mm:ss')}\`\n🗺️ **Idioma:** \`${msg.guild.preferredLocale}\`\n<:zu_slash:886681118470987967> **Comando:** \`${interaction.commandName}\`\n💻 **Argumentos:** \`${args.slice(0, 1024) || 'Não Tem'}\``);
 				embed2.setColor('#ff0000');
 				embed2.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+				embed2.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 
 				const hook2 = new WebhookClient({
 					id: system.error.id,

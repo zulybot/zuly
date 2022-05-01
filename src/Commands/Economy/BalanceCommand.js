@@ -40,16 +40,21 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		const user = ctx.args[0] ? ctx.args[0] || await global.zuly.users.fetch(ctx.args[0]) : ctx.message.author;
-		const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`) || 0;
+		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
+
+		const money = await global.zuly.db.get(`money-${user.id}`) || Number(0);
+		const banco = await global.zuly.db.get(`banco-${user.id}`) || Number(0);
+
+		const num1 = Number(money);
+		const num2 = Number(banco);
+
 		const embed = new ctx.embed();
-		embed.setTitle(`💰 Balance | ${global.zuly.user.username}`);
-		embed.addField(`<:zu_anime:882668160480849970> Ryos: __${user.username}#${user.discriminator}__`, `${ryos}`);
-		embed.setColor('#ffcbdb');
-		embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		embed.setTitle(`💸 Banco | ${global.zuly.user.username}`);
+		embed.addField(`❯ ${ctx.idioma.economy.carteira}`, `**${user.username}:** **¥ ${num1.toLocaleString()}**`, true);
+		embed.addField(`❯ ${ctx.idioma.economy.banco}`, `**${user.username}:** **¥ ${num2.toLocaleString()}**`, true);
+		embed.setColor('#dd3af0');
+		embed.setThumbnail('https://i.imgur.com/VW4x1en.png');
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
 			embeds: [embed.get()]
 		});
 	}

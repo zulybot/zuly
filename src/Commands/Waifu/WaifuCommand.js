@@ -110,12 +110,12 @@ module.exports = class EvalCommand {
 									embeds: []
 								});
 							}
-							const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
+							const ryos = await global.zuly.db.get(`money-${ctx.message.author.id}`);
 							if (ryos) {
-								await global.zuly.db.set(`ryos-${ctx.message.author.id}`, ryos + waifu.valor);
+								await global.zuly.db.set(`money-${ctx.message.author.id}`, ryos + waifu.valor);
 							}
 							else {
-								await global.zuly.db.set(`ryos-${ctx.message.author.id}`, waifu.valor);
+								await global.zuly.db.set(`money-${ctx.message.author.id}`, waifu.valor);
 							}
 							await global.zuly.db.set(`waifu-${ctx.message.guild.id}-${waifu.id}`, ctx.message.author.id);
 							const harem = await global.zuly.db.get(`harem-${ctx.message.guild.id}-${ctx.message.author.id}`);

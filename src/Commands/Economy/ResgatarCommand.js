@@ -65,12 +65,12 @@ module.exports = class ResgatarCommand {
 				return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.resgatado}`);
 			}
 			else {
-				const ryos = await global.zuly.db.get(`ryos-${ctx.message.author.id}`);
+				const ryos = await global.zuly.db.get(`money-${ctx.message.author.id}`);
 				if (!ryos) {
-					await global.zuly.db.set(`ryos-${ctx.message.author.id}`, Number(valor));
+					await global.zuly.db.set(`money-${ctx.message.author.id}`, Number(valor));
 				}
 				else {
-					await global.zuly.db.add(`ryos-${ctx.message.author.id}`, Number(ryos) + Number(valor));
+					await global.zuly.db.add(`money-${ctx.message.author.id}`, Number(ryos) + Number(valor));
 				}
 				await global.zuly.db.set(`${codigo}-${ctx.message.author.id}`, true);
 				const embed = new ctx.embed();

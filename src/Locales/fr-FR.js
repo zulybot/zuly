@@ -1,6 +1,21 @@
 module.exports = {
 	lang: 'fr',
-	bateau: {
+	report: {
+		p1: 'Voulez-vous signaler certaines personnes ? Vous êtes arrivé au bon endroit! Pour faire le rapport il suffit de cliquer sur le formulaire !',
+		id: 'ID du formulaire :',
+		dm: 'Voir vos messages directs !'
+	},
+	daily: {
+		coletado: 'Vous avez collecté **%m étoiles** quotidiennement, revenez demain et collectez à nouveau.',
+		coletou: 'Vous avez déjà récupéré votre récompense quotidienne, récupérez-la à nouveau dans **%time**'
+	},
+	premium: 'Vous avez découvert une fonctionnalité premium, pour être un utilisateur premium, rejoignez mon [serveur de support](<https://discord.gg/pyyyJpw5QW>) !',
+	bola: {
+		title: '🎱 Boule Magique',
+		field1: '**Question:**',
+		field2: '**Réponse:**',
+	},
+	ship: {
 		nou: 'Mentionnez un utilisateur à expédier',
 		d1 : 'Vous n\'êtes pas compatibles, vous êtes très différents les uns des autres 😔',
 		d2: 'Vous pouvez être amis, mais je ne vois pas de meilleur avenir entre vous, vous vous ressemblez 🤝',
@@ -297,6 +312,7 @@ module.exports = {
 		desc: 'C\'est vraiment mon ami, saviez-vous que vous pouvez changer cela en utilisant "%paboutme " ?',
 		comp: 'Cliquez sur `🛒` pour acheter',
 		succ: 'Fond d\'écran acheté avec succès',
+		sep: 'L\'arrière-plan a été défini avec succès',
 		no: 'Vous n\'avez pas assez d\'argent pour acheter ce fond d\'écran'
 	},
 	filters: {
@@ -304,6 +320,8 @@ module.exports = {
 		desativado: 'Le filtre %f a été désactivé avec succès.'
 	},
 	economy: {
+		carteira: 'Portefeuille :',
+		banco: 'Banque :',
 		jacoletou: 'Vous avez déjà collecté votre récompense quotidienne aujourd\'hui! Réessayez sur:',
 		recebeu: 'Vous avez reçu:',
 		noarg: 'Il y a des arguments manquants, utilisez: `%presgate <code>.`',

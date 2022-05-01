@@ -1,5 +1,20 @@
 module.exports = {
 	lang: 'pt',
+	report: {
+		p1: 'Está querendo denunciar algumas pessoas? Vieste ao lugar certo! Para realizar o report basta clicar no formulário!',
+		id: 'ID do Formulário:',
+		dm: 'Veja suas mensagens diretas!'
+	},
+	daily: {
+		coletado: 'Você coletou **%m stars** diárias, volte amanhã e colete novamente.',
+		coletou: 'Você já coletou sua recompensa diária, colete-a novamente em **%time**'
+	},
+	premium: 'Você descobriu uma funcionalidade premium, para ser um usuário premium entre em meu [servidor de suporte](<https://discord.gg/pyyyJpw5QW>)!',
+	bola: {
+		title: '🎱 Bola Mágica',
+		field1: '**Pergunta:**',
+		field2: '**Resposta:**',
+	},
 	ship: {
 		nou: 'Mencione algum usuário para shippar',
 		d1: 'Vocês não são compatíveis, são muito diferentes um do outro 😔',
@@ -303,6 +318,7 @@ module.exports = {
 		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
 		comp: 'Clique no `🛒` para comprar',
 		succ: 'Background comprado com sucesso',
+		sep: 'Background setado com sucesso',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
 	filters: {
@@ -310,6 +326,8 @@ module.exports = {
 		desativado: 'O Filtro %f foi desativado com sucesso.'
 	},
 	economy: {
+		carteira: 'Carteira:',
+		banco: 'Banco:',
 		jacoletou: 'Você já coletou sua recompensa diária hoje! Tente novamente em:',
 		recebeu: 'Você recebeu:',
 		noarg: 'Estão faltando argumentos, utilize: `%presgatar <codigo>.`',

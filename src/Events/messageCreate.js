@@ -88,6 +88,24 @@ module.exports = class MessageCreateEvent {
 		if (!message.content.match(regexPrefix)) return;
 		const args = message.content.replace(regexPrefix, '').trim().split(/ +/g);
 		const commandName = args.shift().toLowerCase();
+		if (commandName === 'aprovar') {
+			if (message.author.id !== '717766639260532826') return;
+			if (!args[0]) return message.channel.send('Cadê o id do form?');
+			const g = await global.zuly.db.get(args[0]);
+			if (g) {
+			  message.react('✅');
+			  const user = await global.zuly.users.fetch(g);
+			  const dm = await global.zuly.users.fetch(user.id);
+			  dm.send(`✅ Sua denúncia com id: ||${args[0]}|| foi aprovada pela equipe da zulybot, obrigado e parabéns 🥳`).then(async () => {
+					global.zuly.db.del(args[0]);
+					const ch = await global.zuly.channels.cache.get('970320554550779974');
+					ch.send(`__**✅ Denúncia Aprovada!**__\n\n- Autor: **${message.author.username}#${message.author.discriminator} (${message.author.id})**\n- ID do formulário: **${args[0]}**`);
+			  });
+			}
+			else {
+			  return message.channel.send(':x: Formulário não encontrado.');
+			}
+		  }
 		const commandFile = global.zuly.commands.get(commandName) || global.zuly.aliases.get(commandName);
 		if (!commandFile) return;
 

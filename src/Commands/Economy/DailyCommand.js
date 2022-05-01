@@ -40,33 +40,59 @@ module.exports = class DailyCommand {
 	}
 
 	async run (ctx) {
-		const timeout = 86400000;
+		const timeout = Number(86400000);
 		const moment = require('moment');
-		const quantia = Math.floor(Math.random() * 1500) + 500;
-		let amount = quantia;
-		const daily = await global.zuly.db.get(`daily-${ctx.message.author.id}`);
-		const userPremium = await global.zuly.getPremium('doador', ctx.message.author.id);
-		if (userPremium === true) {
-			amount = Number(quantia) * 2;
-		}
-		if (daily !== null && timeout - (Date.now() - daily) > 0) {
-			const tt = moment(timeout - (Date.now() - daily)).format('HH:mm:ss');
-			ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.economy.jacoletou} **${tt}**`
+		const daily = Number(Math.floor(Math.random() * 6500) + 1000);
+		const dailytime = await global.zuly.db.get(`dailytime-${ctx.message.author.id}`);
+
+		if (!dailytime) {
+		  await global.zuly.db.set(`money-${ctx.message.author.id}`, Number(daily));
+		  await global.zuly.db.set(`dailytime-${ctx.message.author.id}`, Number(Date.now()));
+
+		  const embed = new ctx.embed();
+		  embed.setTitle(`💸 Daily | ${global.zuly.user.username}`);
+		  embed.setDescription(`🌟 **${ctx.message.author.username}** ${ctx.idioma.daily.coletado.replace('%m', Number(daily))}`);
+		  embed.setColor('#ffcbdb');
+		  embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+		  embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+
+		  ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
 			});
 		}
+		else if (dailytime != null && timeout - (Date.now() - dailytime) > 0) {
+			const tt = moment(timeout - (Date.now() - dailytime)).format('HH:mm:ss');
+
+			const embed = new ctx.embed();
+			embed.setTitle(`💸 Daily | ${global.zuly.user.username}`);
+			embed.setDescription(`<:zu_info:911303533859590144> **${ctx.message.author.username}** ${ctx.idioma.daily.coletou.replace('%time', tt)}.`);
+			embed.setColor('#ffcbdb');
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			});
+		  }
 		else {
+			const q = await global.zuly.db.get(`money-${ctx.message.author.id}`);
+			await global.zuly.db.set(`money-${ctx.message.author.id}`, Number(daily + q));
+			await global.zuly.db.set(`dailytime-${ctx.message.author.id}`, Number(Date.now()));
+			await global.zuly.db.set(`banco-${ctx.message.author.id}`, Number(0));
+
+			const embed = new ctx.embed();
+			embed.setTitle(`💸 Daily | ${global.zuly.user.username}`);
+			embed.setDescription(`🌟 **${ctx.message.author.username}** ${ctx.idioma.daily.coletado.replace('%m', Number(daily))}`);
+			embed.setColor('#ffcbdb');
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+
 			ctx.message.channel.slashReply({
-				content: `💸 ${ctx.message.author.mention} **|** ${ctx.idioma.economy.recebeu} **☕ ${amount} ryos**!`
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
 			});
-			const money = global.zuly.db.get(`ryos-${ctx.message.author.id}`);
-			if (money) {
-				await global.zuly.db.add(`ryos-${ctx.message.author.id}`, Number(money) + Number(amount));
-			}
-			else {
-				await global.zuly.db.set(`ryos-${ctx.message.author.id}`, Number(amount));
-			}
-			await global.zuly.db.set(`daily-${ctx.message.author.id}`, Date.now());
-		 }
+		  }
 	}
 };

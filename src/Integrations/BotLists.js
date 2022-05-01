@@ -18,16 +18,16 @@ module.exports = (app) => {
 			embed.setDescription(`⬆️ \`${user.username}#${user.discriminator}\` votou em mim no **[top.gg](https://top.gg/bot/880173509077266483)** e recebeu **2400 ryos** vote você também!\n🔗 **Link:** https://top.gg/bot/880173509077266483`);
 			ch.send({
 				content: `<@${data.user}>`,
-				embed: embed.get()
+				embeds: [embed.get()]
 			}).then(msg => {
 				msg.react('⬆️');
 			});
-			const money = await global.zuly.db.get(`ryos-${user.id}`);
+			const money = await global.zuly.db.get(`money-${user.id}`);
 			if (money) {
-				await global.zuly.db.set(`ryos-${user.id}`, Number(money) + 2400);
+				await global.zuly.db.set(`money-${user.id}`, Number(money) + 2400);
 			}
 			else {
-				await global.zuly.db.set(`ryos-${user.id}`, 2400);
+				await global.zuly.db.set(`money-${user.id}`, 2400);
 			}
 			const embed2 = new global.zuly.manager.Ebl();
 			embed2.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);

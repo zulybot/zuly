@@ -50,7 +50,7 @@ module.exports = class PrintCommand {
 		const embed = new ctx.embed();
 		embed.setTitle(`📸 Print | ${global.zuly.user.username}`);
 		embed.setDescription(`> <:zu_info:911303533859590144> ${ctx.args[0]}`);
-		embed.setImage('https://image.thum.io/get/maxAge/12/width/700/crop/900/https://google.com');
+		embed.setImage('https://image.thum.io/get/maxAge/12/width/700/crop/900/' + ctx.args[0]);
 		embed.setColor('#ffcbdb');
 		embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 		ctx.message.channel.slashReply({
