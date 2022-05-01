@@ -1,5 +1,20 @@
 module.exports = {
 	lang: 'ro',
+	report: {
+		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
+		id: 'Form ID:',
+		dm: 'See your direct messages!'
+	},
+	daily: {
+		coletado: 'You have collected **%m stars** daily, come back tomorrow and collect again.',
+		coletou: 'You have already collected your daily reward, collect it again in **%time**'
+	},
+	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
+	ball: {
+		title: '🎱 Magic Ball',
+		field1: '**Question:**',
+		field2: '**Answer:**'
+	},
 	ship: {
 		nou: 'Mention some user to ship',
 		d1: 'You are not compatible, you are very different from each other 😔',
@@ -355,6 +370,7 @@ module.exports = {
 		desc: 'Zuly este prietenul meu, știai că poți schimba acest lucru folosind "%paboutme"?',
 		comp: 'Dă click pe `🛒` pentru a cumpăra',
 		succ: 'Fundal cumparat cu succes',
+		sep: 'Background set successfully',
 		no: 'Nu ai suficienți bani pentru a cumpăra acest fundal'
 	},
 	filters: {
@@ -362,6 +378,8 @@ module.exports = {
 		desativado: 'Filtrul %f a fost dezactivat cu succes.'
 	},
 	economy: {
+		carteira: 'Wallet:',
+		banco: 'Bank:',
 		jacoletou: 'Ai colectat deja recompensa zilnică astăzi! Încearcă din nou pe:',
 		recebeu: 'Ai primit:',
 		noarg: 'Există argumente lipsă, utilizați: `%presgate <code>.`',
