@@ -1,15 +1,15 @@
 module.exports = {
 	lang: 'es',
 	report: {
-		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
-		id: 'Form ID:',
-		dm: 'See your direct messages!'
+		p1: '¿Quieres denunciar a algunas personas? ¡Has venido al lugar correcto! ¡Para hacer el informe solo haz clic en el formulario!',
+		id: 'ID del formulario:',
+		dm: '¡Vea sus mensajes directos!'
 	},
 	daily: {
-		coletado: 'You have collected **%m** daily, come back tomorrow and collect again.',
-		coletou: 'You have already collected your daily reward, collect it again in **%time**'
+		coletado: 'Ha recolectado **%m** diariamente, regrese mañana y recaude de nuevo.',
+		coletou: 'Ya has recogido tu recompensa diaria, vuelve a recogerla en **%time**'
 	},
-	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
+	premium: '¡Has descubierto una función premium, para ser un usuario premium, únete a mi [servidor de soporte] (<https://discord.gg/pyyyJpw5QW>)!',
 	ball: {
 		title: '🎱 Magic Ball',
 		field1: '**Question:**',
