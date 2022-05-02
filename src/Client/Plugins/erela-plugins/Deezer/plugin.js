@@ -33,9 +33,7 @@ const __awaiter = this && this.__awaiter || function(e, t, r, i) {
 			default: e
 		};
 	};
-Object.defineProperty(exports, '__esModule', {
-	value: !0
-}), exports.Deezer = void 0;
+
 const erela_js_1 = require('erela.js'),
 	axios_1 = __importDefault(require('axios')),
 	BASE_URL = 'https://api.deezer.com',
@@ -59,18 +57,10 @@ const erela_js_1 = require('erela.js'),
 	};
 class Deezer extends erela_js_1.Plugin {
 	constructor (e = {}) {
-		super(), check(e), this.options = {
-			playlistLimit: e.playlistLimit && e.playlistLimit >= 1 ? e.playlistLimit : 100,
-			albumLimit: e.albumLimit && e.albumLimit >= 1 ? e.albumLimit : 50,
-			convertUnresolved: !!e.convertUnresolved && e.convertUnresolved
-		}, this.functions = {
-			track: this.getTrack.bind(this),
-			album: this.getAlbumTracks.bind(this),
-			playlist: this.getPlaylistTracks.bind(this)
-		};
+		
 	}
 	load (e) {
-		this.manager = e, this._search = e.search.bind(e), e.search = this.search.bind(this);
+		
 	}
 	search (e, t) {
 		let r, i, n;

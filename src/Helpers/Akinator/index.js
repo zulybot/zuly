@@ -109,10 +109,7 @@ module.exports = async function(input, options = {}) {
 		if (!['animal', 'character', 'object'].includes(options.gameType)) return console.log(`Discord.js Akinator Error: Game Type "${options.gameType}" Not Found. Choose from: "animal", "character" or "object".\nNeed Help? Join Our Discord Server at 'https://discord.gg/P2g24jp'`);
 
 		try {
-			inputData.client = input.client,
-			inputData.guild = input.guild,
-			inputData.author = input.author ? input.author : input.user,
-			inputData.channel = input.channel;
+			
 		}
 		catch {
 			return console.log('Discord.js Akinator Error: Failed to Parse Input for Use.\nJoin Our Discord Server for Support at \'https://discord.gg/P2g24jp\'');

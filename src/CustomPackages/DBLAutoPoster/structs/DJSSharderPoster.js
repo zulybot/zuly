@@ -1,18 +1,12 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {
-	value: !0
-}), exports.DJSSharderPoster = void 0;
+
 const BasePoster_1 = require('./BasePoster');
 class DJSSharderPoster extends BasePoster_1.BasePoster {
 	constructor (e, t, r) {
 		if (!e) throw new Error('Top.gg Tokeni Eksik');
 		if (!t) throw new Error('Eksik client');
 		if (!(t instanceof require('discord.js').ShardingManager)) throw new Error('Bir discord.js ShardingManager değil.');
-		super(e, r), this.client = t, this._binder({
-			clientReady: () => this.clientReady(),
-			waitForReady: e => this.waitForReady(e),
-			getStats: () => this.getStats()
-		});
+		
 	}
 
 	clientReady () {
@@ -21,9 +15,7 @@ class DJSSharderPoster extends BasePoster_1.BasePoster {
 
 	waitForReady (e) {
 		const t = r => {
-			r.id === this.client.totalShards - 1 && (this.client.off('shardCreate', t), r.once('ready', () => {
-				e();
-			}));
+			
 		};
 		this.client.on('shardCreate', t);
 	}

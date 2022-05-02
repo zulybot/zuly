@@ -1,7 +1,5 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {
-	value: !0
-}), exports.RosePoster = exports.DJSSharderPoster = exports.ErisPoster = exports.DJSPoster = exports.AutoPoster = void 0;
+
 const DJSPoster_1 = require('./structs/DJSPoster');
 const ErisPoster_1 = require('./structs/ErisPoster');
 const DJSSharderPoster_1 = require('./structs/DJSSharderPoster');
@@ -52,9 +50,4 @@ Object.defineProperty(exports, 'DJSSharderPoster', {
 	}
 });
 const RosePoster_2 = require('./structs/RosePoster');
-Object.defineProperty(exports, 'RosePoster', {
-	enumerable: !0,
-	get: function() {
-		return RosePoster_2.RosePoster;
-	}
-}), exports.default = AutoPoster;
+

@@ -1,7 +1,5 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {
-	value: !0
-}), exports.BasePoster = void 0;
+
 const sdk_1 = require('@top-gg/sdk');
 const typed_emitter_1 = require('@jpbberry/typed-emitter');
 class BasePoster extends typed_emitter_1.EventEmitter {
@@ -17,27 +15,19 @@ class BasePoster extends typed_emitter_1.EventEmitter {
 	}
 
 	async _binder (t) {
-		this.binds = t, this.options.startPosting && (await this.binds.clientReady()
-			? this.start()
-			: this.binds.waitForReady(() => {
-				this.start();
-			}));
+		
 	}
 
 	start () {
-		this.started = !0, this._setupInterval();
+		
 	}
 
 	stop () {
-		this.started = !1, clearInterval(this.interval), this.interval = null;
+		
 	}
 
 	_setupInterval () {
-		this.options.postOnStart && setTimeout(() => {
-			this.post();
-		}, 5e3), this.interval = setInterval(async () => {
-			await this.binds.clientReady() && this.post();
-		}, this.options.interval);
+		
 	}
 
 	async post () {
