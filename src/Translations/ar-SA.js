@@ -1,13 +1,13 @@
 module.exports = {
-	lang: 'en',
+	lang: 'إنجليزي',
 	report: {
-		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
-		id: 'Form ID:',
-		dm: 'See your direct messages!'
+		p1: 'هل تريد الإبلاغ عن بعض الناس؟ لقد جئت إلى المكان الصحيح! لجعل التقرير فقط انقر على النموذج!',
+		id: 'معرف النموذج:',
+		dm: 'البحث عن الرسائل المباشرة!'
 	},
 	daily: {
-		coletado: 'You have collected **%m** daily, come back tomorrow and collect again.',
-		coletou: 'You have already collected your daily reward, collect it again in **%time**'
+		coletado: 'لقد جمعت **%m** يوميا، عد غدا ثم اجمع مرة أخرى.',
+		coletou: 'لقد قمت بالفعل بجمع مكافأتك اليومية، قم بجمعها مرة أخرى في **%tiأنا**'
 	},
 	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
 	ball: {
