@@ -44,7 +44,7 @@ module.exports = class NitroCommand {
 		const attachment = new MessageAttachment('./assets/images/memes/nitrofake.png', 'nitro.png');
 
 		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
+			content: `<a:zu_booster:880862453712429098> ${ctx.message.author.mention} **|** discord\\.gift/${Math.random().toString(36).slice(-8)}${Math.random().toString(36).slice(-8)}`,
 			files: [attachment]
 		});
 	}

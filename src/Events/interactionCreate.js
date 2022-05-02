@@ -12,7 +12,7 @@ module.exports = class InteractionEvent {
 		await interaction.deferReply();
 		if (!interaction.guild) {
 			return interaction.editReply({
-				content: ':x: **|** Slash commands cannot be used via direct message.',
+				content: ':x: **|** Slash commands cannot be used via directs messages.',
 				ephemeral: true
 			});
 		};

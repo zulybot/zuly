@@ -9,7 +9,7 @@ module.exports = class PingCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'translator',
+				nome: 'traduzir',
 				categoria: '🕰️ » Utilidades',
 				desc: 'Traduza mensagens para algum idioma.'
 			},
@@ -19,7 +19,7 @@ module.exports = class PingCommand {
 				desc: 'Translate messages to any language.'
 			},
 			fr: {
-				nome: 'translator',
+				nome: 'traducteur',
 				categoria: '🕰️ » Utilitaires',
 				desc: 'Traduire des messages dans n\'importe quel langage.'
 			},

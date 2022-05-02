@@ -37,7 +37,7 @@ module.exports = class ExecCommand {
 				{
 					type: 3,
 					name: 'code',
-					description: 'the code',
+					description: 'O Código que será executado.',
 					required: true
 				}
 			],

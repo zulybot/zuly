@@ -17,7 +17,7 @@ module.exports = class CalcCommand {
 				desc: 'View information about a user.'
 			},
 			fr: {
-				nome: 'userinfo',
+				nome: 'informationsutilisateur',
 				categoria: '🕰️ » Utilitaires',
 				desc: 'Voir les informations d\'un utilisateur.'
 			},

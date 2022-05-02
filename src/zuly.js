@@ -28,7 +28,7 @@ const client = new Client({
 		'CHANNEL',
 		'MESSAGE',
 		'REACTION'
-	]
+	],
 });
 
 // Games

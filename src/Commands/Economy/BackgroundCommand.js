@@ -37,7 +37,7 @@ module.exports = class BackgroundCommand {
 				{
 					type: 3,
 					name: 'link',
-					description: 'Write your about me',
+					description: 'Your profile picture link.',
 					required: false
 				}
 			],
@@ -48,16 +48,21 @@ module.exports = class BackgroundCommand {
 
 	async run (ctx) {
 		if (ctx.args[0]) {
+			console.log(ctx.args[0]);
 			const premium = await global.zuly.getPremium('doador', ctx.message.author.id);
-			if (!premium) {
-				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.premium}`
-				});
-			};
-			await global.zuly.db.set(`background-${ctx.message.author.id}`, ctx.args[0]);
-			ctx.message.channel.slashReply({
-				content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.sep}`
-			});
+			setTimeout(async () => {
+				if (premium === false) {
+					return ctx.message.channel.slashReply({
+						content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.premium}`
+					});
+				}
+				else {
+					await global.zuly.db.set(`background-${ctx.message.author.id}`, ctx.args[0]);
+					ctx.message.channel.slashReply({
+						content: `:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.sep}`
+					});
+				}
+			}, 1000);
 		}
 		else {
 			const background = require('../../Config/backgrounds');

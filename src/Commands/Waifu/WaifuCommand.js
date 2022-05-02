@@ -21,7 +21,7 @@ module.exports = class EvalCommand {
 			fr: {
 				nome: 'waifu',
 				categoria: '💖 » Waifu',
-				desc: 'Marry some waifu!'
+				desc: 'Mary certains waifu!'
 			},
 			/*
             SUB_COMMAND	1 = SubCommand

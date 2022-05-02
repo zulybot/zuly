@@ -18,7 +18,7 @@ module.exports = class AnimeCommand {
 				desc: 'Look for an anime.'
 			},
 			fr: {
-				nome: 'anime',
+				nome: 'animé',
 				categoria: '📺 » Animé',
 				desc: 'Cherchez un animé.'
 			},

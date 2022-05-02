@@ -60,23 +60,27 @@ async function getPremium (typename, user) {
 	const tipo = typename.toLowerCase();
 	if (tipo === 'doador') {
 		const guild = await global.zuly.guilds.cache.get('880174783294214184');
-		const membro = await guild.members.cache.get(user);
-		if (!membro) {
-			return false;
-		}
-		else if (membro.roles.cache.has('903708588806119465') || membro.roles.cache.has('880399661184200725')) {
-			return true;
-		}
+		setTimeout(async () => {
+			const membro = await guild.members.cache.get(user);
+			if (!membro) {
+				return false;
+			}
+			else if (membro.roles.cache.has('903708588806119465') || membro.roles.cache.has('880399661184200725')) {
+				return true;
+			}
+		}, 500);
 	}
 	if (tipo === 'essencial') {
 		const guild = await global.zuly.guilds.cache.get('880174783294214184');
-		const membro = await guild.members.cache.get(user);
-		if (!membro) {
-			return false;
-		}
-		else if (membro.roles.cache.has('903710903420223548')) {
-			return true;
-		}
+		setTimeout(async () => {
+			const membro = await guild.members.cache.get(user);
+			if (!membro) {
+				return false;
+			}
+			else if (membro.roles.cache.has('903710903420223548')) {
+				return true;
+			}
+		}, 500);
 	}
 }
 async function getBugHunter (user) {
@@ -114,9 +118,8 @@ async function nqn (message) {
 		}
 
 		let temp = emoji.toString();
-		if (new RegExp(temp, 'g').test(msg))
-			{msg = msg.replace(new RegExp(temp, 'g'), emoji.toString())}
-		else {msg = msg.replace(new RegExp(':' + m + ':', 'g'), emoji.toString())};
+		if (new RegExp(temp, 'g').test(msg)) {msg = msg.replace(new RegExp(temp, 'g'), emoji.toString());}
+		else {msg = msg.replace(new RegExp(':' + m + ':', 'g'), emoji.toString());};
 	});
 
 	if (msg === message.content) return;

@@ -9,12 +9,12 @@ module.exports = class BanCommand {
 			pt: {
 				nome: 'guildban',
 				categoria: '💻 » Dev',
-				desc: 'Bane algum usuário de usar o bot.'
+				desc: 'Bane algum servidor de usar o bot.'
 			},
 			en: {
 				nome: 'guildban',
 				categoria: '💻 » Dev',
-				desc: 'Ban some user from using the bot.'
+				desc: 'Ban some guild from using the bot.'
 			},
 			fr: {
 				nome: 'guildban',

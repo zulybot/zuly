@@ -6,7 +6,7 @@ module.exports = {
 		dm: 'Veja suas mensagens diretas!'
 	},
 	daily: {
-		coletado: 'Você coletou **%m stars** diárias, volte amanhã e colete novamente.',
+		coletado: 'Você coletou **%m** diárias, volte amanhã e colete novamente.',
 		coletou: 'Você já coletou sua recompensa diária, colete-a novamente em **%time**'
 	},
 	premium: 'Você descobriu uma funcionalidade premium, para ser um usuário premium entre em meu [servidor de suporte](<https://discord.gg/pyyyJpw5QW>)!',

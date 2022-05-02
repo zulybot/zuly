@@ -8,7 +8,7 @@ module.exports = class ReactionRoleCommand {
 			pt: {
 				nome: 'reactionrole',
 				categoria: '⚙️ » Configuração',
-				desc: 'Create roles by reaction in a message you want.'
+				desc: 'Crie cargos por reação em uma mensagem que você deseja.'
 			},
 			en: {
 				nome: 'reactionrole',
