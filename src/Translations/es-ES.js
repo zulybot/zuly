@@ -144,7 +144,7 @@ module.exports = {
 		channel: 'Canal:',
 		url: 'Enlace:',
 		message: { title: 'Registros de Mensajes' },
-		bans: { title: 'Ban Logs' },
+		bans: { title: 'Registros de bloqueo' },
 		user: 'Usuario:',
 		reason: 'Razón:',
 		mod: 'Moderadores:',
@@ -234,8 +234,8 @@ module.exports = {
 		term: 'Terminou ás',
 		host: 'Sorteio de: {user}',
 		win: 'ganhador(es)',
-		wins: 'Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}',
-		react: 'react with 🎁 to participate!',
+		wins: '¡Felicidades, {winners}! ¡Has ganado **{this.prize}**! {this.messageURL}',
+		react: 'reaccionar con 🎁 para participar!',
 		restante: 'Tempo Restante:',
 		no: 'Sorteio cancelado, sem participações válidas',
 		give: 'SORTEIO',
@@ -243,7 +243,7 @@ module.exports = {
 		start: 'Você não usou o comando corretamente, utilize: `%pgiveaway-start [tempo(10s, 10m)] [ganhadores(1, 1w)] [prêmio(fotos de gatinhos)]`, não inclua **[]** ou **()**.',
 		end: 'Você não usou o comando corretamente, utilize: `%pgiveaway-end [id da mensagem]`',
 		reroll: 'Você não usou o comando corretamente, utilize: `%pgiveaway-reroll [id da mensagem]`',
-		novo: 'New winner(s): {winners}! Congratulations, you won **{this.prize}**\n{this.messageURL}',
+		novo: 'Nuevos ganador(es): {winners}! Felicidades, has ganado **{this.prize}**\n{this.messageURL}',
 		err: 'Sem participações válidas, nenhum(s) novo(s) vencedor(es) escolhidos!'
 	},
 	help: {
@@ -258,9 +258,9 @@ module.exports = {
 		res: 'Resultado'
 	},
 	botinfo: {
-		texto: 'Hi, I\'m **%bot**, a bot with unique features that every server needs! I currently know **%u different people** who use my features and I\'m on **%g different servers**.\n\nI\'m developed by `%devs` using [Eris](https://abal.moe/Eris/) using [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [ NodeJS](https://nodejs.org/en/)',
-		recursos: 'Resources:',
-		mem: 'this server is using %m of my memory.'
+		texto: 'Hola, soy **%bot**, ¡un bot con características únicas que todo servidor necesita! Actualmente conozco a **%u personas diferentes** que usan mis funciones y estoy en **%g servidores diferentes**.\n\n Estoy desarrollado por `%devs` usando [Eris](https://abal.moe/Eris/) usando [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) & [NodeJS](https://nodejs.org/en/)',
+		recursos: 'Recursos:',
+		mem: 'este servidor está usando %m de mi memoria.'
 	},
 	messages: {
 		tem: 'tem',
@@ -275,12 +275,12 @@ module.exports = {
 	erela: {
 		np: 'Tocando agora',
 		end: 'A música acabou, estou saindo',
-		skip: 'The song was successfully skipped.',
+		skip: 'La canción fue saltada con éxito.',
 		not: 'Não estou tocando nada no servidor.',
-		voice: 'I was alone on the voice channel, I\'m leaving!',
-		duration: 'Duration:',
+		voice: 'Yo estaba solo en el canal de voz, ¡estoy saliendo!',
+		duration: 'Duración:',
 		loop: {
-			ativado: 'Current Song Loop has been enabled.',
+			ativado: 'Se ha habilitado el bucle de canción actual.',
 			desativado: 'Current Song Loop has been turned off.'
 		}
 	},
@@ -327,7 +327,7 @@ module.exports = {
 		msg: 'mensagens** limpas com sucesso',
 		no: 'Insira a quantidade de mensagens a serem limpas',
 		p: 'Procurando mensagens, isso pode levar 30 segundos...',
-		num: 'I can only clear between 2 to 100 messages'
+		num: 'Sólo puedo borrar entre 2 y 100 mensajes'
 	},
 	baninfo: {
 		user: 'Usuário:',
@@ -362,7 +362,7 @@ module.exports = {
 	avatar: {
 		title: 'Avatar de:',
 		download: 'Link para download:',
-		hex: 'Hex to use in your profile:',
+		hex: 'Hexadecimal para usar en tu perfil:',
 		click: 'Clique Aqui'
 	},
 	perfil: {
@@ -392,8 +392,8 @@ module.exports = {
 		alt: 'Sobre alterado para: `%t`'
 	},
 	nsfw: {
-		activated: 'System activated successfully!',
-		disabled: 'System successfully disabled!',
+		activated: '¡Sistema activado con éxito!',
+		disabled: 'El filtro se deshabilitó correctamente!',
 		nonsfw: 'Não envie conteúdo NSFW fora de canais NSFW.'
 	}
 };
