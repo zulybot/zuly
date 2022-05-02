@@ -29,32 +29,32 @@ module.exports = async function awaitInput (useButtons, input, botMessage, isGue
 	else {
 		let filter;
 		filter = isGuessFilter ? x => {
-				return x.author.id === input.author.id && [
-					'y',
-					translations.yes.toLowerCase(),
-					'n',
-					translations.no.toLowerCase(),
-				].includes(x.content.toLowerCase());
-			} : x => {
-				return x.author.id === input.author.id && [
-					'y',
-					translations.yes.toLowerCase(),
-					'n',
-					translations.no.toLowerCase(),
-					'i',
-					'idk',
-					translations.dontKnowNoComma.toLowerCase(),
-					translations.dontKnow.toLowerCase(),
-					'p',
-					translations.probably.toLowerCase(),
-					'pn',
-					translations.probablyNot.toLowerCase(),
-					'b',
-					translations.back.toLowerCase(),
-					's',
-					translations.stop.toLowerCase(),
-				].includes(x.content.toLowerCase());
-			};
+			return x.author.id === input.author.id && [
+				'y',
+				translations.yes.toLowerCase(),
+				'n',
+				translations.no.toLowerCase(),
+			].includes(x.content.toLowerCase());
+		} : x => {
+			return x.author.id === input.author.id && [
+				'y',
+				translations.yes.toLowerCase(),
+				'n',
+				translations.no.toLowerCase(),
+				'i',
+				'idk',
+				translations.dontKnowNoComma.toLowerCase(),
+				translations.dontKnow.toLowerCase(),
+				'p',
+				translations.probably.toLowerCase(),
+				'pn',
+				translations.probablyNot.toLowerCase(),
+				'b',
+				translations.back.toLowerCase(),
+				's',
+				translations.stop.toLowerCase(),
+			].includes(x.content.toLowerCase());
+		};
 		let response = await input.channel.awaitMessages({
 			filter: filter,
 			max: 1,

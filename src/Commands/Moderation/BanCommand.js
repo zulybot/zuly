@@ -61,10 +61,10 @@ module.exports = class BanCommand {
 		}
 
 		member = await (ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]).then(info => info).catch(() => {
-				return ctx.message.channel.slashReply({
-					content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
-				});
-			}) : ctx.args[0]);
+			return ctx.message.channel.slashReply({
+				content: `:x: ${ctx.message.author.mention} **|** Usuário desconhecido.`
+			});
+		}) : ctx.args[0]);
 
 		let banReason = ctx.args.splice(1).join(' ');
 		if (!banReason) {
