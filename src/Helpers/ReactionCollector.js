@@ -16,8 +16,8 @@ module.exports = class ReactionCollector extends CollectorBase {
 			message: options.message ? options.message : message,
 			max: options.max ? options.max : 5,
 			ignoreBots: options.ignoreBots ? options.ignoreBots : true,
-			acceptReactionRemove: !!options.acceptDeletedMessage,
-			stopOnCollect: !!options.stopOnCollect
+			acceptReactionRemove: Boolean(options.acceptDeletedMessage),
+			stopOnCollect: Boolean(options.stopOnCollect)
 		};
 
 		this.createTimeout(this.options.time);

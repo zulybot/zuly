@@ -62,7 +62,7 @@ class Deezer extends erela_js_1.Plugin {
 		super(), check(e), this.options = {
 			playlistLimit: e.playlistLimit && e.playlistLimit >= 1 ? e.playlistLimit : 100,
 			albumLimit: e.albumLimit && e.albumLimit >= 1 ? e.albumLimit : 50,
-			convertUnresolved: !!e.convertUnresolved && e.convertUnresolved
+			convertUnresolved: Boolean(e.convertUnresolved) && e.convertUnresolved
 		}, this.functions = {
 			track: this.getTrack.bind(this),
 			album: this.getAlbumTracks.bind(this),

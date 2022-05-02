@@ -32,10 +32,10 @@ module.exports = class MessageCollector extends CollectorBase {
 			user: options?.user,
 			time: options?.time ?? 90000,
 			ignoreBots: options?.ignoreBots ?? true,
-			stopOnCollect: !!options.stopOnCollect,
+			stopOnCollect: Boolean(options.stopOnCollect),
 			accept: {
-				deletedMessages: !!options.accept?.deletedMessages,
-				editedMessages: !!options.accept?.editedMessages
+				deletedMessages: Boolean(options.accept?.deletedMessages),
+				editedMessages: Boolean(options.accept?.editedMessages)
 			},
 			rules: {
 				include: options.rules?.includes,

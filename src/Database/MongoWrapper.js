@@ -165,7 +165,7 @@ class Database extends EventEmitter {
      * @param {String} key
      */
 	async exists (key) {
-		return !!await this.get(key);
+		return Boolean(await this.get(key));
 	}
 
 	/**
