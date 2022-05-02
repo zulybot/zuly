@@ -11,29 +11,29 @@ module.exports = {
 	},
 	premium: '¡Has descubierto una función premium, para ser un usuario premium, únete a mi [servidor de soporte] (<https://discord.gg/pyyyJpw5QW>)!',
 	ball: {
-		title: '🎱 Magic Ball',
-		field1: '**Question:**',
-		field2: '**Answer:**'
+		title: '🎱 Bola Mágica',
+		field1: '**Pregunta:**',
+		field2: '**Responder:**'
 	},
 	ship: {
-		nou: 'Mention some user to ship',
-		d1: 'You are not compatible, you are very different from each other 😔',
-		d2: 'You can be friends, but I don\'t see a better future between you, you are similar to each other 🤝',
-		d3: 'You can be a couple, the tastes are almost the same and you know each other a lot 👀',
-		d4: 'You are perfect, made for each other, go ahead, you have everything to work out ❤️'
+		nou: 'Menciona a algún usuario para enviar',
+		d1: 'No sois compatibles, sois muy diferentes entre vosotros 😔',
+		d2: 'Pueden ser amigos, pero no veo mejor futuro entre ustedes, son similares entre ustedes 🤝',
+		d3: 'Podéis ser pareja, los gustos son casi iguales y os conocéis mucho 👀',
+		d4: 'Sois perfectos, hechos el uno para el otro, adelante, tenéis todo por resolver ❤️'
 	},
-	dashboard: 'The Bot configuration has been migrated to the dashboard, access this link: https://zulybot.xyz/dashboard/%g',
+	dashboard: 'La configuración del Bot se ha migrado al tablero, acceda a este enlace: https://zulybot.xyz/dashboard/%g',
 	backup: {
-		create: { success: 'Backup created successfully!\n⤷ ID: `%id`, time taken to create: `%t`' },
+		create: { success: 'Copia de seguridad creada con éxito! \n⤷ ID: `%id`, tiempo de creación: `%t`' },
 		list: {
-			noBackups: 'You don\'t have backups.',
-			backupList: 'Backup List:',
+			noBackups: 'No tienes copias de seguridad.',
+			backupList: 'Lista de copia de seguridad:',
 			backupID: 'ID: %id'
 		},
 		load: {
-			success: 'Backup successfully loaded!',
-			error: 'Backup not found.',
-			confirm: 'Do you want to load the backup? Please be aware that all your settings will be overwritten by the backup, **messages, positions & channels** will not be recovered after this process.\n> To load react with `✅`.'
+			success: 'Copia de seguridad cargada con éxito!',
+			error: 'Copia de seguridad no encontrada.',
+			confirm: '¿Quieres cargar la copia de seguridad? Tenga en cuenta que la copia de seguridad sobrescribirá todas sus configuraciones, **mensajes, posiciones y canales** no se recuperarán después de este proceso. > Para cargar reaccionar con `✅`.'
 		}
 	},
 	clusters: {
@@ -145,12 +145,12 @@ module.exports = {
 		url: 'Enlace:',
 		message: { title: 'Registros de Mensajes' },
 		bans: { title: 'Ban Logs' },
-		user: 'User:',
-		reason: 'Reason:',
-		mod: 'Moderator:',
-		bani: 'Banned',
-		unbani: 'Unbanned',
-		jump: 'Ir al mensaje',
+		user: 'Usuario:',
+		reason: 'Razón:',
+		mod: 'Moderadores:',
+		bani: 'Prohibido',
+		unbani: 'Desbaneado',
+		jump: 'Ir a mensajes',
 		set: 'Canal puesto a `%c`'
 	},
 	aki: {
@@ -208,7 +208,7 @@ module.exports = {
 		sucess: '¡Canal puesto con éxito!'
 	},
 	message: {
-		mod: 'This command can only be used by my moderators!',
+		mod: '¡Este comando solo puede ser utilizado por mis moderadores!',
 		P: '¡Hola humano!',
 		view: '¡No tengo permiso para leer el historial de mensajes!',
 		the: 'El Comando',
@@ -374,11 +374,11 @@ module.exports = {
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
 	filters: {
-		ativado: 'The filter %f has been successfully enabled.',
-		desativado: 'Filter %f was successfully disabled.'
+		ativado: 'El filtro %f se ha habilitado correctamente.',
+		desativado: 'El filtro %f se deshabilitó correctamente.'
 	},
 	economy: {
-		carteira: 'Wallet:',
+		carteira: 'Cartera:',
 		banco: 'Bank:',
 		jacoletou: 'Você já coletou sua recompensa diária hoje! Tente novamente em:',
 		recebeu: 'Você recebeu:',
