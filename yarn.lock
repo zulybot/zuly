@@ -772,12 +772,12 @@ discord-api-types@^0.29.0:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.29.0.tgz#8346352b623ddd8d8eed386b6eb758e2d82d6005"
   integrity sha512-Ekq1ICNpOTVajXKZguNFrsDeTmam+ZeA38txsNLZnANdXUjU6QBPIZLUQTC6MzigFGb0Tt8vk4xLnXmzv0shNg==
 
-discord-backup@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-3.0.1.tgz#4208ee7d33103f7a84e8c7cfad888e315c396bf8"
-  integrity sha512-V0KsDHJPVx+zjWPv11alWmHSQ/CO4Mnzko3afDotz6U45py37igjFOCfHCqV3Q3AT6kk7Hi4H5pgA3H7qPw2zw==
+discord-backup@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-3.1.0.tgz#25ebe920c72a9a72c0af82650e9a9d279cf39cbd"
+  integrity sha512-x7ZWe+r/EDd6bSY1ohI2cy74bYSpuTrtnS3Y0rtxfO0R0aaZ8R1YO9rJj2Cl+38mE/B8/J882DHzdmJ85dw+vA==
   dependencies:
-    discord.js "^13.0.1"
+    discord.js "^13.6.0"
 
 discord-giveaways@^5.1.1:
   version "5.1.1"
@@ -796,7 +796,7 @@ discord.js-akinator@^3.4.2:
     aki-api "^6.0.8"
     discord.js "^13.6.0"
 
-discord.js@^13.0.1, discord.js@^13.6.0:
+discord.js@^13.6.0:
   version "13.6.0"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-13.6.0.tgz#d8a8a591dbf25cbcf9c783d5ddf22c4694860475"
   integrity sha512-tXNR8zgsEPxPBvGk3AQjJ9ljIIC6/LOPjzKwpwz8Y1Q2X66Vi3ZqFgRHYwnHKC0jC0F+l4LzxlhmOJsBZDNg9g==
