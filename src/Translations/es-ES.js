@@ -281,11 +281,11 @@ module.exports = {
 		duration: 'Duración:',
 		loop: {
 			ativado: 'Se ha habilitado el bucle de canción actual.',
-			desativado: 'Current Song Loop has been turned off.'
+			desativado: 'El bucle de la canción actual se ha desactivado.'
 		}
 	},
 	play: {
-		nada: 'Arguments are missing, use `%pplay <music | url>`',
+		nada: 'Faltan argumentos, usa `%preproducción <music | url>`',
 		add: 'Adicionado a fila',
 		can: 'Você precisa estar em um canal de voz para ouvir música.'
 	},
@@ -293,15 +293,15 @@ module.exports = {
 		casar: 'Reaja com 💖 para se casar',
 		casou: 'Você se casou com %w',
 		dono: 'Dono',
-		utl: 'Utilize: %pwaifu-info [ID]',
+		utl: 'Utiliza: %pwaifu-info [ID]',
 		casado: 'Você já casou recentemente, você pode casar a cada 2 horas',
-		noharem: 'You don\'t have waifus, use `%pwaifu roll` to add one.',
-		battle: 'Battle of Waifus',
-		battleDesc: '**%u** is looking for a partner for a waifus duel, who will face it?',
-		label: 'Me!',
-		yms: 'You cannot battle with yourself.',
-		bat: '%u, you will battle %2u, you have 30 seconds to choose a waifu (player found in `%t`).',
-		select: 'Nothing Selected.'
+		noharem: 'No tienes waifus, usa `%pwaifu roll` para añadir uno.',
+		battle: 'Batalla de Waifus',
+		battleDesc: '**%u** está buscando un compañero para un duelo de waifus, ¿a quién le enfrentará?',
+		label: '¡Yo!',
+		yms: 'No puedes negociar contigo mismo.',
+		bat: '%u, lucharás contra %2u, tienes 30 segundos para elegir un waifu (jugador encontrado en `%t`).',
+		select: 'No se seleccionó nada.'
 	},
 	tradutor: {
 		lang: 'Você precisa especificar a linguagem, examplo: %translator **en** Oi',
@@ -309,7 +309,7 @@ module.exports = {
 	},
 	invite: {
 		add: 'Me Adicione ao seu servidor!',
-		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/pyyyJpw5QW), yay'
+		desc: 'Yay, ¿te han gustado mis comandos? ¿O mis características? [Agrega](https://discord.com/oauth2/authorize?client_id=71952411453633342&scope=bot%20applications.commands&permissions=805432446)\n\n¿Necesitas ayuda o algo? Inicia sesión en mi [servidor de soporte](https://discord.gg/pyyJpw5QW), yay'
 	},
 	ban: {
 		noarg: '**Mencione** algum usuário ou dê o **ID** do mesmo.',
@@ -321,7 +321,7 @@ module.exports = {
 		mot3: 'Motivo:',
 		the: 'O Usuário',
 		foi: 'foi punido com sucesso.',
-		dev: 'You cannot punish the bot developer.'
+		dev: 'No puedes castigar al desarrollador de bot.'
 	},
 	clear: {
 		msg: 'mensagens** limpas com sucesso',
@@ -354,7 +354,7 @@ module.exports = {
 	userinfo: {
 		inf: 'Informações de:',
 		tag: 'Tag de:',
-		badges: 'Badges of:',
+		badges: 'Insignias de:',
 		id: 'ID de:',
 		create: 'Conta criada dia:'
 	},
@@ -370,7 +370,7 @@ module.exports = {
 		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
 		comp: 'Clique no `🛒` para comprar',
 		succ: 'Background comprado com sucesso',
-		sep: 'Background set successfully',
+		sep: 'El fondo se ha cambiado correctamente',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
 	},
 	filters: {
@@ -379,7 +379,7 @@ module.exports = {
 	},
 	economy: {
 		carteira: 'Cartera:',
-		banco: 'Bank:',
+		banco: 'Banco:',
 		jacoletou: 'Você já coletou sua recompensa diária hoje! Tente novamente em:',
 		recebeu: 'Você recebeu:',
 		noarg: 'Estão faltando argumentos, utilize: `%presgatar <codigo>.`',
