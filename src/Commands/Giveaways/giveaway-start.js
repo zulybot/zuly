@@ -38,19 +38,44 @@ module.exports = class GivawayStart {
 					type: 3,
 					name: 'time',
 					description: 'Duration of the giveaway. (1d, 1h, 1m, 1s)',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'tempo',
+						'en-US': 'time',
+						'fr': 'durée'
+					},
+					description_localizations: {
+						'pt-BR': 'Duração do sorteio. (1d, 1h, 1m, 1s)',
+						'en-US': 'Duration of the giveaway. (1d, 1h, 1m, 1s)',
+						'fr': 'Durée du giveaway. (1d, 1h, 1m, 1s)'
+					}
 				},
 				{
 					type: 3,
 					name: 'winners',
 					description: 'Giveaway winners. (1w, 2w/1, 2)',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'ganhadores',
+						'en-US': 'winners',
+						'fr': 'gagnants'
+					},
+					description_localizations: {
+						'pt-BR': 'Quantidade de ganhadores. (1w, 2w/1, 2)',
+						'en-US': 'Giveaway winners. (1w, 2w/1, 2)',
+						'fr': 'Gagnants du giveaway. (1w, 2w/1, 2)'
+					}
 				},
 				{
 					type: 3,
 					name: 'prize',
 					description: 'The prize of the giveaway.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'prêmio',
+						'en-US': 'prize',
+						'fr': 'prix'
+					}
 				}
 			],
 			aliases: ['gstart', 'gsetup', 'sorteio-start', 'sorteio-iniciar'],

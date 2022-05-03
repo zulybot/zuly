@@ -37,17 +37,47 @@ module.exports = class BotinfoCommand {
 				{
 					type: 1,
 					name: 'info',
-					description: 'See the bot information.'
+					description: 'See the bot information.',
+					name_localizations: {
+						'pt-BR': 'info',
+						'en-US': 'info',
+						'fr': 'info'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja as informações do bot.',
+						'en-US': 'See the bot information.',
+						'fr': 'Voir les informations du bot.'
+					}
 				},
 				{
 					type: 1,
 					name: 'ping',
-					description: 'See the bot ping.'
+					description: 'See the bot ping.',
+					name_localizations: {
+						'pt-BR': 'ping',
+						'en-US': 'ping',
+						'fr': 'ping'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja o ping do bot.',
+						'en-US': 'See the bot ping.',
+						'fr': 'Voir le ping du bot.'
+					}
 				},
 				{
 					type: 1,
 					name: 'dashboard',
-					description: 'See the bot dashboard.'
+					description: 'See the bot dashboard.',
+					name_localizations: {
+						'pt-BR': 'dashboard',
+						'en-US': 'dashboard',
+						'fr': 'dashboard'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja o dashboard do bot.',
+						'en-US': 'See the bot dashboard.',
+						'fr': 'Voir le dashboard du bot.'
+					}
 				}
 			],
 			aliases: ['bi', 'info', 'about'],

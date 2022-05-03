@@ -37,7 +37,7 @@ module.exports = class ReactionRoleCommand {
 					type: 3,
 					name: 'message',
 					description: 'Message ID To create the Reaction Role (the message must be on this channel)',
-					required: true
+					required: true,
 				},
 				{
 					type: 8,

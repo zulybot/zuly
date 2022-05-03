@@ -8,7 +8,7 @@ module.exports = class EvalCommand {
 				dono: true
 			},
 			pt: {
-				nome: 'profile',
+				nome: 'perfil',
 				categoria: '💰 » Economia',
 				desc: 'Vê o seu perfil na economia.'
 			},
@@ -18,7 +18,7 @@ module.exports = class EvalCommand {
 				desc: 'See your profile in the economy.'
 			},
 			fr: {
-				nome: 'profile',
+				nome: 'profil',
 				categoria: '💰 » Économie',
 				desc: 'Voir votre profil dans l\'économie.'
 			},

@@ -38,13 +38,33 @@ module.exports = class MrincredibleCommand {
 					type: 3,
 					name: 'text1',
 					description: 'The first text.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'texto1',
+						'en-US': 'text1',
+						'fr': 'texte1'
+					},
+					description_localizations: {
+						'pt-BR': 'O primeiro texto.',
+						'en-US': 'The first text.',
+						'fr': 'Le premier texte.'
+					}
 				},
 				{
 					type: 3,
 					name: 'text2',
 					description: 'The second text.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'texto2',
+						'en-US': 'text2',
+						'fr': 'texte2'
+					},
+					description_localizations: {
+						'pt-BR': 'O segundo texto.',
+						'en-US': 'The second text.',
+						'fr': 'Le deuxième texte.'
+					}
 				}
 			],
 			aliases: [],

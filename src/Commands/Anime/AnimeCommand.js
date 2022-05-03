@@ -40,6 +40,16 @@ module.exports = class AnimeCommand {
 					name: 'anime',
 					description: 'The name of the anime.',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'anime',
+						'en-US': 'anime',
+						'fr': 'animé'
+					},
+					description_localizations: {
+						'pt-BR': 'O nome do anime.',
+						'en-US': 'The name of the anime.',
+						'fr': 'Le nom de l\'animé.'
+					}
 				}
 			],
 			aliases: ['anime'],

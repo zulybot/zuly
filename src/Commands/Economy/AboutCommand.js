@@ -7,7 +7,7 @@ module.exports = class DailyCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'aboutme',
+				nome: 'sobremim',
 				categoria: '💰 » Economia',
 				desc: 'Altera o seu "Sobre Mim" para alguma frase legal.'
 			},
@@ -17,7 +17,7 @@ module.exports = class DailyCommand {
 				desc: 'Change your "About Me" to some cool phrase.'
 			},
 			fr: {
-				nome: 'aboutme',
+				nome: 'surmoi',
 				categoria: '💰 » Économie',
 				desc: 'Change votre "À Propos de Moi" pour une phrase super cool.'
 			},

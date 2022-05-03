@@ -38,13 +38,33 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'Usuário que será desbanido.',
+						'en-US': 'The user that will be unbanned.',
+						'fr': 'L\'utilisateur qui sera débanni.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the unban',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'Motivo do desbanimento.',
+						'en-US': 'The reason for the unban.',
+						'fr': 'Raison du débannissement.'
+					}
 				}
 			],
 			aliases: ['zulyunban'],

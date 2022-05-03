@@ -36,9 +36,19 @@ module.exports = class GivawayStart {
 			options: [
 				{
 					type: 3,
-					name: 'id',
+					name: 'giveaway',
 					description: 'The ID of the giveaway.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'sorteio',
+						'en-US': 'giveaway',
+						'fr': 'giveaway'
+					},
+					description_localizations: {
+						'pt-BR': 'O ID do sorteio.',
+						'en-US': 'The ID of the giveaway.',
+						'fr': 'L\'ID du giveaway.'
+					}
 				},
 			],
 			aliases: ['gstart', 'gsetup', 'sorteio-start', 'sorteio-iniciar'],

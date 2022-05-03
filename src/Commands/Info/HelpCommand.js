@@ -10,7 +10,7 @@ module.exports = class Ajuda {
 				dono: false
 			},
 			pt: {
-				nome: 'help',
+				nome: 'ajuda',
 				categoria: '📖 » Informação',
 				desc: 'Veja minha lista de comandos!'
 			},
@@ -20,7 +20,7 @@ module.exports = class Ajuda {
 				desc: 'View my command list!'
 			},
 			fr: {
-				nome: 'help',
+				nome: 'aider',
 				categoria: '📖 » Information',
 				desc: 'Voir ma liste de commandes!'
 			},
@@ -41,7 +41,17 @@ module.exports = class Ajuda {
 					type: 3,
 					name: 'command',
 					description: 'The Command you want to see about',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'comando',
+						'en-US': 'command',
+						'fr': 'commande'
+					},
+					description_localizations: {
+						'pt-BR': 'O comando que você quer saber sobre.',
+						'en-US': 'The Command you want to see about.',
+						'fr': 'La commande que vous voulez voir à propos.'
+					}
 				}
 			],
 			aliases: ['cmds', 'commands', 'comandos', 'ajuda'],
@@ -137,12 +147,7 @@ module.exports = class Ajuda {
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
 				}
-				if (!ctx.message.channel.nsfw) {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
-				else {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
+				embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
 					embeds: [embed.get()],
@@ -240,12 +245,7 @@ module.exports = class Ajuda {
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
 				}
-				if (!ctx.message.channel.nsfw) {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.nsfw + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
-				else {
-					embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
+				embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.help.creators + devs.join(', '), global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
 					embeds: [embed.get()],
@@ -319,12 +319,7 @@ module.exports = class Ajuda {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
 				}
 
-				if (!ctx.message.channel.nsfw) {
-					embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.nsfw}  ${ctx.idioma.help.nsfw} ${ctx.idioma.help.creators} ${ctx.idioma.help.nsfw} ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
-				else {
-					embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				}
+				embed.setFooter(`⤷ https://zulybot.xyz | ${ctx.idioma.help.creators} ${devs.join(', ')}`, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				ctx.message.channel.slashReply({
 					content: ctx.message.author.mention,
 					embeds: [embed.get()],

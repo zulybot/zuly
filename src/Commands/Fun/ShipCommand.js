@@ -38,13 +38,28 @@ module.exports = class ShipCommand {
 					type: 6,
 					name: 'user1',
 					description: 'The first ship user.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuario1',
+						'en-US': 'user1',
+						'fr': 'utilisateur1'
+					},
+					description_localizations: {
+						'pt-BR': 'O primeiro usuário.',
+						'en-US': 'The first ship user.',
+						'fr': 'Le premier utilisateur.'
+					}
 				},
 				{
 					type: 6,
 					name: 'user2',
 					description: 'The second ship user.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuario2',
+						'en-US': 'user2',
+						'fr': 'utilisateur2'
+					}
 				}
 			],
 			aliases: ['shippar', 'casal'],

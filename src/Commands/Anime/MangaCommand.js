@@ -40,6 +40,16 @@ module.exports = class AnimeCommand {
 					name: 'manga',
 					description: 'The name of the manga.',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'manga',
+						'en-US': 'manga',
+						'fr': 'manga'
+					},
+					description_localizations: {
+						'pt-BR': 'O nome do manga.',
+						'en-US': 'The name of the manga.',
+						'fr': 'Le nom du manga.'
+					}
 				}
 			],
 			aliases: ['manga'],

@@ -38,7 +38,17 @@ module.exports = class GameCommand {
 					type: 3,
 					name: 'text',
 					description: 'The text in image!',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'texto',
+						'en-US': 'text',
+						'fr': 'texte'
+					},
+					description_localizations: {
+						'pt-BR': 'O texto que será exibido na imagem!',
+						'en-US': 'The text that will be displayed in the image!',
+						'fr': 'Le texte qui sera affiché dans l\'image!'
+					}
 				},
 			],
 			aliases: ['utbox', 'ubox', 'undertale', 'undertalechat'],

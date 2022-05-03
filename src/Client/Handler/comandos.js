@@ -29,18 +29,21 @@ fs.readdir('./src/Commands/', (err, cat) => {
 						});
 					}
 					comandos.push({
-						name: comando.en.nome,
-						type: 1,
-						description: comando.en.desc,
-						options: comando.options,
-						name_localizations: {
+						'type': 1,
+						'name': comando.en.nome,
+						'name_localizations': {
 							'pt-BR': comando.pt.nome,
+							'en-US': comando.en.nome,
 							'fr': comando.fr.nome
 						},
-						description_localizations: {
+						'description': comando.en.desc,
+						'description_localizations': {
 							'pt-BR': comando.pt.desc,
+							'en-US': comando.en.desc,
 							'fr': comando.fr.desc
-						}
+						},
+						'options': comando.options,
+						'dm_permission': false
 					});
 					delete require.cache[cmd];
 					// Caso tenha carregado corretamente informar!

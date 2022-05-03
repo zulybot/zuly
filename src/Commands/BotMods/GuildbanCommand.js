@@ -38,13 +38,33 @@ module.exports = class BanCommand {
 					type: 3,
 					name: 'guild',
 					description: 'The Guild ID',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'servidor',
+						'en-US': 'guild',
+						'fr': 'serveur'
+					},
+					description_localizations: {
+						'pt-BR': 'ID do servidor que você deseja banir.',
+						'en-US': 'The Guild ID you want to ban.',
+						'fr': 'L\'ID du serveur que vous souhaitez bannir.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the ban',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'Motivo do banimento.',
+						'en-US': 'The reason for the ban.',
+						'fr': 'La raison du ban.'
+					}
 				}
 			],
 			aliases: ['zulyban'],

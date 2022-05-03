@@ -38,7 +38,17 @@ module.exports = class AddmodCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'A menção do usuário.',
+						'en-US': 'The User Mention.',
+						'fr': 'La mention de l\'utilisateur.'
+					}
 				}
 			],
 			aliases: ['eval', 'e'],

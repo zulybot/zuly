@@ -38,21 +38,51 @@ module.exports = class CustomCommand {
 					name: 'name',
 					description: 'The Name of the command that will be created.',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'nome',
+						'en-US': 'name',
+						'fr': 'nom'
+					},
+					description_localizations: {
+						'pt-BR': 'O nome do comando que será criado.',
+						'en-US': 'The Name of the command that will be created.',
+						'fr': 'Le nom de la commande qui sera créé.'
+					}
 				},
 				{
 					type: 3,
 					name: 'description',
 					description: 'The Description of the created command.',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'descrição',
+						'en-US': 'description',
+						'fr': 'description'
+					},
+					description_localizations: {
+						'pt-BR': 'A descrição do comando criado.',
+						'en-US': 'The Description of the created command.',
+						'fr': 'La description de la commande créée.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reply',
 					description: 'The Response of the command that will be created.',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'resposta',
+						'en-US': 'reply',
+						'fr': 'réponse'
+					},
+					description_localizations: {
+						'pt-BR': 'A resposta do comando criado.',
+						'en-US': 'The Response of the command that will be created.',
+						'fr': 'La réponse de la commande créée.'
+					}
 				},
 			],
-			aliases: ['setlogs', 'guildlogs'],
+			aliases: [],
 			run: this.run
 		};
 	}

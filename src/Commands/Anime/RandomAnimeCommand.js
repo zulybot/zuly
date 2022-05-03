@@ -38,12 +38,32 @@ module.exports = class RandomAnimeCommand {
 				{
 					type: 1,
 					name: 'anime',
-					description: 'See bot information.'
+					description: 'See bot information.',
+					name_localizations: {
+						'pt-BR': 'anime',
+						'en-US': 'anime',
+						'fr': 'animé'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja informações sobre o anime.',
+						'en-US': 'See anime information.',
+						'fr': 'Voir les informations sur l\'animé.'
+					}
 				},
 				{
 					type: 1,
 					name: 'manga',
-					description: 'See bot information.'
+					description: 'See bot information.',
+					name_localizations: {
+						'pt-BR': 'manga',
+						'en-US': 'manga',
+						'fr': 'manga'
+					},
+					description_localizations: {
+						'pt-BR': 'O nome do manga.',
+						'en-US': 'The name of the manga.',
+						'fr': 'Le nom du manga.'
+					}
 				}
 			],
 			aliases: ['ra', 'r', 'randomanime', 'random', 'aleatorio'],

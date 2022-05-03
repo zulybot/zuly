@@ -38,7 +38,17 @@ module.exports = class VascoCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário que você quer ver o vasco.',
+						'en-US': 'The user you want to see the Vasco.',
+						'fr': 'L\'utilisateur que vous voulez voir le Vasco.'
+					}
 				}
 			],
 			aliases: [],

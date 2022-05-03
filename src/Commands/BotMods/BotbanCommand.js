@@ -38,13 +38,33 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário que você deseja banir.',
+						'en-US': 'The user you want to ban.',
+						'fr': 'L\'utilisateur que vous souhaitez bannir.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the ban',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'O motivo do banimento.',
+						'en-US': 'The reason for the ban.',
+						'fr': 'La raison du ban.'
+					}
 				}
 			],
 			aliases: ['zulyban'],

@@ -7,7 +7,7 @@ module.exports = class GameCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'joke',
+				nome: 'piada',
 				categoria: '⭐ » Diversão',
 				desc: 'Conta uma piada!'
 			},
@@ -17,7 +17,7 @@ module.exports = class GameCommand {
 				desc: 'Tell a joke!'
 			},
 			fr: {
-				nome: 'joke',
+				nome: 'blague',
 				categoria: '⭐ » Divertissement',
 				desc: 'Raconter une blague!'
 			},

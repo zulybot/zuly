@@ -7,7 +7,7 @@ module.exports = class BackgroundCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'background',
+				nome: 'banner',
 				categoria: '💰 » Economia',
 				desc: 'Troca o plano de fundo de seu perfil.'
 			},
@@ -17,7 +17,7 @@ module.exports = class BackgroundCommand {
 				desc: 'Change your profile background.'
 			},
 			fr: {
-				nome: 'contexte',
+				nome: 'bannière',
 				categoria: '💰 » Économie',
 				desc: 'Modifiez l\'arrière-plan de votre profil.'
 			},
