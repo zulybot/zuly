@@ -33,12 +33,24 @@ module.exports = class ExecCommand {
             MENTIONABLE: 9 = Includes users and roles
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
-			options: [{
-				type: 3,
-				name: 'term',
-				description: 'the term to search',
-				required: true
-			}],
+			options: [
+				{
+					type: 3,
+					name: 'term',
+					description: 'the term to search',
+					required: true,
+					name_localizations: {
+						'pt-BR': 'termo',
+						'en-US': 'term',
+						'fr': 'terme'
+					},
+					description_localizations: {
+						'pt-BR': 'o termo para procurar',
+						'en-US': 'the term to search',
+						'fr': 'le terme à rechercher'
+					}
+				}
+			],
 			aliases: ['discord.js', 'djs', 'dc.js'],
 			run: this.run
 		};

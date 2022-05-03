@@ -38,18 +38,48 @@ module.exports = class ReactionRoleCommand {
 					name: 'message',
 					description: 'Message ID To create the Reaction Role (the message must be on this channel)',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'mensagem',
+						'en-US': 'message',
+						'fr': 'message'
+					},
+					description_localizations: {
+						'pt-BR': 'ID da mensagem para criar o cargo por reação (a mensagem deve estar neste canal)',
+						'en-US': 'Message ID To create the Reaction Role (the message must be on this channel)',
+						'fr': 'ID du message pour créer le rôle par réaction (le message doit être dans ce salon)'
+					}
 				},
 				{
 					type: 8,
 					name: 'role',
 					description: 'Cargo to add or remove in whom to react',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'cargo',
+						'en-US': 'role',
+						'fr': 'rôle'
+					},
+					description_localizations: {
+						'pt-BR': 'Cargo para adicionar ou remover em quem reagir',
+						'en-US': 'Cargo to add or remove in whom to react',
+						'fr': 'Rôle pour ajouter ou supprimer à qui réagir'
+					}
 				},
 				{
 					type: 3,
 					name: 'emoji',
 					description: 'Emoji that members should use (for custom emojis, I have to be on the Emoji server)',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'emoji',
+						'en-US': 'emoji',
+						'fr': 'émoji'
+					},
+					description_localizations: {
+						'pt-BR': 'Emoji que os membros devem usar (para emojis customizados, eu tenho que estar no servidor de emojis)',
+						'en-US': 'Emoji that members should use (for custom emojis, I have to be on the Emoji server)',
+						'fr': 'Émoji que les membres doivent utiliser.'
+					}
 				}
 			],
 			aliases: ['rr', 'reaction-role'],
