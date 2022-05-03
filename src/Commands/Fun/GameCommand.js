@@ -37,12 +37,32 @@ module.exports = class GameCommand {
 				{
 					type: 1,
 					name: 'snake',
-					description: 'Play the snake game!'
+					description: 'Play the snake game!',
+					name_localizations: {
+						'pt-BR': 'snake',
+						'en-US': 'snake',
+						'fr': 'serpent'
+					},
+					description_localizations: {
+						'pt-BR': 'Jogue o jogo da cobra!',
+						'en-US': 'Play the snake game!',
+						'fr': 'Jouer le jeu du serpent!'
+					}
 				},
 				{
 					type: 1,
 					name: 'akinator',
-					description: 'Play the akinator game!'
+					description: 'Play the akinator game!',
+					name_localizations: {
+						'pt-BR': 'akinator',
+						'en-US': 'akinator',
+						'fr': 'akinator'
+					},
+					description_localizations: {
+						'pt-BR': 'Jogue o jogo do akinator!',
+						'en-US': 'Play the akinator game!',
+						'fr': 'Jouer le jeu de akinator!'
+					}
 				}
 			],
 			aliases: [],

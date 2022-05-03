@@ -38,7 +38,17 @@ module.exports = class ResgatarCommand {
 					type: 3,
 					name: 'promo',
 					description: 'The Promocode that will be redeemed',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'código',
+						'en-US': 'code',
+						'fr': 'code'
+					},
+					description_localizations: {
+						'pt-BR': 'Código que será resgatado',
+						'en-US': 'The code that will be redeemed',
+						'fr': 'Le code qui sera récupéré'
+					}
 				}
 			],
 			aliases: ['reedem', 'promocode', 'resgatar-promocode', 'reedem-promocode', 'promocode-resgatar', 'pclaim', 'presgatar'],

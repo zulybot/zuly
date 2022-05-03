@@ -37,8 +37,18 @@ module.exports = class EvalCommand {
 				{
 					type: 3,
 					name: 'code',
-					description: 'O Código que será executado.',
-					required: true
+					description: 'The Code that will be executed.',
+					required: true,
+					name_localizations: {
+						'pt-BR': 'código',
+						'en-US': 'code',
+						'fr': 'code'
+					},
+					description_localizations: {
+						'pt-BR': 'O código que será executado.',
+						'en-US': 'The Code that will be executed.',
+						'fr': 'Le code qui sera exécuté.'
+					}
 				}
 			],
 			aliases: ['eval', 'e'],

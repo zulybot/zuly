@@ -38,7 +38,17 @@ module.exports = class EvalCommand {
 					type: 3,
 					name: 'name',
 					description: 'Nome do PROMOCODE',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'nome',
+						'en-US': 'name',
+						'fr': 'nom'
+					},
+					description_localizations: {
+						'pt-BR': 'Nome do PROMOCODE',
+						'en-US': 'Name of the PROMOCODE',
+						'fr': 'Nom du PROMOCODE'
+					}
 				}
 			],
 			aliases: ['pdelete', 'promocode-delete', 'deletar-promocode', 'deletar-promo', 'pdeletar'],

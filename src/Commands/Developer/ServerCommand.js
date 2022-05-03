@@ -37,7 +37,18 @@ module.exports = class BanCommand {
 				{
 					type: 1,
 					name: 'rules',
-					description: 'See the server rules.'
+					description: 'See the server rules.',
+					required: false,
+					name_localizations: {
+						'pt-BR': 'regras',
+						'en-US': 'rules',
+						'fr': 'règles'
+					},
+					description_localizations: {
+						'pt-BR': 'Ver as regras do servidor.',
+						'en-US': 'See the server rules.',
+						'fr': 'Voir les règles du serveur.'
+					}
 				}
 			],
 			aliases: ['zulyban'],

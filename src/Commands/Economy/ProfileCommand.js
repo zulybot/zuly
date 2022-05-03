@@ -39,7 +39,17 @@ module.exports = class EvalCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'Usuário que você deseja ver o perfil.',
+						'en-US': 'The user you want to see the profile of.',
+						'fr': 'L\'utilisateur que vous souhaitez voir le profil.'
+					}
 				}
 			],
 			aliases: ['perfil', 'status'],

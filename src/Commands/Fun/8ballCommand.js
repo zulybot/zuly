@@ -7,7 +7,7 @@ module.exports = class GameCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'magicball',
+				nome: 'bolamagica',
 				categoria: '⭐ » Diversão',
 				desc: 'Joga a bola magica!'
 			},
@@ -38,7 +38,17 @@ module.exports = class GameCommand {
 					type: 3,
 					name: 'ask',
 					description: 'Ask the magic ball a question!',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'pergunta',
+						'en-US': 'question',
+						'fr': 'question'
+					},
+					description_localizations: {
+						'pt-BR': 'Pergunta a ser respondida!',
+						'en-US': 'The question to be answered!',
+						'fr': 'La question à répondre!'
+					}
 				},
 			],
 			aliases: [],

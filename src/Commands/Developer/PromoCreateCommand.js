@@ -37,14 +37,34 @@ module.exports = class EvalCommand {
 				{
 					type: 3,
 					name: 'name',
-					description: 'Nome do PROMOCODE',
-					required: true
+					description: 'Name of the PROMOCODE',
+					required: true,
+					name_localizations: {
+						'pt-BR': 'nome',
+						'en-US': 'name',
+						'fr': 'nom'
+					},
+					description_localizations: {
+						'pt-BR': 'Nome do PROMOCODE',
+						'en-US': 'Name of the PROMOCODE',
+						'fr': 'Nom du PROMOCODE'
+					}
 				},
 				{
 					type: 3,
 					name: 'valor',
 					description: 'Valor do PROMOCODE',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'valor',
+						'en-US': 'valor',
+						'fr': 'valeur'
+					},
+					description_localizations: {
+						'pt-BR': 'Valor do PROMOCODE',
+						'en-US': 'Valor do PROMOCODE',
+						'fr': 'Valeur du PROMOCODE'
+					}
 				}
 			],
 			aliases: ['pcreate', 'promocode-create', 'criar-promocode', 'criar-promo', 'pcriar'],

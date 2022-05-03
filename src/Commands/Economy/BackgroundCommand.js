@@ -38,7 +38,17 @@ module.exports = class BackgroundCommand {
 					type: 3,
 					name: 'link',
 					description: 'Your profile picture link.',
-					required: false
+					required: false,
+					name_localizations: {
+						'pt-BR': 'link',
+						'en-US': 'link',
+						'fr': 'lien'
+					},
+					description_localizations: {
+						'pt-BR': 'Link da sua foto de perfil.',
+						'en-US': 'Your profile picture link.',
+						'fr': 'Lien de votre photo de profil.'
+					}
 				}
 			],
 			aliases: ['about', 'sobre', 'sobremim'],

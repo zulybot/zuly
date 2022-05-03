@@ -38,7 +38,17 @@ module.exports = class ExecCommand {
 					type: 3,
 					name: 'code',
 					description: 'O Código que será executado.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'código',
+						'en-US': 'code',
+						'fr': 'code'
+					},
+					description_localizations: {
+						'pt-BR': 'O código que será executado.',
+						'en-US': 'The code that will be executed.',
+						'fr': 'Le code qui sera exécuté.'
+					}
 				}
 			],
 			aliases: ['exec', 'ec', 'publiceval'],

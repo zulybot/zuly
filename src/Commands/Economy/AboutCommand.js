@@ -38,7 +38,17 @@ module.exports = class DailyCommand {
 					type: 3,
 					name: 'about',
 					description: 'Write your about me',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'sobremim',
+						'en-US': 'aboutme',
+						'fr': 'surmoi'
+					},
+					description_localizations: {
+						'pt-BR': 'Escreva o seu "Sobre Mim"',
+						'en-US': 'Write your "About Me"',
+						'fr': 'Écrivez votre "À Propos de Moi"'
+					}
 				}
 			],
 			aliases: ['about', 'sobre', 'sobremim'],

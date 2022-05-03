@@ -59,6 +59,11 @@ module.exports = class ShipCommand {
 						'pt-BR': 'usuario2',
 						'en-US': 'user2',
 						'fr': 'utilisateur2'
+					},
+					description_localizations: {
+						'pt-BR': 'O segundo usuário.',
+						'en-US': 'The second ship user.',
+						'fr': 'Le second utilisateur.'
 					}
 				}
 			],
