@@ -106,7 +106,10 @@ module.exports = {
 		yay: 'J\'ai adoré jouer avec toi!',
 		res: '[oui (**y**) / non (**n**)]'
 	},
-	labels: { recalc: 'Recalculer' },
+	labels: {
+		recalc: 'Recalculer',
+		unban: 'Débannir'
+	},
 	guess: {
 		start: 'Le jeu commencera dans **5 secondes** avec un nombre compris entre `%min` et `%max`.',
 		started: 'C\'est commencé !',

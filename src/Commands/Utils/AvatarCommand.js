@@ -35,16 +35,20 @@ module.exports = class CalcCommand {
             */
 			options: [
 				{
-					type: 3,
-					name: 'userid',
-					description: 'The User ID',
-					required: false
-				},
-				{
 					type: 6,
-					name: 'usermention',
-					description: 'The User Mention',
-					required: false
+					name: 'user',
+					description: 'The user you want to see the avatar of.',
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário que você deseja ver o avatar.',
+						'en-US': 'The user you want to see the avatar of.',
+						'fr': 'L\'utilisateur que vous souhaitez voir l\'avatar.'
+					}
 				}
 			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],

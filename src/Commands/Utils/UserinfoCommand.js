@@ -38,7 +38,17 @@ module.exports = class CalcCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'Mencione o usuário.',
+						'en-US': 'User Mention.',
+						'fr': 'Mention de l\'utilisateur.'
+					}
 				}
 			],
 			aliases: ['whois', 'ui', 'member', 'memberinfo'],

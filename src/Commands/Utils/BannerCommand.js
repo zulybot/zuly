@@ -38,7 +38,17 @@ module.exports = class CalcCommand {
 					type: 6,
 					name: 'user',
 					description: 'The User Mention',
-					required: false
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário que você deseja ver o banner.',
+						'en-US': 'The user you want to see the banner of.',
+						'fr': 'L\'utilisateur que vous souhaitez voir le banner.'
+					}
 				}
 			],
 			aliases: ['userbanner', 'user-banner', 'ub', 'memberbanner', 'background', 'profilebanner', 'profilebackground'],

@@ -8,17 +8,17 @@ module.exports = class PruneCommand {
 			},
 			pt: {
 				nome: 'prune',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Limpe as mensagens de algum canal.'
 			},
 			en: {
 				nome: 'prune',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'Clear messages from any channel.'
 			},
 			fr: {
 				nome: 'prune',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Nettoyer les messages d\'un canal.'
 			},
 			/*
@@ -38,7 +38,17 @@ module.exports = class PruneCommand {
 					type: 3,
 					name: 'messages',
 					description: 'The Number of messages to be cleared',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'mensagens',
+						'en-US': 'messages',
+						'fr': 'messages'
+					},
+					description_localizations: {
+						'pt-BR': 'Número de mensagens a serem limpas',
+						'en-US': 'The Number of messages to be cleared',
+						'fr': 'Le nombre de messages à nettoyer'
+					}
 				}
 			],
 			aliases: ['clear', 'c', 'purge', 'clean', 'limpar', 'bulkdelete'],

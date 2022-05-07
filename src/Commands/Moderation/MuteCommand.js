@@ -8,17 +8,17 @@ module.exports = class BanCommand {
 			},
 			pt: {
 				nome: 'mute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Muta algum usuário babaca de seu servidor.'
 			},
 			en: {
 				nome: 'mute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'Mute some idiot user from your server.'
 			},
 			fr: {
 				nome: 'mute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Mute un idiot utilisateur de votre serveur.'
 			},
 			/*
@@ -38,19 +38,49 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The user to mute.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário a ser mutado.',
+						'en-US': 'The user to mute.',
+						'fr': 'L\'utilisateur à mute.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the mute',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'O motivo do mute.',
+						'en-US': 'The reason for the mute.',
+						'fr': 'La raison du mute.'
+					}
 				},
 				{
 					type: 3,
 					name: 'time',
 					description: 'How long will the mute last',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'duração',
+						'en-US': 'time',
+						'fr': 'durée'
+					},
+					description_localizations: {
+						'pt-BR': 'A duração do mute.',
+						'en-US': 'How long will the mute last.',
+						'fr': 'La durée du mute.'
+					}
 				}
 			],
 			aliases: ['banir', 'hackban', 'forceban'],

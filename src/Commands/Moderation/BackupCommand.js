@@ -9,17 +9,17 @@ module.exports = class BackupCommand {
 			},
 			pt: {
 				nome: 'backup',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Gerencia backups do seu servidor.'
 			},
 			en: {
 				nome: 'backup',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'Manage backups of your server.'
 			},
 			fr: {
 				nome: 'backup',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Gérer les sauvegardes de votre serveur.'
 			},
 			/*
@@ -57,16 +57,36 @@ module.exports = class BackupCommand {
 							name: 'delete',
 							value: 'delete'
 						}
-					]
+					],
+					name_localizations: {
+						'pt-BR': 'opção',
+						'en-US': 'option',
+						'fr': 'option'
+					},
+					description_localizations: {
+						'pt-BR': 'Escolha uma opção para executar',
+						'en-US': 'Choose an option to perform',
+						'fr': 'Choisissez une option à effectuer'
+					}
 				},
 				{
 					type: 3,
 					name: 'backupid',
 					description: 'Backup ID, required for delete & load.',
 					required: false,
+					name_localizations: {
+						'pt-BR': 'idbackup',
+						'en-US': 'backupid',
+						'fr': 'sauvegardeid'
+					},
+					description_localizations: {
+						'pt-BR': 'ID do backup, necessário para deletar e carregar.',
+						'en-US': 'Backup ID, required for delete & load.',
+						'fr': 'ID de sauvegarde, requis pour supprimer et charger.'
+					}
 				}
 			],
-			aliases: ['setlang', 'guildlang'],
+			aliases: ['backups'],
 			run: this.run
 		};
 	}

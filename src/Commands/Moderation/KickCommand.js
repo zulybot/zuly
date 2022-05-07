@@ -8,17 +8,17 @@ module.exports = class KickCommand {
 			},
 			pt: {
 				nome: 'kick',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Expulsa algum usuário babaca de seu servidor.'
 			},
 			en: {
 				nome: 'kick',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'Kick some idiot user from your server.'
 			},
 			fr: {
 				nome: 'kick',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Expulser quelqu\'un de votre serveur.'
 			},
 			/*
@@ -38,13 +38,33 @@ module.exports = class KickCommand {
 					type: 6,
 					name: 'user',
 					description: 'The user to kick.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário que você quer expulsar.',
+						'en-US': 'The user to kick.',
+						'fr': 'L\'utilisateur à expulser.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the kick',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'O motivo da expulsão.',
+						'en-US': 'The reason for the kick.',
+						'fr': 'La raison de l\'expulsion.'
+					}
 				}
 			],
 			aliases: ['expulsar', 'hackkick', 'forcekick', 'kickar'],

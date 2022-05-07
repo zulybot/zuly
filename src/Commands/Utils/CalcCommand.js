@@ -38,7 +38,17 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'expression',
 					description: 'The Expression that will be evaluated',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'expressão',
+						'en-US': 'expression',
+						'fr': 'expression'
+					},
+					description_localizations: {
+						'pt-BR': 'A expressão que será avaliada.',
+						'en-US': 'The expression that will be evaluated.',
+						'fr': 'L\'expression qui sera évaluée.'
+					}
 				}
 			],
 			aliases: ['math', 'calcular', 'calculadora'],

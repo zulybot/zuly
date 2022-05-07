@@ -41,12 +41,32 @@ module.exports = class PingCommand {
 					name: 'language',
 					description: 'The language you want to translate',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'idioma',
+						'en-US': 'language',
+						'fr': 'langue'
+					},
+					description_localizations: {
+						'pt-BR': 'O idioma que você quer traduzir',
+						'en-US': 'The language you want to translate',
+						'fr': 'La langue que vous souhaitez traduire'
+					}
 				},
 				{
 					type: 3,
 					name: 'message',
 					description: 'The Message to be translated',
 					required: true,
+					name_localizations: {
+						'pt-BR': 'mensagem',
+						'en-US': 'message',
+						'fr': 'message'
+					},
+					description_localizations: {
+						'pt-BR': 'A mensagem que você quer traduzir',
+						'en-US': 'The Message to be translated',
+						'fr': 'Le message que vous souhaitez traduire'
+					}
 				}
 			],
 			aliases: ['traduzir', 'tradutor'],

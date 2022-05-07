@@ -8,17 +8,17 @@ module.exports = class BaninfoCommand {
 			},
 			pt: {
 				nome: 'baninfo',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Veja a informação de algum ban.'
 			},
 			en: {
 				nome: 'baninfo',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'See some ban info.'
 			},
 			fr: {
 				nome: 'baninfo',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Voir les informations d\'un ban.'
 			},
 			/*
@@ -35,10 +35,20 @@ module.exports = class BaninfoCommand {
             */
 			options: [
 				{
-					type: 3,
-					name: 'userid',
+					type: 6,
+					name: 'user',
 					description: 'The User ID',
-					required: false
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuario',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'ID do usuário.',
+						'en-US': 'User ID.',
+						'fr': 'ID de l\'utilisateur.'
+					}
 				}
 			],
 			aliases: ['checkban', 'infoban', 'informação-ban', 'ban-info'],
@@ -47,50 +57,81 @@ module.exports = class BaninfoCommand {
 	}
 
 	async run (ctx) {
-		const ReactionCollector = require('../../Helpers/ReactionCollector');
+		try {
+			if (!ctx.args[0]) {
+				return ctx.message.channel.slashReply({
+					content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+				});
+			}
 
-		let member;
-		if (!ctx.args[0]) {
+			const member = await (!ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]).then(info => info) : ctx.args[0]);
+
+			let banReason = ctx.args.splice(1).join(' ');
+			if (!banReason) {
+				banReason = `${ctx.idioma.ban.mot}`;
+			}
+
+			const { MessageButton, MessageActionRow } = require('discord.js');
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('unban')
+						.setEmoji('885193463111483412')
+						.setLabel(ctx.idioma.labels.unban)
+						.setStyle('DANGER')
+				);
+
+			const banInfo = await ctx.message.channel.guild.bans.fetch(member);
+
+			const embed = new global.zuly.manager.Ebl();
+			embed.setTitle(`🛡️ BanInfo • ${banInfo.user.username}#${banInfo.user.discriminator}`);
+			embed.setColor('#ffcbdb');
+			embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${banInfo.user.username}#${banInfo.user.discriminator} (${banInfo.user.id})\`\`\``);
+			embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setThumbnail(banInfo.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()],
+				components: [row]
+			}).then(async (message) => {
+				const filter = i => i.customId === 'unban' && i.user.id === ctx.message.author.id;
+				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 15000 });
+				collector.on('collect', async (i) => {
+					const row = new MessageActionRow()
+						.addComponents(
+							new MessageButton()
+								.setCustomId('unban')
+								.setEmoji('885193463111483412')
+								.setLabel(ctx.idioma.labels.unban)
+								.setStyle('DANGER')
+								.setDisabled(true)
+						);
+
+					const embed = new global.zuly.manager.Ebl();
+					embed.setTitle(`🛡️ BanInfo • ${banInfo.user.username}#${banInfo.user.discriminator}`);
+					embed.setColor('#ffcbdb');
+					embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${banInfo.user.username}#${banInfo.user.discriminator} (${banInfo.user.id})\`\`\``);
+					embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
+					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+					embed.setThumbnail(banInfo.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+					i.update({
+						content: ctx.message.author.mention,
+						embeds: [embed.get()],
+						components: [row]
+					}).then(async () => {
+						const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} BanInfo.`;
+						ctx.message.guild.members.unban(banInfo.user.id, motivo);
+						await message.channel.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${banInfo.user.username}** ${ctx.idioma.ban.foi}`);
+					});
+				});
+			});
+		}
+		catch (e) {
 			return ctx.message.channel.slashReply({
-				content: `:x: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.noarg}`
+				content: `:x: ${ctx.message.author.mention} **|** ${e.message}`
 			});
 		}
-
-		member = await (!ctx.args[0] ? global.zuly.users.fetch(ctx.args[0]).then(info => info) : ctx.args[0]);
-
-		let banReason = ctx.args.splice(1).join(' ');
-		if (!banReason) {
-			banReason = `${ctx.idioma.ban.mot}`;
-		}
-		const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} ${banReason}`;
-
-		const banInfo = await ctx.message.guild.getBan(member.id);
-		const embed = new global.zuly.manager.Ebl();
-		embed.setTitle(`<:zu_certifiedmod:885193463111483412> BanInfo • ${member.username}#${member.discriminator}`);
-		embed.setColor('#ffcbdb');
-		embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${member.username}#${member.discriminator} (${member.id})\`\`\``);
-		embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
-		embed.setFooter('⤷ zulybot.xyz | ' + ctx.idioma.baninfo.desban, global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-		embed.setThumbnail(member.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-		ctx.message.channel.slashReply({
-			content: ctx.message.author.mention,
-			embeds: [embed.get()]
-		}).then(message => {
-			message.react('🐹');
-			const collector = new ReactionCollector(message, {
-				user: ctx.message.author,
-				ignoreBot: true,
-				emoji: '🐹',
-				time: 60000,
-				max: 1,
-				acceptReactionRemove: false,
-				stopOnCollect: true
-			});
-			collector.on('collect', async () => {
-				await ctx.message.guild.unbanMember(member.id, motivo);
-				ctx.message.channel.slashReply(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${member.username}** ${ctx.idioma.ban.foi}`);
-			});
-		});
 	}
 };
 

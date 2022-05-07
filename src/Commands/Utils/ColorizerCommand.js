@@ -38,7 +38,17 @@ module.exports = class CalcCommand {
 					type: 3,
 					name: 'image',
 					description: 'The Image Link',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'imagem',
+						'en-US': 'image',
+						'fr': 'image'
+					},
+					description_localizations: {
+						'pt-BR': 'Link da imagem.',
+						'en-US': 'The image link.',
+						'fr': 'Lien de l\'image.'
+					}
 				}
 			],
 			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],

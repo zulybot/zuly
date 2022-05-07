@@ -107,7 +107,8 @@ module.exports = {
 		res: '[yes (**y**) / no (**n**)]'
 	},
 	labels: {
-		recalc: 'Recalculate'
+		recalc: 'Recalculate',
+		unban: 'Desbanir'
 	},
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',

@@ -8,17 +8,17 @@ module.exports = class BanCommand {
 			},
 			pt: {
 				nome: 'unmute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderação',
+				categoria: '🛡️ » Moderação',
 				desc: 'Desmuta algum usuário babaca de seu servidor.'
 			},
 			en: {
 				nome: 'unmute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Moderation',
+				categoria: '🛡️ » Moderation',
 				desc: 'Unmute some idiot user from your server.'
 			},
 			fr: {
 				nome: 'unmute',
-				categoria: '<:zu_certifiedmod:885193463111483412> » Modération',
+				categoria: '🛡️ » Modération',
 				desc: 'Unmute un idiot utilisateur de votre serveur.'
 			},
 			/*
@@ -38,13 +38,33 @@ module.exports = class BanCommand {
 					type: 6,
 					name: 'user',
 					description: 'The user to mute.',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'usuário',
+						'en-US': 'user',
+						'fr': 'utilisateur'
+					},
+					description_localizations: {
+						'pt-BR': 'O usuário a ser mutado.',
+						'en-US': 'The user to mute.',
+						'fr': 'L\'utilisateur à muter.'
+					}
 				},
 				{
 					type: 3,
 					name: 'reason',
 					description: 'The reason for the unmute',
-					required: true
+					required: true,
+					name_localizations: {
+						'pt-BR': 'motivo',
+						'en-US': 'reason',
+						'fr': 'raison'
+					},
+					description_localizations: {
+						'pt-BR': 'O motivo do desmutamento.',
+						'en-US': 'The reason for the unmute.',
+						'fr': 'La raison du unmute.'
+					}
 				}
 			],
 			aliases: ['banir', 'hackban', 'forceban'],

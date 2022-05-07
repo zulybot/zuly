@@ -107,7 +107,8 @@ module.exports = {
 		res: '[sim (**s**) / não (**n**)]'
 	},
 	labels: {
-		recalc: 'Recalcular'
+		recalc: 'Recalcular',
+		unban: 'Desbanir'
 	},
 	guess: {
 		start: 'O Jogo irá começar em **5 segundos** com um número entre `%min` e `%max`.',
