@@ -6,6 +6,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 require('./SearcherBot')(app);
 require('./BotLists')(app);
+app.get('/api/backgrounds', async (req, res) => {
+	const backgrounds = require('../Config/backgrounds');
+	return res.json(backgrounds);
+});
 app.get('/api/commands', async (req, res) => {
 	return res.json(global.zuly.commands);
 });

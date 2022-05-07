@@ -70,10 +70,7 @@ module.exports = class ReadyEvent {
 			}
 		});
 
-		// AUTOMATIC FUNCTIONS
-
-		new CronJob('0 */5 * * * *', async () => {
-			// https://meme-api.herokuapp.com/gimme/dankmemes
+		new CronJob('0 */2 * * * *', async () => {
 			const { get } = require('axios');
 			await get('https://meme-api.herokuapp.com/gimme/dankmemes').then(async (res) => {
 				const channel = global.zuly.channels.cache.get('968204686765211668');

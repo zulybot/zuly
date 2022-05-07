@@ -108,7 +108,8 @@ module.exports = {
 	},
 	labels: {
 		recalc: 'Recalculate',
-		unban: 'Desbanir'
+		unban: 'Desbanir',
+		buy: 'Buy'
 	},
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',

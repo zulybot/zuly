@@ -94,7 +94,7 @@ module.exports = class BaninfoCommand {
 				content: ctx.message.author.mention,
 				embeds: [embed.get()],
 				components: [row]
-			}).then(async (message) => {
+			}).then(async () => {
 				const filter = i => i.customId === 'unban' && i.user.id === ctx.message.author.id;
 				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 15000 });
 				collector.on('collect', async (i) => {
@@ -122,7 +122,7 @@ module.exports = class BaninfoCommand {
 					}).then(async () => {
 						const motivo = `${ctx.idioma.ban.mot2} ${ctx.message.author.username}#${ctx.message.author.discriminator} - ${ctx.idioma.ban.mot3} BanInfo.`;
 						ctx.message.guild.members.unban(banInfo.user.id, motivo);
-						await message.channel.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${banInfo.user.username}** ${ctx.idioma.ban.foi}`);
+						await i.followUp(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.ban.the} **${banInfo.user.username}** ${ctx.idioma.ban.foi}`);
 					});
 				});
 			});

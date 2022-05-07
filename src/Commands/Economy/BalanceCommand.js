@@ -42,7 +42,7 @@ module.exports = class DailyCommand {
 	async run (ctx) {
 		const user = ctx.args[0] ? ctx.message.mentions[0] || await global.zuly.getRESTUser(ctx.args[0]) : ctx.message.author;
 
-		const money = await global.zuly.db.get(`money-${user.id}`) || Number(0);
+		const money = await global.zuly.db.get(`money-${user.id}`) || Number(0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
 		const num1 = Number(money).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 

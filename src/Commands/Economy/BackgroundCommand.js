@@ -79,27 +79,58 @@ module.exports = class BackgroundCommand {
 			const rand = Math.floor(Math.random() * background.backgrounds.length);
 			const tema = background.backgrounds[rand];
 
+			const { MessageButton, MessageActionRow } = require('discord.js');
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('buy')
+						.setEmoji('💰')
+						.setLabel(ctx.idioma.labels.buy)
+						.setStyle('SUCCESS')
+				);
+
 			const embed = new ctx.embed();
-			embed.setDescription(ctx.idioma.perfil.comp + ` ** | ⭐ ${tema.value}**`);
+			embed.setDescription(ctx.idioma.perfil.comp + ` ** | ${Number(tema.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}**`);
 			embed.setImage(tema.url);
 			embed.setColor('#ffcbdb');
 			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 			ctx.message.channel.slashReply({
 				content: ctx.message.author.mention,
-				embeds: [embed.get()]
-			}).then((msg) => {
-				msg.react('🛒');
-				const { ReactionCollector } = require('discord.js');
-				const collector = new ReactionCollector(msg, (reaction, user) => reaction.emoji.name === '🛒' && user.id === ctx.message.author.id, { time: 30000 });
-				collector.on('collect', async (reaction, user) => {
-					if (reaction.emoji.name === '🛒' && user.id === ctx.message.author.id) {
-						const money = await global.zuly.db.get(`money-${ctx.message.author.id}`);
-						if (!money) return ctx.message.channel.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.no}`);
-						if (Number(money) < Number(tema.value)) return ctx.message.channel.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.no}`);
-						await global.zuly.db.set(`background-${ctx.message.author.id}`, tema.url);
-						ctx.message.channel.send(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.succ}`);
-						collector.stop();
-					}
+				embeds: [embed.get()],
+				components: [row]
+			}).then(() => {
+				const filter = i => i.customId === 'buy' && i.user.id === ctx.message.author.id;
+				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 15000 });
+				collector.on('collect', async (i) => {
+					const money = await global.zuly.db.get(`money-${ctx.message.author.id}`);
+					if (!money) return ctx.message.channel.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.no}`);
+					if (Number(money) < Number(tema.value)) return ctx.message.channel.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.no}`);
+					await global.zuly.db.set(`background-${ctx.message.author.id}`, tema.url);
+					await global.zuly.db.set(`money-${ctx.message.author.id}`, Number(money) - tema.value);
+
+					const { MessageButton, MessageActionRow } = require('discord.js');
+					const row = new MessageActionRow()
+						.addComponents(
+							new MessageButton()
+								.setCustomId('buy')
+								.setEmoji('💰')
+								.setLabel(ctx.idioma.labels.buy)
+								.setStyle('SUCCESS')
+								.setDisabled(true)
+						);
+
+					const embed = new ctx.embed();
+					embed.setDescription(ctx.idioma.perfil.comp + ` ** | ⭐ ${Number(tema.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}**`);
+					embed.setImage(tema.url);
+					embed.setColor('#ffcbdb');
+					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+					i.update({
+						content: ctx.message.author.mention,
+						embeds: [embed.get()],
+						components: [row]
+					}).then(async () => {
+						await i.followUp(`:white_check_mark: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.succ}`);
+					});
 				});
 			});
 		}
