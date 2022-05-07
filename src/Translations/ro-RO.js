@@ -166,7 +166,8 @@ module.exports = {
 	},
 	labels: {
 		recalc: 'Recalculate',
-		unban: 'Desbanir'
+		unban: 'Desbanir',
+		buy: 'Buy'
 	},
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
@@ -371,7 +372,7 @@ module.exports = {
 	perfil: {
 		ngm: 'NIMENI',
 		desc: 'Zuly este prietenul meu, știai că poți schimba acest lucru folosind "%paboutme"?',
-		comp: 'Dă click pe `🛒` pentru a cumpăra',
+		comp: 'Click on **button** to buy',
 		succ: 'Fundal cumparat cu succes',
 		sep: 'Background set successfully',
 		no: 'Nu ai suficienți bani pentru a cumpăra acest fundal'
