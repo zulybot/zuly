@@ -120,7 +120,7 @@ module.exports = class BackgroundCommand {
 						);
 
 					const embed = new ctx.embed();
-					embed.setDescription(ctx.idioma.perfil.comp + ` ** | ⭐ ${Number(tema.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}**`);
+					embed.setDescription(ctx.idioma.perfil.comp + ` ** | ${Number(tema.value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}**`);
 					embed.setImage(tema.url);
 					embed.setColor('#ffcbdb');
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));

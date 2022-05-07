@@ -314,7 +314,7 @@ module.exports = {
 	perfil: {
 		ngm: 'NON-BODY',
 		desc: 'C\'est vraiment mon ami, saviez-vous que vous pouvez changer cela en utilisant "%paboutme " ?',
-		comp: 'Cliquez sur `🛒` pour acheter',
+		comp: 'Cliquez sur **bouton** pour acheter',
 		succ: 'Fond d\'écran acheté avec succès',
 		sep: 'L\'arrière-plan a été défini avec succès',
 		no: 'Vous n\'avez pas assez d\'argent pour acheter ce fond d\'écran'

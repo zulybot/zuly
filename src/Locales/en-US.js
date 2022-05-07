@@ -318,7 +318,7 @@ module.exports = {
 	perfil: {
 		ngm: 'NOBODY',
 		desc: 'Zuly is my friend, did you know that you can change this using "%paboutme"?',
-		comp: 'Click on `🛒` to buy',
+		comp: 'Click on **button** to buy',
 		succ: 'Background purchased successfully',
 		sep: 'Background set successfully',
 		no: 'You don\'t have enough money to buy this background'
