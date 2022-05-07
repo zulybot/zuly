@@ -166,7 +166,8 @@ module.exports = {
 	},
 	labels: {
 		recalc: 'Recalculate',
-		unban: 'Desbanir'
+		unban: 'Desbanir',
+		buy: 'Buy'
 	},
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
@@ -371,7 +372,7 @@ module.exports = {
 	perfil: {
 		ngm: 'NINGUÉM',
 		desc: 'A Zuly é minha amiga, sabia que você pode alterar isso usando "%psobremim"?',
-		comp: 'Clique no `🛒` para comprar',
+		comp: 'Click on **button** to buy',
 		succ: 'Background comprado com sucesso',
 		sep: 'Background set successfully',
 		no: 'Você não tem dinheiro suficiente para comprar este background'
