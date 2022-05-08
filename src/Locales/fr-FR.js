@@ -1,5 +1,17 @@
 module.exports = {
 	lang: 'fr',
+	unbanall: {
+		title: 'Unbanall',
+		description: 'Voulez-vous vraiment débannir tous les membres de votre serveur ? Cette action prendra beaucoup de temps, mais elle peut être annulée avec la commande `/desunbanall`.',
+		confirm: 'Oui, débannir tout.',
+		done: 'Tous les membres ont été débannis, temps passé : `%t`.',
+	},
+	desunban: {
+		title: 'Desunban',
+		description: 'Voulez-vous vraiment bannir tous les membres non bannis de votre serveur ? Cette action prendra beaucoup de temps, mais elle peut être annulée avec la commande `/unbanall`.',
+		confirm: 'Oui, tout interdire.',
+		done: 'Tous les membres sont bannis, temps passé : `%t`.',
+	},
 	report: {
 		p1: 'Voulez-vous signaler certaines personnes ? Vous êtes arrivé au bon endroit! Pour faire le rapport il suffit de cliquer sur le formulaire !',
 		id: 'ID du formulaire :',
@@ -35,7 +47,7 @@ module.exports = {
 		load: {
 			success: 'Sauvegarde chargée avec succès !',
 			error: 'Sauvegarde introuvable.',
-			confirm: 'Voulez-vous charger la sauvegarde ? Sachez que tous vos paramètres seront remplacés par la sauvegarde, **messages, positions et canaux** ne seront pas récupérés après ce processus.\n> Pour charger, réagissez avec `✅`.',
+			confirm: 'Voulez-vous charger la sauvegarde ? Sachez que tous vos paramètres seront remplacés par la sauvegarde, **messages, roles et canaux** ne seront pas récupérés après ce processus.\n> Pour télécharger, cliquez sur le **bouton** ci-dessous.',
 		}
 	},
 	clusters: {
@@ -109,7 +121,8 @@ module.exports = {
 	labels: {
 		recalc: 'Recalculer',
 		unban: 'Débannir',
-		buy: 'Acheter'
+		buy: 'Acheter',
+		load: 'Charger'
 	},
 	guess: {
 		start: 'Le jeu commencera dans **5 secondes** avec un nombre compris entre `%min` et `%max`.',
@@ -278,6 +291,7 @@ module.exports = {
 	baninfo: {
 		user: 'Utilisateur:',
 		reason: 'Raison:',
+		noreason: 'Aucune raison.',
 		desban: 'Pour dé-bannir réagissent avec 🐹.'
 	},
 	multiLang: {

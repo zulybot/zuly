@@ -144,19 +144,44 @@ module.exports = class BackupCommand {
 			if (!ctx.args[1]) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.error}`);
 			const backupdb = await global.zuly.db.get(`backups.${ctx.message.author.id}`);
 			if (!backupdb.includes(ctx.args[1])) return ctx.message.channel.slashReply(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.error}`);
-			const msg = await ctx.message.channel.slashReply(`⚠️ ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.confirm}`);
-			const { ReactionCollector } = require('discord.js');
-			msg.react('✅');
-			let collector = new ReactionCollector(msg);
-			collector.on('collect', async (reaction, user) => {
-				if (user.id !== ctx.message.author.id) return;
-				if (user.id === ctx.message.author.id) {
-					msg.delete();
+
+			const { MessageButton, MessageActionRow } = require('discord.js');
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('load')
+						.setEmoji('972869930817036318')
+						.setLabel(ctx.idioma.labels.load)
+						.setStyle('DANGER')
+				);
+
+			await ctx.message.channel.slashReply({
+				content: `⚠️ ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.confirm}`,
+				components: [row]
+			}).then(async () => {
+				const filter = i => i.customId === 'load' && i.user.id === ctx.message.author.id;
+				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 180000 });
+				collector.on('collect', async (i) => {
+					const { MessageButton, MessageActionRow } = require('discord.js');
+					const row = new MessageActionRow()
+						.addComponents(
+							new MessageButton()
+								.setCustomId('load')
+								.setEmoji('972869930817036318')
+								.setLabel(ctx.idioma.labels.load)
+								.setStyle('DANGER')
+								.setDisabled(true)
+						);
+					i.update({
+						content: `⚠️ ${ctx.message.author.mention} **|** ${ctx.idioma.backup.load.confirm}`,
+						components: [row]
+					});
 					const back = await global.zuly.db.get(`backups.${ctx.args[1]}`);
 					global.zuly.backup.load(back, ctx.message.guild, {
-						clearGuildBeforeRestore: true
+						clearGuildBeforeRestore: true,
+						maxMessagesPerChannel: 0
 					});
-				}
+				});
 			});
 		}
 		if (ctx.args[0] === 'delete') {

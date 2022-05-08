@@ -100,7 +100,7 @@ module.exports = class BackgroundCommand {
 				components: [row]
 			}).then(() => {
 				const filter = i => i.customId === 'buy' && i.user.id === ctx.message.author.id;
-				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 15000 });
+				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 180000 });
 				collector.on('collect', async (i) => {
 					const money = await global.zuly.db.get(`money-${ctx.message.author.id}`);
 					if (!money) return ctx.message.channel.send(`:x: ${ctx.message.author.mention} **|** ${ctx.idioma.perfil.no}`);

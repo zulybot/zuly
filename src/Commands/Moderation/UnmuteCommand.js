@@ -67,7 +67,7 @@ module.exports = class BanCommand {
 					}
 				}
 			],
-			aliases: ['banir', 'hackban', 'forceban'],
+			aliases: [],
 			run: this.run
 		};
 	}

@@ -96,7 +96,7 @@ module.exports = class BaninfoCommand {
 				components: [row]
 			}).then(async () => {
 				const filter = i => i.customId === 'unban' && i.user.id === ctx.message.author.id;
-				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 15000 });
+				const collector = ctx.message.channel.createMessageComponentCollector({ filter, time: 180000 });
 				collector.on('collect', async (i) => {
 					const row = new MessageActionRow()
 						.addComponents(
@@ -109,10 +109,10 @@ module.exports = class BaninfoCommand {
 						);
 
 					const embed = new global.zuly.manager.Ebl();
-					embed.setTitle(`🛡️ BanInfo • ${banInfo.user.username}#${banInfo.user.discriminator}`);
+					embed.setTitle(`🛡️ BanInfo | ${banInfo.user.username}#${banInfo.user.discriminator}`);
 					embed.setColor('#ffcbdb');
 					embed.addField(`${ctx.idioma.baninfo.user}`, `\`\`\`${banInfo.user.username}#${banInfo.user.discriminator} (${banInfo.user.id})\`\`\``);
-					embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason}\`\`\``);
+					embed.addField(`${ctx.idioma.baninfo.reason}`, `\`\`\`${banInfo.reason || ctx.idioma.baninfo.noreason}\`\`\``);
 					embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 					embed.setThumbnail(banInfo.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 					i.update({
