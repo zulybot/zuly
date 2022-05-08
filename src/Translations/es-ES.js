@@ -1,5 +1,17 @@
 module.exports = {
 	lang: 'es',
+	unbanall: {
+		title: 'Unbanall',
+		description: 'Do you really want to unban all members of your server? This action will take a long time, but it can be undone with the command `/desunbanall`.',
+		confirm: 'Yes, unban all.',
+		done: 'All members have been unbanned, time spent: `%t`.'
+	},
+	desunban: {
+		title: 'Desunban',
+		description: 'Do you really want to ban all unbanned members from your server? This action will take a long time, but it can be undone with the command `/unbanall`.',
+		confirm: 'Yes, ban all.',
+		done: 'All members banned, time spent: `%t`.'
+	},
 	report: {
 		p1: '¿Quieres denunciar a algunas personas? ¡Has venido al lugar correcto! ¡Para hacer el informe solo haz clic en el formulario!',
 		id: 'ID del formulario:',
@@ -33,7 +45,7 @@ module.exports = {
 		load: {
 			success: 'Copia de seguridad cargada con éxito!',
 			error: 'Copia de seguridad no encontrada.',
-			confirm: '¿Quieres cargar la copia de seguridad? Tenga en cuenta que la copia de seguridad sobrescribirá todas sus configuraciones, **mensajes, posiciones y canales** no se recuperarán después de este proceso. > Para cargar reaccionar con `✅`.'
+			confirm: 'Do you want to load the backup? Please be aware that all your settings will be overwritten by the backup, **messages, roles & channels** will not be recovered after this process.\n> To upload click on the **button** below.'
 		}
 	},
 	clusters: {
@@ -167,7 +179,8 @@ module.exports = {
 	labels: {
 		recalc: 'Recalcular',
 		unban: 'Desbanir',
-		buy: 'Buy'
+		buy: 'Buy',
+		load: 'Load'
 	},
 	guess: {
 		start: 'El Juego empezará en **5 segundos** con un número entre `%min` y `%max`.',
@@ -336,6 +349,7 @@ module.exports = {
 	baninfo: {
 		user: 'Usuário:',
 		reason: 'Motivo',
+		noreason: 'No reason.',
 		desban: 'Para desbanir reaja com 🐹.'
 	},
 	multiLang: {
