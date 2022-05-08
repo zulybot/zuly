@@ -1,5 +1,17 @@
 module.exports = {
 	lang: 'fr',
+	unbanall: {
+		title: 'Unbanall',
+		description: 'Do you really want to unban all members of your server? This action will take a long time, but it can be undone with the command `/desunbanall`.',
+		confirm: 'Yes, unban all.',
+		done: 'All members have been unbanned, time spent: `%t`.'
+	},
+	desunban: {
+		title: 'Desunban',
+		description: 'Do you really want to ban all unbanned members from your server? This action will take a long time, but it can be undone with the command `/unbanall`.',
+		confirm: 'Yes, ban all.',
+		done: 'All members banned, time spent: `%t`.'
+	},
 	report: {
 		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
 		id: 'Form ID:',
@@ -33,7 +45,7 @@ module.exports = {
 		load: {
 			success: 'Backup successfully loaded!',
 			error: 'Backup not found.',
-			confirm: 'Do you want to load the backup? Please be aware that all your settings will be overwritten by the backup, **messages, positions & channels** will not be recovered after this process.\n> To load react with `✅`.'
+			confirm: 'Do you want to load the backup? Please be aware that all your settings will be overwritten by the backup, **messages, roles & channels** will not be recovered after this process.\n> To upload click on the **button** below.'
 		}
 	},
 	clusters: {
@@ -167,7 +179,8 @@ module.exports = {
 	labels: {
 		recalc: 'Recalculer',
 		unban: 'Desbanir',
-		buy: 'Buy'
+		buy: 'Buy',
+		load: 'Load'
 	},
 	guess: {
 		start: 'Le jeu commencera dans **5 secondes** avec un nombre compris entre `%min` et `%max`.',
@@ -336,6 +349,7 @@ module.exports = {
 	baninfo: {
 		user: 'Utilisateur:',
 		reason: 'Raison:',
+		noreason: 'No reason.',
 		desban: 'Pour dé-bannir réagissent avec 🐹.'
 	},
 	multiLang: {
