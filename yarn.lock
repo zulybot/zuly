@@ -787,10 +787,10 @@ discord-giveaways@^5.1.1:
     deepmerge "^4.2.2"
     serialize-javascript "^6.0.0"
 
-discord.js-akinator@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/discord.js-akinator/-/discord.js-akinator-3.4.2.tgz#11f04f036fc5d7f5a911dcb1554fe50674522a3d"
-  integrity sha512-kc/14j60kVC7fhTKACHpkEwZi0gYGRHgvKyklJZC8vv2Zsx6AV/jlispNYf0d/MSMtEEiw0MHSyqwBr2cH9Cfg==
+discord.js-akinator@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/discord.js-akinator/-/discord.js-akinator-3.4.3.tgz#9331d60fe5bad92a24b6492133c5b8d564355182"
+  integrity sha512-zgBFOT4t0NEsSFOXbVqiCInBfQ5JE5oQFb6czzTCs+c1SkA/8SYhNYU9JWqXMu5bYfH1YJyJIo5XINMt3XcP3w==
   dependencies:
     "@vitalets/google-translate-api" "^7.0.0"
     aki-api "^6.0.8"
