@@ -30,7 +30,7 @@ module.exports = class ReadyEvent {
 			global.zuly.user.setStatus(presence[Math.floor(Math.random() * presence.length)]);
 			global.zuly.user.setActivity(status[Math.floor(Math.random() * status.length)], {
 				game: status[Math.floor(Math.random() * status.length)],
-				type: Math.floor(Math.random() * 5) + 1
+				type: Math.floor(Math.random() * 5)
 			});
 			global.gc();
 		}).start();
@@ -70,7 +70,7 @@ module.exports = class ReadyEvent {
 			}
 		});
 
-		new CronJob('0 */2 * * * *', async () => {
+		new CronJob('0 */5 * * * *', async () => {
 			const { get } = require('axios');
 			await get('https://meme-api.herokuapp.com/gimme/dankmemes').then(async (res) => {
 				const channel = global.zuly.channels.cache.get('968204686765211668');
