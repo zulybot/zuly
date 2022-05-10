@@ -93,4 +93,3 @@ global.zuly.manager = ZulyBot;
 require('./Client/Handler/eventos');
 require('./Database/DatabaseConnect');
 require('./Utils/ZulyFunctions');
-require('./Containers/Premium/bot');

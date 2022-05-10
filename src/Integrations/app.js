@@ -41,5 +41,5 @@ app.post('/', (req, res) => {
 	res.sendStatus(200);
 });
 app.listen(2601, () => {
-	console.log('[WEBHOOK] Ready!'.green);
+	console.log('[WEBHOOK] Ready at http://localhost:2601!'.green);
 });
