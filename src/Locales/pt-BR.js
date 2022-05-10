@@ -1,5 +1,25 @@
 module.exports = {
 	lang: 'pt',
+	actions: {
+		kiss: {
+			description: '%u1 deu um beijo em %u2.',
+			labels: {
+				rt: 'Retribuir'
+			}
+		},
+		slap: {
+			description: '%u1 deu um soco em %u2.',
+			labels: {
+				rt: 'Retribuir'
+			}
+		},
+		hug: {
+			description: '%u1 deu um abraço em %u2.',
+			labels: {
+				rt: 'Retribuir'
+			}
+		}
+	},
 	unbanall: {
 		title: 'Unbanall',
 		description: 'Deseja mesmo desbanir todos os membros de seu servidor? Essa ação irá durar muito tempo, porém pode ser desfeita com o comando `/desunbanall`.',
