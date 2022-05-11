@@ -63,6 +63,21 @@ module.exports = class GameCommand {
 						'en-US': 'Play the akinator game!',
 						'fr': 'Jouer le jeu de akinator!'
 					}
+				},
+				{
+					type: 1,
+					name: 'minefield',
+					description: 'Play the minefield game!',
+					name_localizations: {
+						'pt-BR': 'campominado',
+						'en-US': 'minefield',
+						'fr': 'champdemines'
+					},
+					description_localizations: {
+						'pt-BR': 'Jogue o jogo do campo minado!',
+						'en-US': 'Play the minefield game!',
+						'fr': 'Jouer le jeu du champ de mines!'
+					}
 				}
 			],
 			aliases: [],
@@ -86,6 +101,19 @@ module.exports = class GameCommand {
 		}
 		else if (ctx.args[0] === 'snake') {
 			return global.zuly.snakecord.newGame(ctx.message);
+		}
+		else if (ctx.args[0] === 'minefield') {
+			const mineGen = require('../../Helpers/MinefieldBuilder');
+			const embed = new ctx.embed();
+			embed.setTitle('💥 Minefield | ' + global.zuly.user.username);
+			embed.setDescription(mineGen(10));
+			embed.setColor('#ffcbdb');
+			embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()]
+			});
 		}
 	}
 };
