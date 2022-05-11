@@ -26,4 +26,4 @@ jobs:
             rm -rf node_modules
             yarn
             pm2 start src/zuly.js --name zuly
-            logout
+            exit
