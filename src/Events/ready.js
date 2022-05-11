@@ -6,8 +6,6 @@ module.exports = class ReadyEvent {
 		};
 	}
 	async run () {
-		const { CronJob } = require('cron');
-
 		// COMMAND HANDLER
 
 		require('../Client/Handler/comandos');
@@ -70,48 +68,6 @@ module.exports = class ReadyEvent {
 				}
 			}
 		});
-
-		new CronJob('0 */5 * * * *', async () => {
-			const { get } = require('axios');
-			await get('https://meme-api.herokuapp.com/gimme/dankmemes').then(async (res) => {
-				const channel = global.zuly.channels.cache.get('968204686765211668');
-
-				let idioma = require('../Config/idiomas');
-				let lang = await global.zuly.db.get(`idioma-${channel.guild.id}`) || 'pt_br';
-				lang = lang.replace(/-/g, '_');
-				idioma = idioma[lang];
-
-				const data = res.data;
-
-				const embed = new global.zuly.manager.Ebl();
-
-				if (idioma.lang === 'en') {
-					embed.setTitle(data.title);
-					embed.setUrl(data.postLink);
-					embed.setImage(data.url);
-				}
-				else if (idioma.lang === 'pt') {
-					const translate = require('@vitalets/google-translate-api');
-					const title = await translate(data.title, { to: 'pt' });
-					embed.setTitle(title.text);
-					embed.setUrl(data.postLink);
-					embed.setImage(data.url);
-				}
-				else if (idioma.lang === 'fr') {
-					const translate = require('@vitalets/google-translate-api');
-					const title = await translate(data.title, { to: 'fr' });
-					embed.setTitle(title.text);
-					embed.setUrl(data.postLink);
-					embed.setImage(data.url);
-				}
-				embed.setColor('#ffcbdb');
-				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				embed.setFooter('⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
-				channel.send({
-					embeds: [embed.get()]
-				});
-			});
-		}).start();
 
 		// WEBSERVICES
 
