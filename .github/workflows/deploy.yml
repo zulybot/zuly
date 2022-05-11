@@ -20,7 +20,10 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh                
 
-            git clone https://aldhanekaa:${{secrets.GITHUB_TOKEN}}@github.com/zulybot/zuly.git
+            pm2 stop zuly
             cd zuly
+            git pull origin master
+            rm -rf node_modules
             yarn
-            yarn forever
+            pm2 start src/zuly.js --name zuly
+            logout
