@@ -197,7 +197,7 @@ module.exports = {
 		load: 'Wczytaj'
 	},
 	guess: {
-		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
+		start: 'Gra zostanie rozpoczęta za **5 sekund** z liczbą z przedziału od `%min` do `%max`.',
 		started: 'It\'s started!',
 		number: 'The chosen Number was `%num`, users must guess it in order to win the event.',
 		win: 'You got it right! The chosen Number was `%num`!'
@@ -211,26 +211,26 @@ module.exports = {
 	},
 	print: { website: 'Print from website:' },
 	mention: {
-		hello: 'Hello %user!',
-		about: 'I am a multifunctional bot for discord!',
-		help: 'To know my commands, type **/help**.',
+		hello: 'Witaj %user!',
+		about: 'Jestem wielofunkcyjnym botem dla Discorda!',
+		help: 'Aby poznać moje polecenia, wpisz **/help**.',
 		labels: {
-			support: 'Support Server',
-			invite: 'Invite',
-			website: 'Website'
+			support: 'Serwer wsparcia',
+			invite: 'Zaproś',
+			website: 'Strona WWW'
 		}
 	},
 	reactionRole: {
-		invalidMessage: 'Could not find message with id `%id%`',
+		invalidMessage: 'Nie znaleziono wiadomości o ID `%id%`',
 		sucess: 'ReactionRole created successfully!'
 	},
 	eventLog: {
 		fields: {
-			deletedMessage: 'Deleted Message:',
+			deletedMessage: 'Usunięta wiadomość:',
 			oldMessage: 'Old Message:',
 			newMessage: 'New Message:'
 		},
-		channel: 'Channel:'
+		channel: 'Kanał:'
 	},
 	docs: { args: 'Say what will be searched for in the documentation.' },
 	fnshop: {
@@ -248,8 +248,8 @@ module.exports = {
 		bot: 'I don\'t have all the necessary permissions to run this command!\nNeeded permissions:',
 		dev: 'Only my developers can use this command!',
 		c: 'Wait %t seconds to use another command.',
-		e: 'Oops, an error happened!',
-		e2: 'Report this error!',
+		e: 'Ups, wystąpił błąd!',
+		e2: 'Zgłoś ten błąd!',
 		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
 		nsfw: 'This command can only be used on nsfw channels'
 	},
@@ -258,10 +258,10 @@ module.exports = {
 		vps: 'Eu sou hospedada na VPS, utilizando maquinas da [OVH](https://ovh.com), com sistema operacional <:zu_ubuntu:880496793740255253> Ubuntu.'
 	},
 	giveaway: {
-		sec: 'seconds',
-		min: 'minutes',
-		hrs: 'hours',
-		day: 'days',
+		sec: 'sekundy',
+		min: 'minuty',
+		hrs: 'godziny',
+		day: 'dni',
 		term: 'Ended at',
 		host: 'Hosted by: {user}',
 		win: 'winner(s)',
