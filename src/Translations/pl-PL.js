@@ -2,34 +2,34 @@ module.exports = {
 	lang: 'pl',
 	actions: {
 		kiss: {
-			description: '%u1 kissed %u2.',
+			description: '%u1 całuje %u2.',
 			labels: { rt: 'Hit back' }
 		},
 		slap: {
-			description: '%u1 punched %u2.',
+			description: '%u1 uderza %u2.',
 			labels: { rt: 'Hit back' }
 		},
 		hug: {
-			description: '%u1 gave %u2 a hug.',
+			description: '%u1 przytula %u2.',
 			labels: { rt: 'Hit back' }
 		}
 	},
 	unbanall: {
-		title: 'Unbanall',
-		description: 'Do you really want to unban all members of your server? This action will take a long time, but it can be undone with the command `/desunbanall`.',
-		confirm: 'Yes, unban all.',
-		done: 'All members have been unbanned, time spent: `%t`.'
+		title: 'Odbanuj wszystkich',
+		description: 'Czy na pewno chcesz odbanować wszystkich członków swojego serwera? Ta czynność zajmie trochę czasu, ale można ją cofnąć za pomocą polecenia `/desunbanall`.',
+		confirm: 'Tak, odbanuj wszystkich.',
+		done: 'Wszyscy użytkownicy zostali odbanowani w czasie: `%t`.'
 	},
 	desunban: {
-		title: 'Desunban',
-		description: 'Do you really want to ban all unbanned members from your server? This action will take a long time, but it can be undone with the command `/unbanall`.',
-		confirm: 'Yes, ban all.',
-		done: 'All members banned, time spent: `%t`.'
+		title: 'Nieodbanowywuj',
+		description: 'Czy na pewno chcesz zbanować wszystkich odbanowanych członków swojego serwera? Ta czynność zajmie trochę czasu, ale można ją cofnąć za pomocą polecenia `/unbanall`.',
+		confirm: 'Tak, zbanuj wszystkich.',
+		done: 'Wszyscy członkowie zbanowani w czasie: `%t`.'
 	},
 	report: {
-		p1: 'Are you wanting to report some people? You\'ve come to the right place! To make the report just click on the form!',
-		id: 'Form ID:',
-		dm: 'See your direct messages!'
+		p1: 'Czy chcesz kogoś zgłosić? Jesteś we właściwym miejscu! Aby utworzyć zgłoszenie, naciśnij na formularz!',
+		id: 'ID formularza:',
+		dm: 'Sprawdź swoje wiadomości!'
 	},
 	daily: {
 		coletado: 'You have collected **%m** daily, come back tomorrow and collect again.',
@@ -37,16 +37,16 @@ module.exports = {
 	},
 	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
 	ball: {
-		title: '🎱 Magic Ball',
-		field1: '**Question:**',
-		field2: '**Answer:**'
+		title: '🎱 Magiczna Kula',
+		field1: '**Pytanie:**',
+		field2: '**Odpowiedź:**'
 	},
 	ship: {
 		nou: 'Mention some user to ship',
-		d1: 'You are not compatible, you are very different from each other 😔',
-		d2: 'You can be friends, but I don\'t see a better future between you, you are similar to each other 🤝',
-		d3: 'You can be a couple, the tastes are almost the same and you know each other a lot 👀',
-		d4: 'You are perfect, made for each other, go ahead, you have everything to work out ❤️'
+		d1: 'Nie pasujecie do siebie, bardzo się od siebie różnicie 😔',
+		d2: 'Możecie być przyjaciółmi, ale nie widzę dla Was czegoś poważniejszego, macie ze sobą trochę wspólnego 🤝',
+		d3: 'Pasujecie do siebie, Wasze upodobania są niemalże takie same i wiecie o sobie bardzo dużo 👀',
+		d4: 'Jesteście dla siebie idealni, jesteście dla siebie stworzeni, nie wahajcie się zacząć czegoś wyjątkowego ❤️'
 	},
 	dashboard: 'The Bot configuration has been migrated to the dashboard, access this link: https://zulybot.xyz/dashboard/%g',
 	backup: {
@@ -146,7 +146,7 @@ module.exports = {
 		'precedent'
 	],
 	botban: {
-		title: 'You are banned!',
+		title: 'Zbanowano Cię!',
 		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
 	},
 	customCommand: 'Polecenie zostało utworzone, użyj `/%n`, aby wykonać.',
@@ -170,7 +170,7 @@ module.exports = {
 		channel: 'Kanał:',
 		url: 'Odnośnik:',
 		message: { title: 'Rejestr wiadomości' },
-		bans: { title: 'Ban Logs' },
+		bans: { title: 'Rejestr banów' },
 		user: 'Użytkownik:',
 		reason: 'Powód:',
 		mod: 'Moderator:',
@@ -193,8 +193,8 @@ module.exports = {
 	labels: {
 		recalc: 'Recalculate',
 		unban: 'Desbanir',
-		buy: 'Buy',
-		load: 'Load'
+		buy: 'Kup',
+		load: 'Wczytaj'
 	},
 	guess: {
 		start: 'The Game will start in **5 seconds** with a number between `%min` and `%max`.',
