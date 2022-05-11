@@ -72,7 +72,7 @@ module.exports = class FisheyeCommand {
 		foto.drawImage(redondo, 250, 60, 200, 200);
 
 		const { MessageAttachment } = require('discord.js');
-		const attachment = new MessageAttachment(canvas.toBuffer(), 'fisheye.png');
+		const attachment = new MessageAttachment(canvas.toBuffer(), 'perfeito.png');
 
 		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,
