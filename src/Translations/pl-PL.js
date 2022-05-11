@@ -244,14 +244,14 @@ module.exports = {
 		view: 'I don\'t have permission to read the message history!',
 		the: 'The Command',
 		unk: 'does not exist or cannot be run at the moment!',
-		user: 'You don \'t have all the necessary permissions to use this command!\nNeeded permissions:',
-		bot: 'I don\'t have all the necessary permissions to run this command!\nNeeded permissions:',
-		dev: 'Only my developers can use this command!',
-		c: 'Wait %t seconds to use another command.',
+		user: 'Nie posiadasz wszystkich wymaganych uprawnień do użycia tego polecenia!\nWymagane uprawnienia:',
+		bot: 'Nie posiadam wszystkich wymaganych uprawnień do uruchomienia tego polecenia!\nWymagane uprawnienia:',
+		dev: 'Tylko moi programiści mogą używać tego polecenia!',
+		c: 'Zaczekaj %t sekund przed użyciem kolejnego polecenia.',
 		e: 'Ups, wystąpił błąd!',
 		e2: 'Zgłoś ten błąd!',
 		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/pyyyJpw5QW), let\'s make the discord a better place, together 🤝',
-		nsfw: 'This command can only be used on nsfw channels'
+		nsfw: 'Tego polecenia można użyć tylko na kanałach z treściami dla dorosłych'
 	},
 	host: {
 		db: 'Eu utilizo [MongoDB](https://mongodb.com) para meu banco de dados, hospedados em maquinas da <:zu_azure:880536844473880617> [Azure](https://azure.microsoft.com).',
@@ -264,13 +264,13 @@ module.exports = {
 		day: 'dni',
 		term: 'Ended at',
 		host: 'Hosted by: {user}',
-		win: 'winner(s)',
+		win: 'zwycięzca/y',
 		wins: 'Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}',
 		react: 'react with 🎁 to participate!',
-		restante: 'Time remaining:',
-		no: 'Giveaway cancelled, no valid participations',
-		give: 'GIVEAWAY',
-		giveend: 'GIVEAWAY ENDED',
+		restante: 'Pozostały czas:',
+		no: 'Rozdanie anulowane z powodu braku uczestników',
+		give: 'ROZDANIE',
+		giveend: 'ROZDANIE ZAKOŃCZONE',
 		start: 'You did not use the command correctly, use: `%pgiveaway [time (10s, 10m)] [winners (1, 1w)] [prize (photos of kittens)]`, do not include **[]** or **()**.',
 		end: 'You didn\'t use the command correctly, use: `%pgiveaway-end [message id]`',
 		reroll: 'You didn\'t use the command correctly, use: `%pgiveaway-reroll [message id]`',
@@ -278,8 +278,8 @@ module.exports = {
 		err: 'No valid participations, no new winner(s) can be chosen!'
 	},
 	help: {
-		title: 'Command List • ',
-		creators: 'I was developed by ',
+		title: 'Lista poleceń • ',
+		creators: 'Stworzyli mnie ',
 		description: '> My current prefix is: `%p`\n> If you have any questions, please enter my support server: [Click here](https://discord.gg/pyyyJpw5QW)\n> Add me by clicking [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
 		nsfw: 'You need to be on an NSFW channel to see nsfw commands. '
 	},
@@ -318,7 +318,7 @@ module.exports = {
 	play: {
 		nada: 'Arguments are missing, use `%pplay <music | url>`',
 		add: 'Added to queue',
-		can: 'You need to be on a voice channel to listen to music.'
+		can: 'Należy dołączyć do kanału głosowego, aby słuchać muzyki.'
 	},
 	waifu: {
 		casar: 'React with 💖 to get married',
@@ -332,14 +332,14 @@ module.exports = {
 		label: 'Me!',
 		yms: 'You cannot battle with yourself.',
 		bat: '%u, you will battle %2u, you have 30 seconds to choose a waifu (player found in `%t`).',
-		select: 'Nothing Selected.'
+		select: 'Nic nie wybrano.'
 	},
 	tradutor: {
-		lang: 'You need to specify the language, example: %translator **en** Oi',
-		text: 'You need to specify the text, example: %translator en  **Oi** '
+		lang: 'Należy określić język, przykład: %translator **en** Oi',
+		text: 'Należy wpisać tekst, przykład: %translator en  **Oi** '
 	},
 	invite: {
-		add: 'Add me to your server!',
+		add: 'Dodaj mnie do swojego serwera!',
 		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/pyyyJpw5QW), yay'
 	},
 	ban: {
@@ -349,10 +349,10 @@ module.exports = {
 		r2: '✅',
 		mot: 'Not Defined',
 		mot2: 'Punished for:',
-		mot3: 'Reason:',
-		the: 'The User',
-		foi: 'has been successfully punished.',
-		dev: 'You cannot punish the bot developer.'
+		mot3: 'Powód:',
+		the: 'Użytkownik',
+		foi: 'został ukarany.',
+		dev: 'Nie możesz ukarać programisty bota.'
 	},
 	clear: {
 		msg: 'messages** cleared successfully',
@@ -361,9 +361,9 @@ module.exports = {
 		num: 'I can only clear between 2 to 100 messages'
 	},
 	baninfo: {
-		user: 'User:',
-		reason: 'Reason:',
-		noreason: 'No reason.',
+		user: 'Użytkownik:',
+		reason: 'Powód:',
+		noreason: 'Brak powodu.',
 		desban: 'To unban react with 🐹.'
 	},
 	multiLang: {
