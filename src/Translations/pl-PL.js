@@ -1,5 +1,11 @@
 module.exports = {
 	lang: 'pl',
+	image: {
+		editing: '✍️ %u **|** editing',
+		args: '✍️ %u **|** I need you to give me some argument so I can edit',
+		long: '✍️ %u **|** Your message is too long, try shortening it to 300 characters',
+		achivment: 'Progress Made!'
+	},
 	actions: {
 		kiss: {
 			description: '%u1 całuje %u2.',
@@ -11,6 +17,10 @@ module.exports = {
 		},
 		hug: {
 			description: '%u1 przytula %u2.',
+			labels: { rt: 'Hit back' }
+		},
+		pat: {
+			description: '%u1 patted %u2.',
 			labels: { rt: 'Hit back' }
 		}
 	},
