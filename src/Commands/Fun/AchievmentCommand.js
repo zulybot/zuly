@@ -1,4 +1,4 @@
-module.exports = class GameCommand {
+module.exports = class AchievmentCommand {
 	constructor () {
 		return {
 			permissoes: {
@@ -7,19 +7,19 @@ module.exports = class GameCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'utbox',
+				nome: 'conquista',
 				categoria: '⭐ » Diversão',
-				desc: 'Cria uma caixa de diálogo igual ao do Undertale!'
+				desc: 'Cria uma conquista do minecraft.'
 			},
 			en: {
-				nome: 'utbox',
+				nome: 'achievement',
 				categoria: '⭐ » Fun',
-				desc: 'Creates a dialog just like Undertale!'
+				desc: 'Create a minecraft achievement.'
 			},
 			fr: {
-				nome: 'utbox',
+				nome: 'réussite',
 				categoria: '⭐ » Divertissement',
-				desc: 'Créer une boîte de dialogue de type Undertale!'
+				desc: 'Créer une réalisation minecraft.'
 			},
 			/*
 			SUB_COMMAND	1 = SubCommand
@@ -51,30 +51,30 @@ module.exports = class GameCommand {
 					}
 				},
 			],
-			aliases: ['utbox', 'ubox', 'undertale', 'undertalechat'],
+			aliases: [],
 			run: this.run
 		};
 	}
 
 	async run (ctx) {
 		const { createCanvas, loadImage, registerFont } = require('canvas');
-		const { greyscale } = require('../../Helpers/Canvas');
-
+		const { shortenText } = require('../../Helpers/Canvas');
 		registerFont('./assets/fonts/Minecraftia.ttf', { family: 'Minecraftia' });
-		const base = await loadImage('./assets/images/memes/undertalebox.png');
-		const avatar = await loadImage(ctx.message.author.displayAvatarURL({ format: 'png', size: 4096 }));
+
+		const text = ctx.args.join(' ');
+
+		const base = await loadImage('./assets/images/memes/conquista.png');
 		const canvas = createCanvas(base.width, base.height);
 		const foto = canvas.getContext('2d');
-		const text = ctx.args.join(' ');
 		foto.drawImage(base, 0, 0);
 		foto.font = '17px Minecraftia';
-		foto.drawImage(avatar, 15, 15, 120, 120);
+		foto.fillStyle = '#ffff00';
+		foto.fillText(`${ctx.idioma.image.achivment}`, 60, 40);
 		foto.fillStyle = '#ffffff';
-		foto.fillText(`${text.slice(0, 300)}`.match(/.{1,35}/g).join('\n'), canvas.width / 3.4, canvas.height / 2.7, 655);
-		greyscale(foto, 0, 0, base.width, base.height);
+		foto.fillText(shortenText(foto, text, 230), 60, 60);
 
 		const { MessageAttachment } = require('discord.js');
-		const attachment = new MessageAttachment(canvas.toBuffer(), 'undertalebox.png');
+		const attachment = new MessageAttachment(canvas.toBuffer(), 'fisheye.png');
 
 		ctx.message.channel.slashReply({
 			content: ctx.message.author.mention,

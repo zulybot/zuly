@@ -17,23 +17,24 @@ module.exports = class ReadyEvent {
 		console.log(`[ZULY] ${global.zuly.user.username}#${global.zuly.user.discriminator} Ligada`.green);
 		global.zuly.user.setActivity(`Starting | [v${global.zuly.version}]`, {
 			game: global.zuly.user.username,
-			type: 5
+			type: 'STREAMING',
+			url: 'https://www.twitch.tv/adg_ofc'
 		});
 
 		const adg = await global.zuly.users.fetch('717766639260532826');
 		const status = [`zulybot.xyz | ${global.zuly.user.username} [v${global.zuly.version}]`, `I'm on ${global.zuly.guilds.cache.size} servers | ${global.zuly.user.username} [v${global.zuly.version}]`, `Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v${global.zuly.version}]`, `/help | ${global.zuly.user.username} [v${global.zuly.version}]`, `/upvote | ${global.zuly.user.username} [v${global.zuly.version}]`, `/invite | ${global.zuly.user.username} [v${global.zuly.version}]`, `Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v${global.zuly.version}]`, `I was created by: ${adg.username}#${adg.discriminator}`];
-		const presence = ['online', 'idle', 'dnd'];
+		// const presence = ['online', 'idle', 'dnd'];
 
 		// STATUS UPDATE
 
-		new CronJob('0 */3 * * * *', async () => {
-			global.zuly.user.setStatus(presence[Math.floor(Math.random() * presence.length)]);
+		setInterval(() => {
 			global.zuly.user.setActivity(status[Math.floor(Math.random() * status.length)], {
 				game: status[Math.floor(Math.random() * status.length)],
-				type: Math.floor(Math.random() * 5)
+				type: 'STREAMING',
+				url: 'https://www.twitch.tv/adg_ofc'
 			});
 			global.gc();
-		}).start();
+		}, 30000);
 
 		// GUILD BAN CHECK
 
