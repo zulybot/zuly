@@ -51,7 +51,7 @@ module.exports = class CalcCommand {
 					}
 				}
 			],
-			aliases: ['whois', 'ui', 'member', 'memberinfo'],
+			aliases: [],
 			run: this.run
 		};
 	}

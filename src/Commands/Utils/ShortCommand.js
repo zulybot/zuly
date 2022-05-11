@@ -51,7 +51,7 @@ module.exports = class CalcCommand {
 					}
 				}
 			],
-			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],
+			aliases: [],
 			run: this.run
 		};
 	}

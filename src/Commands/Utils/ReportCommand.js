@@ -34,7 +34,7 @@ module.exports = class PrintCommand {
             NUMBER: 10 = Any double between -2^53 and 2^53
             */
 			options: [],
-			aliases: ['av', 'user-avatar', 'ua', 'memberavatar', 'profileavatar'],
+			aliases: [],
 			run: this.run
 		};
 	}

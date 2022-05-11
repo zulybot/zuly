@@ -1,5 +1,4 @@
-name: zuly
-
+name: Zuly Linter
 on:
   push:
     branches:
