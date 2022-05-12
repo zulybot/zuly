@@ -1,4 +1,4 @@
-name: Zuly Linter
+name: 🐛 Linter [Zuly]
 on:
   push:
     branches:

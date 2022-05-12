@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: 🚀 Build & Deploy [Zuly]
 on:
   push:
     branches: [master]
@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy Nodejs App
+      - name: 🚀 Build & Deploy [Zuly]
         uses: appleboy/ssh-action@v0.1.2
 
         with:
@@ -24,7 +24,7 @@ jobs:
             pm2 stop zuly
             git pull origin master
             rm -rf node_modules
-            yarn
+            yarn install
             yarn lint
             pm2 start src/zuly.js --node-args="--use-strict --harmony --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=100" --name zuly
             exit
