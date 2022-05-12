@@ -20,10 +20,11 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh                
 
-            pm2 stop zuly
             cd zuly
+            pm2 stop zuly
             git pull origin master
             rm -rf node_modules
             yarn
+            yarn lint
             pm2 start src/zuly.js --node-args="--use-strict --harmony --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=100" --name zuly
             exit
