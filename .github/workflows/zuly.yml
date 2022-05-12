@@ -41,5 +41,7 @@ jobs:
 
       - name: Install Dependencies 👨🏻‍💻
         run: yarn
+      - name: Compile to JavaScript 💻
+        run: yarn compile
       - name: Run Linter ✏️
         run: yarn lint
