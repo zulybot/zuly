@@ -405,28 +405,28 @@ module.exports = {
 		title: 'Avatar from:',
 		download: 'Download link:',
 		hex: 'Hex to use in your profile:',
-		click: 'Click Here'
+		click: 'Naciśnij tutaj'
 	},
 	perfil: {
-		ngm: 'NOBODY',
+		ngm: 'NIKT',
 		desc: 'Zuly is my friend, did you know that you can change this using "%paboutme"?',
 		comp: 'Click on **button** to buy',
-		succ: 'Background purchased successfully',
-		sep: 'Background set successfully',
-		no: 'You don\'t have enough money to buy this background'
+		succ: 'Tło zakupione',
+		sep: 'Tło ustawione',
+		no: 'Masz zbyt mało pieniędzy, aby zakupić to tło'
 	},
 	filters: {
-		ativado: 'The filter %f has been successfully enabled.',
-		desativado: 'Filter %f was successfully disabled.'
+		ativado: 'Filtr %f został włączony.',
+		desativado: 'Filtr %f został wyłączony.'
 	},
 	economy: {
-		carteira: 'Wallet:',
+		carteira: 'Portfel:',
 		banco: 'Bank:',
-		jacoletou: 'You\'ve already collected your daily reward today! Try again on:',
-		recebeu: 'You received:',
+		jacoletou: 'Odebrano już swoją dzienną nagrodę! Spróbuj ponownie w dniu:',
+		recebeu: 'Otrzymano:',
 		noarg: 'There are missing arguments, use: `%presgate <code>.`',
-		resgatado: 'You already redeemed this code.',
-		nocode: 'This code does not exist.',
+		resgatado: 'Ten kod został już zrealizowany.',
+		nocode: 'Taki kod nie istnieje.',
 		sucesso: 'You redeemed the promocode **%p** and won **%v ryos** 🥳'
 	},
 	sobre: {
@@ -436,6 +436,6 @@ module.exports = {
 	nsfw: {
 		activated: 'System activated successfully!',
 		disabled: 'System successfully disabled!',
-		nonsfw: 'Do not send NSFW content outside of NSFW channels.'
+		nonsfw: 'Nie wysyłaj treści dla dorosłych poza przeznaczone do tego kanały.'
 	}
 };
