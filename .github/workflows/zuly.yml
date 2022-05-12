@@ -9,7 +9,7 @@ on:
       - next
 
 jobs:
-  lint:
+  zuly:
     runs-on: ${{ matrix.os }}
 
     strategy:
