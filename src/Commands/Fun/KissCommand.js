@@ -60,7 +60,7 @@ module.exports = class KissCommand {
 		try {
 			const user = await global.zuly.users.fetch(ctx.args[0]);
 			const { get } = require('axios');
-			await get('https://nekos.life/api/v2/img/kiss').then(async (res) => {
+			await get('https://zulybot.xyz/api/cdn/kiss').then(async (res) => {
 				const { MessageButton, MessageActionRow } = require('discord.js');
 				const row = new MessageActionRow()
 					.addComponents(

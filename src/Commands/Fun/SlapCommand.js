@@ -60,7 +60,7 @@ module.exports = class slapCommand {
 		try {
 			const user = await global.zuly.users.fetch(ctx.args[0]);
 			const { get } = require('axios');
-			await get('https://nekos.life/api/v2/img/slap').then(async (res) => {
+			await get('https://zulybot.xyz/api/cdn/slap').then(async (res) => {
 				const { MessageButton, MessageActionRow } = require('discord.js');
 				const row = new MessageActionRow()
 					.addComponents(
