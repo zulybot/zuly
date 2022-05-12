@@ -20,8 +20,8 @@ export default class Export {
 export declare class DefaultClass {
   constructor (client: Zuly)
 
-  handler (value: unknown): void;
-  resolve (value: unknown): Promise<void>;
+  handler (...value: unknown[]): void
+  resolve (...value: unknown[]): Promise<void>;
 }
 
 export type Interfaces = "command" | "event";

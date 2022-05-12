@@ -5,6 +5,7 @@ import Handler from "./src/utils/handler/Handler.js";
 import Zuly from "./src/zuly.js";
 
 const client = new Zuly({
+  restMode: true,
   token: process.env.TOKEN as string,
   intents: ["allPrivileged"]
 });
