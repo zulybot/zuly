@@ -25,5 +25,5 @@ jobs:
             git pull origin master
             rm -rf node_modules
             yarn
-            pm2 start src/zuly.js --name zuly
+            pm2 start src/zuly.js --node-args="--use-strict --harmony --max_old_space_size=512 --optimize_for_size --expose-gc --gc-interval=100" --name zuly
             exit
