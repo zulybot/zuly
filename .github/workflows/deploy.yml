@@ -24,6 +24,7 @@ jobs:
             pm2 stop zulyc
             git pull origin next
             rm -rf node_modules
+            rm -rf dist
             yarn install
             yarn compile
             yarn lint
