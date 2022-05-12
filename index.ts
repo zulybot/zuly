@@ -9,7 +9,10 @@ const client = new Zuly({
   intents: ["allPrivileged"]
 });
 
-client.connect().then(async () => {
+client.on("ready", async () => {
   await new Handler("./dist/src/commands", client).walk();
+})
+
+client.connect().then(async () => {
   await new Handler("./dist/src/events", client).walk();
 });

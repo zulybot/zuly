@@ -38,6 +38,10 @@ export default class Handler {
             this.client[e.event.type](e.event.eventName, e.event.resolve.bind(e.event));
           }
           else if (e.type === "command") {
+            this.client.requestHandler.request("POST", `/applications/${this.client.user.id}/commands`, true, {
+              name: e.command.name,
+              description: e.command.description,
+            })
             this.client.commands.add(e.command);
           }
         }
