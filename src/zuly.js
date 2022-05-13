@@ -41,7 +41,7 @@ client.snakecord = new SnakeGame({
 });
 
 // Plugins
-client.statcord = new Statcord({
+client.statcord = new Statcord.Client({
 	client,
 	key: statcord,
 	postCpuStatistics: true,
