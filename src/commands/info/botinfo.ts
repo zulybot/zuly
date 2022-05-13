@@ -15,13 +15,19 @@ class PingCommand extends Command {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async handler (interaction: CommandInteraction, locale: Record<string, string>) {
-    console.log(locale)
+  async handler (interaction: CommandInteraction, locale: any) {
     interaction.createMessage({
       embeds: [
         {
-          title: `<:zu_info:911303533859590144> BotInfo | ${this.client.user.username}`,
-          // description: locale.botinfo.description.replace(/{{botName}}/g, this.client.user.username).replace(/{{guilds}}/g, this.client.guilds.size.toString()).replace(/{{users}}/g, this.client.users.size.toString()).replace(/{{uptime}}/g, this.client.uptime.toString()),
+          title: locale("botinfo.title", {
+            botName: this.client.user.username
+          }),
+          description: locale("botinfo.description", {
+            botName: this.client.user.username,
+            users: this.client.users.size,
+            guilds: this.client.guilds.size,
+          }),
+          color: 0x7289da,
         }
       ]
     })

@@ -19,11 +19,11 @@ export default class Command {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public handler (slash: SlashCommand, locale: Record<string, string>): void {
+  public handler (slash: SlashCommand, locale: string): void {
     throw new Error("Not implemented.");
   }
 
-  public async resolve (value: SlashCommand, locale: Record<string, string>): Promise<void> {
+  public async resolve (value: SlashCommand, locale: string): Promise<void> {
     let error: Error;
     try {
       this.handler(value, locale);

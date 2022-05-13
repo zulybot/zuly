@@ -1,17 +1,11 @@
-import fs from "fs"
+import i18n from "i18n";
 
-const ptLocale = JSON.parse(fs.readFileSync("./src/locales/pt-BR.json", "utf8"));
-const enLocale = JSON.parse(fs.readFileSync("./src/locales/en-US.json", "utf8"));
-const esLocale = JSON.parse(fs.readFileSync("./src/locales/es-ES.json", "utf8"));
+i18n.configure({
+  locales: [ "pt-BR", "en-US", "es-ES" ],
+  defaultLocale: "en-US",
+  directory: "./locales",
+  objectNotation: true,
+  autoReload: true,
+})
 
-interface Locales {
-    [locale: string]: Record<string, string>
-}
-
-const Locales: Locales = {
-  "pt_br": ptLocale,
-  "en_us": enLocale,
-  "es_es": esLocale,
-}
-
-export default Locales;
+export default i18n;

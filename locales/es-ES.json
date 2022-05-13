@@ -1,0 +1,7 @@
+{
+    "lang": "es",
+    "botinfo": {
+        "title": "<:zu_info:880812942713573396> BotInfo | {{botName}}",
+        "description": "⤷ ¡Hola, soy **{{botName}}**, un bot con características únicas que todo servidor necesita! Actualmente conozco a **{{users}} diferentes que utilizan mis comandos y en **{{guilds}} servidores que también hacen uso de mis características.\n> <:zu_typescript:974678584809644102> He sido desarrollado utilizando [Eris](https://abal.moe/Eris/) & [TypeScript](https://www.typescriptlang.org/).\n> <:zu_website:974679041120563350> Para más información, visite mi [sitio web](https://zulybot.xyz/)."
+    }
+}

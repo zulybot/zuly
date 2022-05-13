@@ -36,9 +36,11 @@
   "author": "AndreLucaas",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/i18n": "^0.13.2",
     "@vitalets/google-translate-api": "^7.0.0",
     "dotenv": "^15.0.0",
     "eris": "^0.16.1",
+    "i18n": "^0.14.2",
     "readdirp": "^3.6.0"
   },
   "devDependencies": {

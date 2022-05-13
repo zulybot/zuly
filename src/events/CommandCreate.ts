@@ -1,8 +1,8 @@
 import { CommandInteraction } from "eris";
-import Locales from "../locales/config.js";
 import Event from "../interfaces/Event.js";
 import Export from "../interfaces/Export.js";
 import Zuly from "../zuly.js";
+import i18n from "i18n";
 
 class CommandCreateEvent extends Event {
   constructor (client: Zuly) {
@@ -14,17 +14,10 @@ class CommandCreateEvent extends Event {
     const guild = await this.client.getRESTGuild(interaction.guildID || "");
     await interaction.acknowledge(1);
     const command = Array.from(this.client.commands.values()).find((c) => c.name === interaction.data.name);
-    let locale = Locales.en_us
-    if (guild.preferredLocale) {
-      const idioma = guild.preferredLocale.toLowerCase().replace(/-/g, "_");
-      if (Locales[idioma]) {
-        locale = Locales[idioma];
-      }
-      else if (Locales[idioma] === undefined) {
-        locale = Locales.en_us;
-      }
-    }
-    command?.handler(interaction, locale);
+    const idioma = guild.preferredLocale.toLowerCase();
+    const locale = (key: string, replacements?: { [key: string]: string }) =>
+      i18n.__({ locale: idioma, phrase: key }, replacements || "{}" as any);
+    command?.handler(interaction, locale as any);
   }
 }
 
