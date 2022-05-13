@@ -71,6 +71,8 @@ module.exports = class ReadyEvent {
 
 		// WEBSERVICES
 
+		global.zuly.statcord.autopost();
+
 		require('../Integrations/app');
 	}
 };

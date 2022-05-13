@@ -157,6 +157,7 @@ module.exports = class InteractionEvent {
 			};
 			try {
 				await command.run(this.ctx).then(async () => {
+					global.zuly.statcord.postCommand(interaction.commandName, interaction.author.id);
 					const system = require('../Config/system');
 
 					const moment = require('moment');

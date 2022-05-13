@@ -2128,6 +2128,14 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+statcord.js@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/statcord.js/-/statcord.js-3.4.2.tgz#a0c8ebb2c832d60825f676e279546243b9759cc8"
+  integrity sha512-fisZH+mK+bYEVAd+XiL7N3ldwgqkXH5t2GcPs0TtbFLlYnvWGaNWPLD/QmSCNVYqRwL2J/qqyR25AhwZiOoH2A==
+  dependencies:
+    node-fetch "^2.6.7"
+    systeminformation "^5.7.12"
+
 statuses@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.1.tgz#55cb000ccf1d48728bd23c685a063998cf1a1b63"
@@ -2189,6 +2197,11 @@ supports-color@^7.1.0:
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
+
+systeminformation@^5.7.12:
+  version "5.11.15"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.11.15.tgz#013038688e7ba375a5c8e88b8e7739bda7110e6b"
+  integrity sha512-zUbObRjQeZcu84z9NVSm9JTiCPyPQ3MefJ3+76yvp+TeCv9WsO3szijyQLv0fChRrm2/sl2De3y1ewUOYOtz2Q==
 
 tar@^6.1.0:
   version "6.1.11"

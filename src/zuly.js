@@ -2,11 +2,12 @@ require('colors');
 const { Client, Collection } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { AutoPoster } = require('./CustomPackages/DBLAutoPoster');
-const { token } = require('./Config/config');
+const { token, statcord } = require('./Config/config');
 const { top } = require('./API/keys');
 const { GiveawaysManager } = require('discord-giveaways');
 const giveawayModel = require('./Schemas/GiveawaySchema');
 const SnakeGame = require('./Helpers/SnakeGame');
+const Statcord = require('statcord.js');
 // Creating the client
 const client = new Client({
 	restTimeOffset: 1,
@@ -40,6 +41,13 @@ client.snakecord = new SnakeGame({
 });
 
 // Plugins
+client.statcord = new Statcord({
+	client,
+	key: statcord,
+	postCpuStatistics: true,
+	postMemStatistics: true,
+	postNetworkStatistics: true,
+});
 client.restAPI = new REST({ version: '9' }).setToken(token);
 client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');
