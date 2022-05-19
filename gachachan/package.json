@@ -1,0 +1,12 @@
+{
+  "name": "gachachan",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
+}
