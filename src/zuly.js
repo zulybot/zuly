@@ -2,17 +2,13 @@ require('colors');
 const { Client, Collection } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { AutoPoster } = require('./CustomPackages/DBLAutoPoster');
-const { token, statcord } = require('./Config/config');
+const { token } = require('./Config/config');
 const { top } = require('./API/keys');
-const { GiveawaysManager } = require('discord-giveaways');
-const giveawayModel = require('./Schemas/GiveawaySchema');
 const SnakeGame = require('./Helpers/SnakeGame');
-const Statcord = require('statcord.js');
 // Creating the client
 const client = new Client({
 	restTimeOffset: 1,
-	defaultImageFormat: 'png',
-	defaultImageSize: 4096,
+	shardCount: 2,
 	intents: [
 		'GUILDS',
 		'GUILD_BANS',
@@ -31,7 +27,6 @@ const client = new Client({
 		'REACTION'
 	],
 });
-
 // Games
 client.snakecord = new SnakeGame({
 	title: 'SnakeCord | Zuly',
@@ -39,46 +34,11 @@ client.snakecord = new SnakeGame({
 	timestamp: false,
 	gameOverTitle: 'Fim do Jogo',
 });
-
 // Plugins
-client.statcord = new Statcord.Client({
-	client,
-	key: statcord,
-	postCpuStatistics: true,
-	postMemStatistics: true,
-	postNetworkStatistics: true,
-});
 client.restAPI = new REST({ version: '9' }).setToken(token);
 client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');
 client.version = require('../package.json').version;
-const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
-	async getAllGiveaways () {
-		return giveawayModel.find().lean().exec();
-	}
-	async saveGiveaway (messageId, giveawayData) {
-		await giveawayModel.create(giveawayData);
-		return true;
-	}
-	async editGiveaway (messageId, giveawayData) {
-		await giveawayModel.updateOne({ messageId }, giveawayData, { omitUndefined: true }).exec();
-		return true;
-	}
-	async deleteGiveaway (messageId) {
-		await giveawayModel.deleteOne({ messageId }).exec();
-		return true;
-	}
-};
-client.giveawaysManager = new GiveawayManagerWithOwnDatabase(client, {
-	updateCountdownEvery: 5000,
-	default: {
-		botsCanWin: false,
-		embedColor: '#FFCBDB',
-		embedColorEnd: '#FFCBDB',
-		reaction: '🎁'
-	}
-});
-
 // Collections
 client.commands = new Collection();
 client.events = new Collection();

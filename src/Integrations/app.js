@@ -17,21 +17,23 @@ app.get('/api/status', async (req, res) => {
 	const { cluster } = require('../Config/config');
 	const guilds = global.zuly.guilds.cache.size;
 	const users = await global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
-	const mongoose = require('mongoose');
 	const date = Date.now();
-	const pingDB = new Promise((r) =>
-		mongoose.connection.db.admin().ping(() => r(Date.now() - date))
-	);
-	return res.json({
-		id: cluster.id,
-		name: cluster.nome,
-		firstShard: cluster.firstShard,
-		lastShard: cluster.lastShard,
-		servers: guilds,
-		users: users,
-		ping: global.zuly.ws.ping,
-		ram: (process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb',
-		pingDB: await pingDB + 'ms'
+	await global.zuly.db.set('ping', Date.now()).then(async () => {
+		const dbPing = await require('pretty-ms')(Date.now() - date);
+		await global.zuly.db.delete('ping');
+		return res.json({
+			id: cluster.id,
+			name: cluster.nome,
+			firstShard: cluster.firstShard,
+			lastShard: cluster.lastShard,
+			servers: guilds,
+			users: users,
+			ram: (process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb',
+			ping: {
+				db: dbPing,
+				ws: global.zuly.ws.ping
+			}
+		});
 	});
 });
 app.get('/', (req, res) => {

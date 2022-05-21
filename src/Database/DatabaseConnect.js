@@ -1,14 +1,14 @@
-const DatabaseManager = require('./MongoWrapper');
+const { Client } = require('quickpostgres');
 const config = require('../Config/config');
-const uri = config.mongodb;
+const uri = config.postgre;
 
-if (uri.includes('zulybotc')) {
-	console.log('[ERRO] Troca o banco de dados para produção mlk.'.red);
-}
-
-global.zuly.db = new DatabaseManager(config.mongodb, 'zulybot');
+global.zuly.db = new Client(uri);
 global.zuly.db.on('ready', async () => {
-	console.log('[MONGO] Estou pronta!'.yellow);
+	console.log('[POSTGRESQL] Postgre iniciado com sucesso!'.yellow);
 });
 
-global.zuly.db.connect();
+global.zuly.del = global.zuly.db.delete;
+
+(async () => {
+	await global.zuly.db.connect();
+})();

@@ -143,13 +143,12 @@ module.exports = class BotinfoCommand {
 		}
 		else if (ctx.args[0] === 'ping') {
 			const { cluster } = require('../../Config/config');
-			const mongoose = require('mongoose');
 			const date = Date.now();
-			const pingDB = new Promise((r) =>
-				mongoose.connection.db.admin().ping(() => r(Date.now() - date))
-			);
-			return ctx.message.channel.slashReply({
-				content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.ws.ping}ms\`\n- **Database:** \`${await pingDB}ms\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
+			await global.zuly.db.set('ping', Date.now()).then(async () => {
+				await global.zuly.db.delete('ping');
+				return ctx.message.channel.slashReply({
+					content: `🏓 **|** ${ctx.message.author.mention} Pong!\n- **API Ping:** \`${global.zuly.ws.ping}ms\`\n- **Database:** \`${require('pretty-ms')(Date.now() - date)}\`\n- **Cluster:** \`(${cluster.id} ${cluster.nome})\``,
+				});
 			});
 		}
 		else if (ctx.args[0] === 'dashboard') {
