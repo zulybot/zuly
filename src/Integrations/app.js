@@ -14,7 +14,6 @@ app.get('/api/commands', async (req, res) => {
 	return res.json(global.zuly.commands);
 });
 app.get('/api/status', async (req, res) => {
-	const { cluster } = require('../Config/config');
 	const guilds = global.zuly.guilds.cache.size;
 	const users = await global.zuly.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
 	const date = Date.now();
