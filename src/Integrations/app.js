@@ -22,13 +22,12 @@ app.get('/api/status', async (req, res) => {
 		const dbPing = await require('pretty-ms')(Date.now() - date);
 		await global.zuly.db.delete('ping');
 		return res.json({
-			id: cluster.id,
-			name: cluster.nome,
-			firstShard: cluster.firstShard,
-			lastShard: cluster.lastShard,
-			servers: guilds,
-			users: users,
-			ram: (process.memoryUsage().rss / 1024 / 1024).toFixed(0) + 'mb',
+			clientStatus: {
+				servers: guilds,
+				users: users,
+				channels: global.zuly.channels.cache.size,
+			},
+			ram: (process.memoryUsage().rss / 1024 / 1024).toFixed(0),
 			ping: {
 				db: dbPing,
 				ws: global.zuly.ws.ping
