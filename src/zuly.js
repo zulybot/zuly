@@ -4,6 +4,7 @@ const { REST } = require('@discordjs/rest');
 const { AutoPoster } = require('./CustomPackages/DBLAutoPoster');
 const { token } = require('./Config/config');
 const { top } = require('./API/keys');
+const { ImgurClient } = require('imgur');
 const SnakeGame = require('./Helpers/SnakeGame');
 // Creating the client
 const client = new Client({
@@ -39,6 +40,8 @@ client.restAPI = new REST({ version: '9' }).setToken(token);
 client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');
 client.version = require('../package.json').version;
+const { imgur } = require('./API/keys');
+client.imgur = new ImgurClient({ clientId: imgur.id });
 // Collections
 client.commands = new Collection();
 client.events = new Collection();
