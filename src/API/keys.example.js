@@ -6,5 +6,7 @@ module.exports = {
 	},
 	bdd: 'https://botsdediscord.herokuapp.com/',
 	deep: 'https://deepai.org/',
-	bit: 'https://bit.ly'
+	bit: {
+		ly: 'https://bit.ly'
+	}
 };

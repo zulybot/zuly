@@ -120,6 +120,7 @@ module.exports = {
 		}
 	},
 	logs: {
+		bulkDelete: 'Foram deletadas %n mensagens em #%c (%id).',
 		oldMessage: 'Mensagem Antiga:',
 		newMessage: 'Mensagem Nova:',
 		deleted: 'Mensagem Deletada:',
