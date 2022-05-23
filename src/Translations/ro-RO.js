@@ -174,6 +174,7 @@ module.exports = {
 		}
 	},
 	logs: {
+		bulkDelete: 'There were deleted %n messages in #%c (%id).',
 		oldMessage: 'Old Message:',
 		newMessage: 'New Message:',
 		deleted: 'Message Deleted:',
