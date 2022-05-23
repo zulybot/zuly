@@ -61,7 +61,7 @@ module.exports = class MessageUpdateEvent {
 		else {
 			const attachment = message.attachments.first();
 			const embed = new global.zuly.manager.Ebl();
-			embed.setTitle(`${message.author.username}#${message.author.discriminator} | ${idioma.logs.message.title}`);
+			embed.setTitle(`${message.author.username}#${message.author.discriminator} | ${idioma.logs.message.title} [Deleted]`);
 			embed.addField(`📝 ${idioma.logs.deleted}`, `\`\`\`${message.content}\`\`\``, true);
 			embed.addField(`<:zu_logs_channel:910218450415255593> ${idioma.logs.channel}`, `<#${message.channel.id}> \`(${message.channel.name} [${message.channel.id}])\``);
 			embed.addField(`<:zu_link:927212474573418517> ${idioma.logs.url}`, `${message.url}`);

@@ -27,7 +27,7 @@ module.exports = class MessageUpdateEvent {
 		idioma = idioma[lang];
 
 		const embed = new global.zuly.manager.Ebl();
-		embed.setTitle(`${newMessage.author.username}#${newMessage.author.discriminator} | ${idioma.logs.message.title}`);
+		embed.setTitle(`${newMessage.author.username}#${newMessage.author.discriminator} | ${idioma.logs.message.title} [Edited]`);
 		embed.addField(`📝 ${idioma.logs.oldMessage}`, `\`\`\`${oldMessage.content}\`\`\``, true);
 		embed.addField(`📝 ${idioma.logs.newMessage}`, `\`\`\`${newMessage.content}\`\`\``, true);
 		embed.addField(`<:zu_logs_channel:910218450415255593> ${idioma.logs.channel}`, `<#${newMessage.channel.id}> \`(${newMessage.channel.name} [${newMessage.channel.id}])\``);
