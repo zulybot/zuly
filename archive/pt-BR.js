@@ -1,5 +1,50 @@
 module.exports = {
 	lang: 'pt',
+	discboard: {
+		title: 'Painel de Controle | {{bot}}',
+		description: 'Faça configurações gerais do seu servidor entre outras coisas por aqui!',
+		geral: {
+			description: 'Configurações gerais do seu servidor.',
+			fields: {
+				autoroledelete: {
+					label: 'Deletar',
+					description: 'Deleta as configurações de autorole.'
+				},
+				autorolebot: {
+					label: 'AutoRole Bot',
+					collector: 'Envie as menções dos cargos que você deseja que o bot adicione automaticamente. [Bots]',
+					description: 'Adicione cargo aos bots.',
+					set: 'O(s) cargos {{roles}} foram adicionados ao autorole de bots.'
+				},
+				autoroleuser: {
+					label: 'AutoRole User',
+					collector: 'Envie as menções dos cargos que você deseja que o bot adicione automaticamente. [Usuários]',
+					description: 'Adicione cargo aos usuários.',
+					set: 'O(s) cargos {{roles}} foram adicionados ao autorole de usuários.'
+				},
+				autorole: {
+					label: 'AutoRole',
+					description: 'Configure o AutoRole do seu servidor.',
+				},
+				idioma: {
+					label: 'Idioma',
+					description: 'Configure o idioma do seu servidor.',
+				},
+				automod: {
+					label: 'AutoMod',
+					description: 'Configure o AutoMod do seu servidor.',
+				},
+				notquitenitro: {
+					label: 'NotQuiteNitro',
+					description: 'Configure o NotQuiteNitro (nqn) do seu servidor.',
+				}
+			}
+		},
+		labels: {
+			config: '» Configurações Gerais.',
+			logs: '» Logs (Comandos, Mensagens, etc).'
+		}
+	},
 	afk: {
 		set: ':zzz: {{user}} **|** Você está afk, motivo: `{{status}}`.',
 		remove: ':zzz: {{user}} **|** Você não está mais afk.',

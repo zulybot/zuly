@@ -1,5 +1,10 @@
 module.exports = {
 	lang: 'fr',
+	afk: {
+		set: ':zzz : {{user}} **|** Vous êtes afk, raison : `{{status}}`',
+		remove: ':zzz : {{user}} **|** Vous n\'êtes plus afk.',
+		mention: ':zzz : {{utilisateur}}. **|** Vous êtes afk [{{time}}], raison : `{{status}}'
+	},
 	image: {
 		editando: '✍️ %u **|** édition',
 		args: '✍️ %u **|** J\'ai besoin que vous me donniez des arguments pour que je puisse éditer',

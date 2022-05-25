@@ -21,6 +21,39 @@ module.exports = class MessageCreateEvent {
 		lang = lang.replace(/-/g, '_');
 		idioma = idioma[lang];
 
+		const wait = require('node:timers/promises').setTimeout;
+
+		if (message.mentions.members.size) {
+			message.mentions.members.forEach(async (m) => {
+				const afk = await global.zuly.db.get(`afk-${m.id}`);
+				if (afk) {
+					return message.channel.send(idioma.afk.mention.replace(
+						'{{user}}', '**' + m.user.username + '**',
+					).replace(
+						'{{time}}',
+						`<t:${afk.time}:R>`
+					).replace(
+						'{{status}}',
+						afk.status
+					)).then(async (m) => {
+						await wait(3000);
+						m.delete();
+					});
+				}
+			});
+		}
+
+		const userAFK = await global.zuly.db.get(`afk-${message.author.id}`);
+		if (userAFK) {
+			return message.channel.send(idioma.afk.remove.replace(
+				'{{user}}', '**' + message.author.username + '**',
+			)).then(async (m) => {
+				await global.zuly.db.delete(`afk-${message.author.id}`);
+				await wait(3000);
+				m.delete();
+			});
+		}
+
 		const {
 			get
 		} = require('axios');

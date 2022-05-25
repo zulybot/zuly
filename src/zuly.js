@@ -9,7 +9,7 @@ const SnakeGame = require('./Helpers/SnakeGame');
 // Creating the client
 const client = new Client({
 	restTimeOffset: 1,
-	shardCount: 2,
+	shardCount: 1,
 	intents: [
 		'GUILDS',
 		'GUILD_BANS',
