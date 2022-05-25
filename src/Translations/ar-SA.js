@@ -1,5 +1,10 @@
 module.exports = {
 	lang: 'إنجليزي',
+	afk: {
+		set: ':zzz: {{user}} **|** You are afk, reason: `{{status}}',
+		remove: ':zzz: {{user}} **|** You are no longer afk',
+		mention: ':zzz: {{user}} **|** Went afk [{{time}}], reason: `{{status}}`.'
+	},
 	image: {
 		editing: '✍️ %u **|** editing',
 		args: '✍️ %u **|** I need you to give me some argument so I can edit',
