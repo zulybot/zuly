@@ -57,8 +57,7 @@ module.exports = class EvalCommand {
 	}
 
 	async run (ctx) {
-		const { token } = require('../../Config/config');
-		const regexToken = new RegExp(`${token}`, 'gi');
+		const regexToken = new RegExp(`${global.zuly.token}`, 'gi');
 		const msg = ctx.args.join(' ');
 		if (!msg) {
 			return ctx.message.channel.slashReply({
@@ -66,7 +65,11 @@ module.exports = class EvalCommand {
 				ephemeral: true
 			});
 		}
-		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('mongo')) return;
+		if (msg.toLowerCase().includes('token') || msg.toLowerCase().includes('postgre') || msg.toLowerCase().includes('mongodb') || msg.toLowerCase().includes('secret') || msg.toLowerCase().includes('secrets')) {
+			return ctx.message.channel.slashReply({
+				content: 'Que isso amigão, tá querendo token é?'
+			});
+		};
 		try {
 			let eva = await eval(msg);
 			if (eva instanceof Promise) eva = await eva;
