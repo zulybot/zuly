@@ -400,11 +400,17 @@ module.exports = {
 		del2: 'Reaja com ❌ para desativar/deletar'
 	},
 	userinfo: {
-		inf: 'Informações de:',
-		tag: 'Tag de:',
+		inf: 'Information from:',
+		tag: 'Tag from:',
 		badges: 'Badges of:',
-		id: 'ID de:',
-		create: 'Conta criada dia:'
+		id: 'ID from:',
+		create: 'Account created on:',
+		join: 'Joined on:',
+		more: 'More info',
+		perms: 'Permissions:',
+		roles: 'Roles:',
+		hash: 'Avatar hash:',
+		off: 'User off server.'
 	},
 	slash: 'devido a alguns problemas de compatibilidade, mudei completamente para **Comandos Slash**, se os comandos não aparecerem, adicione-me novamente clicando aqui: [adicionar](https://zulybot.xyz/add), não é necessário remover o bot, caso os comandos ainda não foram atualizados em seu servidor, pode levar até uma hora para que sejam atualizados em todos os servidores, devido ao discord.',
 	avatar: {
