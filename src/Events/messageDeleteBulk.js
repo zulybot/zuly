@@ -9,7 +9,8 @@ module.exports = class MessageUpdateEvent {
 		const message = messages.first();
 		if (!message.content) return;
 
-		const logs = await global.zuly.db.get(`logs-${message.guild.id}`) || '927209681754132530';
+		const logs = await global.zuly.db.get(`logs-${message.guild.id}`);
+		if (!logs) return;
 		const channel = await global.zuly.channels.cache.get(logs);
 
 		let webhook = await channel.fetchWebhooks();
