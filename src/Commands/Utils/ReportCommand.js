@@ -43,7 +43,8 @@ module.exports = class PrintCommand {
 		const proto = Math.random().toString(36).slice(2, 10);
 		const link = `https://docs.google.com/forms/d/e/1FAIpQLSc62AsAArfsXXfrRDbTZXrb8pUlXB4Tgqw86Uazbasa-JySCA/viewform?usp=pp_url&entry.595373523=${proto}`;
 
-		const dm = await global.zuly.users.fetch(ctx.message.author.id);
+		ctx.args[0] = ctx.message.author.id;
+		const dm = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 
 		try {
 			dm.send(`✅ ${ctx.idioma.report.p1}\n\n> 📋 ${ctx.idioma.report.id} ||\`${proto}\`||\n\n🔗 Link: ${link}`).then(async msg => {

@@ -56,7 +56,7 @@ module.exports = class AddmodCommand {
 		const users = [];
 
 		list.forEach(async id => {
-			const usera = await global.zuly.users.fetch(id);
+			const usera = global.zuly.users.cache.get(id) ? global.zuly.users.cache.get(id) : await global.zuly.users.fetch(id);
 			users.push('`' + usera.username + '#' + usera.discriminator + '`');
 		});
 		setTimeout(() => {

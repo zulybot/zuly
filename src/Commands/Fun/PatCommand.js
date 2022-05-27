@@ -58,7 +58,7 @@ module.exports = class PatCommand {
 
 	async run (ctx) {
 		try {
-			const user = await global.zuly.users.fetch(ctx.args[0]);
+			const user = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 			const { get } = require('axios');
 			await get('https://nekos.life/api/v2/img/pat').then(async (res) => {
 				const { MessageButton, MessageActionRow } = require('discord.js');

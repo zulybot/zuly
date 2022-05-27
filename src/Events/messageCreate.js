@@ -127,8 +127,8 @@ module.exports = class MessageCreateEvent {
 			const g = await global.zuly.db.get(args[0]);
 			if (g) {
 			  message.react('✅');
-			  const user = await global.zuly.users.fetch(g);
-			  const dm = await global.zuly.users.fetch(user.id);
+			  const user = global.zuly.users.cache.get(g) ? global.zuly.users.cache.get(g) : await global.zuly.users.fetch(g);
+			  const dm = user;
 			  dm.send(`✅ Sua denúncia com id: ||${args[0]}|| foi aprovada pela equipe da zulybot, obrigado e parabéns 🥳`).then(async () => {
 					global.zuly.db.del(args[0]);
 					const ch = await global.zuly.channels.cache.get('970320554550779974');

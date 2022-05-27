@@ -57,7 +57,7 @@ module.exports = class AddmodCommand {
 	}
 
 	async run (ctx) {
-		const user = await global.zuly.users.fetch(ctx.args[0]);
+		const user = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 		await global.zuly.db.push('mods', user.id);
 		ctx.message.channel.slashReply({
 			content: `✅ ${ctx.message.author.mention} **|** O Usuário \`${user.username}#${user.discriminator}\` de ID \`${user.id}\` foi adicionado como meu moderador.`

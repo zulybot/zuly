@@ -75,11 +75,11 @@ module.exports = class ShipCommand {
 	async run (ctx) {
 		let porcentagem;
 		let user1 = ctx.message.author;
-		let user2 = await global.zuly.users.fetch(ctx.args[0]);
+		let user2 = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 
 		if (ctx.args[1]) {
-			user1 = await global.zuly.users.fetch(ctx.args[0]);
-			user2 = await global.zuly.users.fetch(ctx.args[1]);
+			user1 = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
+			user2 = global.zuly.users.cache.get(ctx.args[1]) ? global.zuly.users.cache.get(ctx.args[1]) : await global.zuly.users.fetch(ctx.args[1]);
 		}
 
 		if (!user2) {

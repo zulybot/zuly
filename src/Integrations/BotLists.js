@@ -9,7 +9,7 @@ module.exports = (app) => {
 			res.sendStatus(200);
 			const data = req.body;
 			const ch = await global.zuly.channels.cache.get('890316877031698464');
-			const user = await global.zuly.users.fetch(data.user);
+			const user = global.zuly.users.cache.get(data.user) ? global.zuly.users.cache.get(data.user) : await global.zuly.users.fetch(data.user);
 			const embed = new global.zuly.manager.Ebl();
 			embed.setTitle(`<:zu_dbl2:908072247498010654> Top.gg | ${global.zuly.user.username}`);
 			embed.setUrl('https://top.gg/bot/880173509077266483');

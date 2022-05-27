@@ -59,7 +59,7 @@ module.exports = class FisheyeCommand {
 	async run (ctx) {
 		const { createCanvas, loadImage } = require('canvas');
 
-		const user = await global.zuly.users.fetch(ctx.args[0]);
+		const user = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 
 		const background = await loadImage('./assets/images/memes/perfeito.png');
 		const canvas = createCanvas(background.width, background.height);

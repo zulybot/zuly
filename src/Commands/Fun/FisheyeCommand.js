@@ -60,7 +60,7 @@ module.exports = class FisheyeCommand {
 		const { createCanvas, loadImage } = require('canvas');
 		const { fishEye } = require('../../Helpers/Canvas');
 
-		const user = await global.zuly.users.fetch(ctx.args[0]);
+		const user = global.zuly.users.cache.get(ctx.args[0]) ? global.zuly.users.cache.get(ctx.args[0]) : await global.zuly.users.fetch(ctx.args[0]);
 
 		const background = await loadImage(user.displayAvatarURL({ dynamic: false, size: 4096, format: 'png' }));
 		const canvas = createCanvas(background.width, background.height);

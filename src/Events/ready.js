@@ -19,7 +19,7 @@ module.exports = class ReadyEvent {
 			url: 'https://www.twitch.tv/adg_ofc'
 		});
 
-		const adg = await global.zuly.users.fetch('717766639260532826');
+		const adg = global.zuly.users.cache.get('717766639260532826') ? global.zuly.users.cache.get('717766639260532826') : await global.zuly.users.fetch('717766639260532826');
 		const status = [`zulybot.xyz | ${global.zuly.user.username} [v${global.zuly.version}]`, `I'm on ${global.zuly.guilds.cache.size} servers | ${global.zuly.user.username} [v${global.zuly.version}]`, `Follow me on twitter @ZulyBot | ${global.zuly.user.username} [v${global.zuly.version}]`, `/help | ${global.zuly.user.username} [v${global.zuly.version}]`, `/upvote | ${global.zuly.user.username} [v${global.zuly.version}]`, `/invite | ${global.zuly.user.username} [v${global.zuly.version}]`, `Join in my support server discord.gg/pyyyJpw5QW | ${global.zuly.user.username} [v${global.zuly.version}]`, `I was created by: ${adg.username}#${adg.discriminator}`];
 		// const presence = ['online', 'idle', 'dnd'];
 
