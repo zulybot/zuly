@@ -400,11 +400,17 @@ module.exports = {
 		del2: 'Réagir avec ❌ pour désactiver/supprimer'
 	},
 	userinfo: {
-		inf: 'Informations :',
-		tag: 'Étiquette de : ',
+		inf: 'Information from:',
+		tag: 'Tag from:',
 		badges: 'Insignes de :',
-		id: 'Identifiant de : ',
-		create: 'Compte créé dans: '
+		id: 'ID from:',
+		create: 'Account created on:',
+		join: 'Joined on:',
+		more: 'More info',
+		perms: 'Permissions:',
+		roles: 'Roles:',
+		hash: 'Avatar hash:',
+		off: 'User off server.'
 	},
 	slash: 'en raison de problèmes de compatibilité, j\'ai été complètement passé à **Commandes Slash**, si les commandes n\'apparaissent pas, ajoutez-moi en cliquant ici : [add](https://zulybot. yz/add), il n\'est pas nécessaire de supprimer le bot pour cela et si les commandes n\'ont pas encore été mises à jour sur votre serveur, il peut prendre jusqu\'à une heure pour les mettre à jour sur tous les serveurs, en raison de la discord.',
 	avatar: {
