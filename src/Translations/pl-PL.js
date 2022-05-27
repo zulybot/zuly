@@ -400,11 +400,17 @@ module.exports = {
 		del2: 'React with ❌ to disable/delete'
 	},
 	userinfo: {
-		inf: 'Information:',
-		tag: 'Tag of: ',
+		inf: 'Information from:',
+		tag: 'Tag from:',
 		badges: 'Badges of:',
-		id: 'ID of: ',
-		create: 'Account created day: '
+		id: 'ID from:',
+		create: 'Account created on:',
+		join: 'Joined on:',
+		more: 'More info',
+		perms: 'Permissions:',
+		roles: 'Roles:',
+		hash: 'Avatar hash:',
+		off: 'User off server.'
 	},
 	slash: 'due to some compatibility issues, I was completely switched to **Slash Commands**, if the commands don\'t appear, add me again by clicking here: [add](https://zulybot.xyz/add), it is not necessary to remove the bot for this and if the commands have not yet updated on your server, it can take up to an hour for them to update on all servers, due to discord.',
 	avatar: {
