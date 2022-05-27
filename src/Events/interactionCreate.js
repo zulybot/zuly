@@ -8,6 +8,7 @@ module.exports = class InteractionEvent {
 	}
 	async run (interaction) {
 		const { WebhookClient } = require('discord.js');
+		if (!interaction.isCommand()) return;
 		const command = global.zuly.commands.get(interaction.commandName);
 		if (command.permissoes.dono || command.permissoes.botmod) {
 			await interaction.deferReply({
@@ -19,7 +20,6 @@ module.exports = class InteractionEvent {
 				ephemeral: false
 			});
 		}
-		if (!interaction.isCommand()) return;
 		if (!interaction.guild) {
 			return interaction.editReply({
 				content: ':x: **|** Slash commands cannot be used via directs messages.',

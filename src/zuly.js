@@ -36,6 +36,7 @@ client.snakecord = new SnakeGame({
 	gameOverTitle: 'Fim do Jogo',
 });
 // Plugins
+client.wait = require('node:timers/promises').setTimeout;
 client.restAPI = new REST({ version: '9' }).setToken(token);
 client.routes = require('discord-api-types/v9').Routes;
 client.backup = require('discord-backup');

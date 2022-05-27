@@ -358,7 +358,13 @@ module.exports = {
 		tag: 'Tag de:',
 		badges: 'Emblemas de:',
 		id: 'ID de:',
-		create: 'Conta criada dia:'
+		create: 'Conta criada dia:',
+		join: 'Entrou dia:',
+		more: 'Mais Informações.',
+		perms: 'Permissões:',
+		roles: 'Cargos:',
+		hash: 'Hash do avatar:',
+		off: 'Usuário fora do servidor.'
 	},
 	slash: 'devido a alguns problemas de compatibilidade, mudei completamente para **Comandos Slash**, se os comandos não aparecerem, adicione-me novamente clicando aqui: [adicionar](https://zulybot.xyz/add), não é necessário remover o bot, caso os comandos ainda não foram atualizados em seu servidor, pode levar até uma hora para que sejam atualizados em todos os servidores, devido ao discord.',
 	avatar: {
