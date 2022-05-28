@@ -1,5 +1,6 @@
 module.exports = {
 	lang: 'fr',
+	div : '<:zu_minecraft:980194995485175809> {{user}} **|** Vous cherchez un serveur Minecraft ? Venez rejoindre [ZulyMC](https://discord.gg/mcbu7wsX8W)\n>> ⤷ **`IP:` **mc.zulybot.xyz;\n⤷ **`Versions:`** Java (1.17.1/Original/Pirate).',
 	afk: {
 		set: ':zzz : {{user}} **|** Vous êtes afk, raison : `{{status}}`',
 		remove: ':zzz : {{user}} **|** Vous n\'êtes plus afk.',
@@ -367,7 +368,8 @@ module.exports = {
 		title: 'Avatar depuis:',
 		download: 'Lien de téléchargement :',
 		hex: 'Hex à utiliser dans votre profil :',
-		click: 'Cliquez ici'
+		click: 'Cliquez ici',
+		footer : 'Si le plan ne fonctionne pas, changez le plan, pas l\'objectif'
 	},
 	perfil: {
 		ngm: 'NON-BODY',

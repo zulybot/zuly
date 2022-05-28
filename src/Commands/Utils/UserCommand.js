@@ -67,7 +67,75 @@ module.exports = class UserCommand {
 							}
 						}
 					]
-				}
+				},
+				{
+					type: 1,
+					name: 'avatar',
+					description: 'Veja o avatar de um usuário.',
+					required: false,
+					name_localizations: {
+						'pt-BR': 'avatar',
+						'en-US': 'avatar',
+						'fr': 'avatar'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja o avatar de um usuário.',
+						'en-US': 'See the avatar of a user.',
+						'fr': 'Voir l\'avatar d\'un utilisateur.'
+					},
+					options: [
+						{
+							type: 6,
+							name: 'user',
+							description: 'O usuário que você quer ver o avatar.',
+							require: false,
+							name_localizations: {
+								'pt-BR': 'user',
+								'en-US': 'user',
+								'fr': 'user'
+							},
+							description_localizations: {
+								'pt-BR': 'The user you want to see the avatar.',
+								'en-US': 'The user you want to see the avatar.',
+								'fr': 'L\'utilisateur que vous souhaitez voir l\'avatar.'
+							}
+						},
+					]
+				},
+				{
+					type: 1,
+					name: 'banner',
+					description: 'Veja o banner de um usuário.',
+					required: false,
+					name_localizations: {
+						'pt-BR': 'banner',
+						'en-US': 'banner',
+						'fr': 'banner'
+					},
+					description_localizations: {
+						'pt-BR': 'Veja o banner de um usuário.',
+						'en-US': 'See the banner of a user.',
+						'fr': 'Voir le banner d\'un utilisateur.'
+					},
+					options: [
+						{
+							type: 6,
+							name: 'user',
+							description: 'O usuário que você quer ver o banner.',
+							require: false,
+							name_localizations: {
+								'pt-BR': 'user',
+								'en-US': 'user',
+								'fr': 'user'
+							},
+							description_localizations: {
+								'pt-BR': 'The user you want to see the banner.',
+								'en-US': 'The user you want to see the banner.',
+								'fr': 'L\'utilisateur que vous souhaitez voir le banner.'
+							}
+						},
+					]
+				},
 			],
 			aliases: [],
 			run: this.run
@@ -76,16 +144,16 @@ module.exports = class UserCommand {
 
 	async run (ctx) {
 		const { MessageButton, MessageActionRow } = require('discord.js');
+		let user;
+		if (ctx.args[1]) {
+			user = global.zuly.users.cache.get(ctx.args[1]) ? global.zuly.users.cache.get(ctx.args[1]) : await global.zuly.users.fetch(ctx.args[1], {
+				force: true
+			});
+		}
+		else {
+			user = ctx.message.author;
+		}
 		if (ctx.args[0] === 'info') {
-			let user;
-			if (ctx.args[1]) {
-				user = global.zuly.users.cache.get(ctx.args[1]) ? global.zuly.users.cache.get(ctx.args[1]) : await global.zuly.users.fetch(ctx.args[1], {
-					force: true
-				});
-			}
-			else {
-				user = ctx.message.author;
-			}
 			const badges = await global.zuly.getUserBadges(user);
 			const embed = new ctx.embed();
 			embed.setTitle(user.tag);
@@ -148,6 +216,46 @@ module.exports = class UserCommand {
 					components: [row]
 				});
 			}
+		}
+		if (ctx.args[0] === 'avatar') {
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setLabel(ctx.idioma.avatar.click)
+						.setStyle('LINK')
+						.setURL(user.displayAvatarURL({ dynamic: true, size: 4096 }))
+				);
+			const embed = new ctx.embed();
+			embed.setTitle(`${ctx.idioma.avatar.title} __${user.username}#${user.discriminator}__`);
+			embed.setColor('#ffcbdb');
+			embed.setImage(user.displayAvatarURL({ dynamic: true, size: 4096 }));
+			embed.setFooter(ctx.message.author.id === user.id ? '⤷ ' + ctx.idioma.avatar.footer : '⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()],
+				components: [row]
+			});
+		}
+		if (ctx.args[0] === 'banner') {
+			const hex = await global.zuly.userBannerColor(user.displayAvatarURL({ dynamic: false, format: 'png', size: 4096 }));
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setLabel(ctx.idioma.avatar.click)
+						.setStyle('LINK')
+						.setURL(user.banner ? `https://cdn.discordapp.com/banners/${user.id}/${user.banner}?size=4096` : `https://singlecolorimage.com/get/${hex.replace('#', '')}/600x240`)
+				);
+			const embed = new ctx.embed();
+			embed.setTitle(`${ctx.idioma.avatar.title.replace('Avatar', 'Banner')} __${user.username}#${user.discriminator}__`);
+			embed.setDescription(`> <:zu_download:890281922331291698> ${ctx.idioma.avatar.hex} **${hex}**`);
+			embed.setColor('#ffcbdb');
+			embed.setImage(user.banner ? `https://cdn.discordapp.com/banners/${user.id}/${user.banner}?size=4096` : `https://singlecolorimage.com/get/${hex.replace('#', '')}/600x240`);
+			embed.setFooter(ctx.message.author.id === user.id ? '⤷ ' + ctx.idioma.avatar.footer : '⤷ zulybot.xyz', global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
+			ctx.message.channel.slashReply({
+				content: ctx.message.author.mention,
+				embeds: [embed.get()],
+				components: [row]
+			});
 		}
 	}
 };

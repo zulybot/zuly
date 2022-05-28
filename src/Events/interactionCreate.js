@@ -166,6 +166,12 @@ module.exports = class InteractionEvent {
 			};
 			try {
 				await command.run(this.ctx).then(async () => {
+					setTimeout(() => {
+						interaction.followUp({
+							content: idioma.div.replace('{{user}}', msg.author.mention),
+							ephemeral: true
+						});
+					}, 1000);
 					const system = require('../Config/system');
 
 					const moment = require('moment');

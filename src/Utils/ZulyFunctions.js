@@ -2,34 +2,28 @@
 const API = require('../API/keys');
 const deepai = require('deepai');
 deepai.setApiKey(API.deep);
-/*
-global.ramUsed = {};
-
-for (const key of Object.keys(process.memoryUsage())) {
-	const mem = Math.round(process.memoryUsage()[key]);
-	global.zuly.ramUsed[key] = {
-		gigabytes: mem / (1024 * 1024 * 1024),
-		megabyes: mem / (1024 * 1024),
-		kilobytes: mem / 1024,
-		bytes: mem
-	};
+async function userBannerColor (image) {
+	// get a predominant color in the user avatar with canvas.
+	const { createCanvas, loadImage } = require('canvas');
+	const img = await loadImage(image.replace(/.webp/g, '.png'));
+	const canvas = createCanvas(img.width, img.height);
+	const ctx = canvas.getContext('2d');
+	ctx.drawImage(img, 0, 0);
+	const imageData = ctx.getImageData(0, 0, img.width, img.height);
+	const data = imageData.data;
+	const r = [];
+	const g = [];
+	const b = [];
+	for (let i = 0; i < data.length; i += 4) {
+		r.push(data[i]);
+		g.push(data[i + 1]);
+		b.push(data[i + 2]);
+	}
+	const red = Math.round(r.reduce((a, b) => a + b) / r.length);
+	const green = Math.round(g.reduce((a, b) => a + b) / g.length);
+	const blue = Math.round(b.reduce((a, b) => a + b) / b.length);
+	return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 }
-
-const totalMem =
-global.zuly.ramUsed.heapTotal.bytes |
-global.zuly.ramUsed.external.bytes |
-global.zuly.ramUsed.heapUsed.bytes |
-global.zuly.ramUsed.arrayBuffers.bytes |
-global.zuly.ramUsed.rss.bytes;
-
-global.zuly.ramUsed.total = {
-	gigabytes: totalMem / (1024 * 1024 * 1024),
-	megabyes: totalMem / (1024 * 1024),
-	kilobytes: totalMem / 1024,
-	bytes: totalMem
-};
-*/
-
 async function getUserBadges (user) {
 	const badgeEmojis = {
 		DISCORD_EMPLOYEE: '<:zu_staffdc:933096931197071380>',
@@ -277,6 +271,7 @@ async function download (url, dest) {
 		});
 	});
 };
+global.zuly.userBannerColor = userBannerColor;
 global.zuly.getUserBadges = getUserBadges;
 global.zuly.nqn = nqn;
 global.zuly.getWebhook = getWebhook;
