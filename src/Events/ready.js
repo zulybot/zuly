@@ -69,8 +69,9 @@ module.exports = class ReadyEvent {
 			}
 		});
 
-		// WEBSERVICES
+		// SERVICES
 
+		global.zuly.music.init(global.zuly.user.id);
 		require('../Integrations/app');
 	}
 };

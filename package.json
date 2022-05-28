@@ -46,6 +46,7 @@
     "deepai": "^1.0.21",
     "discord-backup": "3.2.1",
     "discord.js": "^13.7.0",
+    "erela.js": "^2.3.3",
     "express": "^4.18.1",
     "imgur": "^2.2.0",
     "mal-scraper": "^2.11.4",

@@ -1,32 +1,19 @@
 require('colors');
 const {
-	spotify
-} = require('../../Config/player');
-const {
 	Manager
 } = require('erela.js');
 const nodes = require('./nodes');
-// Plugins
-const Deezer = require('./erela-plugins/Deezer/index');
-const Spotify = require('./erela-plugins/Spotify/index');
-const Apple = require('./erela-plugins/Apple/index');
-const Facebook = require('./erela-plugins/Facebook/index');
-const clientID = spotify.id;
-const clientSecret = spotify.secret;
 // Filters
 const Filter = require('./erela-plugins/Filters/index');
 require('./zulyPlayer');
 global.zuly.music = new Manager({
 	nodes: nodes,
-	plugins: [new Apple(), new Facebook(), new Deezer(), new Spotify({
-		clientID,
-		clientSecret
-	}), new Filter()],
-	autoPlay: !0,
+	plugins: [new Filter()],
+	autoPlay: true,
 	send (id, payload) {
 		const guild = global.zuly.guilds.cache.get(id);
-		if (guild) guild.shard.sendWS(payload.op, payload.d);
-	}
+		if (guild) guild.shard.send(payload);
+	  },
 }).on('nodeConnect', node => console.log(`[LAVALINK] Node ${node.options.name} conectado`.green)).on('nodeError', (node, error) => console.log(`[LAVALINK] Node ${node.options.name} teve um erro: ${error.message}`.red)).on('playerCreate', (player) => {
 	player.set('rateLimitStatus', {
 		status: !1

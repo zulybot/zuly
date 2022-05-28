@@ -62,6 +62,7 @@ client.topgg = new AutoPoster(top.gg.token, client).on('posted', () => {
 global.zuly = client;
 global.zuly.manager = ZulyBot;
 
+require('./Client/Plugins/lavalinkManager');
 require('./Client/Handler/eventos');
 require('./Database/DatabaseConnect');
 require('./Utils/ZulyFunctions');
