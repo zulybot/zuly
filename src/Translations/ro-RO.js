@@ -400,17 +400,17 @@ module.exports = {
 		del2: 'Reacție cu ❌ pentru dezactivare/ștergere'
 	},
 	userinfo: {
-		inf: 'Information from:',
-		tag: 'Tag from:',
+		inf: 'Informații:',
+		tag: 'Tag:',
 		badges: 'Insigne:',
-		id: 'ID from:',
-		create: 'Account created on:',
-		join: 'Joined on:',
-		more: 'More info',
-		perms: 'Permissions:',
-		roles: 'Roles:',
+		id: 'ID:',
+		create: 'Contul a fost creat:',
+		join: 'Intrat pe:',
+		more: 'Mai multe informatii',
+		perms: 'Permisiuni:',
+		roles: 'Roluri:',
 		hash: 'Avatar hash:',
-		off: 'User off server.'
+		off: 'Membru din server.'
 	},
 	slash: 'din cauza unor probleme de compatibilitate, am trecut complet la **comenzi slash**, dacă comenzile nu apar, adaugă-mă din nou făcând clic aici: [add](https://zulybot.xyz/add), nu este necesar să ștergi botul pentru acest lucru și dacă comenzile nu au fost încă actualizate pe server, poate dura până la o oră pentru ca ei să se actualizeze pe toate serverele, din cauza discordului.',
 	avatar: {
