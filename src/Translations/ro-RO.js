@@ -1,5 +1,6 @@
 module.exports = {
 	lang: 'ro',
+	div: '<:zu_minecraft:980194995485175809> {{user}} **|** Are you looking for a Minecraft server? Come join [ZulyMC](https://discord.gg/mcbu7wsX8W)\n>> ⤷ **`IP:` **mc.zulybot.xyz;\n⤷ **`Versions:`** Java (1.17.1/Original/Pirate).',
 	afk: {
 		set: ':zzz: {{user}} **|** You are afk, reason: `{{status}}',
 		remove: ':zzz: {{user}} **|** You are no longer afk',
@@ -417,7 +418,8 @@ module.exports = {
 		title: 'Poza de proful a lui:',
 		download: 'Link de descărcare:',
 		hex: 'Hex utilizat în profilul dvs.:',
-		click: 'Click aici'
+		click: 'Click aici',
+		footer: 'If the plan doesn\'t work, change the plan, not the goal.'
 	},
 	perfil: {
 		ngm: 'NIMENI',
