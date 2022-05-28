@@ -171,7 +171,7 @@ module.exports = class InteractionEvent {
 							content: idioma.div.replace('{{user}}', msg.author.mention),
 							ephemeral: true
 						});
-					}, 1000);
+					}, 2000);
 					const system = require('../Config/system');
 
 					const moment = require('moment');

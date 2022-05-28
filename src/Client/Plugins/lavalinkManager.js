@@ -10,8 +10,8 @@ global.zuly.music = new Manager({
 	nodes: nodes,
 	plugins: [new Filter()],
 	autoPlay: true,
-	send (id, payload) {
-		const guild = global.zuly.guilds.cache.get(id);
+	send(id, payload) {
+		const guild = client.guilds.cache.get(id);
 		if (guild) guild.shard.send(payload);
 	  },
 }).on('nodeConnect', node => console.log(`[LAVALINK] Node ${node.options.name} conectado`.green)).on('nodeError', (node, error) => console.log(`[LAVALINK] Node ${node.options.name} teve um erro: ${error.message}`.red)).on('playerCreate', (player) => {
