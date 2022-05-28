@@ -166,7 +166,7 @@ module.exports = class InteractionEvent {
 			};
 			try {
 				await command.run(this.ctx).then(async () => {
-					setTimeout(() => {
+					setTimeout(async () => {
 						await interaction.followUp({
 							content: idioma.div.replace('{{user}}', msg.author.mention),
 							ephemeral: true
