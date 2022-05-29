@@ -166,6 +166,7 @@ module.exports = class InteractionEvent {
 			};
 			try {
 				await command.run(this.ctx).then(async () => {
+					/*
 					const premium = await global.zuly.getPremium('doador', msg.author.id);
 					setTimeout(async () => {
 						if (premium) return;
@@ -174,6 +175,7 @@ module.exports = class InteractionEvent {
 							ephemeral: true
 						});
 					}, 5000);
+					*/
 					const system = require('../Config/system');
 
 					const moment = require('moment');
