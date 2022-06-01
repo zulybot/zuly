@@ -7,17 +7,17 @@ module.exports = class NitroCommand {
 				dono: false
 			},
 			pt: {
-				nome: 'eletiva',
+				nome: 'dado',
 				categoria: '⭐ » Diversão',
 				desc: 'Eletiva'
 			},
 			en: {
-				nome: 'eletiva,
+				nome: 'dice,
 				categoria: '⭐ » Fun',
 				desc: 'Eletiva'
 			},
 			fr: {
-				nome: 'eletiva',
+				nome: 'roll',
 				categoria: '⭐ » Divertissement',
 				desc: 'Eletiva'
 			},
