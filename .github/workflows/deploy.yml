@@ -22,7 +22,7 @@ jobs:
 
             cd zuly
             pm2 stop zuly
-            git pull origin master
+            git pull origin master --force
             rm -rf node_modules
             yarn install
             yarn lint
