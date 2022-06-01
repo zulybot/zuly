@@ -41,6 +41,6 @@ module.exports = class NitroCommand {
 
 	async run (ctx) {
 		const numbera = Number(Math.floor(Math.random() * 20) + 1);
-		ctx.message.channel.slashReply('🎲 **|** Toma aqui o número: **' + numbera + '**')
+		ctx.message.channel.slashReply('🎲 **|** Toma aqui o número: **' + numbera.toFixed(0) + '**')
 	}
 };
