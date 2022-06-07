@@ -54,7 +54,7 @@
     "moment": "^2.29.3",
     "ms": "^2.1.3",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
-    "pretty-ms": "^7.0.1",
+    "pretty-ms": "^8.0.0",
     "quickpostgres": "^3.0.0"
   },
   "devDependencies": {
