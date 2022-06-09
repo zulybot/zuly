@@ -10,16 +10,7 @@ const SnakeGame = require('./Helpers/SnakeGame');
 const client = new Client({
 	restTimeOffset: 1,
 	shardCount: 1,
-	intents: [
-		'GUILDS',
-		'GUILD_BANS',
-		'GUILD_MEMBERS',
-		'GUILD_MESSAGES',
-		'DIRECT_MESSAGES',
-		'GUILD_VOICE_STATES',
-		'GUILD_MESSAGE_REACTIONS',
-		'GUILD_EMOJIS_AND_STICKERS'
-	],
+	intents: 131071,
 	partials: [
 		'USER',
 		'GUILD',
