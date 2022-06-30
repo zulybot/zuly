@@ -5,7 +5,7 @@ module.exports = class EvalCommand {
 			permissoes: {
 				membro: [],
 				bot: ['ATTACH_FILES'],
-				dono: true
+				dono: false
 			},
 			pt: {
 				nome: 'perfil',
