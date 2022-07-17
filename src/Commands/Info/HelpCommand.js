@@ -131,7 +131,7 @@ module.exports = class Ajuda {
 						`\`${comando.pt.nome}\``
 					);
 				});
-				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/pyyyJpw5QW) caso queira!\nVeja meus comandso em meu [website](https://zulybot.xyz/commands).\n↳ [Ei, que tal dar uma passadinha na Twitch do meu amigo Lucaas?](https://www.twitch.tv/lucaas0007)`);
+				embed.setDescription(`>>> Olá, meu nome é: **${global.zuly.user.username}**!\nAtualmente possuo: **${global.zuly.commands.size}** comandos;\nMe [adicione](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou se junte ao meu [suporte](https://discord.gg/8SA5sfyR7g) caso queira!\nVeja meus comandso em meu [website](https://zulybot.xyz/commands).\n↳ [Ei, que tal dar uma passadinha na Twitch do meu amigo Lucaas?](https://www.twitch.tv/lucaas0007)`);
 				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -229,7 +229,7 @@ module.exports = class Ajuda {
 						`\`${comando.fr.nome}\``
 					);
 				});
-				embed.setDescription(`>>> Bonjour, mon nom est: **${global.zuly.user.username}**!\nJ'ai actuellement: **${global.zuly.commands.size}** commandes;\nAjoute [moi](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou rejoignez mon [soutien](https://discord.gg/pyyyJpw5QW) si tu veux!\nVoir mes commandes sur mon [site Web](https://zulybot.xyz/commands).\n↳ [Hé, que diriez-vous de jeter un œil au Twitch de mon ami Lucaas?](https://www.twitch.tv/lucaas0007)`);
+				embed.setDescription(`>>> Bonjour, mon nom est: **${global.zuly.user.username}**!\nJ'ai actuellement: **${global.zuly.commands.size}** commandes;\nAjoute [moi](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot%20applications.commands&permissions=805432446), ou rejoignez mon [soutien](https://discord.gg/8SA5sfyR7g) si tu veux!\nVoir mes commandes sur mon [site Web](https://zulybot.xyz/commands).\n↳ [Hé, que diriez-vous de jeter un œil au Twitch de mon ami Lucaas?](https://www.twitch.tv/lucaas0007)`);
 				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -246,7 +246,7 @@ module.exports = class Ajuda {
 									type: 2,
 									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
-									url: 'https://discord.gg/pyyyJpw5QW'
+									url: 'https://discord.gg/8SA5sfyR7g'
 								},
 								{
 									type: 2,
@@ -302,7 +302,7 @@ module.exports = class Ajuda {
 					}
 					categorias[cmd.en.categoria].push(`\`${cmd.en.nome}\``);
 				});
-				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/pyyyJpw5QW) if you want!\nSee my commands on my [website](https://zulybot.xyz/commands).\n↳ [Hey, how about stopping by my friend Lucaas Twitch?](https://www.twitch.tv/lucaas0007)`);
+				embed.setDescription(`>>> Hi, my name is: **${global.zuly.user.username}**!\nI currently have: **${global.zuly.commands.size}** commands;\nMe [add](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446), or join my [support](https://discord.gg/8SA5sfyR7g) if you want!\nSee my commands on my [website](https://zulybot.xyz/commands).\n↳ [Hey, how about stopping by my friend Lucaas Twitch?](https://www.twitch.tv/lucaas0007)`);
 				embed.setThumbnail(global.zuly.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }));
 				for (const categoria in categorias) {
 					embed.addField(categoria + ` [${categorias[categoria].length}]`, `${categorias[categoria].join(', ') || '⠀'}`);
@@ -320,7 +320,7 @@ module.exports = class Ajuda {
 									type: 2,
 									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
-									url: 'https://discord.gg/pyyyJpw5QW'
+									url: 'https://discord.gg/8SA5sfyR7g'
 								},
 								{
 									type: 2,
