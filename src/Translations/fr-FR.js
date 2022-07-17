@@ -51,7 +51,7 @@ module.exports = {
 		coletado: 'You have collected **%m** daily, come back tomorrow and collect again.',
 		coletou: 'You have already collected your daily reward, collect it again in **%time**'
 	},
-	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
+	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/8SA5sfyR7g>)!',
 	ball: {
 		title: '🎱 Magic Ball',
 		field1: '**Question:**',
@@ -163,7 +163,7 @@ module.exports = {
 	],
 	botban: {
 		title: 'Vous êtes banni!',
-		description: '↳ Vous avez été interdit d\'utiliser `%z` par : `%r`\n> <:zu_info:911303533859590144> Vous pouvez faire appel sur notre [serveur d\'assistance](https://discord.gg/pyyyJpw5QW).'
+		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/8SA5sfyR7g).'
 	},
 	customCommand: 'La commande a été créée avec succès, utilisez `/%n` pour l\'exécuter.',
 	alreadyExists: 'La commande existe déjà.',
@@ -267,7 +267,7 @@ module.exports = {
 		c: 'Aguarde %t segundos para usar outro comando.',
 		e: 'Ops, ocorreu um erro!',
 		e2: 'Reporte este erro!',
-		e3: 'Mon équipe est probablement déjà au courant de cette erreur, mais qu\'en est-il de votre aide ? Vous pouvez ouvrir un [issue](https://github.com/zulybot/zuly/issues) dans [github](https://github. om/zulybot/zuly) ou rapportez-le à mon [serveur de support](https://discord.gg/pyyyJpw5QW), faisons de la discord un meilleur endroit, ensemble 🤝',
+		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/8SA5sfyR7g), let\'s make the discord a better place, together 🤝',
 		nsfw: 'Cette commande ne peut être utilisée que sur les salons nsfw'
 	},
 	host: {
@@ -297,7 +297,7 @@ module.exports = {
 	help: {
 		title: 'Liste de commandes • ',
 		creators: 'J\'ai été développé par ',
-		description: '> Mon préfixe actuel est : `%p`\n> Si vous avez des questions, veuillez entrer mon serveur de support : [Cliquez ici](https://discord. g/pyyyJpw5QW)\n> Ajoutez-moi en cliquant sur [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
+		description: '> My current prefix is: `%p`\n> If you have any questions, please enter my support server: [Click here](https://discord.gg/8SA5sfyR7g)\n> Add me by clicking [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
 		nsfw: 'Vous devez être sur un canal NSFW pour voir les commandes nsfw. '
 	},
 	calc: {
@@ -357,7 +357,7 @@ module.exports = {
 	},
 	invite: {
 		add: 'Invite-moi sur ton serveur!',
-		desc: 'Yay, avez-vous aimé mes commandes ? Ou mes fonctionnalités ? [Ajoutez-moi](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nVous avez besoin d\'aide ou quelque chose ? Connectez-vous à mon [serveur de support](https://discord.gg/pyyyJpw5QW), yay'
+		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/8SA5sfyR7g), yay'
 	},
 	ban: {
 		noarg: '**Mention** un utilisateur ou donnez l\'**ID** du même.',
