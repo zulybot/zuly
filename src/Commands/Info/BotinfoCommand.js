@@ -121,7 +121,7 @@ module.exports = class BotinfoCommand {
 									type: 2,
 									label: `${ctx.idioma.mention.labels.support}`,
 									style: 5,
-									url: 'https://discord.gg/pyyyJpw5QW'
+									url: 'https://discord.gg/8SA5sfyR7g'
 								},
 								{
 									type: 2,
