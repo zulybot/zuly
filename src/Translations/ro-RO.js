@@ -51,7 +51,7 @@ module.exports = {
 		coletado: 'You have collected **%m** daily, come back tomorrow and collect again.',
 		coletou: 'You have already collected your daily reward, collect it again in **%time**'
 	},
-	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/pyyyJpw5QW>)!',
+	premium: 'You have discovered a premium feature, to be a premium user join my [support server](<https://discord.gg/8SA5sfyR7g>)!',
 	ball: {
 		title: '🎱 Magic Ball',
 		field1: '**Question:**',
@@ -163,7 +163,7 @@ module.exports = {
 	],
 	botban: {
 		title: 'You are banned!',
-		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/pyyyJpw5QW).'
+		description: '↳ You have been banned from using `%z` by: `%r`\n> <:zu_info:911303533859590144> You can file an appeal on our [support server](https://discord.gg/8SA5sfyR7g).'
 	},
 	customCommand: 'Command created successfully, use `/%n` to execute.',
 	alreadyExists: 'The command already exists.',
@@ -267,7 +267,7 @@ module.exports = {
 		c: 'Așteptați %t secunde pentru a utiliza o altă comandă.',
 		e: 'Oops, s-a produs o eroare!',
 		e2: 'Raporteaza aceasta eroare!',
-		e3: 'Echipa mea probabil ştie deja despre această eroare, dar ce zici de ajutor? Puteţi deschide un [issue](https://github.com/zulybot/zuly/issues) în [github](https://github. om/zulybot/zuly) sau raportați-l [serverului meu de suport](https://discord.gg/pyyJpw5QW), hai să facem discord-ul un loc mai bun, împreună :handshak:',
+		e3: 'My team probably already knows about this error, but how about you help? You can open an [issue](https://github.com/zulybot/zuly/issues) in [github](https://github.com/zulybot/zuly) or report it to my [support server](https://discord.gg/8SA5sfyR7g), let\'s make the discord a better place, together 🤝',
 		nsfw: 'Această comandă poate fi utilizată numai pe canalele nsfw.'
 	},
 	host: {
@@ -297,7 +297,7 @@ module.exports = {
 	help: {
 		title: 'Listă de comenzi • ',
 		creators: 'Am fost dezvoltat de ',
-		description: '> Prefixul meu actual este: `%p`\n> Dacă ai întrebări, te rog introdu serverul meu de suport: [Click aici](https://discord. g/pyyyJpw5QW)\n> Adaugă prin click pe [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
+		description: '> My current prefix is: `%p`\n> If you have any questions, please enter my support server: [Click here](https://discord.gg/8SA5sfyR7g)\n> Add me by clicking [here](https://discord.com/oauth2/authorize?client_id=880173509077266483&scope=bot&permissions=805432446)',
 		nsfw: 'Trebuie să fii pe un canal NSFW pentru a vedea comenzile nsfw. '
 	},
 	calc: {
@@ -357,7 +357,7 @@ module.exports = {
 	},
 	invite: {
 		add: 'Adaugă pe serverul tău!',
-		desc: 'Yay, ți-a plăcut comenzile mele? Sau caracteristicile mele? [Adăugă-mă](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nAi nevoie de ajutor sau ceva? Autentifică-te pe [serverul meu de suport](https://discord.gg/pyyJpw5QW), yay'
+		desc: 'Yay, did you like my commands? Or my features? [Add me](https://discord.com/oauth2/authorize?client_id=719524114536333342&scope=bot%20applications.commands&permissions=805432446)\n\nYou need Help or something? Log into my [support server](https://discord.gg/8SA5sfyR7g), yay'
 	},
 	ban: {
 		noarg: '**Menționați** un utilizator sau dați **ID** aceluiași utilizator.',
