@@ -45,7 +45,7 @@
     "colors": "^1.4.0",
     "deepai": "^1.0.21",
     "discord-backup": "3.2.1",
-    "discord.js": "^13.8.0",
+    "discord.js": "^14.0.2",
     "erela.js": "^2.3.3",
     "express": "^4.18.1",
     "imgur": "^2.2.0",
